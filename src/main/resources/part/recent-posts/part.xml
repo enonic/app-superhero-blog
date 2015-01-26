@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<part-component>
+    <display-name>Recent posts</display-name>
+    <config>
+        <field-set name="config">
+            <label>Config</label>
+            <items>
+                <input type="TextLine" name="past-x-days">
+                    <label>Past x days</label>
+                    <immutable>false</immutable>
+                    <indexed>true</indexed>
+                    <custom-text/>
+                    <help-text>Show posts for this many days in the past</help-text>
+                    <occurrences minimum="1" maximum="1"/>
+                </input>
+                <input type="TextLine" name="max-posts">
+                    <label>Number of posts</label>
+                    <immutable>false</immutable>
+                    <indexed>true</indexed>
+                    <custom-text/>
+                    <help-text>Maximum number of posts</help-text>
+                    <occurrences minimum="1" maximum="1"/>
+                </input>
+            </items>
+        </field-set>
+    </config>
+</part-component>

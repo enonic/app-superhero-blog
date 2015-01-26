@@ -1,0 +1,18 @@
+<div class="row" data-th-attr="data-live-edit-type=${editMode ? 'part' : null}">
+
+    <div id="primary" class="content-area" data-live-edit-type="region">
+
+        <div data-th-each="component : ${leftRegion.components}" data-th-remove="tag">
+            <div data-wem-component="${component.path}" data-th-remove="tag"/>
+        </div>
+
+    </div>
+    <div id="secondary" class="widget-area" role="complementary" data-live-edit-type="region">
+
+        <div data-th-each="component : ${rightRegion.components}" data-th-remove="tag">
+            <div data-wem-component="${component.path}" data-th-remove="tag"/>
+        </div>
+
+    </div>
+
+</div>

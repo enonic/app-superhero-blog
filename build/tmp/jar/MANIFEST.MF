@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Superhero theme
+Bundle-SymbolicName: com.enonic.theme.superhero
+Bundle-Version: 1.0.0
+Created-By: 1.8.0_20 (Oracle Corporation)
+Private-Package: content-type.post,layout.layout-70-30,lib,lib.view,modu
+ le.xml,page.default,part.recent-comments,part.recent-posts,public.css,p
+ ublic.js,relationship-type,view
+Tool: Bnd-2.3.0.201405100607

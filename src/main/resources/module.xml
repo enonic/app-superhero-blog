@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<module>
+    <display-name>WEM Superhero module</display-name>
+    <info>Superhero theme</info>
+    <url></url>
+    <vendor>
+        <name>Michael Lazell</name>
+        <url>http://www.enonic.com</url>
+    </vendor>
+    <dependencies system-min-version="5.0.0" system-max-version="5.1.0"/>
+    <config>
+        <input type="TextLine" name="google-ua">
+            <label>Google Analytics UA</label>
+            <immutable>false</immutable>
+            <indexed>false</indexed>
+            <custom-text/>
+            <help-text/>
+            <occurrences minimum="0" maximum="1"/>
+        </input>
+    </config>
+    <content>
+        <meta-step mixin="system:menu-item"/>
+    </content>
+</module>
