@@ -497,7 +497,7 @@ a:active {
 	position: absolute;
 		top: 1.5em;
 		left: 0;
-		z-index: 99999;
+		z-index: 1001;
 	text-align: left;
 }
 .main-navigation ul ul ul {

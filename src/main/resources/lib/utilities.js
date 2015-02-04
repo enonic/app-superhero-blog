@@ -1,1 +1,1 @@
-var module = 'com.enonic.wem.modules.theme.wem-superhero-module';
+var module = 'com.enonic.theme.superhero';

@@ -1,23 +1,11 @@
+var stk = require('/lib/stk');
 var thymeleaf = require('view/thymeleaf');
-//var utilities = require('utilities');
-
-function getSingleValue(val, def) {
-    if (val && (val.length > 0)) {
-        if (val[0] != null) {
-            return val[0];
-        }
-    }
-    return def;
-}
 
 exports.get = function(req) {
-    //var site = execute('portal.getSite');
-    //var moduleConfig = site.moduleConfigs['com.enonic.wem.modules.theme.wem-superhero-module'];
-    //var moduleConfig = site.moduleConfigs[utilities.module];
-    //var content = execute('portal.getContent');
+
     var component = execute('portal.getComponent');
-    var pastXDays = component.config["past-x-days"] || [];
-    var maxPosts = component.config["max-posts"] || [];
+    var pastXDays = component.config["past-x-days"] || 10;
+    var maxPosts = component.config["max-posts"] || 5;
 
     var params = {
         editMode: req.mode === 'edit' ? true : false,
@@ -25,9 +13,10 @@ exports.get = function(req) {
         pastXDays: pastXDays,
         maxPosts: maxPosts
     }
-    log.info('%s: ', JSON.stringify(params, null, 4));
 
-    var view = resolve('../../view/home.html');
+    //stk.log(params);
+
+    var view = resolve('recent-posts.html');
     var body = thymeleaf.render(view, params);
 
     return {

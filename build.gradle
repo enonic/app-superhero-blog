@@ -8,12 +8,14 @@ buildscript {
 
     dependencies {
         classpath 'com.enonic.wem.gradle:wem-gradle-plugin:0.1-SNAPSHOT'
+        classpath 'com.eriwen:gradle-js-plugin:1.12.1'
     }
 }
 
 apply plugin: 'module'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
+apply plugin: 'com.eriwen.gradle.js'
 
 version = '1.0.0'
 group = 'com.enonic.theme.superhero'
@@ -34,3 +36,23 @@ publishing {
         }
     }
 }
+
+// Declare your sources
+/*javascript.source {
+    dev {
+        js {
+            srcDir "src/main/module/public/js"
+            include "*.js"
+            exclude "*.min.js"
+        }
+    }
+}
+
+
+// Configure the built-in task
+combineJs {
+    source = javascript.source.dev.js.files
+    dest = file("${buildDir}/resources/main/public/js/all.js")
+}
+
+jar.dependsOn += combineJs*/

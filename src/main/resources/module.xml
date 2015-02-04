@@ -19,6 +19,6 @@
         </input>
     </config>
     <content>
-        <meta-step mixin="system:menu-item"/>
+        <meta-step mixin="menu-item"/>
     </content>
 </module>

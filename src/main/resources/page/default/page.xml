@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <page-component>
-    <display-name>Home page</display-name>
+    <display-name>Page</display-name>
     <config />
     <regions>
         <region name="main"/>
