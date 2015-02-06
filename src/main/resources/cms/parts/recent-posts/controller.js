@@ -1,4 +1,4 @@
-var stk = require('/lib/stk');
+var stk = require('/cms/lib/stk');
 var thymeleaf = require('view/thymeleaf');
 
 exports.get = function(req) {

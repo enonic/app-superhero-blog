@@ -41,7 +41,7 @@ publishing {
 /*javascript.source {
     dev {
         js {
-            srcDir "src/main/module/public/js"
+            srcDir "src/main/resources/cms/assets/js"
             include "*.js"
             exclude "*.min.js"
         }
@@ -52,7 +52,7 @@ publishing {
 // Configure the built-in task
 combineJs {
     source = javascript.source.dev.js.files
-    dest = file("${buildDir}/resources/main/public/js/all.js")
+    dest = file("${buildDir}/resources/main/cms/assets/js/all.js")
 }
 
 jar.dependsOn += combineJs*/

@@ -1,5 +1,5 @@
-var thymeleaf = require('/lib/view/thymeleaf');
-var stk = require('/lib/stk');
+var thymeleaf = require('/cms/lib/view/thymeleaf');
+var stk = require('/cms/lib/stk');
 
 function handleGet(req) {
 

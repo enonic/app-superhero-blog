@@ -1,4 +1,5 @@
-var stk = require('/lib/stk');
+var stk = require('/cms/lib/stk.js');
+var menu = require('/cms/lib/menu.js');
 //var utilities = require('utilities');
 
 
@@ -6,6 +7,7 @@ var stk = require('/lib/stk');
 function handleGet(req) {
 
     var site = execute('portal.getSite');
+    var menuItems = menu.getSiteMenu(3);
     var moduleConfig = site.moduleConfigs['com.enonic.theme.superhero'];
     //var moduleConfig = site.moduleConfigs[utilities.module];
     var content = execute('portal.getContent');
@@ -13,7 +15,9 @@ function handleGet(req) {
     var params = {
         moduleConfig: moduleConfig,
         mainRegion: content.page.regions['main'],
-        content: content
+        content: content,
+        menuItems: menuItems,
+        editMode: req.mode == 'edit' ? true : false
     }
 
     var view = resolve('home.html');
