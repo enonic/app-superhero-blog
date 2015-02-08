@@ -1,4 +1,4 @@
-var thymeleaf = require('/cms/lib/view/thymeleaf');
+//var thymeleaf = require('/cms/lib/view/thymeleaf');
 var stk = require('/cms/lib/stk');
 
 function handleGet(req) {
@@ -14,12 +14,19 @@ function handleGet(req) {
     };
 
     var view = resolve('layout-70-30.html');
-    var body = thymeleaf.render(view, params);
+/*    var body = thymeleaf.render(view, params);
 
     return {
         body: body,
         contentType: 'text/html'
-    };
+    };*/
+    return {
+        body: execute('thymeleaf.render', {
+            view: resolve('layout-70-30.html'),
+            model: params
+        }),
+        contentType: 'text/html'
+    }
 
 }
 

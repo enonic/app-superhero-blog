@@ -1,4 +1,3 @@
-var thymeleaf = require('view/thymeleaf');
 var stk = require('/cms/lib/stk');
 
 
@@ -14,11 +13,11 @@ function handleGet(req) {
         component: component
     }
 
-    var view = resolve('recent-comments.html');
-    var body = thymeleaf.render(view, params);
-
     return {
-        body: body,
+        body: execute('thymeleaf.render', {
+            view: resolve('recent-comments.html'),
+            model: params
+        }),
         contentType: 'text/html'
     };
 

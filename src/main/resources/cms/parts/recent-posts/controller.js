@@ -1,5 +1,4 @@
 var stk = require('/cms/lib/stk');
-var thymeleaf = require('view/thymeleaf');
 
 exports.get = function(req) {
 
@@ -14,13 +13,11 @@ exports.get = function(req) {
         maxPosts: maxPosts
     }
 
-    //stk.log(params);
-
-    var view = resolve('recent-posts.html');
-    var body = thymeleaf.render(view, params);
-
     return {
-        body: body,
+        body: execute('thymeleaf.render', {
+            view: resolve('recent-posts.html'),
+            model: params
+        }),
         contentType: 'text/html'
     };
 };

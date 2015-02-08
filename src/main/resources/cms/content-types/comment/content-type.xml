@@ -41,7 +41,8 @@
             <indexed>false</indexed>
             <occurrences minimum="1" maximum="1"/>
             <config>
-                <relationship-type>com.enonic.theme.superhero:article</relationship-type>
+              <relationship-type>system:reference</relationship-type>
+              <allow-content-type>com.enonic.theme.superhero:post</allow-content-type>
             </config>
         </input>
       </items>

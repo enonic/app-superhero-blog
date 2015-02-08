@@ -2,8 +2,6 @@ var stk = require('/cms/lib/stk.js');
 var menu = require('/cms/lib/menu.js');
 //var utilities = require('utilities');
 
-
-
 function handleGet(req) {
 
     var site = execute('portal.getSite');
