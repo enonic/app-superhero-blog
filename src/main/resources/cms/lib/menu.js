@@ -9,11 +9,11 @@ function isInteger(x) {
  * @return {Boolean} true if the content is marked as menu item
  */
 function isMenuItem(content) {
-    var meta = content.meta;
-    if (!meta) {
+    var extraData = content.x;
+    if (!extraData) {
         return false;
     }
-    var menuItemMetadata = meta['menu-item'] || {};
+    var menuItemMetadata = extraData['menu-item'] || {};
     var menuItemValue = menuItemMetadata['menuItem'];
 
     return menuItemValue;
@@ -59,7 +59,7 @@ function menuItemToJson(content, levels) {
 
     return {
         displayName: content.displayName,
-        menuName: content.meta['menu-item'].menuName && content.meta['menu-item'].menuName.length ? content.meta['menu-item'].menuName : null,
+        menuName: content.x['menu-item'].menuName && content.x['menu-item'].menuName.length ? content.x['menu-item'].menuName : null,
         path: content._path,
         name: content._name,
         id: content._id,
