@@ -6,7 +6,8 @@ Bundle-Version: 1.0.0
 Created-By: 1.8.0_20 (Oracle Corporation)
 Private-Package: cms.assets.css,cms.assets.js,cms.content-types.comment,
  cms.content-types.landing-page,cms.content-types.post,cms.layouts.layou
- t-70-30,cms.lib,cms.mixins.menu-item,cms.pages.default,cms.parts.posts-
- list,cms.parts.recent-comments,cms.parts.recent-posts,cms.parts.search-
- form,cms.relationship-types,cms.view,module.xml
-Tool: Bnd-2.3.0.201405100607
+ t-70-30,cms.lib,cms.lib.stk,cms.mixins.menu-item,cms.pages.default,cms.
+ parts.posts-list,cms.parts.recent-comments,cms.parts.recent-posts,cms.p
+ arts.search-form,cms.relationship-types,cms.view,module.xml
+Tool: Bnd-2.4.0.201411031534
+X-System-Version: [5.0,6)

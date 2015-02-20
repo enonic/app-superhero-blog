@@ -7,7 +7,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.enonic.xp.gradle:gradle-plugin:1.0.2'
+        classpath 'com.enonic.xp.gradle:gradle-plugin:1.0.3'
         classpath 'com.eriwen:gradle-js-plugin:1.12.1'
     }
 }
@@ -19,7 +19,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.eriwen.gradle.js'
 
 version = '1.0.0'
-group = 'com.enonic.theme.superhero'
+group = 'com.enonic.theme'
 
 module {
     displayName = 'Superhero theme'
