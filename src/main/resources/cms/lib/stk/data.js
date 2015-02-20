@@ -1,25 +1,17 @@
-exports.log = function (data) {
-    log.info('STK log %s', JSON.stringify(data, null, 4));
-};
-
 exports.data = {};
-exports.content = {};
-exports.view = {};
-
 
 // Force data to array
-exports.data.forceArray = function(data, callback) {
+// Note that current stk.log function won't reflect the changes due to a bug in JSON.stringify
+exports.data.forceArray = function(data) {
     if (!Array.isArray(data)) {
         data = [data];
-
-        if (typeof callback === "function") {
-            callback(data);
-        }
     }
+    return data;
 };
 
 // Trim empty array elements
-exports.data.trimArray = function(array, callback) {
+// Note that current stk.log function won't reflect the changes due to a bug in JSON.stringify
+exports.data.trimArray = function(array) {
     var trimmedArray = [];
     for (var i = 0; i < array.length; i++) {
         var empty = true;
@@ -34,10 +26,7 @@ exports.data.trimArray = function(array, callback) {
             trimmedArray.push(object);
         }
     }
-
-    if (typeof callback === "function") {
-        callback(trimmedArray);
-    }
+    return trimmedArray;
 };
 
 // Delete all properties with empty string from an object
@@ -57,23 +46,4 @@ exports.data.isInt = function(value) {
     return !isNaN(value) &&
         parseInt(Number(value)) == value &&
         !isNaN(parseInt(value, 10));
-};
-
-
-// Check if content exists at path
-exports.content.exists = function(path) {
-    var result = execute('content.get', {
-        key: path
-    });
-
-    return result ? true : false;
-};
-
-exports.view.render = function(view, params) {
-    return {
-        body: execute('thymeleaf.render', {
-            view: view,
-            model: params
-        })
-    };
 };

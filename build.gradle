@@ -7,12 +7,13 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.enonic.wem.gradle:wem-gradle-plugin:0.1-SNAPSHOT'
+        classpath 'com.enonic.xp.gradle:gradle-plugin:1.0.2'
         classpath 'com.eriwen:gradle-js-plugin:1.12.1'
     }
 }
 
-apply plugin: 'module'
+apply plugin: 'idea'
+apply plugin: 'com.enonic.xp.gradle.module'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'com.eriwen.gradle.js'
@@ -38,21 +39,41 @@ publishing {
 }
 
 // Declare your sources
-/*javascript.source {
-    dev {
+javascript.source {
+    custom {
         js {
             srcDir "src/main/resources/cms/assets/js"
             include "*.js"
-            exclude "*.min.js"
+            //exclude "*.min.js"
         }
+    }
+    vendor {
+        js {
+            srcDir "src/main/resources/cms/assets/js/vendor"
+            include "*.js"
+        }
+    }
+    jquery {
+        js {
+            srcDir "src/main/resources/cms/assets/js/vendor/jquery"
+            include "*.js"
+        }
+    }
+}
+
+minifyJs {
+    source = javascript.source.custom.js.files
+    dest = file("${buildDir}/resources/main/cms/assets/js/custom.min.js")
+    closure {
+        warningLevel = 'QUIET'
     }
 }
 
 
 // Configure the built-in task
 combineJs {
-    source = javascript.source.dev.js.files
+    source = javascript.source.jquery.js.files + javascript.source.vendor.js.files + minifyJs
     dest = file("${buildDir}/resources/main/cms/assets/js/all.js")
 }
 
-jar.dependsOn += combineJs*/
+jar.dependsOn += combineJs

@@ -13,36 +13,26 @@
       <items>
         <input type="TextLine" name="name">
           <label>Name</label>
-          <immutable>false</immutable>
-          <indexed>true</indexed>
           <occurrences minimum="1" maximum="1"/>
         </input>
         <input type="TextLine" name="email">
           <label>Email</label>
-          <immutable>false</immutable>
-          <indexed>true</indexed>
           <occurrences minimum="1" maximum="1"/>
         </input>
         <input type="TextLine" name="website">
           <label>Website</label>
-          <immutable>false</immutable>
-          <indexed>true</indexed>
           <occurrences minimum="0" maximum="1"/>
         </input>
         <input type="HtmlArea" name="comment">
           <label>Comment</label>
-          <immutable>false</immutable>
-          <indexed>true</indexed>
           <occurrences minimum="1" maximum="1"/>
         </input>
         <input type="ContentSelector" name="article">
           <label>Article</label>
-          <immutable>false</immutable>
-          <indexed>false</indexed>
           <occurrences minimum="1" maximum="1"/>
           <config>
             <relationship-type>system:reference</relationship-type>
-            <allow-content-type>com.enonic.theme.superhero:post</allow-content-type>
+            <allow-content-type>post</allow-content-type>
           </config>
         </input>
       </items>

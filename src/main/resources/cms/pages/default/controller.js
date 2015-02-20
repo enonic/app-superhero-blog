@@ -1,12 +1,12 @@
-var stk = require('/cms/lib/stk.js');
-var menu = require('/cms/lib/menu.js');
-//var utilities = require('utilities');
+var stk = require('stk/stk');
+var menu = require('menu');
+var utilities = require('utilities');
 
 function handleGet(req) {
 
     var site = execute('portal.getSite');
     var menuItems = menu.getSiteMenu(3);
-    var moduleConfig = site.moduleConfigs['com.enonic.theme.superhero'];
+    var moduleConfig = site.data.moduleConfig;
     //var moduleConfig = site.moduleConfigs[utilities.module];
     var content = execute('portal.getContent');
 
@@ -14,20 +14,11 @@ function handleGet(req) {
         moduleConfig: moduleConfig,
         mainRegion: content.page.regions['main'],
         content: content,
-        menuItems: menuItems,
-        editMode: req.mode == 'edit' ? true : false
+        menuItems: menuItems
     }
 
     var view = resolve('home.html');
-
-    return {
-        contentType: 'text/html',
-
-        body: execute('thymeleaf.render', {
-            view: view,
-            model: params
-        })
-    };
+    return stk.view.render(view, params);
 }
 
 exports.get = handleGet;

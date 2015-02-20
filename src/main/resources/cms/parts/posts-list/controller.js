@@ -1,4 +1,4 @@
-var stk = require('/cms/lib/stk');
+var stk = require('stk/stk');
 
 exports.get = function(req) {
 
@@ -6,15 +6,8 @@ exports.get = function(req) {
     var urlParams = req.params;
 
     var params = {
-        editMode: req.mode == 'edit' ? true : false,
         component: component
     }
-
-    return {
-        body: execute('thymeleaf.render', {
-            view: resolve('post-list.html'),
-            model: params
-        }),
-        contentType: 'text/html'
-    };
+    var view = resolve('post-list.html');
+    return stk.view.render(view, params);
 };

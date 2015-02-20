@@ -1,4 +1,4 @@
-var stk = require('/cms/lib/stk');
+var stk = require('stk/stk');
 
 exports.get = function(req) {
 
@@ -12,11 +12,6 @@ exports.get = function(req) {
 
     stk.log(req);
 
-    return {
-        body: execute('thymeleaf.render', {
-            view: resolve('search-form.html'),
-            model: params
-        }),
-        contentType: 'text/html'
-    };
+    var view = resolve('search-form.html');
+    return stk.view.render(view, params);
 };
