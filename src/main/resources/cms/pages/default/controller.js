@@ -7,10 +7,13 @@ function handleGet(req) {
     var site = execute('portal.getSite');
     var menuItems = menu.getSiteMenu(3);
     var moduleConfig = site.data.moduleConfig;
-    //var moduleConfig = site.moduleConfigs[utilities.module];
     var content = execute('portal.getContent');
 
+    stk.log('site');
+    stk.log(site);
+
     var params = {
+        site: site,
         moduleConfig: moduleConfig,
         mainRegion: content.page.regions['main'],
         content: content,

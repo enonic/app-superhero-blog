@@ -31,7 +31,7 @@ function handleGet(req) {
         comments.push(results.contents[i].data);
     }
 
-    stk.log(comments);
+    //stk.log(comments);
 
     var params = {
         comments: comments

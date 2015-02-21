@@ -1,8 +1,10 @@
 <div data-th-each="post : ${posts}" data-th-remove="tag">
-    <article id="post-19" class="post-19 post type-post status-publish format-standard hentry category-uncategorized tag-boat tag-lake">
+    <article data-th-id="'post-' + ${post.id}"  id="post-19" class="post-19 post type-post status-publish format-standard hentry category-uncategorized tag-boat tag-lake">
 
         <header class="entry-header">
-            <h1 class="entry-title"><a href="https://wp-themes.com/?p=19" rel="bookmark" data-th-text="${post.title}">Worth A Thousand Words</a></h1>
+            <h1 class="entry-title">
+                <a data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" rel="bookmark" data-th-text="${post.title}">Worth A Thousand Words</a>
+            </h1>
 
             <div class="entry-meta">
                 Posted on <a href="https://wp-themes.com/?p=19" title="4:33 am" rel="bookmark"><time class="entry-date" datetime="2008-10-17T04:33:51+00:00">October 17</time>

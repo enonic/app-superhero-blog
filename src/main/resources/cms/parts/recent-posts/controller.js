@@ -16,7 +16,7 @@ exports.get = function(req) {
             module.name + ':post'
         ]
     });
-    stk.log(results);
+    //stk.log(results);
     for (var i = 0; i < results.contents.length; i++) {
         stk.data.deleteEmptyProperties(results.contents[i].data);
         results.contents[i].data.path = results.contents[i]._path;

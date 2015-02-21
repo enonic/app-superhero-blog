@@ -9,10 +9,11 @@ exports.get = function(req) {
     var posts = new Array();
     var folderPath = stk.content.getPath(config.contentFolder);
 
-    stk.log(content);
-
     if (content.type == module.name + ':post') {
-        //content.data = stk.deleteEmptyProperties(content.data);
+        content.data.path = content._path;
+        content.data.id = content._id;
+        content.data.createdTime = content.createdTime;
+        stk.data.deleteEmptyProperties(content.data);
         posts.push(content.data);
     } else {
         var results = execute('content.query', {
@@ -24,7 +25,7 @@ exports.get = function(req) {
                 module.name + ':post'
             ]
         });
-        stk.log(results);
+        //stk.log(results);
         for (var i = 0; i < results.contents.length; i++) {
             results.contents[i].data.path = results.contents[i]._path;
             results.contents[i].data.createdTime = results.contents[i].createdTime;
