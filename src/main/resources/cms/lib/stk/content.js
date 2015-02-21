@@ -22,21 +22,19 @@ exports.content.getProperty = function(key, property) {
 };
 
 /**
- * Returns the path to the save location. If the key to a folder or content is passed, it will be used. If no folder was selected, the path
+ * Returns the path to the content location. If the key to a content is passed, it will be used. If contenKey is null, the path
  * to the page that the part is on will be returned.
- * @param {Content} content key of the selected folder, if one was selected. Example: config['saveFolder']
+ * @param {Content} content key. Example: config['saveFolder']
  * @return {String} Returns the path of the save location.
  */
-exports.content.getSaveLocation = function(folderKey) {
-    var content = execute('portal.getContent');
-    var saveFolder;
-    if (folderKey) {
-        var folder = execute('content.get', {
-            key: folderKey
-        });
-        if (folder) {
-            saveFolder = folder._path;
+exports.content.getPath = function(contentKey) {
+    var defaultContent = execute('portal.getContent');
+    var contentPath;
+    if (contentKey) {
+        var content = exports.content.get(contentKey);
+        if (content) {
+            contentPath = content._path;
         }
     }
-    return saveFolder ? saveFolder : content._path;
+    return contentPath ? contentPath : defaultContent._path;
 };

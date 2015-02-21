@@ -9,4 +9,5 @@
   <allow-child-content>true</allow-child-content>
   <form>
   </form>
+  <x-data mixin="menu-item"/>
 </content-type>

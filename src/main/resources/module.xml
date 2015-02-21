@@ -14,5 +14,5 @@
       <occurrences minimum="0" maximum="1"/>
     </input>
   </config>
-  <x-data mixin="menu-item"/>
+  <!--<x-data mixin="menu-item"/>-->
 </module>

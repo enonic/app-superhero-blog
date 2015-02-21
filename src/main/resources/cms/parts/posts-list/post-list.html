@@ -1,16 +1,18 @@
-<div>
+<div data-th-each="post : ${posts}" data-th-remove="tag">
     <article id="post-19" class="post-19 post type-post status-publish format-standard hentry category-uncategorized tag-boat tag-lake">
 
         <header class="entry-header">
-            <h1 class="entry-title"><a href="https://wp-themes.com/?p=19" rel="bookmark">Worth A Thousand Words</a></h1>
+            <h1 class="entry-title"><a href="https://wp-themes.com/?p=19" rel="bookmark" data-th-text="${post.title}">Worth A Thousand Words</a></h1>
 
             <div class="entry-meta">
                 Posted on <a href="https://wp-themes.com/?p=19" title="4:33 am" rel="bookmark"><time class="entry-date" datetime="2008-10-17T04:33:51+00:00">October 17</time>
-            </a><span class="byline"> by <span class="author vcard"><a class="url fn n" href="https://wp-themes.com/?author=1" title="View all posts by Theme Admin" rel="author">Theme Admin</a></span></span>
+            </a><span class="byline"> by <span class="author vcard">
+                <a class="url fn n" href="https://wp-themes.com/?author=1" title="View all posts by Theme Admin" rel="author" data-th-text="${post.author}">Theme Admin</a>
+            </span></span>
             </div><!-- .entry-meta -->
         </header><!-- .entry-header -->
 
-        <div class="entry-content">
+        <div class="entry-content" data-th-utext="${post.post}">
             <div style="width: 445px" class="wp-caption alignnone">
                 <img class="wp-image-59" alt="Boat" src="https://wpdotorg.files.wordpress.com/2008/11/boat.jpg" width="435" height="288"/><p class="wp-caption-text">Boat</p>
             </div>

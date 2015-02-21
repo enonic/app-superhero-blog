@@ -2,15 +2,39 @@ var stk = require('stk/stk');
 
 
 function handleGet(req) {
-    //var site = execute('portal.getSite');
-    //var moduleConfig = site.moduleConfigs['com.enonic.theme.superhero'];
-    //var moduleConfig = site.moduleConfigs[utilities.module];
-    //var content = execute('portal.getContent');
+
     var component = execute('portal.getComponent');
+    var content = execute('portal.getContent');
+    var maxComments = component.config["maxComments"] || 5;
+    var comments = new Array();
+
+    var results = execute('content.query', {
+        start: 0,
+        count: maxComments,
+        //query: 'createdTime > (now() - pastXDays),
+        sort: 'createdTime DESC',
+        contentTypes: [
+            module.name + ':comment'
+        ]
+    });
+
+    //stk.log(results);
+
+    for (var i = 0; i < results.contents.length; i++) {
+        stk.data.deleteEmptyProperties(results.contents[i].data);
+        results.contents[i].data.key = results.contents[i]._id;
+
+        var post = stk.content.get(results.contents[i].data.article);
+        results.contents[i].data.postTitle = post.data.title;
+        results.contents[i].data.postPath = post._path;
+
+        comments.push(results.contents[i].data);
+    }
+
+    stk.log(comments);
 
     var params = {
-        editMode: req.mode === 'edit' ? true : false,
-        component: component
+        comments: comments
     }
 
     var view = resolve('recent-comments.html');
