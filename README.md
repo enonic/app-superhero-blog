@@ -2,7 +2,8 @@
 
 Create your very own Superhero theme blog to run with Enonic XP.
 
-Theme by WordPress https://wordpress.com/themes/
+Theme by automatic https://profiles.wordpress.org/automattic/
+WordPress https://wordpress.com/themes/
 
 Adapted for Enonic XP by Michael Lazell
 

@@ -10,13 +10,13 @@ exports.get = function(req) {
     var results = execute('content.query', {
         start: 0,
         count: maxPosts,
-        //query: 'createdTime > (now() - pastXDays),
+        //query: ,
         sort: 'createdTime DESC',
         contentTypes: [
             module.name + ':post'
         ]
     });
-    //stk.log(results);
+
     for (var i = 0; i < results.contents.length; i++) {
         stk.data.deleteEmptyProperties(results.contents[i].data);
         results.contents[i].data.path = results.contents[i]._path;

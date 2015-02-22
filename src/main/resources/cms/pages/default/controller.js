@@ -9,8 +9,8 @@ function handleGet(req) {
     var moduleConfig = site.data.moduleConfig;
     var content = execute('portal.getContent');
 
-    stk.log('site');
-    stk.log(site);
+    //stk.log('site');
+    //stk.log(site);
 
     var params = {
         site: site,

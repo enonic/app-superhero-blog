@@ -1,0 +1,56 @@
+var stk = require('stk/stk');
+
+exports.get = function(req) {
+
+    var component = execute('portal.getComponent');
+    var up = req.params;
+    var content = execute('portal.getContent');
+    var site = execute('portal.getSite');
+
+    var comments = execute('content.query', {
+        start: 0,
+        count: 1000,
+        query: "data.post = '" + content._id + "'",
+        sort: 'createdTime DESC',
+        contentTypes: [
+            module.name + ':comment'
+        ]
+    });
+
+    stk.log('content');
+    stk.log(content);
+
+    var data = content.data;
+    var categories = new Array();
+
+    if (content.type == module.name + ':post') {
+
+        data.path = content._path;
+        data.id = content._id;
+        data.createdTime = content.createdTime;
+        data.author = data.author ? stk.content.get(data.author) : data.author;
+
+        data.category = data.category ? stk.data.forceArray(data.category) : null;
+
+        if(data.category) {
+            for(var i = 0; i < data.category.length; i++) {
+                if(data.category[i]) {
+                    var category = stk.content.get(data.category[i]);
+                    categories.push(category);
+                }
+            }
+        }
+
+        data.categories = categories.length > 0 ? categories : null
+
+        stk.data.deleteEmptyProperties(content.data);
+    }
+
+    var params = {
+        post: content.data,
+        sitePath: site._path,
+        commentsTotal: comments.total
+    }
+    var view = resolve('post.html');
+    return stk.view.render(view, params);
+};

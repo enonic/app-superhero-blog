@@ -1,0 +1,8 @@
+<aside id="categories-3" class="widget widget_categories"> <!-- id should be categories-3 -->
+    <h1 class="widget-title">Categories</h1>
+    <ul>
+        <li data-th-each="category : ${categories}" class="cat-item">
+            <a href="#" data-th-href="${portal.pageUrl({'_path=' + sitePath, 'cat=' + category.data.name})}" data-th-text="${category.data.name}"></a>
+        </li><!-- Class also has cat-item-<catID> -->
+    </ul>
+</aside>

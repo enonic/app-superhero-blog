@@ -24,7 +24,7 @@ function handleGet(req) {
         stk.data.deleteEmptyProperties(results.contents[i].data);
         results.contents[i].data.key = results.contents[i]._id;
 
-        var post = stk.content.get(results.contents[i].data.article);
+        var post = stk.content.get(results.contents[i].data.post);
         results.contents[i].data.postTitle = post.data.title;
         results.contents[i].data.postPath = post._path;
 

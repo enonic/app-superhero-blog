@@ -1,4 +1,4 @@
-<div data-th-each="post : ${posts}" data-th-remove="tag">
+<div data-th-each="post : ${posts}">
     <article data-th-id="'post-' + ${post.id}"  id="post-19" class="post-19 post type-post status-publish format-standard hentry category-uncategorized tag-boat tag-lake">
 
         <header class="entry-header">
@@ -7,10 +7,15 @@
             </h1>
 
             <div class="entry-meta">
-                Posted on <a href="https://wp-themes.com/?p=19" title="4:33 am" rel="bookmark"><time class="entry-date" datetime="2008-10-17T04:33:51+00:00">October 17</time>
-            </a><span class="byline"> by <span class="author vcard">
-                <a class="url fn n" href="https://wp-themes.com/?author=1" title="View all posts by Theme Admin" rel="author" data-th-text="${post.author}">Theme Admin</a>
-            </span></span>
+                Posted on
+                <a  data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" title="4:33 am" rel="bookmark">
+                    <time class="entry-date" datetime="2008-10-17T04:33:51+00:00">October 17</time>
+                </a>
+                <span class="byline"> by
+                    <span class="author vcard">
+                        <a data-th-if="${post.author}" class="url fn n" href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'author=' + post.author._id})}" title="View all posts by Theme Admin" rel="author" data-th-text="${post.author.data.name}">Theme Admin</a>
+                    </span>
+                </span>
             </div><!-- .entry-meta -->
         </header><!-- .entry-header -->
 
@@ -27,6 +32,14 @@
             <span class="sep"> | </span>
             <span class="tags-links">Tagged <a href="https://wp-themes.com/?tag=boat" rel="tag">boat</a>, <a href="https://wp-themes.com/?tag=lake" rel="tag">lake</a></span>
 
+            <div data-th-if="${post.enableComments} eq true or ${post.comments.total} gt 0" data-th-remove="tag">
+
+                <span class="sep"> | </span>
+                <span class="comments-link">
+                    <a href="#" data-th-href="${portal.pageUrl({'_path=' + post.path})} + '#comments'" data-th-text="${post.commentsText}"></a>
+                </span>
+
+            </div>
 
         </footer><!-- .entry-meta -->
 
