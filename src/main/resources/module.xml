@@ -13,6 +13,11 @@
       <label>Google Analytics UA</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
+    <input type="ImageSelector" name="backgroundImage">
+      <label>Background image</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config/>
+    </input>
   </config>
   <!--<x-data mixin="menu-item"/>-->
 </module>

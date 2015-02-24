@@ -20,9 +20,11 @@
     <script type="text/javascript" data-th-src="${portal.assetUrl({'_path=js/superhero.js'})}" src="../public/js/superhero.js"></script>
     <!--<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>-->
 
+    <span data-th-if="${backgroundImage}" data-th-remove="tag" data-th-utext="${backgroundImage}"></span>
+
 </head>
 
-<body class="home blog" data-portal-component-type="page">
+<body class="home blog" data-th-class="${bodyClass}" data-portal-component-type="page">
     <div id="page" class="hfeed site" style="padding-top: 250px;">
         <div id="masthead-wrap">
             <header id="masthead" class="site-header" role="banner">

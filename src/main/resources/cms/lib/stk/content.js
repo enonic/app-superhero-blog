@@ -1,10 +1,17 @@
 exports.content = {};
 
 // Get content by key (path or id)
-exports.content.get = function(key) {
-    return execute('content.get', {
-        key: key
-    });
+exports.content.get = function (key) {
+    var content;
+    if (typeof key == 'undefined') {
+        content = execute('portal.getContent');
+    }
+    else {
+        content = execute('content.get', {
+            key: key
+        });
+    }
+    return content;
 };
 
 // Check if content exists at path
