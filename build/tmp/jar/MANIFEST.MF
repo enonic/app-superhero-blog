@@ -8,8 +8,8 @@ Private-Package: cms.assets.css,cms.assets.js,cms.content-types.author,c
  ms.content-types.category,cms.content-types.comment,cms.content-types.l
  anding-page,cms.content-types.post,cms.layouts.layout-70-30,cms.lib,cms
  .lib.stk,cms.mixins.menu-item,cms.pages.default,cms.parts.categories,cm
- s.parts.header,cms.parts.post-single,cms.parts.posts-list,cms.parts.rec
- ent-comments,cms.parts.recent-posts,cms.parts.search-form,cms.relations
- hip-types,cms.view,module.xml
+ s.parts.comments,cms.parts.header,cms.parts.post-single,cms.parts.posts
+ -list,cms.parts.recent-comments,cms.parts.recent-posts,cms.parts.search
+ -form,cms.relationship-types,cms.view,module.xml
 Tool: Bnd-2.4.0.201411031534
 X-System-Version: [5.0,6)

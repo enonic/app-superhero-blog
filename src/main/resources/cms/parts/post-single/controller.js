@@ -18,9 +18,6 @@ exports.get = function(req) {
         ]
     });
 
-    stk.log('content');
-    stk.log(content);
-
     var data = content.data;
     var categories = new Array();
 

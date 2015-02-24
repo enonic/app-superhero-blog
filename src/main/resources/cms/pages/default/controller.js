@@ -35,7 +35,6 @@ function handleGet(req) {
         bodyClass += 'author '
     }
 
-
     var params = {
         site: site,
         bodyClass: bodyClass,
