@@ -16,8 +16,7 @@ exports.get = function(req) {
 
     //Search filter
     if(up.s) {
-        query = 'data.post LIKE "' + up.s + '"';
-        //query += ' AND data.enableComments LIKE "true"';
+        query = 'fulltext("data.post", "' + up.s + '", "AND") OR fulltext("data.title", "' + up.s + '", "AND")';
     }
 
     // Filter for tags
@@ -52,7 +51,7 @@ exports.get = function(req) {
         query = 'data.author LIKE "' + up.author + '"';
     }
 
-    //stk.log(query);
+    stk.log(query);
 
     var results = execute('content.query', {
         start: stk.data.isInt(up.index) ? up.index : 0,
