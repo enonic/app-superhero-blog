@@ -1,47 +1,59 @@
-<div data-th-each="post : ${posts}">
-    <article data-th-id="'post-' + ${post.id}"  id="post-19" class="post-19 post type-post status-publish format-standard hentry category-uncategorized tag-boat tag-lake">
+<article data-th-each="post : ${posts}" data-th-id="'post-' + ${post.id}"  id="post-19" class="post-19 post type-post status-publish format-standard hentry category-uncategorized tag-boat tag-lake">
 
-        <header class="entry-header">
-            <h1 class="entry-title">
-                <a data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" rel="bookmark" data-th-text="${post.title}">Worth A Thousand Words</a>
-            </h1>
+    <header class="entry-header">
+        <h1 class="entry-title">
+            <a data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" rel="bookmark" data-th-text="${post.title}">Worth A Thousand Words</a>
+        </h1>
 
-            <div class="entry-meta">
-                Posted on
-                <a  data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" title="4:33 am" rel="bookmark">
-                    <time class="entry-date" datetime="2008-10-17T04:33:51+00:00">October 17</time>
-                </a>
-                <span class="byline"> by
-                    <span class="author vcard">
-                        <a data-th-if="${post.author}" class="url fn n" href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'author=' + post.author._id})}" title="View all posts by Theme Admin" rel="author" data-th-text="${post.author.data.name}">Theme Admin</a>
-                    </span>
+        <div class="entry-meta">
+            Posted on
+            <a  data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" title="4:33 am" rel="bookmark">
+                <time class="entry-date" datetime="2008-10-17T04:33:51+00:00" data-th-text="${post.pubDate}">October 17</time>
+            </a>
+            <span class="byline"> by
+                <span class="author vcard">
+                    <a data-th-if="${post.author}" class="url fn n" href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'author=' + post.author._id})}" title="View all posts by Theme Admin" rel="author" data-th-text="${post.author.data.name}">Theme Admin</a>
                 </span>
-            </div><!-- .entry-meta -->
-        </header><!-- .entry-header -->
+            </span>
+        </div><!-- .entry-meta -->
+    </header><!-- .entry-header -->
 
-        <div class="entry-content" data-th-utext="${post.post}">
-            <div style="width: 445px" class="wp-caption alignnone">
-                <img class="wp-image-59" alt="Boat" src="https://wpdotorg.files.wordpress.com/2008/11/boat.jpg" width="435" height="288"/><p class="wp-caption-text">Boat</p>
+    <div class="entry-content" data-th-utext="${post.post}">
+        <div style="width: 445px" class="wp-caption alignnone">
+            <img class="wp-image-59" alt="Boat" src="https://wpdotorg.files.wordpress.com/2008/11/boat.jpg" width="435" height="288"/><p class="wp-caption-text">Boat</p>
+        </div>
+        <p>Boat.</p>
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+        <span class="cat-links">Posted in
+            <div data-th-if="${post.categories != null}" data-th-remove="tag" data-th-each="category,iterStat : ${post.categories}">
+                <a href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'cat=' + category._id})}" rel="category" data-th-text="${category.data.name}">Uncategorized</a><span data-th-remove="tag" data-th-if="${!iterStat.last}">,</span>
             </div>
-            <p>Boat.</p>
-        </div><!-- .entry-content -->
+            <a href="#" data-th-if="${post.categories == null}" data-th-href="${portal.pageUrl({'_path=' + site._path, 'cat=uncategorized'})}" rel="category">Uncategorized</a>
+        </span>
 
-        <footer class="entry-meta">
-            <span class="cat-links">Posted in <a href="https://wp-themes.com/?cat=1" rel="category">Uncategorized</a></span>
+        <!--<span class="sep"> | </span>
+        <span class="tags-links">Tagged <a href="#" rel="tag">boat</a></span>-->
+        <div data-th-if="${post.tags != null}" data-th-remove="tag">
+            <span class="sep"> | </span>
+
+            <span class="tags-links">Tagged
+                <div data-th-remove="tag" data-th-each="tag,iterStat : ${post.tags}">
+                    <a href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'tag=' + tag})}" rel="tag" data-th-text="${tag}">boat</a><span data-th-remove="tag" data-th-if="${!iterStat.last}">,</span>
+                </div>
+            </span>
+        </div>
+
+        <div data-th-if="${post.enableComments} eq true or ${post.comments.total} gt 0" data-th-remove="tag">
 
             <span class="sep"> | </span>
-            <span class="tags-links">Tagged <a href="https://wp-themes.com/?tag=boat" rel="tag">boat</a>, <a href="https://wp-themes.com/?tag=lake" rel="tag">lake</a></span>
+            <span class="comments-link">
+                <a href="#" data-th-href="${portal.pageUrl({'_path=' + post.path})} + '#comments'" data-th-text="${post.commentsText}"></a>
+            </span>
 
-            <div data-th-if="${post.enableComments} eq true or ${post.comments.total} gt 0" data-th-remove="tag">
+        </div>
 
-                <span class="sep"> | </span>
-                <span class="comments-link">
-                    <a href="#" data-th-href="${portal.pageUrl({'_path=' + post.path})} + '#comments'" data-th-text="${post.commentsText}"></a>
-                </span>
+    </footer><!-- .entry-meta -->
 
-            </div>
-
-        </footer><!-- .entry-meta -->
-
-    </article><!-- #post-## -->
-</div>
+</article><!-- #post-## -->

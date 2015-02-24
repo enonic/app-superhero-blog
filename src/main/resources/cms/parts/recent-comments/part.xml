@@ -5,9 +5,13 @@
     <field-set name="config">
       <label>Config</label>
       <items>
+        <input type="TextLine" name="title">
+          <label>Title</label>
+          <occurrences minimum="0" maximum="1"/>
+        </input>
         <input type="TextLine" name="maxComments">
           <label>Number of comments</label>
-          <occurrences minimum="1" maximum="1"/>
+          <occurrences minimum="0" maximum="1"/>
         </input>
       </items>
     </field-set>

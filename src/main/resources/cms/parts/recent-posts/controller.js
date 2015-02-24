@@ -3,8 +3,10 @@ var stk = require('stk/stk');
 exports.get = function(req) {
 
     var component = execute('portal.getComponent');
+    var config = component.config;
     var content = execute('portal.getContent');
-    var maxPosts = component.config["max-posts"] || 5;
+    var title = config.title || 'Recent posts'
+    var maxPosts = config.maxPosts || 5;
     var posts = new Array();
 
     var results = execute('content.query', {
@@ -24,7 +26,8 @@ exports.get = function(req) {
     }
 
     var params = {
-        posts: posts
+        posts: posts,
+        title: title
     }
 
     var view = resolve('recent-posts.html');

@@ -1,4 +1,5 @@
 var stk = require('stk/stk');
+var util = require('utilities');
 
 exports.get = function(req) {
 
@@ -29,6 +30,7 @@ exports.get = function(req) {
         data.id = content._id;
         data.createdTime = content.createdTime;
         data.author = data.author ? stk.content.get(data.author) : data.author;
+        data.pubDate = util.getFormattedDate(new Date(content.createdTime));
 
         data.category = data.category ? stk.data.forceArray(data.category) : null;
 
@@ -48,7 +50,7 @@ exports.get = function(req) {
 
     var params = {
         post: content.data,
-        sitePath: site._path,
+        site: site,
         commentsTotal: comments.total
     }
     var view = resolve('post.html');

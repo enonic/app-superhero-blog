@@ -2,5 +2,14 @@
 <part-component>
   <display-name>Search form</display-name>
   <config>
+    <field-set name="config">
+      <label>Config</label>
+      <items>
+        <input type="TextLine" name="title">
+          <label>Title</label>
+          <occurrences minimum="0" maximum="1"/>
+        </input>
+      </items>
+    </field-set>
   </config>
 </part-component>

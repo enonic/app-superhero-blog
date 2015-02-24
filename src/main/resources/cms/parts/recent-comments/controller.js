@@ -4,8 +4,10 @@ var stk = require('stk/stk');
 function handleGet(req) {
 
     var component = execute('portal.getComponent');
+    var config = component.config;
+    var maxComments = config.maxComments || 5;
+    var title = config.title || 'Recent comments';
     var content = execute('portal.getContent');
-    var maxComments = component.config["maxComments"] || 5;
     var comments = new Array();
 
     var results = execute('content.query', {
@@ -34,7 +36,8 @@ function handleGet(req) {
     //stk.log(comments);
 
     var params = {
-        comments: comments
+        comments: comments,
+        title: title
     }
 
     var view = resolve('recent-comments.html');
