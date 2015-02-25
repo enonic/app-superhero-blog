@@ -6,7 +6,6 @@ exports.get = function(req) {
     var component = execute('portal.getComponent');
     var config = component.config;
     var up = req.params; // URL params
-    //TODO: List posts by search
     var content = execute('portal.getContent');
     var site = execute('portal.getSite');
     var posts = new Array();

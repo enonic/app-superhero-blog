@@ -8,6 +8,8 @@ WordPress https://wordpress.com/themes/
 
 Adapted for Enonic XP by Michael Lazell
 
+You can download WordPres and Superhero and use MAMP to run it and see how it looks and works in WordPress.
+
 ## Building
 
 Gradle is required to build the project.
@@ -22,7 +24,7 @@ Create a Category and an Author content in their respective folders.
 
 Create a Post content in the Posts folder and add the Category and Author content.
 
-Create a page template and add the 70-30 Layout.
+When the above steps are done, create a page template and add the 70-30 Layout.
 
 Add the "Header" and "Posts list" parts to the left side of the layout.
 
@@ -37,6 +39,12 @@ Make the Post show template support the Post content type.
 ## Documentation
 
 Comprehensive documentation for this module is being created.
-TODO: Write documentation and insert link
 
-TODO: Create the comments part
+TODO: Write documentation and insert link
+TODO: Find the CSS bug that causes the part and layout names to display wrong when you add them.
+TODO: Finish the date meta data in various parts.
+TODO: Finish the dynamic classes and IDs in various parts.
+TODO: Create the tag cloud part
+TODO: Create the Meta part with login/out and stuff.
+TODO: Finish the comments part.
+TODO: Make a hidden comment manager page to approve or delete comments.
