@@ -1,6 +1,6 @@
 # Superhero theme for Enonic XP
 
-Create your very own Superhero theme blog to run with Enonic XP.
+Create your very own Superhero theme blog to run on Enonic XP.
 
 Theme by automattic https://profiles.wordpress.org/automattic/
 
@@ -8,7 +8,7 @@ WordPress https://wordpress.com/themes/
 
 Adapted for Enonic XP by Michael Lazell
 
-You can download WordPres and Superhero and use MAMP to run it and see how it looks and works in WordPress.
+You can download WordPress and Superhero and use MAMP to run it and see how it looks and works in WordPress.
 
 ## Building
 
@@ -48,4 +48,5 @@ TODO: Create the tag cloud part
 TODO: Create the Meta part with login/out and stuff.
 TODO: Finish the comments part.
 TODO: Make a hidden comment manager page to approve or delete comments.
-TODO: Consider merging post-list and post-show into same part.
+TODO: Consider merging post-list and post-show into the same part. I had it this way to start with but it got quite complicated so I
+separated them and now I think that maybe I should merge them back together.
