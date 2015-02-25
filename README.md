@@ -48,3 +48,4 @@ TODO: Create the tag cloud part
 TODO: Create the Meta part with login/out and stuff.
 TODO: Finish the comments part.
 TODO: Make a hidden comment manager page to approve or delete comments.
+TODO: Consider merging post-list and post-show into same part.
