@@ -3,9 +3,6 @@
   <display-name>Category</display-name>
   <content-display-name-script>$('name')</content-display-name-script>
   <super-type>base:structured</super-type>
-  <is-abstract>false</is-abstract>
-  <is-final>true</is-final>
-  <allow-child-content>true</allow-child-content>
   <form>
     <field-set name="basic">
       <label>Category</label>
