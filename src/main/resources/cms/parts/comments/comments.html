@@ -1,4 +1,4 @@
-<div id="comments" class="comments-area">
+<div id="comments" class="comments-area" data-th-if="${content.data.enableComments} eq true OR ${numComments} gt 0">
     <div id="respond" class="comment-respond">
 
         <div data-th-remove="tag" data-th-if="${numComments} gt 0">
@@ -43,39 +43,42 @@
             </ol>
         </div>
 
-        <h3 id="reply-title" class="comment-reply-title">Leave a Reply</h3>
-        <form action="#" data-th-action="${postUrl}" method="post" id="commentform" class="comment-form">
-            <p class="comment-notes">
-                <span id="email-notes">Your email address will not be published.</span>
-                Required fields are marked <span class="required">*</span>
-            </p>
-            <p class="comment-form-author">
-                <label for="author">Name<span class="required">*</span></label>
-                <input id="author" name="author" type="text" size="30" aria-required="true"/>
-            </p>
-            <p class="comment-form-email">
-                <label for="email">Email<span class="required">*</span></label>
-                <input id="email" name="email" type="text" size="30" aria-describedby="email-notes" aria-required="true"/>
-            </p>
-            <p class="comment-form-url">
-                <label for="url">Website</label>
-                <input id="url" name="url" type="text" size="30"/>
-            </p>
-            <p class="comment-form-comment">
-                <label for="comment">Comment</label>
-                <textarea id="comment" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true"></textarea>
-            </p>
-            <p id="form-allowed-tags" class="form-allowed-tags">
-                You may use these
-                <abbr title="HyperText Markup Language">HTML</abbr>
-                tags and attributes:
-                <code data-th-text="${allowedTags}"></code>
-            </p>
-            <p class="form-submit">
-                <input id="submit" class="submit" type="submit" value="Post Comment" name="submit"/>
-                <input id="comment_post_ID" type="hidden" value="15" name="comment_post_ID"/>
-                <input id="comment_parent" type="hidden" value="0" name="comment_parent"/>
-            </p>
-        </form>
+        <div data-th-if="${content.data.enableComments} eq true" data-th-remove="tag">
+            <h3 id="reply-title" class="comment-reply-title">Leave a Reply</h3>
+            <form action="#" data-th-action="${postUrl}" method="post" id="commentform" class="comment-form">
+                <p class="comment-notes">
+                    <span id="email-notes">Your email address will not be published.</span>
+                    Required fields are marked <span class="required">*</span>
+                </p>
+                <p class="comment-form-author">
+                    <label for="author">Name<span class="required">*</span></label>
+                    <input id="author" name="author" type="text" size="30" aria-required="true"/>
+                </p>
+                <p class="comment-form-email">
+                    <label for="email">Email<span class="required">*</span></label>
+                    <input id="email" name="email" type="text" size="30" aria-describedby="email-notes" aria-required="true"/>
+                </p>
+                <p class="comment-form-url">
+                    <label for="url">Website</label>
+                    <input id="url" name="url" type="text" size="30"/>
+                </p>
+                <p class="comment-form-comment">
+                    <label for="comment">Comment</label>
+                    <textarea id="comment" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true"></textarea>
+                </p>
+                <p id="form-allowed-tags" class="form-allowed-tags">
+                    You may use these
+                    <abbr title="HyperText Markup Language">HTML</abbr>
+                    tags and attributes:
+                    <code data-th-text="${allowedTags}"></code>
+                </p>
+                <p class="form-submit">
+                    <input id="submit" class="submit" type="submit" value="Post Comment" name="submit"/>
+                    <input id="comment_post_ID" type="hidden" value="15" name="comment_post_ID"/>
+                    <input id="comment_parent" type="hidden" value="0" name="comment_parent"/>
+                </p>
+            </form>
+        </div>
+
     </div>
 </div>
