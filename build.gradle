@@ -18,7 +18,7 @@ apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'com.eriwen.gradle.js'
 
-version = '1.0.0'
+version = '1.0.0-SNAPSHOT'
 group = 'com.enonic.theme'
 
 module {

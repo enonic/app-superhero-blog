@@ -10,6 +10,10 @@ Adapted for Enonic XP by Michael Lazell
 
 You can download WordPress and Superhero and use MAMP to run it and see how it looks and works in WordPress.
 
+## Work in progress
+
+This is still being developed and is not ready for production yet.
+
 ## Building
 
 Gradle is required to build the project.
@@ -41,12 +45,20 @@ Make the Post show template support the Post content type.
 Comprehensive documentation for this module is being created.
 
 TODO: Write documentation and insert link
+
 TODO: Find the CSS bug that causes the part and layout names to display wrong when you add them.
+
 TODO: Finish the date meta data in various parts.
+
 TODO: Finish the dynamic classes and IDs in various parts.
+
 TODO: Create the tag cloud part
+
 TODO: Create the Meta part with login/out and stuff.
+
 TODO: Finish the comments part.
+
 TODO: Make a hidden comment manager page to approve or delete comments.
+
 TODO: Consider merging post-list and post-show into the same part. I had it this way to start with but it got quite complicated so I
 separated them and now I think that maybe I should merge them back together.
