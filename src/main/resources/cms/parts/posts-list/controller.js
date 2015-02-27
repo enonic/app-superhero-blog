@@ -9,7 +9,7 @@ exports.get = function(req) {
     var content = execute('portal.getContent');
     var site = execute('portal.getSite');
     var posts = new Array();
-    var folderPath = config.contentFolder ? stk.content.getPath(config.contentFolder) : '/content/superhero/posts';
+    var folderPath = config.contentFolder ? stk.content.getPath(config.contentFolder) : '/superhero/posts';
 
     var query = '_parentPath="/content' + folderPath + '"';
 
@@ -23,26 +23,9 @@ exports.get = function(req) {
         query = 'data.tags LIKE "' + up.tag + '"';
     }
 
-    //Filter for categories. TODO: Find a better way to check for null when uncategorized.
-    if (up.cat && up.cat != 'uncategorized') {
+    //Filter for categories.
+    if (up.cat) {
         query = 'data.category IN ("' + up.cat + '")';
-    } else if (up.cat == 'uncategorized') {
-
-        var cats = execute('content.query', {
-            contentTypes: [
-                module.name + ':category'
-            ]
-        });
-
-        var catString = '';
-        for (var i = 0; i < cats.contents.length; i++) {
-            catString += '"' + cats.contents[i]._id + '"';
-            if (i != cats.contents.length - 1) {
-                catString += ',';
-            }
-        }
-
-        query = 'data.category NOT IN (' + catString + ')';
     }
 
     //Filter for authors

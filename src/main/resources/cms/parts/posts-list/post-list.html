@@ -26,17 +26,16 @@
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-        <span class="cat-links">Posted in
-            <div data-th-if="${post.categories != null}" data-th-remove="tag" data-th-each="category,iterStat : ${post.categories}">
+        <span class="cat-links" data-th-if="${post.categories != null}">Posted in
+            <div data-th-remove="tag" data-th-each="category,iterStat : ${post.categories}">
                 <a href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'cat=' + category._id})}" rel="category" data-th-text="${category.data.name}">Uncategorized</a><span data-th-remove="tag" data-th-if="${!iterStat.last}">,</span>
             </div>
-            <a href="#" data-th-if="${post.categories == null}" data-th-href="${portal.pageUrl({'_path=' + site._path, 'cat=uncategorized'})}" rel="category">Uncategorized</a>
         </span>
 
         <!--<span class="sep"> | </span>
         <span class="tags-links">Tagged <a href="#" rel="tag">boat</a></span>-->
         <div data-th-if="${post.tags != null}" data-th-remove="tag">
-            <span class="sep"> | </span>
+            <span class="sep" data-th-if="${post.categories != null}"> | </span>
 
             <span class="tags-links">Tagged
                 <div data-th-remove="tag" data-th-each="tag,iterStat : ${post.tags}">
@@ -47,7 +46,7 @@
 
         <div data-th-if="${post.enableComments} eq true or ${post.comments.total} gt 0" data-th-remove="tag">
 
-            <span class="sep"> | </span>
+            <span class="sep" data-th-if="${post.categories != null} OR ${post.tags != null}"> | </span>
             <span class="comments-link">
                 <a href="#" data-th-href="${portal.pageUrl({'_path=' + post.path})} + '#comments'" data-th-text="${post.commentsText}"></a>
             </span>
