@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node xmlns="urn:enonic:xp:export:1.0">
+    <id>bdc9b662-578f-406a-8577-bea4555772db</id>
+    <childOrder>modifiedtime DESC</childOrder>
+    <nodeType>content</nodeType>
+    <data>
+        <boolean name="valid">true</boolean>
+        <string name="displayName">Worth A Thousand Words</string>
+        <string name="type">com.enonic.theme.superhero:post</string>
+        <string name="owner">user:system:su</string>
+        <string name="language">en</string>
+        <dateTime name="modifiedTime">2015-02-28T00:56:16.240Z</dateTime>
+        <string name="modifier">user:system:su</string>
+        <string name="creator">user:system:su</string>
+        <dateTime name="createdTime">2015-02-28T00:32:18.010Z</dateTime>
+        <property-set name="data">
+            <string name="title">Worth A Thousand Words</string>
+            <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
+            <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
+            <htmlPart name="post">&amp;lt;div style=&amp;quot;width: 445px&amp;quot; class=&amp;quot;wp-caption alignnone&amp;quot;&amp;gt;&amp;lt;img class=&amp;quot;wp-image-59&amp;quot; alt=&amp;quot;Boat&amp;quot; src=&amp;quot;https://wpdotorg.files.wordpress.com/2008/11/boat.jpg&amp;quot; width=&amp;quot;435&amp;quot; height=&amp;quot;288&amp;quot; /&amp;gt;&amp;lt;p class=&amp;quot;wp-caption-text&amp;quot;&amp;gt;Boat&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;p&amp;gt;Boat.&amp;lt;/p&amp;gt;</htmlPart>
+            <string name="tags">boat</string>
+            <string name="tags">lake</string>
+            <boolean name="enableComments">false</boolean>
+        </property-set>
+        <property-set name="x">
+            <property-set name="com-enonic-theme-superhero">
+                <property-set name="menu-item">
+                    <boolean name="menuItem">false</boolean>
+                    <string name="menuName"></string>
+                </property-set>
+            </property-set>
+        </property-set>
+    </data>
+    <indexConfigs>
+        <analyzer>content_default</analyzer>
+        <defaultConfig>
+            <decideByType>true</decideByType>
+            <enabled>true</enabled>
+            <nGram>false</nGram>
+            <fulltext>false</fulltext>
+            <includeInAllText>false</includeInAllText>
+        </defaultConfig>
+        <pathIndexConfigs>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page.regions</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>x</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>data</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>site</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>type</path>
+            </pathIndexConfig>
+        </pathIndexConfigs>
+    </indexConfigs>
+</node>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node xmlns="urn:enonic:xp:export:1.0">
+    <id>f2624852-d563-4343-80f7-86424f314c32</id>
+    <childOrder>modifiedtime DESC</childOrder>
+    <nodeType>content</nodeType>
+    <data>
+        <boolean name="valid">true</boolean>
+        <string name="displayName">Default</string>
+        <string name="type">portal:page-template</string>
+        <string name="owner">user:system:su</string>
+        <string name="language">en</string>
+        <dateTime name="modifiedTime">2015-02-28T00:00:08.249Z</dateTime>
+        <string name="modifier">user:system:su</string>
+        <string name="creator">user:system:su</string>
+        <dateTime name="createdTime">2015-02-27T23:47:32.165Z</dateTime>
+        <property-set name="data">
+            <string name="supports">portal:site</string>
+        </property-set>
+        <property-set name="page">
+            <string name="controller">com.enonic.theme.superhero:default</string>
+            <reference isNull="true" name="template"/>
+            <property-set name="region">
+                <string name="name">main</string>
+                <property-set name="component">
+                    <string name="type">LayoutComponent</string>
+                    <property-set name="LayoutComponent">
+                        <string name="name">70/30</string>
+                        <string name="template">com.enonic.theme.superhero:layout-70-30</string>
+                        <property-set name="config"/>
+                        <property-set name="region">
+                            <string name="name">left</string>
+                            <property-set name="component">
+                                <string name="type">PartComponent</string>
+                                <property-set name="PartComponent">
+                                    <string name="name">Header</string>
+                                    <string name="template">com.enonic.theme.superhero:header</string>
+                                    <property-set name="config"/>
+                                </property-set>
+                            </property-set>
+                            <property-set name="component">
+                                <string name="type">PartComponent</string>
+                                <property-set name="PartComponent">
+                                    <string name="name">Posts list</string>
+                                    <string name="template">com.enonic.theme.superhero:posts-list</string>
+                                    <property-set name="config">
+                                        <reference name="contentFolder">84ccc003-3d1b-4a99-8a02-753930848295</reference>
+                                    </property-set>
+                                </property-set>
+                            </property-set>
+                        </property-set>
+                        <property-set name="region">
+                            <string name="name">right</string>
+                            <property-set name="component">
+                                <string name="type">PartComponent</string>
+                                <property-set name="PartComponent">
+                                    <string name="name">Search form</string>
+                                    <string name="template">com.enonic.theme.superhero:search-form</string>
+                                    <property-set name="config">
+                                        <string name="title"></string>
+                                    </property-set>
+                                </property-set>
+                            </property-set>
+                            <property-set name="component">
+                                <string name="type">PartComponent</string>
+                                <property-set name="PartComponent">
+                                    <string name="name">Recent posts</string>
+                                    <string name="template">com.enonic.theme.superhero:recent-posts</string>
+                                    <property-set name="config">
+                                        <string name="title"></string>
+                                        <string name="maxPosts">5</string>
+                                    </property-set>
+                                </property-set>
+                            </property-set>
+                            <property-set name="component">
+                                <string name="type">PartComponent</string>
+                                <property-set name="PartComponent">
+                                    <string name="name">Recent comments</string>
+                                    <string name="template">com.enonic.theme.superhero:recent-comments</string>
+                                    <property-set name="config">
+                                        <string name="title"></string>
+                                        <string name="maxComments">5</string>
+                                    </property-set>
+                                </property-set>
+                            </property-set>
+                            <property-set name="component">
+                                <string name="type">PartComponent</string>
+                                <property-set name="PartComponent">
+                                    <string name="name">Categories</string>
+                                    <string name="template">com.enonic.theme.superhero:categories</string>
+                                    <property-set name="config">
+                                        <string name="title"></string>
+                                        <boolean name="showPostCount">true</boolean>
+                                        <boolean name="showHierarchy">false</boolean>
+                                    </property-set>
+                                </property-set>
+                            </property-set>
+                        </property-set>
+                    </property-set>
+                </property-set>
+            </property-set>
+            <property-set name="config"/>
+        </property-set>
+    </data>
+    <indexConfigs>
+        <analyzer>content_default</analyzer>
+        <defaultConfig>
+            <decideByType>true</decideByType>
+            <enabled>true</enabled>
+            <nGram>false</nGram>
+            <fulltext>false</fulltext>
+            <includeInAllText>false</includeInAllText>
+        </defaultConfig>
+        <pathIndexConfigs>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page.regions</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>x</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>data</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>site</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>type</path>
+            </pathIndexConfig>
+        </pathIndexConfigs>
+    </indexConfigs>
+</node>

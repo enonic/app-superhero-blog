@@ -17,12 +17,24 @@ apply plugin: 'com.enonic.xp.gradle.module'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'com.eriwen.gradle.js'
+apply plugin: 'base'
 
 version = '1.0.0-SNAPSHOT'
 group = 'com.enonic.theme'
 
 module {
     displayName = 'Superhero theme'
+}
+
+dependencies {
+    compile 'com.enonic.xp:core-api:5.0.1-SNAPSHOT'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://repo.enonic.net/public'
+    }
 }
 
 publishing {

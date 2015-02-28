@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node xmlns="urn:enonic:xp:export:1.0">
+    <id>566e3f36-ff84-476c-b36a-34d97a9862c5</id>
+    <childOrder>modifiedtime DESC</childOrder>
+    <nodeType>content</nodeType>
+    <data>
+        <boolean name="valid">true</boolean>
+        <string name="displayName">HTML</string>
+        <string name="type">com.enonic.theme.superhero:post</string>
+        <string name="owner">user:system:su</string>
+        <string name="language">en</string>
+        <dateTime name="modifiedTime">2015-02-28T01:12:26.995Z</dateTime>
+        <string name="modifier">user:system:su</string>
+        <string name="creator">user:system:su</string>
+        <dateTime name="createdTime">2015-02-28T00:24:57.302Z</dateTime>
+        <property-set name="data">
+            <string name="title">HTML</string>
+            <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
+            <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
+            <htmlPart name="post">&amp;lt;p&amp;gt;What HTML tags would you like to see?&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Let&amp;amp;#8217;s start with an unordered list:&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;One&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Two&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Three&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Four&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;p&amp;gt;And then move on to a more interesting ordered list:&amp;lt;/p&amp;gt;
+&amp;lt;ol&amp;gt;
+&amp;lt;li&amp;gt;one, two
+&amp;lt;ol&amp;gt;
+&amp;lt;li&amp;gt;buckle my shoe&amp;lt;/li&amp;gt;
+&amp;lt;/ol&amp;gt;
+&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;three, four
+&amp;lt;ol&amp;gt;
+&amp;lt;li&amp;gt;knock at the door&amp;lt;/li&amp;gt;
+&amp;lt;/ol&amp;gt;
+&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Five, six
+&amp;lt;ol&amp;gt;
+&amp;lt;li&amp;gt;pick up sticks&amp;lt;/li&amp;gt;
+&amp;lt;/ol&amp;gt;
+&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Seven, eight, lay them straight
+&amp;lt;ol&amp;gt;
+&amp;lt;li&amp;gt;Nine, ten, a big fat hen&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Eleven, twelve, dig and delve&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Thirteen, fourteen, maids a&amp;amp;#8217;courting&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Fifteen, sixteen, maids in the kitchen&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Seventeen, eighteen, maids a&amp;amp;#8217;waiting&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Nineteen, twenty, my platter&amp;amp;#8217;s empty &amp;amp;#8230;&amp;lt;/li&amp;gt;
+&amp;lt;/ol&amp;gt;
+&amp;lt;/li&amp;gt;
+&amp;lt;/ol&amp;gt;</htmlPart>
+            <string name="tags">html</string>
+            <string name="tags">wordpress</string>
+            <boolean name="enableComments">true</boolean>
+        </property-set>
+        <property-set name="x">
+            <property-set name="com-enonic-theme-superhero">
+                <property-set name="menu-item">
+                    <boolean name="menuItem">false</boolean>
+                    <string name="menuName"></string>
+                </property-set>
+            </property-set>
+        </property-set>
+    </data>
+    <indexConfigs>
+        <analyzer>content_default</analyzer>
+        <defaultConfig>
+            <decideByType>true</decideByType>
+            <enabled>true</enabled>
+            <nGram>false</nGram>
+            <fulltext>false</fulltext>
+            <includeInAllText>false</includeInAllText>
+        </defaultConfig>
+        <pathIndexConfigs>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page.regions</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>x</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>data</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>site</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>type</path>
+            </pathIndexConfig>
+        </pathIndexConfigs>
+    </indexConfigs>
+</node>
