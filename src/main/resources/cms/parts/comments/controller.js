@@ -17,7 +17,7 @@ exports.get = function(req) {
         start: 0,
         count: 1000,
         query: 'data.post LIKE "' + content._id + '"',
-        sort: 'createdTime DESC',
+        sort: 'createdTime ASC',
         contentTypes: [module.name + ':comment']
     });
 
