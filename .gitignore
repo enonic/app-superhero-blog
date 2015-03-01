@@ -8,6 +8,7 @@ gradle/
 *.iws
 *.ids
 *.iml
+superhero.iml
 *.ipr
 .idea
 .sass-cache

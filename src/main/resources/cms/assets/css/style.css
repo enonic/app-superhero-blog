@@ -4,7 +4,7 @@ Theme URI: https://wordpress.com/themes/superhero/
 Author: Automattic
 Author URI: https://wordpress.com/themes/
 Description: Give your blog a clean look with bright pops of color. Superhero features full-bleed featured posts and featured images, a fixed header, and subtle CSS3 transitions.
-Version: 1.2.1
+Version: 1.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: responsive-layout, gray, two-columns, custom-background, custom-header, custom-menu, featured-images, flexible-header, full-width-template, post-formats, sticky-post, translation-ready, rtl-language-support
@@ -497,7 +497,7 @@ a:active {
 	position: absolute;
 		top: 1.5em;
 		left: 0;
-		z-index: 1001;
+		z-index: 99999;
 	text-align: left;
 }
 .main-navigation ul ul ul {
@@ -1132,6 +1132,10 @@ img#wpstats {
 img#wpstats:hover {
 	background-color: #ea5449;
 }
+.eventbrite-event .wp-post-image {
+	display: block;
+	margin: 0 auto;
+}
 
 
 /* =Infinity Styles
@@ -1273,4 +1277,12 @@ img#wpstats:hover {
 	#featured-content.flexslider .slides .featured-hentry-wrap {
 		display: none;
 	}
+}
+
+/* --- Adaptions for XP Admin console --- */
+.names-view h6 {
+    clear: none;
+}
+.main-navigation ul ul {
+    z-index: 1001;
 }

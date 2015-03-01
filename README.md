@@ -38,10 +38,10 @@ add the Comments part.
 Comprehensive documentation for this module is being created.
 
 * TODO: Write documentation and insert link
-* TODO: Find the CSS bug that causes the part and layout names to display wrong when you add them.
 * TODO: Finish the date meta data in various parts.
 * TODO: Finish the dynamic classes and IDs in various parts.
 * TODO: Create the tag cloud part
+* TODO: Create the monthly archives part.
 * TODO: Create the Meta part with login/out and stuff.
 * TODO: Create the RSS page.
 * TODO: Finish the comments part.
@@ -49,3 +49,4 @@ Comprehensive documentation for this module is being created.
 * TODO: Consider merging post-list and post-show into the same part. I had it this way to start with but it got quite complicated so I
 separated them and now I think that maybe I should merge them back together.
 * TODO: Create auto import with sample content to match the WordPress preview page.
+* TODO: Implement categories "Show hierarchy".
