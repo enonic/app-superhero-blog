@@ -7,12 +7,14 @@ exports.get = function(req) {
     var content = execute('portal.getContent');
     var title = config.title || 'Recent posts'
     var maxPosts = config.maxPosts || 5;
+    var folderPath = config.contentFolder ? stk.content.getPath(config.contentFolder) : '/superhero/posts';
+    var query = '_parentPath="/content' + folderPath + '"';
     var posts = new Array();
 
     var results = execute('content.query', {
         start: 0,
         count: maxPosts,
-        //query: ,
+        query: query,
         sort: 'createdTime DESC',
         contentTypes: [
             module.name + ':post'

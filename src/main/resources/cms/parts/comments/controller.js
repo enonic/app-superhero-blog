@@ -32,10 +32,6 @@ exports.get = function(req) {
         data.pubDate = date;
     }
 
-    //stk.log(content);
-    //stk.log(result.contents);
-    //stk.log(component);
-
     var params = {
         postUrl: postUrl,
         content: content,
@@ -51,7 +47,6 @@ exports.get = function(req) {
 
 exports.post = function(req) {
     var p = req.formParams;
-    //stk.log(req);
     var contentCreated = null;
     var content = execute('portal.getContent');
     var component = execute('portal.getComponent');
@@ -81,7 +76,6 @@ exports.post = function(req) {
             log.info('Content created with id ' + result._id);
         } else {
             stk.log('Something went wrong :( ');
-            stk.log(result);
         }
 
     }
@@ -94,10 +88,5 @@ exports.post = function(req) {
                 submitted: contentCreated ? 'ok' : null
             }
         })
-
-        /*contentType: 'text/json',
-        body: {
-            content: contentCreated ? 'ok' : 'false'
-        }*/
     }
 };

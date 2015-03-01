@@ -13,14 +13,12 @@ function handleGet(req) {
     var results = execute('content.query', {
         start: 0,
         count: maxComments,
-        //query: 'createdTime > (now() - pastXDays),
+        //query: ,
         sort: 'createdTime DESC',
         contentTypes: [
             module.name + ':comment'
         ]
     });
-
-    //stk.log(results);
 
     for (var i = 0; i < results.contents.length; i++) {
         stk.data.deleteEmptyProperties(results.contents[i].data);
@@ -32,8 +30,6 @@ function handleGet(req) {
 
         comments.push(results.contents[i].data);
     }
-
-    //stk.log(comments);
 
     var params = {
         comments: comments,

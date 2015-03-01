@@ -33,8 +33,6 @@ exports.get = function(req) {
         query = 'data.author LIKE "' + up.author + '"';
     }
 
-    stk.log(query);
-
     var results = execute('content.query', {
         start: stk.data.isInt(up.index) ? up.index : 0,
         count: 20,
@@ -44,8 +42,6 @@ exports.get = function(req) {
             module.name + ':post'
         ]
     });
-
-    //stk.log(results);
 
     for (var i = 0; i < results.contents.length; i++) {
         var data = results.contents[i].data;
