@@ -31,13 +31,17 @@ exports.get = function(req) {
         date += ' at ' + comments[i].createdTime.substring(11, 16);
         data.pubDate = date;
         data.gravatar = util.getGravatar(data.email, 40) + '&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&r=G';
+
         var liClass = 'comment';
         liClass += (i%2 == 0) ? ' even thread-even' : ' odd thread-odd';
         if(data.email == postAuthor.data.email) {
             liClass += ' bypostauthor';
         }
-
         data.liClass = liClass;
+
+        data.replyClick = "addComment.moveForm('comment-" + comments[i]._id + "', '" + comments[i]._id + "', 'respond', '" + content._id + "')";
+        //return addComment.moveForm( 'comment-1', '1', 'respond', '1' )
+
     }
 
     var params = {
