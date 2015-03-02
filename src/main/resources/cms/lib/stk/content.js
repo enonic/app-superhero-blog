@@ -1,6 +1,10 @@
 exports.content = {};
 
-// Get content by key (path or id)
+/**
+* Get content by key (path or id)
+* @param {String} key of the content to get
+* @return {Content}
+*/
 exports.content.get = function (key) {
     var content;
     if (typeof key == 'undefined') {
@@ -14,12 +18,22 @@ exports.content.get = function (key) {
     return content;
 };
 
-// Check if content exists at path
+/**
+* Check if a content exists at the given path.
+* @param {String} path of the content to check.
+* @return {Boolean} true if a content exists there.
+*/
 exports.content.exists = function(path) {
     return exports.content.get(path) ? true : false;
 };
 
 // Get content property
+/**
+ * Returns the value of the specified property for the content with the specified key.
+ * @param {String} Key of the content.
+ * @param {String} property to be accessed.
+ * @return {String} value of the property.
+ */
 exports.content.getProperty = function(key, property) {
     if (!key || !property) {
         return null;
@@ -30,10 +44,10 @@ exports.content.getProperty = function(key, property) {
 
 /**
  * Returns the path to the content location. If the key to a content is passed, it will be used. If contenKey is null, the path
- * to the page that the part is on will be returned.
- * @param {Content} content key. Example: config['saveFolder']
+ * to the page that the part is on will be returned unless noDefault is true.
+ * @param {Content} content key. Example: content._id
  * @param {Boolean} force null return if no content found with the key
- * @return {String} Returns the path of the save location.
+ * @return {String} Returns the path of the content.
  */
 exports.content.getPath = function(contentKey, noDefault) {
     var defaultContent = '';

@@ -1,4 +1,5 @@
 var stk = require('stk/stk');
+var util = require('utilities');
 
 exports.get = function(req) {
 
@@ -7,7 +8,13 @@ exports.get = function(req) {
     var content = execute('portal.getContent');
     var title = config.title || 'Recent posts'
     var maxPosts = config.maxPosts || 5;
-    var folderPath = config.contentFolder ? stk.content.getPath(config.contentFolder) : '/superhero/posts';
+
+    var site = execute('portal.getSite');
+    var moduleConfig = site.data.moduleConfig.config;
+
+    var defaultLocation = site._path + '/posts'; //Default location to look for posts
+    var folderPath = util.getPostsFolder(config.contentFolder, moduleConfig.postsFolder, defaultLocation);
+
     var query = '_parentPath="/content' + folderPath + '"';
     var posts = new Array();
 

@@ -48,5 +48,4 @@ Comprehensive documentation for this module is being created.
 * TODO: Make a hidden comment manager page to approve or delete comments.
 * TODO: Consider merging post-list and post-show into the same part. I had it this way to start with but it got quite complicated so I
 separated them and now I think that maybe I should merge them back together.
-* TODO: Create auto import with sample content to match the WordPress preview page.
 * TODO: Implement categories "Show hierarchy".

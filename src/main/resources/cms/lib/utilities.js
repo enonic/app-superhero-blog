@@ -53,3 +53,20 @@ exports.getGravatar = function(email, size) {
 
     return 'http://www.gravatar.com/avatar/' + MD5(email) + '.jpg?s=' + size;
 };
+
+exports.getPostsFolder = function(local, site, defaultLocation) {
+    if(local) {
+        var folder = execute('content.get', {key: local});
+        if(folder) {
+            return folder._path;
+        }
+    }
+    if(site) { // Use the site configured Posts folder if it has been selected.
+        var folder = execute('content.get', {key: site});
+        if(folder) {
+            return folder._path;
+        }
+    }
+    //Use the backup default if no location has been configured.
+    return defaultLocation;
+};
