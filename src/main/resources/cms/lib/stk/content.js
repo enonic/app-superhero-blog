@@ -32,10 +32,17 @@ exports.content.getProperty = function(key, property) {
  * Returns the path to the content location. If the key to a content is passed, it will be used. If contenKey is null, the path
  * to the page that the part is on will be returned.
  * @param {Content} content key. Example: config['saveFolder']
+ * @param {Boolean} force null return if no content found with the key
  * @return {String} Returns the path of the save location.
  */
-exports.content.getPath = function(contentKey) {
-    var defaultContent = execute('portal.getContent');
+exports.content.getPath = function(contentKey, noDefault) {
+    var defaultContent = '';
+    if(noDefault) {
+        defaultContent._path = null;
+    } else {
+        defaultContent = execute('portal.getContent');
+    }
+
     var contentPath;
     if (contentKey) {
         var content = exports.content.get(contentKey);
@@ -44,4 +51,14 @@ exports.content.getPath = function(contentKey) {
         }
     }
     return contentPath ? contentPath : defaultContent._path;
+};
+
+/**
+* Returns the parent path of the content path that is passed.
+* @param {String} path of the content to check.
+* @Return {String} path of the parent content.
+*/
+exports.content.getParentPath = function(path) {
+    var pathArray = path.split('/')
+    return pathArray.slice(0, pathArray.length -1).join('/');
 };

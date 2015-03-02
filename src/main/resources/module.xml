@@ -18,6 +18,14 @@
       <occurrences minimum="0" maximum="1"/>
       <config/>
     </input>
+    <input type="ContentSelector" name="postsFolder">
+      <label>Posts folder</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <reference-type>system:reference</reference-type>
+        <allow-content-type>base:folder</allow-content-type>
+      </config>
+    </input>
   </config>
   <!--<x-data mixin="menu-item"/>-->
 </module>

@@ -1,0 +1,16 @@
+<nav role="navigation" id="nav-below" class="site-navigation post-navigation">
+    <h1 class="assistive-text">Post navigation</h1>
+    <div class="nav-previous" data-th-if="${prev}">
+        <a href="#" rel="prev" data-th-href="${portal.pageUrl({'_path=' + prev._path})}">
+            <span class="meta-nav">←</span>
+            <span data-th-remove="tag" data-th-text="${prev.displayName}">Prev title</span>
+        </a>
+    </div>
+
+    <div class="nav-next" data-th-if="${next}">
+        <a href="#" rel="next" data-th-href="${portal.pageUrl({'_path=' + next._path})}">
+            <span data-th-remove="tag" data-th-text="${next.displayName}">Next title</span>
+            <span>→</span>
+        </a>
+    </div>
+</nav>
