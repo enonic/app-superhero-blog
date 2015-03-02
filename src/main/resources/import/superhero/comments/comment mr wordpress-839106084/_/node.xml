@@ -7,19 +7,19 @@
         <boolean name="valid">true</boolean>
         <string name="displayName">Mr WordPress</string>
         <string name="type">com.enonic.theme.superhero:comment</string>
+        <string name="owner">user:system:su</string>
         <dateTime name="createdTime">2015-02-28T01:17:07.847Z</dateTime>
         <string name="creator">user:system:su</string>
         <string name="modifier">user:system:su</string>
         <dateTime name="modifiedTime">2015-02-28T01:17:07.847Z</dateTime>
-        <string name="owner">user:system:su</string>
         <string name="language">en</string>
         <property-set name="data">
-            <string name="website">http://wordpress.org</string>
-            <string name="post">186721fd-1866-46c7-a673-a6ffbcbcaadb</string>
             <string name="name">Mr WordPress</string>
-            <string name="comment">Hi, this is a comment.&amp;lt;br/&amp;gt;
-To delete a comment, just log in and view the post&amp;apos;s comments. There you will have the option to edit or delete them.</string>
             <string name="email">admin@wordpress.org</string>
+            <string name="website">http://wordpress.org</string>
+            <htmlPart name="comment">Hi, this is a comment.&amp;lt;br/&amp;gt;
+            To delete a comment, just log in and view the post&amp;apos;s comments. There you will have the option to edit or delete them.</htmlPart>
+            <reference name="post">186721fd-1866-46c7-a673-a6ffbcbcaadb</reference>
         </property-set>
     </data>
     <indexConfigs>

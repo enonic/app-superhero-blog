@@ -15,9 +15,9 @@
         <string name="language">en</string>
         <property-set name="data">
             <string name="website">https://enonic.com</string>
-            <string name="post">186721fd-1866-46c7-a673-a6ffbcbcaadb</string>
+            <reference name="post">186721fd-1866-46c7-a673-a6ffbcbcaadb</reference>
             <string name="name">Michael Lazell</string>
-            <string name="comment">Need a comment with a real Gravatar.</string>
+            <htmlPart name="comment">Need a comment with a real Gravatar.</htmlPart>
             <string name="email">mla@enonic.com</string>
         </property-set>
     </data>

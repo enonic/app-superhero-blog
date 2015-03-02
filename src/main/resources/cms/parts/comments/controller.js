@@ -5,8 +5,8 @@ exports.get = function(req) {
 
     var component = execute('portal.getComponent');
     var content = execute('portal.getContent');
+    var postAuthor = stk.content.get(content.data.author);
     var site = execute('portal.getSite');
-
     var allowedTags = '<a href="" title=""> <abbr title=""> <acronym title=""> <b> <blockquote cite=""> <cite> <code> <del datetime=""> <em> <i> <q cite=""> <strike> <strong> ';
 
     var postUrl = execute('portal.componentUrl', {
@@ -30,7 +30,14 @@ exports.get = function(req) {
         var date = util.getFormattedDate(new Date(comments[i].createdTime));
         date += ' at ' + comments[i].createdTime.substring(11, 16);
         data.pubDate = date;
-        data.gravatar = util.getGravatar(data.email, 40);
+        data.gravatar = util.getGravatar(data.email, 40) + '&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&r=G';
+        var liClass = 'comment';
+        liClass += (i%2 == 0) ? ' even thread-even' : ' odd thread-odd';
+        if(data.email == postAuthor.data.email) {
+            liClass += ' bypostauthor';
+        }
+
+        data.liClass = liClass;
     }
 
     var params = {
@@ -68,7 +75,8 @@ exports.post = function(req) {
                 email: p.email,
                 website: p.url,
                 comment: p.comment,
-                post: content._id
+                post: content._id,
+                commentParent: p.comment_parent
             }
         });
 

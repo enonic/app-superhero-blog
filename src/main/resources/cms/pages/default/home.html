@@ -10,15 +10,13 @@
     <![endif]-->
 
     <link rel="stylesheet" id="style-css" data-th-href="${portal.assetUrl({'_path=css/style.css'})}"  href="../assets/css/style.css" type="text/css" media="all"/>
-
     <link rel="stylesheet" id="superhero-carrois-gothic-css" href="https://fonts.googleapis.com/css?family=Carrois+Gothic&amp;ver=4.1-alpha-30340" type="text/css" media="all"/>
-
-    <!--<script type="text/javascript" src="https://wp-themes.com/wp/wp-includes/js/jquery/jquery.js?ver=1.11.1"></script>-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!--<script type="text/javascript" src="https://wp-themes.com/wp/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1"></script>-->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.2.1/jquery-migrate.min.js"></script>
     <script type="text/javascript" data-th-src="${portal.assetUrl({'_path=js/superhero.js'})}" src="../public/js/superhero.js"></script>
-    <!--<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>-->
+    <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+
+    <meta name="generator" content="Enonic XP" />
 
     <span data-th-if="${backgroundImage}" data-th-remove="tag" data-th-utext="${backgroundImage}"></span>
 
@@ -60,22 +58,18 @@
                         </ul>
                     </div>
 
-                </nav>
-                <!-- .site-navigation .main-navigation -->
+                </nav><!-- .site-navigation .main-navigation -->
 
                 <div class="clearfix"></div>
-            </header>
-            <!-- #masthead .site-header -->
-        </div>
-        <!-- #masthead-wrap -->
+            </header><!-- #masthead .site-header -->
+        </div><!-- #masthead-wrap -->
 
         <!-- new #main -->
         <div data-portal-component-type="region">
             <div data-th-each="component : ${mainRegion.components}" data-th-remove="tag">
                 <div data-portal-component="${component.path}" data-th-remove="tag" />
             </div>
-        </div>
-        <!-- #main .site-main -->
+        </div><!-- #main .site-main -->
 
         <div id="colophon-wrap">
             <footer id="colophon" class="site-footer" role="contentinfo">
@@ -84,12 +78,12 @@
                         powered by Enonic XP</a>
                     <span class="sep"> | </span>
                     Theme: Superhero by <a href="https://wordpress.com/themes/" rel="designer">WordPress.com</a>.
-                </div>
-                <!-- .site-info -->
-            </footer>
-            <!-- #colophon .site-footer -->
-        </div>
-    <!-- #colophon-wrap -->
-    </div>
+                </div><!-- .site-info -->
+            </footer><!-- #colophon .site-footer -->
+        </div><!-- #colophon-wrap -->
+    </div><!-- #page .hfeed .site -->
+
+    <script type='text/javascript' data-th-src="${portal.assetUrl({'_path=js/small-menu.js'})}" src='../../assets/js/small-menu.js'></script>
+    <script type='text/javascript' data-th-src="${portal.assetUrl({'_path=js/comment-reply.min.js'})}" src='../../assets/js/comment-reply.min.js'></script>
 </body>
 </html>

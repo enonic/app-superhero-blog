@@ -9,7 +9,7 @@
         <string name="type">portal:page-template</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-02-28T00:00:08.249Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-01T22:18:53.338Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:47:32.165Z</dateTime>
@@ -68,6 +68,7 @@
                                     <property-set name="config">
                                         <string name="title"></string>
                                         <string name="maxPosts">5</string>
+                                        <reference name="contentFolder">84ccc003-3d1b-4a99-8a02-753930848295</reference>
                                     </property-set>
                                 </property-set>
                             </property-set>
