@@ -12,7 +12,7 @@
                     <article id="comment-1" data-th-id="'comment-' + ${comment._id}" class="comment">
                         <footer>
                             <div class="comment-author vcard">
-                                <img class="avatar avatar-40 photo avatar-default" width="40" height="40" src="http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=40" alt=""/>
+                                <img class="avatar avatar-40 photo avatar-default" width="40" height="40" data-th-src="${comment.data.gravatar}" src="http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=40" alt=""/>
                                 <cite class="fn">
 
                                     <a data-th-if="${comment.data.website}" class="url" rel="external nofollow" data-th-href="${comment.data.website}"

@@ -33,6 +33,8 @@ exports.get = function(req) {
         query = 'data.author LIKE "' + up.author + '"';
     }
 
+    //TODO: Add logic for monthly archives
+
     var results = execute('content.query', {
         start: stk.data.isInt(up.index) ? up.index : 0,
         count: 20,

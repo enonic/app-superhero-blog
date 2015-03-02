@@ -30,6 +30,7 @@ exports.get = function(req) {
         var date = util.getFormattedDate(new Date(comments[i].createdTime));
         date += ' at ' + comments[i].createdTime.substring(11, 16);
         data.pubDate = date;
+        data.gravatar = util.getGravatar(data.email, 40);
     }
 
     var params = {
