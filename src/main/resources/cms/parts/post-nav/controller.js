@@ -6,7 +6,7 @@ exports.get = function(req) {
     var content = execute('portal.getContent');
     var site = execute('portal.getSite');
     var moduleConfig = site.data.moduleConfig.config;
-    var folderPath = moduleConfig.postsFolder ? stk.content.getPath(moduleConfig.postsFolder) : '/superhero/posts';
+    var folderPath = moduleConfig.postsFolder ? stk.content.getPath(moduleConfig.postsFolder) : site._path + '/posts';
     var prev, next;
 
     if(stk.content.getParentPath(content._path) == folderPath) {

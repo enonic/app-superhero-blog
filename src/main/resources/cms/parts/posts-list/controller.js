@@ -8,8 +8,11 @@ exports.get = function(req) {
     var up = req.params; // URL params
     var content = execute('portal.getContent');
     var site = execute('portal.getSite');
+    var moduleConfig = site.data.moduleConfig.config;
     var posts = new Array();
-    var folderPath = config.contentFolder ? stk.content.getPath(config.contentFolder) : '/superhero/posts';
+
+    var defaultLocation = site._path + '/posts'; //Default location to look for posts
+    var folderPath = util.getPostsFolder(config.contentFolder, moduleConfig.postsFolder, defaultLocation);
 
     var query = '_parentPath="/content' + folderPath + '"';
 
