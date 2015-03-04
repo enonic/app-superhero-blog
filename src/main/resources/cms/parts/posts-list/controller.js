@@ -17,7 +17,7 @@ exports.get = function(req) {
     var query = '_parentPath="/content' + folderPath + '"';
 
     //Search filter
-    if(up.s) {
+    if (up.s) {
         query = 'fulltext("data.post", "' + up.s + '", "AND") OR fulltext("data.title", "' + up.s + '", "AND")';
     }
 
@@ -36,7 +36,21 @@ exports.get = function(req) {
         query = 'data.author LIKE "' + up.author + '"';
     }
 
-    //TODO: Add logic for monthly archives
+    //Filter for monthly archives
+    if (up.m && stk.data.isInt(up.m) && up.m.length == 6) {
+
+        var year = up.m.substring(0,4); //Get the year from the querystring
+        var month = up.m.substring(4,6); //Get the month from the querystring
+
+        // Get the last day of the month for the content query
+        var date = new Date(year, month, 0);
+        var lastDay = date.getDate();
+
+        var first = year + '-' + month + '-01T00:00:00Z';
+        var last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
+
+        query += ' AND createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
+    }
 
     var results = execute('content.query', {
         start: stk.data.isInt(up.index) ? up.index : 0,

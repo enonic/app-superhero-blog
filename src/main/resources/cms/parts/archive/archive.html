@@ -1,0 +1,13 @@
+<aside id="archives-2" class="widget widget_archive">
+    <h1 class="widget-title" data-th-text="${title}">Archives</h1>
+    <ul>
+        <li data-th-each="month : ${months}">
+            <a href="#" data-th-href="${month.data.linkUrl}" data-th-text="${month.data.linkText}">
+                February 2015
+            </a>
+            <span data-th-if="${config.showPostCount}" data-th-remove="tag">
+                (<span data-th-remove="tag" data-th-text="${month.data.count}"></span>)
+            </span>
+        </li>
+    </ul>
+</aside>

@@ -5,7 +5,6 @@
             <a data-th-if="${comment.website}" data-th-href="${comment.website}" href="#" data-th-text="${comment.name}" rel="external nofollow" class="url">Name</a>
             <span data-th-if="${!comment.website}" data-th-text="${comment.name}"></span> on
             <a href="#" data-th-href="${portal.pageUrl({'_path=' + comment.postPath })} + '#comments'" data-th-text="${comment.postTitle}">Post title</a>
-            <!--TODO: Add an anchor to the comment link.-->
         </li>
     </ul>
 </aside>

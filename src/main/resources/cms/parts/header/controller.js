@@ -1,12 +1,11 @@
 var stk = require('stk/stk');
+var util = require('utilities');
 
 exports.get = function(req) {
 
     var content = execute('portal.getContent');
     var site = execute('portal.getSite');
     var up = req.params;
-
-    //TODO: Add logic for monthly achives
 
     var headerText;
 
@@ -40,6 +39,18 @@ exports.get = function(req) {
 
             headerText += '<a href="' + url + '">' + authorContent.data.name + '</a>';
         }
+    }
+
+    if (up.m && stk.data.isInt(up.m) && up.m.length == 6) {
+
+        var year = up.m.substring(0,4);
+        var month = up.m.substring(4,6);
+
+        var date = new Date(year, month -1, 15);
+
+        var monthName = util.getMonthName(date);
+
+        headerText = 'Monthly Archives: ' + monthName + ' ' + year;
     }
 
 
