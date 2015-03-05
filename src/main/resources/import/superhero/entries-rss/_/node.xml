@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <node xmlns="urn:enonic:xp:export:1.0">
-    <id>bdc9b662-578f-406a-8577-bea4555772db</id>
+    <id>6f3ff11c-22d5-496d-bab7-e66aa787c15d</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Worth A Thousand Words</string>
-        <string name="type">com.enonic.theme.superhero:post</string>
+        <string name="displayName">Entries RSS</string>
+        <string name="type">com.enonic.theme.superhero:rss-page</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-03T11:05:20.290Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-03T02:12:21.185Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-02-28T00:32:18.010Z</dateTime>
+        <dateTime name="createdTime">2015-03-03T02:11:54.236Z</dateTime>
         <property-set name="data">
-            <string name="title">Worth A Thousand Words</string>
-            <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
-            <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&amp;lt;div style=&amp;quot;width: 445px&amp;quot; class=&amp;quot;wp-caption alignnone&amp;quot;&amp;gt;&amp;lt;img class=&amp;quot;wp-image-59&amp;quot; alt=&amp;quot;Boat&amp;quot; src=&amp;quot;https://wpdotorg.files.wordpress.com/2008/11/boat.jpg&amp;quot; width=&amp;quot;435&amp;quot; height=&amp;quot;288&amp;quot; /&amp;gt;&amp;lt;p class=&amp;quot;wp-caption-text&amp;quot;&amp;gt;Boat&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;
-&amp;lt;p&amp;gt;Boat.&amp;lt;/p&amp;gt;</htmlPart>
-            <string name="tags">boat</string>
-            <boolean name="enableComments">false</boolean>
+            <string name="title">Entries RSS</string>
+            <string name="updatePeriod">daily</string>
+            <string name="updateFrequency">2</string>
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-theme-superhero">

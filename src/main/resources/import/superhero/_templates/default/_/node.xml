@@ -9,7 +9,7 @@
         <string name="type">portal:page-template</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-01T22:18:53.338Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-04T05:22:36.151Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:47:32.165Z</dateTime>
@@ -80,6 +80,17 @@
                                     <property-set name="config">
                                         <string name="title"></string>
                                         <string name="maxComments">5</string>
+                                    </property-set>
+                                </property-set>
+                            </property-set>
+                            <property-set name="component">
+                                <string name="type">PartComponent</string>
+                                <property-set name="PartComponent">
+                                    <string name="name">Monthly archive</string>
+                                    <string name="template">com.enonic.theme.superhero:archive</string>
+                                    <property-set name="config">
+                                        <string name="title"></string>
+                                        <boolean name="showPostCount">true</boolean>
                                     </property-set>
                                 </property-set>
                             </property-set>
