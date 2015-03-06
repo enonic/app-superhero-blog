@@ -56,3 +56,12 @@
     </footer><!-- .entry-meta -->
 
 </article><!-- #post-## -->
+<nav data-th-if="${older} or ${newer}" role="navigation" id="nav-below" class="site-navigation page-navigation">
+    <h1 class="assistive-text">Post navigation</h1>
+    <div data-th-if="${older}" class="nav-previous">
+        <a href="#" data-th-href="${older}"><span class="meta-nav">←</span> Older posts</a>
+    </div>
+    <div data-th-if="${newer}" class="nav-next">
+        <a href="#" data-th-href="${newer}">Newer posts <span class="meta-nav">→</span></a>
+    </div>
+</nav>

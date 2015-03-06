@@ -18,6 +18,10 @@
       <occurrences minimum="0" maximum="1"/>
       <config/>
     </input>
+    <input type="TextLine" name="numPosts">
+      <label>Max posts per page</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
     <input type="ContentSelector" name="postsFolder">
       <label>Posts folder</label>
       <occurrences minimum="0" maximum="1"/>

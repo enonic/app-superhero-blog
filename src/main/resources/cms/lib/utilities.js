@@ -1,4 +1,5 @@
-var module = 'com.enonic.theme.superhero';
+var stk = require('stk/stk');
+//var module = 'com.enonic.theme.superhero';
 
 exports.getMonthName = function(date) {
 

@@ -23,8 +23,6 @@ exports.get = function(req) {
         ]
     });
 
-    //stk.log(result);
-
     // Loop through the posts
     for (var i = 0; i < result.contents.length; i++) {
 
@@ -34,13 +32,14 @@ exports.get = function(req) {
         // Loop through each tag entry in the post
         for (var j = 0; j < tags.length; j++) {
 
-            // Need tag name, tag URL (site_path), number of occurrences
             // Put each unique tag into an object
             var tagName = tags[j];
             if(tagName in tagsGroup) {
+                // This tag name is already in the object so update the count.
                 tagsGroup[tagName].data.count += 1;
                 tagsGroup[tagName].data.title = tagsGroup[tagName].data.count + ' topics'
             } else {
+                // This tag is not in the group so make an object and add it.
                 var tagData = {
                     tagName: tagName,
                     data: {
@@ -54,6 +53,7 @@ exports.get = function(req) {
         }
     }
 
+    // Make the font sizes
     var smallest = 8;
     var largest = 22;
 
@@ -65,22 +65,21 @@ exports.get = function(req) {
     var minCount = Math.min.apply(null, counts); // smallest number for any tag count
     var maxCount = Math.max.apply(null, counts); // largest number for any tag count
 
-
+    // The difference between the most used tag and the least used.
     var spread = maxCount - minCount;
     if (spread < 1) {spread = 1};
 
+    // The difference between the largest font and the smallest font
     var fontSpread = largest - smallest;
+    // How much bigger the font will be for each tag count.
     var fontStep = fontSpread / spread;
 
-
-    // Push each tag object into an array so it can be sorted.
+    // Push each tag object into an array so it can be sorted and apply the font steps.
     for (var tagNameKey in tagsGroup) {
         var fontSize = smallest + (tagsGroup[tagNameKey].data.count - minCount) * fontStep;
         tagsGroup[tagNameKey].data.font = 'font-size: ' + fontSize + 'pt;';
         tagsArray.push(tagsGroup[tagNameKey]);
     }
-
-    stk.log(tagsGroup);
 
     // Sort the array alphabetically but it doesn't work because there is no locale
     tagsArray.sort(function (a, b) {

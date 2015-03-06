@@ -9,12 +9,15 @@ exports.get = function(req) {
     var content = execute('portal.getContent');
     var site = execute('portal.getSite');
     var moduleConfig = site.data.moduleConfig.config;
+    var postsPerPage = moduleConfig.numPosts ? moduleConfig.numPosts : 10;
+    var newer = null, older = null; // For pagination
     var posts = new Array();
 
     var defaultLocation = site._path + '/posts'; //Default location to look for posts
     var folderPath = util.getPostsFolder(config.contentFolder, moduleConfig.postsFolder, defaultLocation);
 
     var query = '_parentPath="/content' + folderPath + '"';
+    var start = stk.data.isInt(up.paged) ? (up.paged - 1) * postsPerPage : 0;
 
     //Search filter
     if (up.s) {
@@ -53,8 +56,8 @@ exports.get = function(req) {
     }
 
     var results = execute('content.query', {
-        start: stk.data.isInt(up.index) ? up.index : 0,
-        count: 20,
+        start: start,
+        count: postsPerPage,
         query: query,
         sort: 'createdTime DESC',
         contentTypes: [
@@ -62,6 +65,42 @@ exports.get = function(req) {
         ]
     });
 
+    // If the results total is more than the postsPerPage then it will need pagination.
+    if (results.total > postsPerPage) {
+
+        // Must include other URL params in the pagination links.
+        var urlParams = {};
+        for(var param in up) {
+            if (param != 'paged') {
+                urlParams[param] = up[param];
+            }
+        }
+
+        // Needs an "older" link if...
+        if (start < (results.total - postsPerPage)) {
+            urlParams.paged = stk.data.isInt(up.paged) ? (parseInt(up.paged) + 1).toString() : 2;
+            older = execute('portal.pageUrl', {
+                path: site._path,
+                params: urlParams
+            });
+        }
+        // Needs a "newer" link if...
+        if (start != 0) {
+
+            if(stk.data.isInt(up.paged) && up.paged > 2) {
+                urlParams.paged = (parseInt(up.paged) - 1).toString();
+            } else {
+                urlParams.paged = null;
+            }
+
+            newer = execute('portal.pageUrl', {
+                path: site._path,
+                params: urlParams
+            });
+        }
+    }
+
+    // Loop through the posts and get the comments, categories and author
     for (var i = 0; i < results.contents.length; i++) {
         var data = results.contents[i].data;
         var categories = new Array();
@@ -104,10 +143,11 @@ exports.get = function(req) {
         posts.push(data);
     }
 
-    //stk.log(posts);
     var params = {
         posts: posts,
-        site: site
+        site: site,
+        older: older,
+        newer: newer
     }
     var view = resolve('post-list.html');
     return stk.view.render(view, params);

@@ -9,6 +9,7 @@ exports.get = function(req) {
     var folderPath = moduleConfig.postsFolder ? stk.content.getPath(moduleConfig.postsFolder) : site._path + '/posts';
     var prev, next;
 
+    // If it's a single post in the posts folder
     if(stk.content.getParentPath(content._path) == folderPath) {
         prev = execute('content.query', {
             start: 0,

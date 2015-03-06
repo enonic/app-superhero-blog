@@ -21,16 +21,19 @@ Put the jar file from build/lib into the XP_HOME/deploy directory.
 
 ## Creating a site
 
+If the content folder is empty then sample content will be imported automatically. If you delete this content to create your own then
+follow the steps below to create the site.
+
 - In the admin console, create a site and give it a name.
 - Create folders called Authors, Categories, Comments and Posts.
 - Create a Category and an Author content in their respective folders.
 - Create a Post content in the Posts folder and add the Category and Author content.
 - When the above steps are done, create a page template and add the 70-30 Layout.
 - Add the "Header" and "Posts list" parts to the left side of the layout.
-- Add the following parts to the right side of the layout: Search form, Recent posts, Recent comments, and Categories.
-- Make this page template support the Site and Landing page content type.
-- Create another page template called "Post show". Add the same parts except use the "Post single" part instead of the "Posts list" and also
-add the Comments part.
+- Add the following parts to the right side of the layout: Search form, Recent posts, Recent comments, Archives, Categories and Tags.
+- Make this page template support the Site content type.
+- Create another page template called "Post show". Add the "Post single" part in the left instead of the "Posts list" and also
+add the Comments part. Add the same parts from the previous step to the right column.
 - Make the Post show template support the Post content type.
 
 ## Documentation
@@ -38,9 +41,8 @@ add the Comments part.
 Comprehensive documentation for this module is being created.
 
 * TODO: Write documentation and insert link
-* TODO: Finish the date meta data in various parts.
+* TODO: Finish the date meta data in various parts when the CMS date bugs are worked out.
 * TODO: Finish the dynamic classes and IDs in various parts.
-* TODO: Create the tag cloud part
 * TODO: Create the Meta part with login/out and stuff.
 * TODO: Finish the RSS page when the CDATA bug is fixed.
 * TODO: Finish the comments part. (Reply to comment)
