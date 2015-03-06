@@ -15,7 +15,7 @@ This is still being developed and is not ready for production yet.
 ## Building
 
 Gradle is required to build the project. From the base of the project, enter ./gradlew in the terminal or on Windows, double-click the
-gradlew.bat file.
+gradlew.bat file. Or type 'gradle clean build' from the command line.
 
 Put the jar file from build/lib into the XP_HOME/deploy directory.
 
@@ -41,6 +41,8 @@ add the Comments part. Add the same parts from the previous step to the right co
 Comprehensive documentation for this module is being created.
 
 * TODO: Write documentation and insert link
+* TODO: Make a full-width page.
+* TODO: Implement sticky post.
 * TODO: Finish the date meta data in various parts when the CMS date bugs are worked out.
 * TODO: Finish the dynamic classes and IDs in various parts.
 * TODO: Create the Meta part with login/out and stuff.

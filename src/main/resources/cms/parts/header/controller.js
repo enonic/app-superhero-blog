@@ -53,6 +53,16 @@ exports.get = function(req) {
         headerText = 'Monthly Archives: ' + monthName + ' ' + year;
     }
 
+    if (up.post_format) {
+        switch(up.post_format) {
+            case 'image':
+                headerText = 'Images';
+                break;
+
+        }
+
+    }
+
 
     var params = {
         site: site,

@@ -139,6 +139,16 @@ exports.get = function(req) {
 
         data.categories = categories.length > 0 ? categories : null
 
+        if (data.featuredImage) {
+            var img = stk.content.get(data.featuredImage);
+            data.fImageName = img.displayName;
+            data.fImageUrl = execute('portal.imageUrl', {
+                id: data.featuredImage,
+                filter: 'scalewidth(695)',
+                format: 'jpeg'
+            });
+        }
+
         stk.data.deleteEmptyProperties(data);
         posts.push(data);
     }

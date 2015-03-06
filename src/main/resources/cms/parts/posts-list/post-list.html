@@ -1,4 +1,6 @@
-<article data-th-each="post : ${posts}" data-th-id="'post-' + ${post.id}"  id="post-19" class="post-19 post type-post status-publish format-standard hentry category-uncategorized tag-boat tag-lake">
+<article data-th-each="post : ${posts}" data-th-id="'post-' + ${post.id}"  id="post-19" class="post-19 post type-post status-publish format-standard hentry">
+
+    <img src="#" data-th-src="${post.fImageUrl}" data-th-if="${post.fImageUrl}" width="695" class="attachment-feat-img wp-post-image" alt="${post.fImageName}"/>
 
     <header class="entry-header">
         <h1 class="entry-title">
