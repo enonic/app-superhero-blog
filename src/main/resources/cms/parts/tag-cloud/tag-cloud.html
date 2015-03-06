@@ -1,0 +1,9 @@
+<aside id="tag_cloud-2" class="widget widget_tag_cloud">
+    <h1 class="widget-title" data-th-text="${title}">Tags</h1>
+    <div class="tagcloud">
+        <a data-th-each="tag : ${tags}" href="#" data-th-href="${portal.pageUrl({'_path=' + tag.data.tagUrl, 'tag=' + tag.tagName})}"
+           title="2 topics" data-th-title="${tag.data.title}" data-th-style="${tag.data.font}" data-th-text="${tag.tagName}">
+            tag
+        </a>
+    </div>
+</aside>
