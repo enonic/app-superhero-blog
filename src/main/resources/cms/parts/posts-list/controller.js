@@ -16,8 +16,10 @@ exports.get = function(req) {
     var defaultLocation = site._path + '/posts'; //Default location to look for posts
     var folderPath = util.getPostsFolder(config.contentFolder, moduleConfig.postsFolder, defaultLocation);
 
-    var query = '_parentPath="/content' + folderPath + '"';
     var start = stk.data.isInt(up.paged) ? (up.paged - 1) * postsPerPage : 0;
+
+    // Default query
+    var query = '_parentPath="/content' + folderPath + '" AND data.slideshow != "true"';
 
     //Search filter
     if (up.s) {
@@ -26,7 +28,7 @@ exports.get = function(req) {
 
     // Filter for tags
     if (up.tag) {
-        query = 'data.tags LIKE "' + up.tag + '"';
+        query = 'data.tags LIKE "' + up.tag.toLowerCase() + '"';
     }
 
     //Filter for categories.
@@ -52,14 +54,21 @@ exports.get = function(req) {
         var first = year + '-' + month + '-01T00:00:00Z';
         var last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
 
-        query += ' AND createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
+        query = '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
     }
+
+    // Only put sticky on top on the first when there are no queries
+    var orderBy = '';
+    if (Object.keys(up).length == 0 || (Object.keys(up).length == 1 && up.paged)) {
+        orderBy = 'data.stickyPost DESC, ';
+    }
+    orderBy += 'createdTime DESC';
 
     var results = execute('content.query', {
         start: start,
         count: postsPerPage,
         query: query,
-        sort: 'createdTime DESC',
+        sort: orderBy,
         contentTypes: [
             module.name + ':post'
         ]

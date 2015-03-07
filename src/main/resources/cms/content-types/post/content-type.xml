@@ -27,11 +27,6 @@
             <allow-content-type>category</allow-content-type>
           </config>
         </input>
-        <input type="ImageSelector" name="featuredImage">
-          <label>Featured Image</label>
-          <occurrences minimum="0" maximum="1"/>
-          <config/>
-        </input>
         <input type="HtmlArea" name="post">
           <label>Post text</label>
           <indexed>true</indexed>
@@ -43,6 +38,24 @@
         </input>
         <input type="Checkbox" name="enableComments">
           <label>Comments</label>
+          <occurrences minimum="0" maximum="1"/>
+        </input>
+        <input type="Checkbox" name="stickyPost">
+          <label>Sticky post</label>
+          <occurrences minimum="0" maximum="1"/>
+        </input>
+      </items>
+    </field-set>
+    <field-set name="featured">
+      <label>Featured</label>
+      <items>
+        <input type="ImageSelector" name="featuredImage">
+          <label>Featured Image</label>
+          <occurrences minimum="0" maximum="1"/>
+          <config/>
+        </input>
+        <input type="Checkbox" name="slideshow">
+          <label>Slideshow</label>
           <occurrences minimum="0" maximum="1"/>
         </input>
       </items>
