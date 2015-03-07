@@ -1,36 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <node xmlns="urn:enonic:xp:export:1.0">
-    <id>086d5877-6f0f-4514-ab16-fcfe43f28bdf</id>
+    <id>be1ca151-cf61-4a54-9ea4-c8d01ce83e0e</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Featured Image</string>
-        <string name="type">com.enonic.theme.superhero:post</string>
+        <string name="displayName">superhero_5.jpg</string>
+        <string name="type">media:image</string>
+        <dateTime name="createdTime">2015-03-07T20:17:32.153Z</dateTime>
+        <string name="creator">user:system:su</string>
+        <string name="modifier">user:system:su</string>
+        <dateTime name="modifiedTime">2015-03-07T20:17:32.153Z</dateTime>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-07T20:17:49.510Z</dateTime>
-        <string name="modifier">user:system:su</string>
-        <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-03-07T20:16:40.198Z</dateTime>
         <property-set name="data">
-            <string name="title">Featured Image</string>
-            <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
-            <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&amp;lt;p&amp;gt;This is a featured image. See how the picture is large and appears above the title?&amp;lt;/p&amp;gt;</htmlPart>
-            <string name="tags">featured</string>
-            <boolean name="enableComments">false</boolean>
-            <boolean name="stickyPost">false</boolean>
-            <reference name="featuredImage">be1ca151-cf61-4a54-9ea4-c8d01ce83e0e</reference>
-            <boolean name="slideshow">false</boolean>
+            <string name="media">superhero_5.jpg</string>
+            <string name="caption"></string>
+            <string name="artist"></string>
+            <string name="copyright"></string>
+            <string name="tags"></string>
         </property-set>
         <property-set name="x">
-            <property-set name="com-enonic-theme-superhero">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string name="menuName"></string>
+            <property-set name="media">
+                <property-set name="image-info">
+                    <string name="imageHeight">464</string>
+                    <string name="imageWidth">695</string>
+                    <string name="contentType">image/jpeg</string>
+                    <string name="bytesize">196646</string>
+                    <long name="pixelSize">322480</long>
                 </property-set>
             </property-set>
+        </property-set>
+        <property-set name="attachment">
+            <string name="name">superhero_5.jpg</string>
+            <string name="label">source</string>
+            <binaryReference name="binary">superhero_5.jpg</binaryReference>
+            <string name="mimeType">image/jpeg</string>
+            <long name="size">196646</long>
+        </property-set>
+        <property-set name="attachment">
+            <string name="name">superhero_5_small.jpg</string>
+            <string name="label">small</string>
+            <binaryReference name="binary">superhero_5_small.jpg</binaryReference>
+            <string name="mimeType">image/jpeg</string>
+            <long name="size">14250</long>
+        </property-set>
+        <property-set name="attachment">
+            <string name="name">superhero_5_medium.jpg</string>
+            <string name="label">medium</string>
+            <binaryReference name="binary">superhero_5_medium.jpg</binaryReference>
+            <string name="mimeType">image/jpeg</string>
+            <long name="size">46771</long>
         </property-set>
     </data>
     <indexConfigs>
