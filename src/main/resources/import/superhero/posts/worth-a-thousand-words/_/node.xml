@@ -9,7 +9,7 @@
         <string name="type">com.enonic.theme.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-03T11:05:20.290Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-06T01:01:12.783Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-28T00:32:18.010Z</dateTime>
@@ -20,6 +20,7 @@
             <htmlPart name="post">&amp;lt;div style=&amp;quot;width: 445px&amp;quot; class=&amp;quot;wp-caption alignnone&amp;quot;&amp;gt;&amp;lt;img class=&amp;quot;wp-image-59&amp;quot; alt=&amp;quot;Boat&amp;quot; src=&amp;quot;https://wpdotorg.files.wordpress.com/2008/11/boat.jpg&amp;quot; width=&amp;quot;435&amp;quot; height=&amp;quot;288&amp;quot; /&amp;gt;&amp;lt;p class=&amp;quot;wp-caption-text&amp;quot;&amp;gt;Boat&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;
 &amp;lt;p&amp;gt;Boat.&amp;lt;/p&amp;gt;</htmlPart>
             <string name="tags">boat</string>
+            <string name="tags">lake</string>
             <boolean name="enableComments">false</boolean>
         </property-set>
         <property-set name="x">

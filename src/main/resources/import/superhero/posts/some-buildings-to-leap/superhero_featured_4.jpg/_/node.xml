@@ -1,34 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <node xmlns="urn:enonic:xp:export:1.0">
-    <id>886dfc12-70ed-44a1-92b0-7bebffe65ab6</id>
+    <id>81b1e3cd-575f-4565-a618-3c85d56224f6</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Links</string>
-        <string name="type">com.enonic.theme.superhero:post</string>
+        <string name="displayName">superhero_featured_4.jpg</string>
+        <string name="type">media:image</string>
+        <dateTime name="createdTime">2015-03-07T01:13:34.927Z</dateTime>
+        <string name="creator">user:system:su</string>
+        <string name="modifier">user:system:su</string>
+        <dateTime name="modifiedTime">2015-03-07T01:13:34.927Z</dateTime>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-07T01:58:47.595Z</dateTime>
-        <string name="modifier">user:system:su</string>
-        <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-02-28T00:23:33.953Z</dateTime>
         <property-set name="data">
-            <string name="title">Links</string>
-            <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
-            <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&amp;lt;p&amp;gt;A few well known WordPress links: &amp;lt;a href=&amp;quot;http://wordpress.org/&amp;quot;&amp;gt;WordPress.org&amp;lt;/a&amp;gt;, &amp;lt;a href=&amp;quot;http://codex.wordpress.org/Main_Page&amp;quot;&amp;gt;the Codex&amp;lt;/a&amp;gt; and &amp;lt;a href=&amp;quot;http://wordpress.org/download/&amp;quot;&amp;gt;the download page&amp;lt;/a&amp;gt;.&amp;lt;/p&amp;gt;</htmlPart>
-            <boolean name="enableComments">false</boolean>
-            <boolean name="stickyPost">true</boolean>
-            <boolean name="slideshow">false</boolean>
+            <string name="media">superhero_featured_4.jpg</string>
+            <string name="caption"></string>
+            <string name="artist"></string>
+            <string name="copyright"></string>
+            <string name="tags"></string>
         </property-set>
         <property-set name="x">
-            <property-set name="com-enonic-theme-superhero">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string name="menuName"></string>
+            <property-set name="media">
+                <property-set name="image-info">
+                    <string name="imageHeight">695</string>
+                    <string name="imageWidth">2000</string>
+                    <string name="contentType">image/jpeg</string>
+                    <string name="bytesize">548842</string>
+                    <long name="pixelSize">1390000</long>
                 </property-set>
             </property-set>
+        </property-set>
+        <property-set name="attachment">
+            <string name="name">superhero_featured_4.jpg</string>
+            <string name="label">source</string>
+            <binaryReference name="binary">superhero_featured_4.jpg</binaryReference>
+            <string name="mimeType">image/jpeg</string>
+            <long name="size">548842</long>
+        </property-set>
+        <property-set name="attachment">
+            <string name="name">superhero_featured_4_small.jpg</string>
+            <string name="label">small</string>
+            <binaryReference name="binary">superhero_featured_4_small.jpg</binaryReference>
+            <string name="mimeType">image/jpeg</string>
+            <long name="size">7274</long>
+        </property-set>
+        <property-set name="attachment">
+            <string name="name">superhero_featured_4_medium.jpg</string>
+            <string name="label">medium</string>
+            <binaryReference name="binary">superhero_featured_4_medium.jpg</binaryReference>
+            <string name="mimeType">image/jpeg</string>
+            <long name="size">23617</long>
+        </property-set>
+        <property-set name="attachment">
+            <string name="name">superhero_featured_4_large.jpg</string>
+            <string name="label">large</string>
+            <binaryReference name="binary">superhero_featured_4_large.jpg</binaryReference>
+            <string name="mimeType">image/jpeg</string>
+            <long name="size">75883</long>
         </property-set>
     </data>
     <indexConfigs>

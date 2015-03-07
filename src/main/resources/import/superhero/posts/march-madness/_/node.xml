@@ -9,7 +9,7 @@
         <string name="type">com.enonic.theme.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-04T05:14:48.451Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-07T01:58:29.715Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-03-04T05:13:27.097Z</dateTime>
@@ -21,6 +21,8 @@
             <htmlPart name="post">&amp;lt;p&amp;gt;This is a test post under a new month to test the monthly archive.&amp;lt;/p&amp;gt;</htmlPart>
             <string name="tags">test</string>
             <boolean name="enableComments">true</boolean>
+            <boolean name="stickyPost">false</boolean>
+            <boolean name="slideshow">false</boolean>
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-theme-superhero">

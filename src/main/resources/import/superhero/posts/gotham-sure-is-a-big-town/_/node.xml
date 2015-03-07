@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <node xmlns="urn:enonic:xp:export:1.0">
-    <id>886dfc12-70ed-44a1-92b0-7bebffe65ab6</id>
+    <id>5e7ccee7-6d82-4729-8628-4f7933657803</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Links</string>
+        <string name="displayName">Gotham Sure Is A Big Town</string>
         <string name="type">com.enonic.theme.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-07T01:58:47.595Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-07T01:10:09.198Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-02-28T00:23:33.953Z</dateTime>
+        <dateTime name="createdTime">2015-03-07T01:06:38.836Z</dateTime>
         <property-set name="data">
-            <string name="title">Links</string>
-            <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
+            <string name="title">Gotham Sure Is A Big Town</string>
+            <reference name="author">86cc1301-0639-41d1-84ed-70ba443f38ba</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&amp;lt;p&amp;gt;A few well known WordPress links: &amp;lt;a href=&amp;quot;http://wordpress.org/&amp;quot;&amp;gt;WordPress.org&amp;lt;/a&amp;gt;, &amp;lt;a href=&amp;quot;http://codex.wordpress.org/Main_Page&amp;quot;&amp;gt;the Codex&amp;lt;/a&amp;gt; and &amp;lt;a href=&amp;quot;http://wordpress.org/download/&amp;quot;&amp;gt;the download page&amp;lt;/a&amp;gt;.&amp;lt;/p&amp;gt;</htmlPart>
+            <htmlPart name="post">&amp;lt;p&amp;gt;There&amp;#8217;s so much area to cover. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non dapibus lectus. Vestibulum eget commodo mi. Donec in est sed quam ultricies pharetra at vitae quam. Nam dignissim orci accumsan odio bibendum non mattis nisl congue.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Curabitur rutrum pharetra velit, quis feugiat elit consectetur vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in interdum orci.&amp;lt;/p&amp;gt;</htmlPart>
+            <string name="tags">Featured</string>
             <boolean name="enableComments">false</boolean>
-            <boolean name="stickyPost">true</boolean>
-            <boolean name="slideshow">false</boolean>
+            <boolean name="stickyPost">false</boolean>
+            <reference name="featuredImage">43d54e23-d8ce-4058-befb-777abe1a0d9f</reference>
+            <boolean name="slideshow">true</boolean>
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-theme-superhero">

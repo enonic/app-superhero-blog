@@ -9,7 +9,7 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-02T20:27:59.996Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-06T09:20:15.012Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
@@ -20,6 +20,7 @@
                 <property-set name="config">
                     <string name="google-ua">UA-123ABC</string>
                     <reference name="postsFolder">84ccc003-3d1b-4a99-8a02-753930848295</reference>
+                    <string name="numPosts">5</string>
                 </property-set>
             </property-set>
         </property-set>

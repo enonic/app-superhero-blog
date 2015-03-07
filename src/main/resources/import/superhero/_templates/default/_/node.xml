@@ -9,7 +9,7 @@
         <string name="type">portal:page-template</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-04T05:22:36.151Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-07T18:18:32.257Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:47:32.165Z</dateTime>
@@ -21,6 +21,14 @@
             <reference isNull="true" name="template"/>
             <property-set name="region">
                 <string name="name">main</string>
+                <property-set name="component">
+                    <string name="type">PartComponent</string>
+                    <property-set name="PartComponent">
+                        <string name="name">Featured</string>
+                        <string name="template">com.enonic.theme.superhero:featured</string>
+                        <property-set name="config"/>
+                    </property-set>
+                </property-set>
                 <property-set name="component">
                     <string name="type">LayoutComponent</string>
                     <property-set name="LayoutComponent">
@@ -103,6 +111,16 @@
                                         <string name="title"></string>
                                         <boolean name="showPostCount">true</boolean>
                                         <boolean name="showHierarchy">false</boolean>
+                                    </property-set>
+                                </property-set>
+                            </property-set>
+                            <property-set name="component">
+                                <string name="type">PartComponent</string>
+                                <property-set name="PartComponent">
+                                    <string name="name">Tag cloud</string>
+                                    <string name="template">com.enonic.theme.superhero:tag-cloud</string>
+                                    <property-set name="config">
+                                        <string name="title"></string>
                                     </property-set>
                                 </property-set>
                             </property-set>
