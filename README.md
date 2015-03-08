@@ -42,12 +42,12 @@ Comprehensive documentation for this module is being created.
 
 * TODO: Write documentation and insert link
 * TODO: Make a full-width page.
-* TODO: Implement sticky post.
+* TODO: Make it possible to have the post-list page not the home page.
 * TODO: Finish the date meta data in various parts when the CMS date bugs are worked out.
 * TODO: Finish the dynamic classes and IDs in various parts.
 * TODO: Create the Meta part with login/out and stuff.
 * TODO: Finish the RSS page when the CDATA bug is fixed.
-* TODO: Finish the comments part. (Reply to comment)
+* TODO: Finish the comments part. (Reply to comment, Make comment child of post or comment)
 * TODO: Make a hidden comment manager page to approve or delete comments.
 * TODO: Consider merging post-list and post-show into the same part. I had it this way to start with but it got quite complicated so I
 separated them and now I think that maybe I should merge them back together.

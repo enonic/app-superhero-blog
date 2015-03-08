@@ -19,7 +19,8 @@ exports.get = function(req) {
     });
 
     var data = content.data;
-    var categories = new Array();
+    var categoriesArray = new Array();
+    var categories = util.getCategories();
 
     if (content.type == module.name + ':post') {
 
@@ -29,18 +30,22 @@ exports.get = function(req) {
         data.author = data.author ? stk.content.get(data.author) : data.author;
         data.pubDate = util.getFormattedDate(new Date(content.createdTime));
 
+        data.class = 'post-' + content._id + ' post type-post status-publish format-standard hentry';
+
         data.category = data.category ? stk.data.forceArray(data.category) : null;
 
         if(data.category) {
             for(var i = 0; i < data.category.length; i++) {
                 if(data.category[i]) {
-                    var category = stk.content.get(data.category[i]);
-                    categories.push(category);
+                    //var category = stk.content.get(data.category[i]);
+                    var category = util.getCategory({id: data.category[i]}, categories);
+                    categoriesArray.push(category);
+                    data.class += ' category-' + category._name + ' ';
                 }
             }
         }
 
-        data.categories = categories.length > 0 ? categories : null
+        data.categories = categoriesArray.length > 0 ? categoriesArray : null
 
         if (data.featuredImage) {
             var img = stk.content.get(data.featuredImage);

@@ -1,4 +1,4 @@
-<article data-th-each="post : ${posts}" data-th-id="'post-' + ${post.id}"  id="post-19" class="post-19 post type-post status-publish format-standard hentry">
+<article data-th-each="post : ${posts}" data-th-id="'post-' + ${post.id}"  id="post-19" data-th-class="${post.class}" class="post-19 post type-post status-publish format-standard hentry">
 
     <img src="#" data-th-src="${post.fImageUrl}" data-th-if="${post.fImageUrl}" width="695" class="attachment-feat-img wp-post-image" alt="${post.fImageName}"/>
 
@@ -30,7 +30,7 @@
     <footer class="entry-meta">
         <span class="cat-links" data-th-if="${post.categories != null}">Posted in
             <div data-th-remove="tag" data-th-each="category,iterStat : ${post.categories}">
-                <a href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'cat=' + category._id})}" rel="category" data-th-text="${category.data.name}">Uncategorized</a><span data-th-remove="tag" data-th-if="${!iterStat.last}">,</span>
+                <a href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'cat=' + category._name})}" rel="category" data-th-text="${category.data.name}">Uncategorized</a><span data-th-remove="tag" data-th-if="${!iterStat.last}">,</span>
             </div>
         </span>
 
@@ -61,9 +61,9 @@
 <nav data-th-if="${older} or ${newer}" role="navigation" id="nav-below" class="site-navigation page-navigation">
     <h1 class="assistive-text">Post navigation</h1>
     <div data-th-if="${older}" class="nav-previous">
-        <a href="#" data-th-href="${older}"><span class="meta-nav">←</span> Older posts</a>
+        <a href="#" data-th-href="${older}"><span class="meta-nav">&larr;</span> Older posts</a>
     </div>
     <div data-th-if="${newer}" class="nav-next">
-        <a href="#" data-th-href="${newer}">Newer posts <span class="meta-nav">→</span></a>
+        <a href="#" data-th-href="${newer}">Newer posts <span class="meta-nav">&rarr;</span></a>
     </div>
 </nav>

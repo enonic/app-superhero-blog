@@ -10,13 +10,9 @@ exports.get = function(req) {
     var headerText;
 
     if (up.cat) {
-        var cat;
-        if (up.cat && up.cat != 'uncategorized') {
-            cat = stk.content.get(up.cat);
-            headerText = 'Category Archives: ' + cat.displayName;
-        } else if (up.cat == 'uncategorized') {
-            headerText = 'Category Archives: Uncategorized'
-        }
+        var categories = util.getCategories();
+        var cat = util.getCategory({name: up.cat}, categories)
+        headerText = 'Category Archives: ' + cat.displayName;
     }
 
     if (up.tag) {
@@ -45,9 +41,7 @@ exports.get = function(req) {
 
         var year = up.m.substring(0,4);
         var month = up.m.substring(4,6);
-
         var date = new Date(year, month -1, 15);
-
         var monthName = util.getMonthName(date);
 
         headerText = 'Monthly Archives: ' + monthName + ' ' + year;

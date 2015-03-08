@@ -71,3 +71,27 @@ exports.getPostsFolder = function(local, site, defaultLocation) {
     //Use the backup default if no location has been configured.
     return defaultLocation;
 };
+
+exports.getCategory = function(obj, categories) {
+
+    for (var i = 0; i < categories.length; i++) {
+        if (obj.name == categories[i]._name || obj.id == categories[i]._id) {
+            //stk.log(cat);
+            return categories[i];
+        }
+    }
+
+    return null;
+};
+
+exports.getCategories = function() {
+
+    var result = execute('content.query', {
+        start: 0,
+        count: 1000,
+        contentTypes: [
+            module.name + ':category'
+        ]
+    });
+    return result.contents;
+};

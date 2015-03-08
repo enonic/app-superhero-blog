@@ -16,48 +16,13 @@ exports.get = function(req) {
     var defaultLocation = site._path + '/posts'; //Default location to look for posts
     var folderPath = util.getPostsFolder(config.contentFolder, moduleConfig.postsFolder, defaultLocation);
 
+    var categories = util.getCategories();
+
     var start = stk.data.isInt(up.paged) ? (up.paged - 1) * postsPerPage : 0;
+    var query = getQuery(up, folderPath, categories);
 
-    // Default query
-    var query = '_parentPath="/content' + folderPath + '" AND data.slideshow != "true"';
 
-    //Search filter
-    if (up.s) {
-        query = 'fulltext("data.post", "' + up.s + '", "AND") OR fulltext("data.title", "' + up.s + '", "AND")';
-    }
-
-    // Filter for tags
-    if (up.tag) {
-        query = 'data.tags LIKE "' + up.tag.toLowerCase() + '"';
-    }
-
-    //Filter for categories.
-    if (up.cat) {
-        query = 'data.category IN ("' + up.cat + '")';
-    }
-
-    //Filter for authors
-    if (up.author) {
-        query = 'data.author LIKE "' + up.author + '"';
-    }
-
-    //Filter for monthly archives
-    if (up.m && stk.data.isInt(up.m) && up.m.length == 6) {
-
-        var year = up.m.substring(0,4); //Get the year from the querystring
-        var month = up.m.substring(4,6); //Get the month from the querystring
-
-        // Get the last day of the month for the content query
-        var date = new Date(year, month, 0);
-        var lastDay = date.getDate();
-
-        var first = year + '-' + month + '-01T00:00:00Z';
-        var last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
-
-        query = '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
-    }
-
-    // Only put sticky on top on the first when there are no queries
+    // Only put sticky on top on the first page when there are no queries
     var orderBy = '';
     if (Object.keys(up).length == 0 || (Object.keys(up).length == 1 && up.paged)) {
         orderBy = 'data.stickyPost DESC, ';
@@ -112,7 +77,11 @@ exports.get = function(req) {
     // Loop through the posts and get the comments, categories and author
     for (var i = 0; i < results.contents.length; i++) {
         var data = results.contents[i].data;
-        var categories = new Array();
+        var categoriesArray = new Array();
+        data.class = 'post-' + results.contents[i]._id + ' post type-post status-publish format-standard hentry';
+        if (data.stickyPost && Object.keys(up).length == 0) {
+            data.class += ' sticky';
+        }
 
         var date = new Date(results.contents[i].createdTime);
         date = util.getFormattedDate(date);
@@ -140,13 +109,14 @@ exports.get = function(req) {
         if (data.category) {
             for (var j = 0; j < data.category.length; j++) {
                 if(data.category[j]) {
-                    var category = stk.content.get(data.category[j]);
-                    categories.push(category);
+                    var category = util.getCategory({id: data.category[j]}, categories);
+                    categoriesArray.push(category);
+                    data.class += ' category-' + category._name + ' ';
                 }
             }
         }
 
-        data.categories = categories.length > 0 ? categories : null
+        data.categories = categoriesArray.length > 0 ? categoriesArray : null
 
         if (data.featuredImage) {
             var img = stk.content.get(data.featuredImage);
@@ -171,3 +141,71 @@ exports.get = function(req) {
     var view = resolve('post-list.html');
     return stk.view.render(view, params);
 };
+
+var getQuery = function(up, folderPath, categories) {
+    // Default query
+    var query = '_parentPath="/content' + folderPath + '" AND data.slideshow != "true"';
+
+    //Search filter
+    if (up.s) {
+        query = 'fulltext("data.post", "' + up.s + '", "AND") OR fulltext("data.title", "' + up.s + '", "AND")';
+    }
+
+    // Filter for tags
+    if (up.tag) {
+        query = 'data.tags LIKE "' + up.tag.toLowerCase() + '"';
+    }
+
+    //Filter for categories.
+    if (up.cat) {
+        var category = util.getCategory({name: up.cat}, categories);
+        query = 'data.category IN ("' + category._id + '")';
+    }
+
+    //Filter for authors
+    if (up.author) {
+        query = 'data.author LIKE "' + up.author + '"';
+    }
+
+    //Filter for monthly archives
+    if (up.m && stk.data.isInt(up.m) && up.m.length == 6) {
+
+        var year = up.m.substring(0,4); //Get the year from the querystring
+        var month = up.m.substring(4,6); //Get the month from the querystring
+
+        // Get the last day of the month for the content query
+        var date = new Date(year, month, 0);
+        var lastDay = date.getDate();
+
+        var first = year + '-' + month + '-01T00:00:00Z';
+        var last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
+
+        query = '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
+    }
+    return query;
+};
+
+var getCategory = function(obj, categories) {
+
+    for (var i = 0; i < categories.length; i++) {
+        if (obj.name == categories[i]._name || obj.id == categories[i]._id) {
+            //stk.log(cat);
+            return categories[i];
+        }
+    }
+
+    return null;
+}
+
+var getCategories = function() {
+
+    var result = execute('content.query', {
+        start: 0,
+        count: 1000,
+        contentTypes: [
+            module.name + ':category'
+        ]
+    });
+    return result.contents;
+}
+
