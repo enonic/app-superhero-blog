@@ -6,7 +6,7 @@ function handleGet(req) {
     var up = req.params;
     var site = execute('portal.getSite');
     var menuItems = menu.getSiteMenu(3);
-    var moduleConfig = site.data.moduleConfig.config;
+    var moduleConfig = site.moduleConfigs[module.name];
     var content = execute('portal.getContent');
     var bodyClass = '';
     var backgroundImage;

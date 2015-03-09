@@ -10,7 +10,7 @@ exports.get = function(req) {
     var maxPosts = config.maxPosts || 5;
 
     var site = execute('portal.getSite');
-    var moduleConfig = site.data.moduleConfig.config;
+    var moduleConfig = site.moduleConfigs[module.name];
 
     var defaultLocation = site._path + '/posts'; //Default location to look for posts
     var folderPath = util.getPostsFolder(config.contentFolder, moduleConfig.postsFolder, defaultLocation);

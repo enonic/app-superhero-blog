@@ -8,7 +8,7 @@ exports.get = function(req) {
     var up = req.params; // URL params
     var content = execute('portal.getContent');
     var site = execute('portal.getSite');
-    var moduleConfig = site.data.moduleConfig.config;
+    var moduleConfig = site.moduleConfigs[module.name];
     var postsPerPage = moduleConfig.numPosts ? moduleConfig.numPosts : 10;
     var newer = null, older = null; // For pagination
     var posts = new Array();
@@ -38,7 +38,9 @@ exports.get = function(req) {
             module.name + ':post'
         ]
     });
-
+    /*stk.log(results);
+    stk.log(query);
+    stk.log(orderBy);*/
     // If the results total is more than the postsPerPage then it will need pagination.
     if (results.total > postsPerPage) {
 

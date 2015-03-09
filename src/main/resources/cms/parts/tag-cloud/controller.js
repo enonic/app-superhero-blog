@@ -8,7 +8,7 @@ exports.get = function(req) {
     var config = component.config;
     var title = config.title || 'Tags';
     var site = execute('portal.getSite');
-    var moduleConfig = site.data.moduleConfig.config;
+    var moduleConfig = site.moduleConfigs[module.name];
 
     var tagsArray = [];
     var tagsGroup = {};
@@ -16,12 +16,25 @@ exports.get = function(req) {
     // Get all posts that have one or more tags.
     var result = execute('content.query', {
         start: 0,
-        count: 1000,
+        count: 1000, // TODO: Set count to 0 and implement the aggregation
         query: 'data.tags LIKE "*"', // Only return posts that have tags
         contentTypes: [
             module.name + ':post'
-        ]
+        ],
+        aggregations: {
+            tags: {
+                terms: {
+                    field: "data.tags",
+                    order: "_term asc",
+                    size: 20
+                }
+            }
+        }
     });
+
+    //stk.log(result);
+
+    var buckets = result.aggregations.tags.buckets;
 
     // Loop through the posts
     for (var i = 0; i < result.contents.length; i++) {
@@ -64,6 +77,13 @@ exports.get = function(req) {
     }
     var minCount = Math.min.apply(null, counts); // smallest number for any tag count
     var maxCount = Math.max.apply(null, counts); // largest number for any tag count
+
+    /*var newBucket = buckets.slice();
+    newBucket.sort(function(a, b) {
+        return a.doc_count - b.doc_count;
+    });
+    var minCount = newBucket[0].doc_count; // smallest number for any tag count
+    var maxCount = newBucket[newBucket.length -1].doc_count; // largest number for any tag count*/
 
     // The difference between the most used tag and the least used.
     var spread = maxCount - minCount;
