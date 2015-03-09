@@ -25,15 +25,25 @@ exports.get = function(req) {
 
     if (up.author) {
         headerText = 'Author Archives: ';
-        var authorContent;
-        if (stk.content.exists(up.author)) {
-            authorContent = stk.content.get(up.author);
-            var url = execute('portal.pageUrl', {
-                path: stk.content.getPath(site._path),
-                params: { author: up.author }
-            });
 
-            headerText += '<a href="' + url + '">' + authorContent.data.name + '</a>';
+        var result = execute('content.query', {
+            count: 1,
+            query: '_name LIKE "' + up.author + '"',
+            contentTypes: [
+                module.name + ':author'
+            ]
+        });
+
+        var authorContent = result.contents[0];
+        var url = execute('portal.pageUrl', {
+            path: stk.content.getPath(site._path),
+            params: { author: up.author }
+        });
+
+        if (authorContent) {
+            headerText += '<a href="' + url + '">' + authorContent.data.name + '</a>'
+        } else {
+            headerText += up.author + ' not found';
         }
     }
 

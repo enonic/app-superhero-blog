@@ -166,7 +166,14 @@ var getQuery = function(up, folderPath, categories) {
 
     //Filter for authors
     if (up.author) {
-        query = 'data.author LIKE "' + up.author + '"';
+        var authorResult = execute('content.query', {
+            count: 1,
+            query: '_name LIKE "' + up.author + '"',
+            contentTypes: [ module.name + ':author' ]
+        });
+        var authorContent = authorResult.contents[0];
+
+        query = authorContent ? 'data.author LIKE "' + authorContent._id + '"' : 'data.author LIKE "0"';
     }
 
     //Filter for monthly archives
@@ -186,28 +193,3 @@ var getQuery = function(up, folderPath, categories) {
     }
     return query;
 };
-
-var getCategory = function(obj, categories) {
-
-    for (var i = 0; i < categories.length; i++) {
-        if (obj.name == categories[i]._name || obj.id == categories[i]._id) {
-            //stk.log(cat);
-            return categories[i];
-        }
-    }
-
-    return null;
-}
-
-var getCategories = function() {
-
-    var result = execute('content.query', {
-        start: 0,
-        count: 1000,
-        contentTypes: [
-            module.name + ':category'
-        ]
-    });
-    return result.contents;
-}
-
