@@ -9,7 +9,7 @@
         <string name="type">com.enonic.theme.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-07T01:58:47.595Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-08T07:04:06.603Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-28T00:23:33.953Z</dateTime>
@@ -19,7 +19,7 @@
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
             <htmlPart name="post">&amp;lt;p&amp;gt;A few well known WordPress links: &amp;lt;a href=&amp;quot;http://wordpress.org/&amp;quot;&amp;gt;WordPress.org&amp;lt;/a&amp;gt;, &amp;lt;a href=&amp;quot;http://codex.wordpress.org/Main_Page&amp;quot;&amp;gt;the Codex&amp;lt;/a&amp;gt; and &amp;lt;a href=&amp;quot;http://wordpress.org/download/&amp;quot;&amp;gt;the download page&amp;lt;/a&amp;gt;.&amp;lt;/p&amp;gt;</htmlPart>
             <boolean name="enableComments">false</boolean>
-            <boolean name="stickyPost">true</boolean>
+            <boolean name="stickyPost">false</boolean>
             <boolean name="slideshow">false</boolean>
         </property-set>
         <property-set name="x">

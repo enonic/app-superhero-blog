@@ -9,7 +9,7 @@
         <string name="type">com.enonic.theme.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-07T01:58:29.715Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-09T18:56:34.974Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-03-04T05:13:27.097Z</dateTime>
@@ -18,8 +18,9 @@
             <reference name="author">86cc1301-0639-41d1-84ed-70ba443f38ba</reference>
             <reference name="category">70ac4676-678d-408e-9561-fe98ddcc13be</reference>
             <reference name="category">e656bc02-10dd-45b1-b30f-c9deef28aa6f</reference>
-            <htmlPart name="post">&amp;lt;p&amp;gt;This is a test post under a new month to test the monthly archive.&amp;lt;/p&amp;gt;</htmlPart>
+            <htmlPart name="post">&amp;lt;p&amp;gt;This is an example of a sticky post. It will appear at the top of the first page of the post list and the title will be red.&amp;lt;/p&amp;gt;</htmlPart>
             <string name="tags">test</string>
+            <string name="tags">sticky</string>
             <boolean name="enableComments">true</boolean>
             <boolean name="stickyPost">false</boolean>
             <boolean name="slideshow">false</boolean>

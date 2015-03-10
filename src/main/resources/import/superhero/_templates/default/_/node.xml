@@ -9,7 +9,7 @@
         <string name="type">portal:page-template</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-07T18:18:32.257Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-10T17:47:53.998Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:47:32.165Z</dateTime>
@@ -40,19 +40,9 @@
                             <property-set name="component">
                                 <string name="type">PartComponent</string>
                                 <property-set name="PartComponent">
-                                    <string name="name">Header</string>
-                                    <string name="template">com.enonic.theme.superhero:header</string>
-                                    <property-set name="config"/>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
                                     <string name="name">Posts list</string>
                                     <string name="template">com.enonic.theme.superhero:posts-list</string>
-                                    <property-set name="config">
-                                        <reference name="contentFolder">84ccc003-3d1b-4a99-8a02-753930848295</reference>
-                                    </property-set>
+                                    <property-set name="config"/>
                                 </property-set>
                             </property-set>
                         </property-set>
@@ -75,8 +65,7 @@
                                     <string name="template">com.enonic.theme.superhero:recent-posts</string>
                                     <property-set name="config">
                                         <string name="title"></string>
-                                        <string name="maxPosts">5</string>
-                                        <reference name="contentFolder">84ccc003-3d1b-4a99-8a02-753930848295</reference>
+                                        <string name="maxPosts"></string>
                                     </property-set>
                                 </property-set>
                             </property-set>
@@ -94,23 +83,23 @@
                             <property-set name="component">
                                 <string name="type">PartComponent</string>
                                 <property-set name="PartComponent">
-                                    <string name="name">Monthly archive</string>
-                                    <string name="template">com.enonic.theme.superhero:archive</string>
-                                    <property-set name="config">
-                                        <string name="title"></string>
-                                        <boolean name="showPostCount">true</boolean>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
                                     <string name="name">Categories</string>
                                     <string name="template">com.enonic.theme.superhero:categories</string>
                                     <property-set name="config">
                                         <string name="title"></string>
                                         <boolean name="showPostCount">true</boolean>
                                         <boolean name="showHierarchy">false</boolean>
+                                    </property-set>
+                                </property-set>
+                            </property-set>
+                            <property-set name="component">
+                                <string name="type">PartComponent</string>
+                                <property-set name="PartComponent">
+                                    <string name="name">Monthly archive</string>
+                                    <string name="template">com.enonic.theme.superhero:archive</string>
+                                    <property-set name="config">
+                                        <string name="title"></string>
+                                        <boolean name="showPostCount">false</boolean>
                                     </property-set>
                                 </property-set>
                             </property-set>

@@ -9,7 +9,7 @@
         <string name="type">com.enonic.theme.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-07T01:22:21.901Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-10T19:05:44.693Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-03-07T01:11:36.813Z</dateTime>
@@ -25,6 +25,7 @@
 &amp;lt;/div&amp;gt;
 &amp;lt;p&amp;gt; &amp;lt;/p&amp;gt;</htmlPart>
             <string name="tags">Buildings</string>
+            <string name="tags">Featured</string>
             <boolean name="enableComments">true</boolean>
             <boolean name="stickyPost">false</boolean>
             <reference name="featuredImage">81b1e3cd-575f-4565-a618-3c85d56224f6</reference>

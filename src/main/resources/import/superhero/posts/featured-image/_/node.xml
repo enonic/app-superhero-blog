@@ -9,7 +9,7 @@
         <string name="type">com.enonic.theme.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-07T20:17:49.510Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-08T06:02:59.781Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-03-07T20:16:40.198Z</dateTime>
@@ -18,7 +18,7 @@
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
             <htmlPart name="post">&amp;lt;p&amp;gt;This is a featured image. See how the picture is large and appears above the title?&amp;lt;/p&amp;gt;</htmlPart>
-            <string name="tags">featured</string>
+            <string name="tags">Featured</string>
             <boolean name="enableComments">false</boolean>
             <boolean name="stickyPost">false</boolean>
             <reference name="featuredImage">be1ca151-cf61-4a54-9ea4-c8d01ce83e0e</reference>
