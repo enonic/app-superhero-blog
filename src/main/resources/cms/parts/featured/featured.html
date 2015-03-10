@@ -1,19 +1,24 @@
-<div id="featured-content" class="flexslider" data-th-if="${slides}">
-    <ul class="featured-posts slides">
-        <li class="featured" data-th-each="slide : ${slides}">
-            <a href="#" data-th-href="${slide.url}" data-th-title="'Permalink to ' + ${slide.name}" title="" rel="bookmark">
-                <img src="#" data-th-src="${slide.imageUrl}"/>
-            </a>
-            <div class="featured-hentry-wrap">
-                <!-- TODO: Make this class dynamic -->
-                <div data-th-id="'post-' + ${slide.id}" class="post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <div class="entry-header">
-                        <h2 class="entry-title">
-                            <a href="#" data-th-href="${slide.url}" rel="bookmark" data-th-text="${slide.name}"></a>
-                        </h2>
+<div data-th-class="${editMode == true ? 'edit-mode' : ''}">
+    <div data-th-if="${editMode} and ${#lists.isEmpty(slides)}" class="edit-mode-configure">
+        <h2>Configure "Featured" part</h2>
+    </div>
+    <div id="featured-content" class="flexslider" data-th-if="${!#lists.isEmpty(slides)}">
+        <ul class="featured-posts slides">
+            <li class="featured" data-th-each="slide : ${slides}">
+                <a href="#" data-th-href="${slide.url}" data-th-title="'Permalink to ' + ${slide.name}" title="" rel="bookmark">
+                    <img src="#" data-th-src="${slide.imageUrl}"/>
+                </a>
+                <div class="featured-hentry-wrap">
+                    <!-- TODO: Make this class dynamic -->
+                    <div data-th-id="'post-' + ${slide.id}" class="post type-post status-publish format-standard has-post-thumbnail hentry">
+                        <div class="entry-header">
+                            <h2 class="entry-title">
+                                <a href="#" data-th-href="${slide.url}" rel="bookmark" data-th-text="${slide.name}"></a>
+                            </h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
 </div>

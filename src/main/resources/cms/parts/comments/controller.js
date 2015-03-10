@@ -50,7 +50,8 @@ exports.get = function(req) {
         site: site,
         allowedTags: allowedTags,
         numComments: numComments,
-        comments: result.contents
+        comments: result.contents,
+        editMode: req.mode == 'edit' ? true : false
     }
 
     var view = resolve('comments.html');

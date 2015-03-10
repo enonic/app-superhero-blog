@@ -1,16 +1,21 @@
-<nav role="navigation" id="nav-below" class="site-navigation post-navigation">
-    <h1 class="assistive-text">Post navigation</h1>
-    <div class="nav-previous" data-th-if="${prev}">
-        <a href="#" rel="prev" data-th-href="${portal.pageUrl({'_path=' + prev._path})}">
-            <span class="meta-nav">&larr;</span>
-            <span data-th-remove="tag" data-th-text="${prev.displayName}">Prev title</span>
-        </a>
+<div data-th-class="${editMode == true ? 'edit-mode' : ''}">
+    <div data-th-if="${editMode} and ${!prev} and ${!next}" class="edit-mode-configure">
+        <h2>Configure "post-nav" part</h2>
     </div>
+    <nav role="navigation" id="nav-below" class="site-navigation post-navigation" data-th-if="${prev} or ${next}">
+        <h1 class="assistive-text">Post navigation</h1>
+        <div class="nav-previous" data-th-if="${prev}">
+            <a href="#" rel="prev" data-th-href="${portal.pageUrl({'_path=' + prev._path})}">
+                <span class="meta-nav">&larr;</span>
+                <span data-th-remove="tag" data-th-text="${prev.displayName}">Prev title</span>
+            </a>
+        </div>
 
-    <div class="nav-next" data-th-if="${next}">
-        <a href="#" rel="next" data-th-href="${portal.pageUrl({'_path=' + next._path})}">
-            <span data-th-remove="tag" data-th-text="${next.displayName}">Next title</span>
-            <span>&rarr;</span>
-        </a>
-    </div>
-</nav>
+        <div class="nav-next" data-th-if="${next}">
+            <a href="#" rel="next" data-th-href="${portal.pageUrl({'_path=' + next._path})}">
+                <span data-th-remove="tag" data-th-text="${next.displayName}">Next title</span>
+                <span>&rarr;</span>
+            </a>
+        </div>
+    </nav>
+</div>

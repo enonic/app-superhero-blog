@@ -19,7 +19,10 @@ exports.get = function(req) {
     var categories = util.getCategories();
 
     var start = stk.data.isInt(up.paged) ? (up.paged - 1) * postsPerPage : 0;
-    var query = getQuery(up, folderPath, categories);
+    var header = {};
+    var query = getQuery(up, folderPath, categories, header, site);
+
+    var headerText;
 
 
     // Only put sticky on top on the first page when there are no queries
@@ -138,30 +141,36 @@ exports.get = function(req) {
         posts: posts,
         site: site,
         older: older,
-        newer: newer
+        newer: newer,
+        headerText: header.headerText
     }
     var view = resolve('post-list.html');
     return stk.view.render(view, params);
 };
 
-var getQuery = function(up, folderPath, categories) {
+
+
+var getQuery = function(up, folderPath, categories, header, site) {
     // Default query
     var query = '_parentPath="/content' + folderPath + '" AND data.slideshow != "true"';
 
     //Search filter
     if (up.s) {
         query = 'fulltext("data.post", "' + up.s + '", "AND") OR fulltext("data.title", "' + up.s + '", "AND")';
+        header.headerText = 'Search Results for: ' + up.s;
     }
 
     // Filter for tags
     if (up.tag) {
         query = 'data.tags LIKE "' + up.tag.toLowerCase() + '"';
+        header.headerText = 'Tag Archives: ' + up.tag;
     }
 
     //Filter for categories.
     if (up.cat) {
         var category = util.getCategory({name: up.cat}, categories);
         query = 'data.category IN ("' + category._id + '")';
+        header.headerText = 'Category Archives: ' + category.displayName;
     }
 
     //Filter for authors
@@ -174,6 +183,16 @@ var getQuery = function(up, folderPath, categories) {
         var authorContent = authorResult.contents[0];
 
         query = authorContent ? 'data.author LIKE "' + authorContent._id + '"' : 'data.author LIKE "0"';
+        // TODO: finish this!
+        if (authorContent) {
+            var authUrl = execute('portal.pageUrl', {
+                path: stk.content.getPath(site._path),
+                params: { author: up.author }
+            });
+            header.headerText += '<a href="' + authUrl + '">' + authorContent.data.name + '</a>'
+        } else {
+            header.headerText += up.author + ' not found';
+        }
     }
 
     //Filter for monthly archives
@@ -190,6 +209,9 @@ var getQuery = function(up, folderPath, categories) {
         var last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
 
         query = '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
+
+        var monthName = util.getMonthName(date);
+        header.headerText = 'Monthly Archives: ' + monthName + ' ' + year;
     }
     return query;
 };

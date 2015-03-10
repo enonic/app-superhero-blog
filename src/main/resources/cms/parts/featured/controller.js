@@ -49,7 +49,8 @@ exports.get = function(req) {
 
 
     var params = {
-        slides: slides
+        slides: slides,
+        editMode: req.mode == 'edit' ? true : false
     }
 
     var view = resolve('featured.html');

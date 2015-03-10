@@ -32,7 +32,8 @@ exports.get = function(req) {
         content: content,
         site: site,
         prev: (prev && prev.contents) ? prev.contents[0] : null,
-        next: (next && next.contents) ? next.contents[0] : null
+        next: (next && next.contents) ? next.contents[0] : null,
+        editMode: req.mode == 'edit' ? true : false
     }
 
     var view = resolve('post-nav.html');
