@@ -8,9 +8,9 @@ function handleGet(req) {
     var menuItems = menu.getSiteMenu(3);
     var moduleConfig = site.moduleConfigs[module.name];
     var content = execute('portal.getContent');
+    var facebookAppID = moduleConfig.facebookAppID;
     var bodyClass = '';
     var backgroundImage;
-
     if (moduleConfig.backgroundImage) {
         var bgImageUrl = execute('portal.imageUrl', {
             id: moduleConfig.backgroundImage,
@@ -42,7 +42,8 @@ function handleGet(req) {
         backgroundImage: backgroundImage,
         mainRegion: content.page.regions['main'],
         content: content,
-        menuItems: menuItems
+        menuItems: menuItems,
+        facebookAppID: facebookAppID
     }
 
     var view = resolve('home.html');

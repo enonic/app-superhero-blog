@@ -9,8 +9,12 @@
   </vendor>
   <dependencies system-min-version="5.0.0" system-max-version="5.1.0"/>
   <config>
-    <input type="TextLine" name="google-ua">
+    <input type="TextLine" name="googleUA">
       <label>Google Analytics UA</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
+    <input type="TextLine" name="facebookAppID">
+      <label>Facebook App ID</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
     <input type="ImageSelector" name="backgroundImage">
