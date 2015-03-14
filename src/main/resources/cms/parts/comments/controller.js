@@ -89,7 +89,7 @@ exports.post = function(req) {
             contentCreated = true;
             log.info('Content created with id ' + result._id);
         } else {
-            stk.log('Something went wrong :( ');
+            stk.log('Something went wrong creating comment for ' + content.displayName);
         }
 
     }

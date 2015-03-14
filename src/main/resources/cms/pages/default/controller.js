@@ -8,7 +8,8 @@ function handleGet(req) {
     var menuItems = menu.getSiteMenu(3);
     var moduleConfig = site.moduleConfigs[module.name];
     var content = execute('portal.getContent');
-    var facebookAppID = moduleConfig.facebookAppID;
+    var facebookAppID = moduleConfig.facebookAppID.length > 1 ? moduleConfig.facebookAppID : null; // Hack to prevent empty string
+    var googleUA = moduleConfig.googleUA.length > 1 ? moduleConfig.googleUA : null;
     var bodyClass = '';
     var backgroundImage;
     if (moduleConfig.backgroundImage) {
@@ -43,7 +44,8 @@ function handleGet(req) {
         mainRegion: content.page.regions['main'],
         content: content,
         menuItems: menuItems,
-        facebookAppID: facebookAppID
+        facebookAppID: facebookAppID,
+        googleUA: googleUA
     }
 
     var view = resolve('home.html');
