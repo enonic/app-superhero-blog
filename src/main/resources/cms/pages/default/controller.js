@@ -8,7 +8,11 @@ function handleGet(req) {
     var menuItems = menu.getSiteMenu(3);
     var moduleConfig = site.moduleConfigs[module.name];
     var content = execute('portal.getContent');
+
+    // For facebook module
     var facebookAppID = moduleConfig.facebookAppID.length > 1 ? moduleConfig.facebookAppID : null; // Hack to prevent empty string
+    var userLanguage = req.headers['Accept-Language'].substring(0, req.headers['Accept-Language'].indexOf(','));
+
     var googleUA = moduleConfig.googleUA.length > 1 ? moduleConfig.googleUA : null;
     var bodyClass = '';
     var backgroundImage;
@@ -45,6 +49,7 @@ function handleGet(req) {
         content: content,
         menuItems: menuItems,
         facebookAppID: facebookAppID,
+        userLanguage: userLanguage,
         googleUA: googleUA
     }
 

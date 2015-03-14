@@ -25,7 +25,7 @@
 </head>
 
 <body class="home blog" data-th-class="${bodyClass}" data-portal-component-type="page">
-
+    <!-- Facebook module -->
     <div id="fb-root"></div>
     <script data-th-inline="javascript" data-th-if="${facebookAppID}">
 /*<![CDATA[*/
@@ -38,10 +38,12 @@
   };
 
   (function(d, s, id){
+     var userLanguage = /*[[${userLanguage}]]*/;
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
      js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
+     //js.src = "//connect.facebook.net/en_US/sdk.js";
+     js.src = "//connect.facebook.net/" + userLanguage + "/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 /*]]>*/
