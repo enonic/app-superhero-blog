@@ -10,10 +10,10 @@ function handleGet(req) {
     var content = execute('portal.getContent');
 
     // For facebook module
-    var facebookAppID = moduleConfig.facebookAppID.length > 1 ? moduleConfig.facebookAppID : null; // Hack to prevent empty string
-    var userLanguage = req.headers['Accept-Language'].substring(0, req.headers['Accept-Language'].indexOf(','));
+    var facebookAppID = moduleConfig.facebookAppID && moduleConfig.facebookAppID.length > 1 ? moduleConfig.facebookAppID : null; // Hack to prevent empty string
+    var userLanguage = req.headers['Accept-Language'].substring(0, req.headers['Accept-Language'].indexOf(',')); // So Facebook stuff comes out in the right language
 
-    var googleUA = moduleConfig.googleUA.length > 1 ? moduleConfig.googleUA : null;
+    var googleUA = moduleConfig.googleUA && moduleConfig.googleUA.length > 1 ? moduleConfig.googleUA : null;
     var bodyClass = '';
     var backgroundImage;
     if (moduleConfig.backgroundImage) {
@@ -33,7 +33,7 @@ function handleGet(req) {
     if (up.cat || up.tag || up.author) {
         bodyClass += ' archive ';
     }
-    if (content.type == module.name + ':post') {
+    if (content.type == module.name + ':post' || content.type == 'portal:page-template') {
         bodyClass += 'single single-post single-format-standard ';
     }
     if (up.author) {
@@ -49,8 +49,8 @@ function handleGet(req) {
         content: content,
         menuItems: menuItems,
         facebookAppID: facebookAppID,
-        userLanguage: userLanguage,
-        googleUA: googleUA
+        userLanguage: userLanguage//,
+        //googleUA: googleUA
     }
 
     var view = resolve('home.html');
