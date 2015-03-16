@@ -7,10 +7,11 @@ function handleGet(req) {
     var site = execute('portal.getSite');
     var menuItems = menu.getSiteMenu(3);
     var moduleConfig = site.moduleConfigs[module.name];
+    stk.data.deleteEmptyProperties(moduleConfig);
     var content = execute('portal.getContent');
 
     // For facebook module
-    var facebookAppID = moduleConfig.facebookAppID && moduleConfig.facebookAppID.length > 1 ? moduleConfig.facebookAppID : null; // Hack to prevent empty string
+    //var facebookAppID = moduleConfig.facebookAppID && moduleConfig.facebookAppID.length > 1 ? moduleConfig.facebookAppID : null; // Hack to prevent empty string
     var userLanguage = req.headers['Accept-Language'].substring(0, req.headers['Accept-Language'].indexOf(',')); // So Facebook stuff comes out in the right language
 
     var googleUA = moduleConfig.googleUA && moduleConfig.googleUA.length > 1 ? moduleConfig.googleUA : null;
@@ -48,9 +49,7 @@ function handleGet(req) {
         mainRegion: content.page.regions['main'],
         content: content,
         menuItems: menuItems,
-        facebookAppID: facebookAppID,
-        userLanguage: userLanguage//,
-        //googleUA: googleUA
+        userLanguage: userLanguage
     }
 
     var view = resolve('home.html');

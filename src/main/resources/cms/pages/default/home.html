@@ -27,11 +27,11 @@
 <body class="home blog" data-th-class="${bodyClass}" data-portal-component-type="page">
     <!-- Facebook module -->
     <div id="fb-root"></div>
-    <script data-th-inline="javascript" data-th-if="${facebookAppID}">
+    <script data-th-inline="javascript" data-th-if="${moduleConfig.facebookAppID}">
 /*<![CDATA[*/
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : /*[[${facebookAppID}]]*/,
+      appId      : /*[[${moduleConfig.facebookAppID}]]*/,
       xfbml      : true,
       version    : 'v2.2'
     });
@@ -48,6 +48,7 @@
    }(document, 'script', 'facebook-jssdk'));
 /*]]>*/
 </script>
+    <!-- End Facebook module -->
 
     <div id="page" class="hfeed site" style="padding-top: 250px;">
         <div id="masthead-wrap">
