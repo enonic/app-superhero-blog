@@ -26,8 +26,8 @@
 
 <body class="home blog" data-th-class="${bodyClass}" data-portal-component-type="page">
     <!-- Facebook module -->
-    <div id="fb-root"></div>
-    <script data-th-inline="javascript" data-th-if="${moduleConfig.facebookAppID}">
+    <div id="fb-root" data-th-if="${facebookConfig.facebookAppID}"></div>
+    <script data-th-inline="javascript" data-th-if="${facebookConfig.facebookAppID}">
 /*<![CDATA[*/
   window.fbAsyncInit = function() {
     FB.init({
@@ -109,6 +109,8 @@
             </footer><!-- #colophon .site-footer -->
         </div><!-- #colophon-wrap -->
     </div><!-- #page .hfeed .site -->
+
+    <div data-th-if="${twitterConfig.script}" data-th-utext="${twitterConfig.script}" class="twitter-code"></div>
 
     <script type='text/javascript' data-th-src="${portal.assetUrl({'_path=js/small-menu.js'})}" src='../../assets/js/small-menu.js'></script>
     <script type='text/javascript' data-th-src="${portal.assetUrl({'_path=js/comment-reply.js'})}" src='../../assets/js/comment-reply.min.js'></script>

@@ -1,6 +1,9 @@
 var stk = require('stk/stk');
 //var module = 'com.enonic.theme.superhero';
 
+exports.facebookModule = 'com.enonic.xp.modules.facebook-module';
+exports.twitterModule = 'com.enonic.xp.modules.twitter-module';
+
 exports.getMonthName = function(date) {
 
     var month = date.getMonth();
