@@ -9,8 +9,8 @@ function handleGet(req) {
     var moduleConfig = site.moduleConfigs[module.name];
     stk.data.deleteEmptyProperties(moduleConfig);
 
-    var facebookConfig = site.moduleConfigs[util.facebookModule];
-    var twitterConfig = site.moduleConfigs[util.twitterModule];
+    var facebookConfig = site.moduleConfigs[util.facebookModule] || {};
+    var twitterConfig = site.moduleConfigs[util.twitterModule] || {};
 
     var content = execute('portal.getContent');
 
@@ -49,8 +49,8 @@ function handleGet(req) {
         site: site,
         bodyClass: bodyClass,
         moduleConfig: moduleConfig,
-        facebookConfig: facebookConfig || {},
-        twitterConfig: twitterConfig || {},
+        facebookConfig: facebookConfig,
+        twitterConfig: twitterConfig,
         backgroundImage: backgroundImage,
         mainRegion: content.page.regions['main'],
         content: content,

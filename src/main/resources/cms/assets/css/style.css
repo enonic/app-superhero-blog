@@ -430,17 +430,17 @@ a:active {
 	margin: 25px auto;
 	width: 960px;
 }
-#primary {
+.primary {
 	float: left;
 	margin-right: 25px;
 	width: 695px;
 }
-#primary.full-width-page {
+.primary.full-width-page {
 	float: none;
 	margin-right: 0;
 	width: 100%;
 }
-#secondary {
+.secondary {
 	float: right;
 	width: 240px;
 }
@@ -1197,11 +1197,11 @@ img#wpstats:hover {
 	#main {
 		width: 96%;
 	}
-	#primary {
+	.primary {
 		margin-right: 3%;
 		width: 72%;
 	}
-	#secondary {
+	.secondary {
 		width: 25%;
 	}
 	.widget #s {
@@ -1217,8 +1217,8 @@ img#wpstats:hover {
 @media screen and (max-width: 767px) {
 	#masthead,
 	#main,
-	#primary,
-	#secondary,
+	.primary,
+	.secondary,
 	#colophon,
 	#featured-content.flexslider .slides .featured-hentry-wrap {
 		width: 100%;
@@ -1230,7 +1230,7 @@ img#wpstats:hover {
 		bottom: 2%;
 		max-width: 50%;
 	}
-	#primary {
+	.primary {
 		margin-right: 0;
 	}
 	.widget #s {
