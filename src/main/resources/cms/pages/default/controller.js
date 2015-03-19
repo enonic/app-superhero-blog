@@ -11,11 +11,14 @@ function handleGet(req) {
 
     var facebookConfig = site.moduleConfigs[util.facebookModule] || {};
     var twitterConfig = site.moduleConfigs[util.twitterModule] || {};
+    var disqusConfig = site.moduleConfigs[util.disqusModule] || {};
 
     var content = execute('portal.getContent');
 
     // For facebook module
-    //var facebookAppID = facebookConfig.facebookAppID && facebookConfig.facebookAppID.length > 1 ? facebookConfig.facebookAppID : null; // Hack to prevent empty string
+    var facebookAppID = facebookConfig.facebookAppID && facebookConfig.facebookAppID.length > 1 ? facebookConfig.facebookAppID : null; // Hack to prevent empty string
+    var facebookApiVersion = facebookConfig.facebookApiVersion && facebookConfig.facebookApiVersion.length > 1 ? facebookConfig.facebookApiVersion : null; // Hack to prevent empty string
+    var disqusShortName = disqusConfig.shortname && disqusConfig.shortname.length > 1 ? disqusConfig.shortname : null;
     var userLanguage = req.headers['Accept-Language'].substring(0, req.headers['Accept-Language'].indexOf(',')); // So Facebook stuff comes out in the right language
 
     var googleUA = moduleConfig.googleUA && moduleConfig.googleUA.length > 1 ? moduleConfig.googleUA : null;
@@ -50,7 +53,11 @@ function handleGet(req) {
         bodyClass: bodyClass,
         moduleConfig: moduleConfig,
         facebookConfig: facebookConfig,
+        facebookAppID: facebookAppID,
+        facebookApiVersion: facebookApiVersion,
         twitterConfig: twitterConfig,
+        disqusConfig: disqusConfig,
+        disqusShortName: disqusShortName,
         backgroundImage: backgroundImage,
         mainRegion: content.page.regions['main'],
         content: content,

@@ -59,9 +59,10 @@ exports.get = function(req) {
 
         stk.data.deleteEmptyProperties(content.data);
     }
-
+    //stk.log(content);
     var params = {
         post: content.data,
+        pageTemplate: content.type == 'portal:page-template' ? true : false,
         site: site,
         commentsTotal: comments.total
     }

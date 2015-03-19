@@ -27,13 +27,13 @@
 <body class="home blog" data-th-class="${bodyClass}" data-portal-component-type="page">
     <!-- Facebook module -->
     <div id="fb-root" data-th-if="${facebookConfig.facebookAppID}"></div>
-    <script data-th-inline="javascript" data-th-if="${facebookConfig.facebookAppID}">
+    <script data-th-inline="javascript" data-th-if="${facebookAppID}">
 /*<![CDATA[*/
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : /*[[${facebookConfig.facebookAppID}]]*/,
+      appId      : /*[[${facebookAppID}]]*/,
       xfbml      : true,
-      version    : 'v2.2'
+      version    : /*[[${facebookApiVersion} ? ${facebookApiVersion} : 'v2.2']]*/
     });
   };
 
