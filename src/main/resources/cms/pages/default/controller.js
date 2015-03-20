@@ -19,7 +19,10 @@ function handleGet(req) {
     var facebookAppID = facebookConfig.facebookAppID && facebookConfig.facebookAppID.length > 1 ? facebookConfig.facebookAppID : null; // Hack to prevent empty string
     var facebookApiVersion = facebookConfig.facebookApiVersion && facebookConfig.facebookApiVersion.length > 1 ? facebookConfig.facebookApiVersion : null; // Hack to prevent empty string
     var disqusShortName = disqusConfig.shortname && disqusConfig.shortname.length > 1 ? disqusConfig.shortname : null;
-    var userLanguage = req.headers['Accept-Language'].substring(0, req.headers['Accept-Language'].indexOf(',')); // So Facebook stuff comes out in the right language
+    var userLanguage = 'en_US';
+    if(req.headers && req.headers['Accept-Language']) {
+        userLanguage = req.headers['Accept-Language'].substring(0, req.headers['Accept-Language'].indexOf(',')); // So Facebook stuff comes out in the right language
+    }
 
     var googleUA = moduleConfig.googleUA && moduleConfig.googleUA.length > 1 ? moduleConfig.googleUA : null;
     var bodyClass = '';
