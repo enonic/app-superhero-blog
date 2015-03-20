@@ -1146,10 +1146,10 @@ img#wpstats:hover {
 	content: '';
 	display: block;
 }
-.infinite-scroll #content {
+.infinite-scroll .content {
 	margin-bottom: 1.5em;
 }
-.infinite-scroll.neverending #content {
+.infinite-scroll.neverending .content {
 	margin-bottom: 1.5em;
 }
 #infinite-footer .container {
