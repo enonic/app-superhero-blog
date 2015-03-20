@@ -4,7 +4,7 @@ var util = require('utilities');
 exports.get = function(req) {
 
     var component = execute('portal.getComponent');
-    var content = execute('portal.getContent');
+    var content = util.getPost();
     var postAuthor = stk.content.get(content.data.author);
     var site = execute('portal.getSite');
     var allowedTags = '<a href="" title=""> <abbr title=""> <acronym title=""> <b> <blockquote cite=""> <cite> <code> <del datetime=""> <em> <i> <q cite=""> <strike> <strong> ';

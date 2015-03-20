@@ -5,8 +5,9 @@ exports.get = function(req) {
 
     var component = execute('portal.getComponent');
     var up = req.params;
-    var content = execute('portal.getContent');
     var site = execute('portal.getSite');
+
+    var content = util.getPost(); //Get the child content if it's a landing page.
 
     var comments = execute('content.query', {
         start: 0,

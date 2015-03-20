@@ -98,3 +98,29 @@ exports.getCategories = function() {
     });
     return result.contents;
 };
+
+exports.getPost = function() {
+    var currentContent = execute('portal.getContent');
+    var content;
+    var childContent;
+
+    if(currentContent.type == module.name + ':post') {
+        content = currentContent;
+    } else if (currentContent.type == module.name + ':landing-page') {
+        childContent = execute('content.getChildren', {
+            key: currentContent._id,
+            start: 0,
+            count: 1
+        });
+        childContent = execute('content.query', {
+            start: 0,
+            count: 1,
+            query: '_parentPath="/content' + currentContent._path + '"',
+            contentTypes: [
+                module.name + ":post"
+            ]
+        });
+        content = (childContent.contents && childContent.contents[0] && childContent.contents[0].type == module.name + ':post') ? childContent.contents[0] : currentContent
+    }
+    return content || currentContent;
+};
