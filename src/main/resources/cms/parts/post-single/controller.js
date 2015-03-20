@@ -6,8 +6,33 @@ exports.get = function(req) {
     var component = execute('portal.getComponent');
     var up = req.params;
     var site = execute('portal.getSite');
-
     var content = util.getPost(); //Get the child content if it's a landing page.
+    //For pagination
+    var moduleConfig = site.moduleConfigs[module.name];
+    var folderPath = moduleConfig.postsFolder ? stk.content.getPath(moduleConfig.postsFolder) : site._path + '/posts';
+    var prev, next;
+
+    // If it's a single post in the posts folder
+    if(stk.content.getParentPath(content._path) == folderPath) {
+        prev = execute('content.query', {
+            start: 0,
+            count: 1,
+            query: '_parentPath="/content' + folderPath + '" AND createdTime < instant("' + content.createdTime + '")',
+            sort: 'createdTime DESC',
+            contentTypes: [module.name + ':post']
+        });
+
+        next = execute('content.query', {
+            start: 0,
+            count: 1,
+            query: '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + content.createdTime + '")',
+            sort: 'createdTime ASC',
+            contentTypes: [module.name + ':post']
+        });
+    }
+    //End pagination
+
+
 
     var comments = execute('content.query', {
         start: 0,
@@ -65,7 +90,9 @@ exports.get = function(req) {
         post: content.data,
         pageTemplate: content.type == 'portal:page-template' ? true : false,
         site: site,
-        commentsTotal: comments.total
+        commentsTotal: comments.total,
+        prev: (prev && prev.contents) ? prev.contents[0] : null,
+        next: (next && next.contents) ? next.contents[0] : null
     }
     var view = resolve('post.html');
     return stk.view.render(view, params);

@@ -1,53 +1,72 @@
-<article data-th-id="'post-' + ${post.id}" id="post-19" class="post-19 post type-post status-publish format-standard hentry category-uncategorized tag-boat tag-lake">
+<div>
+    <article data-th-id="'post-' + ${post.id}" class="post-19 post type-post status-publish format-standard hentry category-uncategorized tag-boat tag-lake">
 
-    <img src="#" data-th-src="${post.fImageUrl}" data-th-if="${post.fImageUrl}" width="695" class="attachment-feat-img wp-post-image" alt="${post.fImageName}"/>
+        <img src="#" data-th-src="${post.fImageUrl}" data-th-if="${post.fImageUrl}" width="695" class="attachment-feat-img wp-post-image" alt="${post.fImageName}"/>
 
-    <header class="entry-header">
-        <h1 class="entry-title">
-            <a data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" rel="bookmark" data-th-text="${post.title}">Worth A Thousand Words</a>
-        </h1>
+        <header class="entry-header">
+            <h1 class="entry-title">
+                <a data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" rel="bookmark" data-th-text="${post.title}">Worth A Thousand Words</a>
+            </h1>
 
-        <div class="entry-meta">
-            Posted on
-            <a data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" title="4:33 am" rel="bookmark">
-                <time class="entry-date" datetime="2008-10-17T04:33:51+00:00" data-th-text="${post.pubDate}">October 17</time>
-            </a>
-            <span data-th-if="${post.author}" class="byline"> by
-                <span class="author vcard">
-                    <a class="url fn n" href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'author=' + post.author._name})}"
-                        data-th-title="'View all posts by ' + ${post.author.displayName}" rel="author" data-th-text="${post.author.data.name}">Theme Admin</a>
+            <div class="entry-meta">
+                Posted on
+                <a data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" title="4:33 am" rel="bookmark">
+                    <time class="entry-date" datetime="2008-10-17T04:33:51+00:00" data-th-text="${post.pubDate}">October 17</time>
+                </a>
+                <span data-th-if="${post.author}" class="byline"> by
+                    <span class="author vcard">
+                        <a class="url fn n" href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'author=' + post.author._name})}"
+                            data-th-title="'View all posts by ' + ${post.author.displayName}" rel="author" data-th-text="${post.author.data.name}">Theme Admin</a>
+                    </span>
                 </span>
-            </span>
-        </div><!-- .entry-meta -->
-    </header><!-- .entry-header -->
+            </div><!-- .entry-meta -->
+        </header><!-- .entry-header -->
 
-    <div class="entry-content" data-th-if="${pageTemplate}">
-        <p>This is a sample of how a post might look when it is using this template.</p>
-        <p>This text will be replaced with the content of your post.</p>
-    </div>
-
-    <div class="entry-content" data-th-if="${post.post}" data-th-utext="${post.post}">
-
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-        <span class="cat-links" data-th-if="${post.categories != null}">Posted in
-            <div data-th-remove="tag" data-th-each="category,iterStat : ${post.categories}">
-                <a href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'cat=' + category._name})}" rel="category" data-th-text="${category.data.name}">category</a><span data-th-remove="tag" data-th-if="${!iterStat.last}">,</span>
-            </div>
-        </span>
-
-        <div data-th-if="${post.tags != null}" data-th-remove="tag">
-            <span class="sep" data-th-if="${post.categories != null}"> | </span>
-
-            <span class="tags-links">Tagged
-                <div data-th-remove="tag" data-th-each="tag,iterStat : ${post.tags}">
-                    <a href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'tag=' + tag})}" rel="tag" data-th-text="${tag}">boat</a><span data-th-remove="tag" data-th-if="${!iterStat.last}">,</span>
-                </div>
-            </span>
+        <div class="entry-content" data-th-if="${pageTemplate}">
+            <p>This is a sample of how a post might look when it is using this template.</p>
+            <p>This text will be replaced with the content of your post.</p>
         </div>
 
+        <div class="entry-content" data-th-if="${post.post}" data-th-utext="${post.post}">
 
-    </footer><!-- .entry-meta -->
+        </div><!-- .entry-content -->
 
-</article><!-- #post-## -->
+        <footer class="entry-meta">
+            <span class="cat-links" data-th-if="${post.categories != null}">Posted in
+                <div data-th-remove="tag" data-th-each="category,iterStat : ${post.categories}">
+                    <a href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'cat=' + category._name})}" rel="category" data-th-text="${category.data.name}">category</a><span data-th-remove="tag" data-th-if="${!iterStat.last}">,</span>
+                </div>
+            </span>
+
+            <div data-th-if="${post.tags != null}" data-th-remove="tag">
+                <span class="sep" data-th-if="${post.categories != null}"> | </span>
+
+                <span class="tags-links">Tagged
+                    <div data-th-remove="tag" data-th-each="tag,iterStat : ${post.tags}">
+                        <a href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'tag=' + tag})}" rel="tag" data-th-text="${tag}">boat</a><span data-th-remove="tag" data-th-if="${!iterStat.last}">,</span>
+                    </div>
+                </span>
+            </div>
+
+
+        </footer><!-- .entry-meta -->
+
+    </article><!-- #post-## -->
+
+    <nav role="navigation" id="nav-below" class="site-navigation post-navigation" data-th-if="${prev} or ${next}">
+        <h1 class="assistive-text">Post navigation</h1>
+        <div class="nav-previous" data-th-if="${prev}">
+            <a href="#" rel="prev" data-th-href="${portal.pageUrl({'_path=' + prev._path})}">
+                <span class="meta-nav">&larr;</span>
+                <span data-th-remove="tag" data-th-text="${prev.displayName}">Prev title</span>
+            </a>
+        </div>
+
+        <div class="nav-next" data-th-if="${next}">
+            <a href="#" rel="next" data-th-href="${portal.pageUrl({'_path=' + next._path})}">
+                <span data-th-remove="tag" data-th-text="${next.displayName}">Next title</span>
+                <span>&rarr;</span>
+            </a>
+        </div>
+    </nav>
+</div>
