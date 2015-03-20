@@ -62,7 +62,8 @@ function handleGet(req) {
         mainRegion: content.page.regions['main'],
         content: content,
         menuItems: menuItems,
-        userLanguage: userLanguage
+        userLanguage: userLanguage,
+        headerStyle: req.mode == 'edit' ? 'position: absolute;' : null
     }
 
     var view = resolve('home.html');
