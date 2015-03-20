@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<node xmlns="urn:enonic:xp:export:1.0">
+    <id>2a1fcedf-810d-4421-8022-ff5c04ecf1cd</id>
+    <childOrder>modifiedtime DESC</childOrder>
+    <nodeType>content</nodeType>
+    <data>
+        <boolean name="valid">true</boolean>
+        <string name="displayName">Sub2-page</string>
+        <string name="type">com.enonic.theme.superhero:post</string>
+        <string name="owner">user:system:su</string>
+        <string name="language">en</string>
+        <dateTime name="modifiedTime">2015-03-20T04:58:40.066Z</dateTime>
+        <string name="modifier">user:system:su</string>
+        <string name="creator">user:system:su</string>
+        <dateTime name="createdTime">2015-02-28T00:58:42.921Z</dateTime>
+        <property-set name="data">
+            <string name="title">Sub-page</string>
+            <htmlPart name="post">&amp;lt;p&amp;gt;This page is a sub-page of the &amp;amp;#8216;Parent Page&amp;amp;#8217;.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam odio sapien, sollicitudin vel volutpat eget, faucibus at neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi vel eros odio. Phasellus metus ligula, tempus non tempor at, pellentesque ac dolor. Sed auctor diam sit amet nibh laoreet gravida. Etiam sit amet fringilla justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium, elit vulputate euismod semper, lectus dui commodo eros, vitae sollicitudin diam ligula vitae magna. Sed aliquam rhoncus leo vitae lacinia. Phasellus facilisis odio ac mauris fringilla non aliquam est suscipit. Suspendisse eget eros id tortor sagittis suscipit vitae non dolor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pellentesque ornare enim, et feugiat magna accumsan quis.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Sed elementum lorem et quam volutpat viverra mollis at mi. In rutrum sagittis ligula, dapibus porttitor nisl posuere in. Suspendisse pulvinar massa nibh. Duis scelerisque diam vel dui mattis commodo. Curabitur euismod mi sed massa placerat placerat. Sed non orci ac neque tincidunt eleifend. Vivamus ac nisl elit. Donec interdum, felis aliquet pretium semper, magna odio elementum eros, vel volutpat nisl libero sed erat. Donec lobortis consequat orci, in malesuada ante aliquam nec. Nullam sed metus vitae nisi bibendum tristique ut nec mi. Sed euismod tincidunt mauris, sed fermentum mauris gravida et. Morbi posuere suscipit velit, et pulvinar ante convallis vitae. Sed lacinia lorem non felis adipiscing sodales vitae tempus tortor.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Duis rutrum, elit id consequat vehicula, risus libero pulvinar eros, ut aliquet tellus odio nec elit. Sed quam leo, iaculis laoreet commodo sed, elementum ut justo. Suspendisse blandit est vitae dolor tempor sollicitudin et ut lacus. Nunc varius elementum lectus, in lobortis ante lacinia ut. Donec neque odio, varius sed egestas at, imperdiet in arcu. Integer consectetur augue ac urna posuere non sollicitudin justo blandit. Nam sagittis viverra est in tempor. Aenean vitae mi massa. Sed quam nibh, tempus dictum vulputate ac, dapibus ac lectus. Integer sed adipiscing elit. Maecenas posuere lobortis cursus. Proin at suscipit leo. Nunc ante elit, auctor ac vehicula sit amet, eleifend sed nunc. Sed eleifend quam non felis pellentesque tincidunt. Integer varius metus at nulla pulvinar vel sollicitudin augue convallis. Pellentesque lacinia iaculis enim, a suscipit tortor tempor sed.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Mauris eu magna et nunc commodo congue. Morbi tincidunt commodo diam, vitae aliquam lacus pellentesque nec. Fusce mattis orci sed lacus condimentum malesuada. In hac habitasse platea dictumst. Integer felis ipsum, laoreet in gravida in, vehicula vitae tortor. Curabitur vestibulum nisi metus, ac auctor ligula. Morbi egestas odio tincidunt mauris dictum non faucibus ipsum ornare. Mauris ac justo sit amet lectus malesuada ornare. Etiam enim lorem, suscipit sed tincidunt nec, consectetur eget dui. Etiam in erat leo, non iaculis sem. Aliquam sed nulla metus.&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;Etiam eget magna sed sapien tempor facilisis ac eget tellus. Nullam pulvinar, velit congue dictum fermentum, est odio sodales urna, nec pulvinar est orci a est. Vestibulum sed lectus eu elit imperdiet laoreet. Aliquam faucibus nibh quis libero elementum gravida. Aenean pellentesque odio et nibh convallis tristique. Curabitur porttitor metus in magna rhoncus tristique faucibus nibh iaculis. Vivamus elit sapien, mollis vitae molestie quis, luctus vitae neque. Suspendisse sodales, est non congue tempus, tortor mauris congue lectus, sit amet convallis lorem diam quis nisi. Pellentesque sed justo eget nibh venenatis euismod ut nec ipsum. Aenean ac elit vitae tortor pharetra semper. &amp;lt;/p&amp;gt;</htmlPart>
+            <boolean name="enableComments">false</boolean>
+            <boolean name="stickyPost">false</boolean>
+            <boolean name="slideshow">false</boolean>
+        </property-set>
+        <property-set name="x">
+            <property-set name="com-enonic-theme-superhero">
+                <property-set name="menu-item">
+                    <boolean name="menuItem">false</boolean>
+                    <string name="menuName"></string>
+                </property-set>
+            </property-set>
+        </property-set>
+    </data>
+    <indexConfigs>
+        <analyzer>content_default</analyzer>
+        <defaultConfig>
+            <decideByType>true</decideByType>
+            <enabled>true</enabled>
+            <nGram>false</nGram>
+            <fulltext>false</fulltext>
+            <includeInAllText>false</includeInAllText>
+        </defaultConfig>
+        <pathIndexConfigs>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page.regions</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>x</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>data</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>site</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>type</path>
+            </pathIndexConfig>
+        </pathIndexConfigs>
+    </indexConfigs>
+</node>

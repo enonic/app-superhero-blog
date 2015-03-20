@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <node xmlns="urn:enonic:xp:export:1.0">
     <id>e1f57280-d672-4cd8-b674-98e26e5b69ae</id>
-    <childOrder>modifiedtime DESC</childOrder>
+    <childOrder>_manualordervalue DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
         <boolean name="valid">true</boolean>
@@ -9,7 +9,7 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-08T06:44:21.405Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-20T05:42:09.509Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
@@ -19,9 +19,8 @@
                 <string name="moduleKey">com.enonic.theme.superhero</string>
                 <property-set name="config">
                     <string name="google-ua">UA-123ABC</string>
-                    <reference name="postsFolder">84ccc003-3d1b-4a99-8a02-753930848295</reference>
                     <string name="numPosts">5</string>
-                    <reference name="postsList">e1f57280-d672-4cd8-b674-98e26e5b69ae</reference>
+                    <string name="googleUA">UA-123ABC</string>
                 </property-set>
             </property-set>
         </property-set>

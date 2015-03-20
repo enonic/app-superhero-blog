@@ -9,12 +9,13 @@
         <string name="type">portal:page-template</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-05T00:56:25.146Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-20T03:37:10.574Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:55:44.468Z</dateTime>
         <property-set name="data">
             <string name="supports">com.enonic.theme.superhero:post</string>
+            <string name="supports">com.enonic.theme.superhero:landing-page</string>
         </property-set>
         <property-set name="page">
             <string name="controller">com.enonic.theme.superhero:default</string>

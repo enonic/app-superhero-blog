@@ -1,35 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <node xmlns="urn:enonic:xp:export:1.0">
-    <id>03ff15b2-954c-4131-b58f-7bcd84698dd0</id>
+    <id>2208aa12-e952-4889-af18-69be2b65b564</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Some Buildings to Leap</string>
+        <string name="displayName">About</string>
         <string name="type">com.enonic.theme.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-20T05:06:52.995Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-20T04:36:14.618Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-03-07T01:11:36.813Z</dateTime>
+        <dateTime name="createdTime">2015-02-28T01:00:26.740Z</dateTime>
         <property-set name="data">
-            <string name="title">Some Buildings to Leap</string>
-            <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
-            <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&amp;lt;div id=&amp;quot;attachment_45&amp;quot; class=&amp;quot;wp-caption alignnone&amp;quot; style=&amp;quot;width: 655px&amp;quot;&amp;gt;
-&amp;lt;a href=&amp;quot;superhero_4.jpg&amp;quot;&amp;gt;
-&amp;lt;img class=&amp;quot;wp-image-45 size-full&amp;quot; width=&amp;quot;645&amp;quot; height=&amp;quot;430&amp;quot; alt=&amp;quot;superhero_4&amp;quot; src=&amp;quot;_/image/32169e70-49e1-444c-a6ac-d38f22438134/superhero_4.jpg&amp;quot;&amp;gt;
-&amp;lt;/a&amp;gt;
-&amp;lt;p class=&amp;quot;wp-caption-text&amp;quot;&amp;gt;These are some building I saw the other day, that I think would make for some great hurdles.&amp;lt;/p&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;p&amp;gt; &amp;lt;/p&amp;gt;</htmlPart>
-            <string name="tags">Buildings</string>
-            <string name="tags">Featured</string>
+            <string name="title">About</string>
+            <htmlPart name="post">This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.</htmlPart>
             <boolean name="enableComments">true</boolean>
             <boolean name="stickyPost">false</boolean>
-            <reference name="featuredImage">81b1e3cd-575f-4565-a618-3c85d56224f6</reference>
-            <boolean name="slideshow">true</boolean>
+            <boolean name="slideshow">false</boolean>
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-theme-superhero">

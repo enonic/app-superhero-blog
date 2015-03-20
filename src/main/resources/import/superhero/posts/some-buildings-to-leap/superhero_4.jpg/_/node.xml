@@ -1,43 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <node xmlns="urn:enonic:xp:export:1.0">
-    <id>03ff15b2-954c-4131-b58f-7bcd84698dd0</id>
+    <id>32169e70-49e1-444c-a6ac-d38f22438134</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Some Buildings to Leap</string>
-        <string name="type">com.enonic.theme.superhero:post</string>
+        <string name="displayName">superhero_4.jpg</string>
+        <string name="type">media:image</string>
+        <dateTime name="createdTime">2015-03-20T05:02:41.265Z</dateTime>
+        <string name="creator">user:system:su</string>
+        <string name="modifier">user:system:su</string>
+        <dateTime name="modifiedTime">2015-03-20T05:02:41.265Z</dateTime>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-20T05:06:52.995Z</dateTime>
-        <string name="modifier">user:system:su</string>
-        <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-03-07T01:11:36.813Z</dateTime>
         <property-set name="data">
-            <string name="title">Some Buildings to Leap</string>
-            <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
-            <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&amp;lt;div id=&amp;quot;attachment_45&amp;quot; class=&amp;quot;wp-caption alignnone&amp;quot; style=&amp;quot;width: 655px&amp;quot;&amp;gt;
-&amp;lt;a href=&amp;quot;superhero_4.jpg&amp;quot;&amp;gt;
-&amp;lt;img class=&amp;quot;wp-image-45 size-full&amp;quot; width=&amp;quot;645&amp;quot; height=&amp;quot;430&amp;quot; alt=&amp;quot;superhero_4&amp;quot; src=&amp;quot;_/image/32169e70-49e1-444c-a6ac-d38f22438134/superhero_4.jpg&amp;quot;&amp;gt;
-&amp;lt;/a&amp;gt;
-&amp;lt;p class=&amp;quot;wp-caption-text&amp;quot;&amp;gt;These are some building I saw the other day, that I think would make for some great hurdles.&amp;lt;/p&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;p&amp;gt; &amp;lt;/p&amp;gt;</htmlPart>
-            <string name="tags">Buildings</string>
-            <string name="tags">Featured</string>
-            <boolean name="enableComments">true</boolean>
-            <boolean name="stickyPost">false</boolean>
-            <reference name="featuredImage">81b1e3cd-575f-4565-a618-3c85d56224f6</reference>
-            <boolean name="slideshow">true</boolean>
+            <string name="media">superhero_4.jpg</string>
+            <string name="caption"></string>
+            <string name="artist"></string>
+            <string name="copyright"></string>
+            <string name="tags"></string>
         </property-set>
         <property-set name="x">
-            <property-set name="com-enonic-theme-superhero">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string name="menuName"></string>
+            <property-set name="media">
+                <property-set name="image-info">
+                    <string name="imageHeight">430</string>
+                    <string name="imageWidth">645</string>
+                    <string name="contentType">image/jpeg</string>
+                    <string name="bytesize">146481</string>
+                    <long name="pixelSize">277350</long>
                 </property-set>
             </property-set>
+        </property-set>
+        <property-set name="attachment">
+            <string name="name">superhero_4.jpg</string>
+            <string name="label">source</string>
+            <binaryReference name="binary">superhero_4.jpg</binaryReference>
+            <string name="mimeType">image/jpeg</string>
+            <long name="size">146481</long>
+        </property-set>
+        <property-set name="attachment">
+            <string name="name">superhero_4_small.jpg</string>
+            <string name="label">small</string>
+            <binaryReference name="binary">superhero_4_small.jpg</binaryReference>
+            <string name="mimeType">image/jpeg</string>
+            <long name="size">13595</long>
+        </property-set>
+        <property-set name="attachment">
+            <string name="name">superhero_4_medium.jpg</string>
+            <string name="label">medium</string>
+            <binaryReference name="binary">superhero_4_medium.jpg</binaryReference>
+            <string name="mimeType">image/jpeg</string>
+            <long name="size">41871</long>
         </property-set>
     </data>
     <indexConfigs>
