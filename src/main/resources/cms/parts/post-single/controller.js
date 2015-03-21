@@ -7,12 +7,13 @@ exports.get = function(req) {
     var up = req.params;
     var site = execute('portal.getSite');
     var content = util.getPost(); //Get the child content if it's a landing page.
+
     //For pagination
     var moduleConfig = site.moduleConfigs[module.name];
     var folderPath = moduleConfig.postsFolder ? stk.content.getPath(moduleConfig.postsFolder) : site._path + '/posts';
     var prev, next;
 
-    // If it's a single post in the posts folder
+    // Pagination if it's a single post in the posts folder
     if(stk.content.getParentPath(content._path) == folderPath) {
         prev = execute('content.query', {
             start: 0,
@@ -32,9 +33,14 @@ exports.get = function(req) {
     }
     //End pagination
 
+    //for comments
+    var postUrl = getServiceUrl();
 
+    var postAuthor = stk.content.get(content.data.author);
+    var allowedTags = '<a href="" title=""> <abbr title=""> <acronym title=""> <b> <blockquote cite=""> <cite> <code> <del datetime=""> <em> <i> <q cite=""> <strike> <strong> ';
 
-    var comments = execute('content.query', {
+    //get comments TODO: Get only the first level comments here.
+    var result = execute('content.query', {
         start: 0,
         count: 1000,
         query: "data.post = '" + content._id + "'",
@@ -43,6 +49,30 @@ exports.get = function(req) {
             module.name + ':comment'
         ]
     });
+    var commentsTotal = result.total;
+    var comments = result.contents;
+
+    //TODO: Get all the child comments here so they can be properly nested.
+    for (var i = 0; i < comments.length; i++) {
+        var data = comments[i].data;
+
+        var date = util.getFormattedDate(new Date(comments[i].createdTime));
+        date += ' at ' + comments[i].createdTime.substring(11, 16);
+        data.pubDate = date;
+        data.gravatar = util.getGravatar(data.email, 40) + '&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&r=G';
+
+        var liClass = 'comment';
+        liClass += (i%2 == 0) ? ' even thread-even' : ' odd thread-odd';
+        if(data.email == postAuthor.data.email) {
+            liClass += ' bypostauthor';
+        }
+        data.liClass = liClass;
+
+        data.replyClick = "addComment.moveForm('comment-" + comments[i]._id + "', '" + comments[i]._id + "', 'respond', '" + content._id + "')";
+        //return addComment.moveForm( 'comment-1', '1', 'respond', '1' )
+
+    }
+    //end comments
 
     var data = content.data;
     var categoriesArray = new Array();
@@ -90,10 +120,25 @@ exports.get = function(req) {
         post: content.data,
         pageTemplate: content.type == 'portal:page-template' ? true : false,
         site: site,
-        commentsTotal: comments.total,
+        content: content,
         prev: (prev && prev.contents) ? prev.contents[0] : null,
-        next: (next && next.contents) ? next.contents[0] : null
+        next: (next && next.contents) ? next.contents[0] : null,
+        allowedTags: allowedTags,
+        postUrl: postUrl,
+        commentsTotal: commentsTotal,
+        comments: comments
     }
     var view = resolve('post.html');
     return stk.view.render(view, params);
 };
+
+function getServiceUrl() {
+    var postUrl;
+    var serviceUrl = execute('portal.serviceUrl', {
+        path: 'comments'
+    });
+    postUrl = serviceUrl.substring(0, serviceUrl.indexOf('?'));
+    postUrl += '/comments' + serviceUrl.substring(serviceUrl.indexOf('?'));
+
+    return postUrl;
+}
