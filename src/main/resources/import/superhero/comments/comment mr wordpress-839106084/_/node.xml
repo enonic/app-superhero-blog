@@ -17,8 +17,7 @@
             <string name="name">Mr WordPress</string>
             <string name="email">admin@wordpress.org</string>
             <string name="website">http://wordpress.org</string>
-            <htmlPart name="comment">Hi, this is a comment.&amp;lt;br/&amp;gt;
-            To delete a comment, just log in and view the post&amp;apos;s comments. There you will have the option to edit or delete them.</htmlPart>
+            <htmlPart name="comment">Hi, this is a comment.&amp;lt;br/&amp;gt;<br/>To delete a comment, just log in and view the post&amp;apos;s comments. There you will have the option to edit or delete them.</htmlPart>
             <reference name="post">186721fd-1866-46c7-a673-a6ffbcbcaadb</reference>
         </property-set>
     </data>

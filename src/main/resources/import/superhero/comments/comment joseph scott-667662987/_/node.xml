@@ -14,11 +14,11 @@
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
         <property-set name="data">
-            <string name="website">http://joseph.randomnetworks.com/</string>
-            <reference name="post">566e3f36-ff84-476c-b36a-34d97a9862c5</reference>
             <string name="name">Joseph Scott</string>
-            <htmlPart name="comment">I never could remember more than the first few lines of that nursery rhyme.</htmlPart>
             <string name="email">joe@josephscott.org</string>
+            <string name="website">http://joseph.randomnetworks.com/</string>
+            <htmlPart name="comment">I never could remember more than the first few lines of that nursery rhyme.</htmlPart>
+            <reference name="post">566e3f36-ff84-476c-b36a-34d97a9862c5</reference>
         </property-set>
     </data>
     <indexConfigs>

@@ -7,19 +7,18 @@
         <boolean name="valid">true</boolean>
         <string name="displayName">Bobby Brown</string>
         <string name="type">com.enonic.theme.superhero:comment</string>
-        <dateTime name="createdTime">2015-03-21T10:59:11.411Z</dateTime>
-        <string name="creator">user:system:su</string>
-        <string name="modifier">user:system:su</string>
-        <dateTime name="modifiedTime">2015-03-21T10:59:11.411Z</dateTime>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
+        <dateTime name="modifiedTime">2015-03-21T10:59:11.411Z</dateTime>
+        <string name="modifier">user:system:su</string>
+        <string name="creator">user:system:su</string>
+        <dateTime name="createdTime">2015-03-21T10:59:11.411Z</dateTime>
         <property-set name="data">
-            <string name="website">https://enonic.com</string>
-            <string name="commentParent"></string>
-            <string name="post">2208aa12-e952-4889-af18-69be2b65b564</string>
             <string name="name">Bobby Brown</string>
-            <string name="comment">New comment on post.</string>
             <string name="email">mer@enonic.com</string>
+            <string name="website">https://enonic.com</string>
+            <htmlPart name="comment">New comment on post.</htmlPart>
+            <reference name="post">2208aa12-e952-4889-af18-69be2b65b564</reference>
         </property-set>
     </data>
     <indexConfigs>

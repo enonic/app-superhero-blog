@@ -14,12 +14,12 @@
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
         <property-set name="data">
-            <string name="website">https://enonic.com</string>
-            <string name="commentParent">6618200a-5433-42e8-8cb8-3dafb404c310</string>
-            <string name="post">2208aa12-e952-4889-af18-69be2b65b564</string>
             <string name="name">Michael Lazell</string>
-            <string name="comment">Reply to Bobby Brown&amp;apos;s comment.</string>
             <string name="email">mla@enonic.com</string>
+            <string name="website">https://enonic.com</string>
+            <htmlPart name="comment">Reply to Bobby Brown&amp;apos;s comment.</htmlPart>
+            <reference name="post">2208aa12-e952-4889-af18-69be2b65b564</reference>
+            <reference name="commentParent">6618200a-5433-42e8-8cb8-3dafb404c310</reference>
         </property-set>
     </data>
     <indexConfigs>

@@ -71,7 +71,7 @@ exports.get = function(req) {
         data.liClass = liClass;
 
         data.replyClick = "addComment.moveForm('comment-" + comments[i]._id + "', '" + comments[i]._id + "', 'respond', '" + content._id + "')";
-        //return addComment.moveForm( 'comment-1', '1', 'respond', '1' )
+        //addComment.moveForm( 'comment-1', '1', 'respond', '1' )
 
     }
     //end comments
