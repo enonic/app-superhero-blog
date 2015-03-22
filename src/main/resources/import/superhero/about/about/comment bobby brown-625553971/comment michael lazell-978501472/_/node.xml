@@ -1,32 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <node xmlns="urn:enonic:xp:export:1.0">
-    <id>e1f57280-d672-4cd8-b674-98e26e5b69ae</id>
-    <childOrder>_manualordervalue DESC</childOrder>
+    <id>950fa08a-b8fe-4041-9f59-f4b7e9f8b530</id>
+    <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Superhero</string>
-        <string name="type">portal:site</string>
+        <string name="displayName">Michael Lazell</string>
+        <string name="type">com.enonic.theme.superhero:comment</string>
+        <dateTime name="createdTime">2015-03-21T19:41:24.175Z</dateTime>
+        <string name="creator">user:system:su</string>
+        <string name="modifier">user:system:su</string>
+        <dateTime name="modifiedTime">2015-03-21T19:41:24.175Z</dateTime>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-20T22:52:10.856Z</dateTime>
-        <string name="modifier">user:system:su</string>
-        <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
         <property-set name="data">
-            <string name="description">Superhero WordPress theme for Enonic XP</string>
-            <property-set name="moduleConfig">
-                <string name="moduleKey">com.enonic.theme.superhero</string>
-                <property-set name="config">
-                    <string name="google-ua">UA-123ABC</string>
-                    <string name="numPosts">5</string>
-                    <string name="googleUA">UA-123ABC</string>
-                </property-set>
-            </property-set>
-        </property-set>
-        <property-set name="page">
-            <string isNull="true" name="controller"/>
-            <reference name="template">f2624852-d563-4343-80f7-86424f314c32</reference>
+            <string name="website">https://enonic.com</string>
+            <string name="commentParent">6618200a-5433-42e8-8cb8-3dafb404c310</string>
+            <string name="post">2208aa12-e952-4889-af18-69be2b65b564</string>
+            <string name="name">Michael Lazell</string>
+            <string name="comment">Reply to Bobby Brown&amp;apos;s comment.</string>
+            <string name="email">mla@enonic.com</string>
         </property-set>
     </data>
     <indexConfigs>

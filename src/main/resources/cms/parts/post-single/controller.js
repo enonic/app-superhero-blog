@@ -34,7 +34,9 @@ exports.get = function(req) {
     //End pagination
 
     //for comments
-    var postUrl = getServiceUrl();
+    var postUrl = execute('portal.serviceUrl', {
+          service: 'comments'
+      });
 
     var postAuthor = stk.content.get(content.data.author);
     var allowedTags = '<a href="" title=""> <abbr title=""> <acronym title=""> <b> <blockquote cite=""> <cite> <code> <del datetime=""> <em> <i> <q cite=""> <strike> <strong> ';
@@ -131,14 +133,3 @@ exports.get = function(req) {
     var view = resolve('post.html');
     return stk.view.render(view, params);
 };
-
-function getServiceUrl() {
-    var postUrl;
-    var serviceUrl = execute('portal.serviceUrl', {
-        path: 'comments'
-    });
-    postUrl = serviceUrl.substring(0, serviceUrl.indexOf('?'));
-    postUrl += '/comments' + serviceUrl.substring(serviceUrl.indexOf('?'));
-
-    return postUrl;
-}

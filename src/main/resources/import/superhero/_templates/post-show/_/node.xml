@@ -9,7 +9,7 @@
         <string name="type">portal:page-template</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-20T22:21:14.228Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-21T00:12:50.314Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:55:44.468Z</dateTime>
@@ -36,16 +36,6 @@
                                     <string name="name">Post single</string>
                                     <string name="template">com.enonic.theme.superhero:post-single</string>
                                     <property-set name="config"/>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Comments</string>
-                                    <string name="template">com.enonic.theme.superhero:comments</string>
-                                    <property-set name="config">
-                                        <reference name="saveFolder">4edbe4b6-9d61-4d4e-a022-2a7e00708a94</reference>
-                                    </property-set>
                                 </property-set>
                             </property-set>
                         </property-set>
