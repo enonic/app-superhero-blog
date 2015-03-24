@@ -10,7 +10,7 @@ exports.get = function(req) {
 
     //For pagination
     var moduleConfig = site.moduleConfigs[module.name];
-    var folderPath = moduleConfig.postsFolder ? stk.content.getPath(moduleConfig.postsFolder) : site._path + '/posts';
+    var folderPath = util.postsFolder();
     var prev, next;
 
     // Pagination if it's a single post in the posts folder
@@ -34,9 +34,7 @@ exports.get = function(req) {
     //End pagination
 
     //for comments
-    var postUrl = execute('portal.serviceUrl', {
-          service: 'comments'
-      });
+    var postUrl = stk.serviceUrl('comments');
 
     var postAuthor = stk.content.get(content.data.author);
     var allowedTags = '<a href="" title=""> <abbr title=""> <acronym title=""> <b> <blockquote cite=""> <cite> <code> <del datetime=""> <em> <i> <q cite=""> <strike> <strong> ';
@@ -52,6 +50,7 @@ exports.get = function(req) {
         ]
     });
     var commentsTotal = result.total;
+
     var comments = result.contents;
 
     //TODO: Get all the child comments here so they can be properly nested.

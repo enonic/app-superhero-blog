@@ -30,6 +30,14 @@
         <allow-content-type>base:folder</allow-content-type>
       </config>
     </input>
+    <input type="ContentSelector" name="commentsFolder">
+      <label>Comments folder</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <reference-type>system:reference</reference-type>
+        <allow-content-type>base:folder</allow-content-type>
+      </config>
+    </input>
     <input type="ContentSelector" name="postsList">
       <label>Posts list page</label>
       <occurrences minimum="0" maximum="1"/>

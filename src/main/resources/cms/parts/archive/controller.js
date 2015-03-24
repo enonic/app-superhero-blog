@@ -9,7 +9,7 @@ exports.get = function(req) {
     var title = config.title || 'Archives';
     var site = execute('portal.getSite');
     var moduleConfig = site.moduleConfigs[module.name];
-    var defaultLocation = site._path + '/posts'; //Default location to look for posts
+    var defaultLocation = util.postsFolder(); //Default location to look for posts
     var folderPath = util.getPostsFolder(config.contentFolder, moduleConfig.postsFolder, defaultLocation);
 
     var monthsArray = [];

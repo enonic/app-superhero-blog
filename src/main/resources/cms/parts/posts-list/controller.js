@@ -13,7 +13,7 @@ exports.get = function(req) {
     var newer = null, older = null; // For pagination
     var posts = new Array();
 
-    var defaultLocation = site._path + '/posts'; //Default location to look for posts
+    var defaultLocation = util.postsFolder(); //Default location to look for posts
     var folderPath = util.getPostsFolder(config.contentFolder, moduleConfig.postsFolder, defaultLocation);
 
     var categories = util.getCategories();

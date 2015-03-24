@@ -124,3 +124,14 @@ exports.getPost = function() {
     }
     return content || currentContent;
 };
+
+exports.commentsFolder = function() {
+    var site = execute('portal.getSite');
+    var moduleConfig = site.moduleConfigs[module.name];
+    return moduleConfig.commentsFolder ? stk.content.getPath(moduleConfig.commentsFolder) : site._path + '/comments';
+};
+exports.postsFolder = function() {
+    var site = execute('portal.getSite');
+    var moduleConfig = site.moduleConfigs[module.name];
+    return moduleConfig.postsFolder ? stk.content.getPath(moduleConfig.postsFolder) : site._path + '/posts';
+};

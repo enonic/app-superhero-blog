@@ -6,7 +6,7 @@ exports.get = function (req) {
     var content = execute('portal.getContent');
     var site = execute('portal.getSite');
     var moduleConfig = site.moduleConfigs[module.name];
-    var defaultLocation = site._path + '/posts'; //Default location to look for posts
+    var defaultLocation = util.postsFolder(); //Default location to look for posts
     var folderPath = util.getPostsFolder(null, moduleConfig.postsFolder, defaultLocation);
 
     var pageUrl = execute('portal.pageUrl', {
