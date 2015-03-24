@@ -12,9 +12,7 @@ exports.get = function(req) {
     var postsPerPage = moduleConfig.numPosts ? moduleConfig.numPosts : 10;
     var newer = null, older = null; // For pagination
     var posts = new Array();
-
-    var defaultLocation = util.postsFolder(); //Default location to look for posts
-    var folderPath = util.getPostsFolder(config.contentFolder, moduleConfig.postsFolder, defaultLocation);
+    var folderPath = util.postsFolder(config.contentFolder);
 
     var categories = util.getCategories();
 
@@ -41,9 +39,7 @@ exports.get = function(req) {
             module.name + ':post'
         ]
     });
-    /*stk.log(results);
-    stk.log(query);
-    stk.log(orderBy);*/
+
     // If the results total is more than the postsPerPage then it will need pagination.
     if (results.total > postsPerPage) {
 

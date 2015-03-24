@@ -6,10 +6,7 @@ exports.get = function(req) {
     var config = component.config;
     var up = req.params; // URL params
     var content = execute('portal.getContent');
-    var site = execute('portal.getSite');
-    var moduleConfig = site.moduleConfigs[module.name];
-    var defaultLocation = util.postsFolder(); //Default location to look for posts
-    var folderPath = util.getPostsFolder(config.postsFolder, moduleConfig.postsFolder, defaultLocation);
+    var folderPath = util.postsFolder(config.postsFolder);
 
     var query = '_parentPath="/content' + folderPath + '" AND data.featuredImage != "" AND data.slideshow = "true"';
 

@@ -1,9 +1,9 @@
 var stk = require('stk/stk');
-//var module = 'com.enonic.theme.superhero';
 
 exports.facebookModule = 'com.enonic.xp.modules.facebook-module';
 exports.twitterModule = 'com.enonic.xp.modules.twitter-module';
 
+// Returns the full month name from a Date object.
 exports.getMonthName = function(date) {
 
     var month = date.getMonth();
@@ -58,28 +58,11 @@ exports.getGravatar = function(email, size) {
     return 'http://www.gravatar.com/avatar/' + MD5(email) + '.jpg?s=' + size;
 };
 
-exports.getPostsFolder = function(local, site, defaultLocation) {
-    if(local) {
-        var folder = execute('content.get', {key: local});
-        if(folder) {
-            return folder._path;
-        }
-    }
-    if(site) { // Use the site configured Posts folder if it has been selected.
-        var folder = execute('content.get', {key: site});
-        if(folder) {
-            return folder._path;
-        }
-    }
-    //Use the backup default if no location has been configured.
-    return defaultLocation;
-};
-
+// Return the category with the matching name or id.
 exports.getCategory = function(obj, categories) {
 
     for (var i = 0; i < categories.length; i++) {
         if (obj.name == categories[i]._name || obj.id == categories[i]._id) {
-            //stk.log(cat);
             return categories[i];
         }
     }
@@ -87,8 +70,8 @@ exports.getCategory = function(obj, categories) {
     return null;
 };
 
+// Returns the category contents.
 exports.getCategories = function() {
-
     var result = execute('content.query', {
         start: 0,
         count: 1000,
@@ -99,6 +82,7 @@ exports.getCategories = function() {
     return result.contents;
 };
 
+// Returns the post content, even when on a landing page.
 exports.getPost = function() {
     var currentContent = execute('portal.getContent');
     var content;
@@ -107,11 +91,6 @@ exports.getPost = function() {
     if(currentContent.type == module.name + ':post') {
         content = currentContent;
     } else if (currentContent.type == module.name + ':landing-page') {
-        childContent = execute('content.getChildren', {
-            key: currentContent._id,
-            start: 0,
-            count: 1
-        });
         childContent = execute('content.query', {
             start: 0,
             count: 1,
@@ -125,12 +104,21 @@ exports.getPost = function() {
     return content || currentContent;
 };
 
+// Return the site config comments folder (if exits) or the default comments folder.
 exports.commentsFolder = function() {
     var site = execute('portal.getSite');
     var moduleConfig = site.moduleConfigs[module.name];
     return moduleConfig.commentsFolder ? stk.content.getPath(moduleConfig.commentsFolder) : site._path + '/comments';
 };
-exports.postsFolder = function() {
+
+// Return the local config posts path (if exits) ele the site config path (if exits) else the default /posts folder.
+exports.postsFolder = function(local) {
+    if(local) {
+        var folder = execute('content.get', {key: local});
+        if(folder) {
+            return folder._path;
+        }
+    }
     var site = execute('portal.getSite');
     var moduleConfig = site.moduleConfigs[module.name];
     return moduleConfig.postsFolder ? stk.content.getPath(moduleConfig.postsFolder) : site._path + '/posts';

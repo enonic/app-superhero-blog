@@ -6,14 +6,9 @@ exports.get = function(req) {
     var component = execute('portal.getComponent');
     var config = component.config;
     var content = execute('portal.getContent');
-    var title = config.title || 'Recent posts'
+    var title = config.title || 'Recent posts';
     var maxPosts = config.maxPosts || 5;
-
-    var site = execute('portal.getSite');
-    var moduleConfig = site.moduleConfigs[module.name];
-
-    var defaultLocation = util.postsFolder(); //Default location to look for posts
-    var folderPath = util.getPostsFolder(config.contentFolder, moduleConfig.postsFolder, defaultLocation);
+    var folderPath = util.postsFolder(config.contentFolder);
 
     var query = '_parentPath="/content' + folderPath + '"';
     var posts = new Array();
