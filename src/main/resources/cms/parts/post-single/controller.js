@@ -34,7 +34,7 @@ exports.get = function(req) {
     //End pagination
 
     //for comments
-    var postUrl = stk.serviceUrl('comments');
+    var postUrl = stk.serviceUrl('comments', {commentsFolder: util.commentsFolder()});
 
     var postAuthor = stk.content.get(content.data.author);
     var allowedTags = '<a href="" title=""> <abbr title=""> <acronym title=""> <b> <blockquote cite=""> <cite> <code> <del datetime=""> <em> <i> <q cite=""> <strike> <strong> ';

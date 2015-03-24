@@ -1,4 +1,5 @@
 var stk = require('stk/stk');
+var util = require('utilities');
 
 exports.post = function(req) {
     var p = req.formParams;
@@ -7,7 +8,7 @@ exports.post = function(req) {
 
     //Make sure somebody doesn't alter the form to create a comment on a post that doesn't allow comments.
     if(commentPost.data && commentPost.data.enableComments == true) {
-        var saveLocation = util.commentsFolder();
+        var saveLocation = req.params.commentsFolder;
 
         // Check required fields and create content
         if (p.author && p.email) {
