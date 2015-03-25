@@ -7,9 +7,9 @@ exports.get = function(req) {
     var up = req.params;
     var site = execute('portal.getSite');
     var content = util.getPost(); //Get the child content if it's a landing page.
+    var moduleConfig = site.moduleConfigs[module.name];
 
     //For pagination
-    var moduleConfig = site.moduleConfigs[module.name];
     var folderPath = util.postsFolder();
     var prev, next;
 
@@ -44,17 +44,18 @@ exports.get = function(req) {
         start: 0,
         count: 1000,
         query: "data.post = '" + content._id + "'",
-        sort: 'createdTime DESC',
+        sort: 'createdTime ' + moduleConfig.commentSort? moduleConfig.commentSort : 'ASC',
         contentTypes: [
             module.name + ':comment'
         ]
     });
     var commentsTotal = result.total;
-
-    var comments = result.contents;
+    //var contents = result.contents;
+    //var comments = result.contents; // change this
+    var comments = getComments(result.contents, postAuthor, content);
 
     //TODO: Get all the child comments here so they can be properly nested.
-    for (var i = 0; i < comments.length; i++) {
+    /*for (var i = 0; i < comments.length; i++) {
         var data = comments[i].data;
 
         var date = util.getFormattedDate(new Date(comments[i].createdTime));
@@ -72,7 +73,7 @@ exports.get = function(req) {
         data.replyClick = "addComment.moveForm('comment-" + comments[i]._id + "', '" + comments[i]._id + "', 'respond', '" + content._id + "')";
         //addComment.moveForm( 'comment-1', '1', 'respond', '1' )
 
-    }
+    }*/
     //end comments
 
     var data = content.data;
@@ -132,3 +133,54 @@ exports.get = function(req) {
     var view = resolve('post.html');
     return stk.view.render(view, params);
 };
+
+function getComments(contents, postAuthor, post) {
+    var comments = [];
+    for (var i = 0; i < contents.length; i++) {
+        if (!contents[i].data.commentParent || contents[i].data.commentParent.length < 2) {
+            contents[i].data.liClass = 'comment ' + (i%2 == 0) ? 'even thread-even ' : 'odd thread-odd ';
+            contents[i].data.liClass += 'depth-1 ';
+            if(contents[i].data.email == postAuthor.data.email) {
+                contents[i].data.liClass += ' bypostauthor';
+            }
+
+            var date = util.getFormattedDate(new Date(contents[i].createdTime));
+            date += ' at ' + contents[i].createdTime.substring(11, 16);
+            contents[i].data.pubDate = date;
+            contents[i].data.gravatar = util.getGravatar(contents[i].data.email, 40) + '&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&r=G';
+
+            contents[i].data.replyClick = "addComment.moveForm('comment-" + contents[i]._id + "', '" + contents[i]._id + "', 'respond', '" + post._id + "')";
+
+            contents[i].data.children = getChildComments(contents[i]._id, contents, postAuthor, post, 2);
+            //stk.log(contents[i].data.children);
+            comments.push(contents[i]);
+        }
+    }
+    return comments;
+}
+
+function getChildComments(id, contents, postAuthor, post, depth) {
+    var comments = [];
+    for (var i = 0; i < contents.length; i++) {
+        if (contents[i].data.commentParent == id) {
+
+            contents[i].data.liClass = 'comment ';
+            contents[i].data.liClass += 'depth-' + depth + ' ';
+            if(contents[i].data.email == postAuthor.data.email) {
+                contents[i].data.liClass += ' bypostauthor';
+            }
+            var date = util.getFormattedDate(new Date(contents[i].createdTime));
+            date += ' at ' + contents[i].createdTime.substring(11, 16);
+            contents[i].data.pubDate = date;
+            contents[i].data.gravatar = util.getGravatar(contents[i].data.email, 40) + '&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&r=G';
+
+            contents[i].data.replyClick = "addComment.moveForm('comment-" + contents[i]._id + "', '" + contents[i]._id + "', 'respond', '" + post._id + "')";
+
+            //contents[i].data.children = getChildComments(contents[i]._id, contents, postAuthor, post, depth + 1);
+
+            comments.push(contents[i]);
+        }
+    }
+
+    return comments;
+}

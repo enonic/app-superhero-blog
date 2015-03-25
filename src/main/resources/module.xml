@@ -38,13 +38,31 @@
         <allow-content-type>base:folder</allow-content-type>
       </config>
     </input>
+    <input name="commentSort" type="SingleSelector">
+      <label>Comments sort</label>
+      <occurrences minimum="0" maximum="0"/>
+      <config>
+        <options>
+          <option>
+            <label>Oldest on top</label>
+            <value>ASC</value>
+          </option>
+          <option>
+            <label>Newest on top</label>
+            <value>DESC</value>
+          </option>
+        </options>
+        <selector-type>DROPDOWN</selector-type>
+      </config>
+    </input>
     <input type="ContentSelector" name="postsList">
       <label>Posts list page</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
         <reference-type>system:reference</reference-type>
         <allow-content-type>portal:site</allow-content-type>
-        <allow-content-type>com.enonic.theme.superhero:landing-page</allow-content-type><!-- TODO: Make a content type for post list -->
+        <allow-content-type>com.enonic.theme.superhero:landing-page</allow-content-type>
+        <!-- TODO: Make a content type for post list -->
       </config>
     </input>
   </config>
