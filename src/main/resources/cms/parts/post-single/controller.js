@@ -185,5 +185,5 @@ function getChildComments(id, contents, postAuthor, post, depth) {
         }
     }
 
-    return comments;
+    return comments.length > 0 ? comments : null;
 }
