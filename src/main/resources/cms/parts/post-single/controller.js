@@ -9,6 +9,9 @@ exports.get = function(req) {
     var content = util.getPost(); //Get the child content if it's a landing page.
     var moduleConfig = site.moduleConfigs[module.name];
 
+    var view = resolve('post.html');
+    var childFragment = resolve('comment-fragment.html');
+
     //For pagination
     var folderPath = util.postsFolder();
     var prev, next;
@@ -128,9 +131,9 @@ exports.get = function(req) {
         allowedTags: allowedTags,
         postUrl: postUrl,
         commentsTotal: commentsTotal,
-        comments: comments
+        comments: comments,
+        childFragment: childFragment
     }
-    var view = resolve('post.html');
     return stk.view.render(view, params);
 };
 
