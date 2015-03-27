@@ -70,6 +70,7 @@
         </div>
     </nav>
 
+    <!--TODO: Make this recursive when the fragment bug is fixed -->
     <div id="comments" class="comments-area" data-th-if="${content.data.enableComments} eq true OR ${commentsTotal} gt 0">
 
         <div data-th-remove="tag" data-th-if="${commentsTotal} gt 0">
