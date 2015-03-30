@@ -51,7 +51,7 @@ exports.get = function(req) {
             module.name + ':comment'
         ]
     });
-    stk.log(result);
+    //stk.log(result);
     var commentsTotal = result.total;
     var comments = getComments(result.contents, postAuthor, content, moduleConfig);
 
