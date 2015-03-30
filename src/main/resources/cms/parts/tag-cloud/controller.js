@@ -3,20 +3,15 @@ var util = require('utilities');
 
 exports.get = function(req) {
 
-    var content = execute('portal.getContent');
     var component = execute('portal.getComponent');
     var config = component.config;
     var title = config.title || 'Tags';
-    var site = execute('portal.getSite');
-    var moduleConfig = site.moduleConfigs[module.name];
-
-    var tagsArray = [];
-    var tagsGroup = {};
+    var site = execute('portal.getSite')
 
     // Get all posts that have one or more tags.
     var result = execute('content.query', {
         start: 0,
-        count: 1000, // TODO: Set count to 0 and implement the aggregation
+        count: 0, // TODO: Set count to 0 and implement the aggregation
         query: 'data.tags LIKE "*"', // Only return posts that have tags
         contentTypes: [
             module.name + ':post'
@@ -32,58 +27,19 @@ exports.get = function(req) {
         }
     });
 
-    //stk.log(result);
-
     var buckets = result.aggregations.tags.buckets;
-
-    // Loop through the posts
-    for (var i = 0; i < result.contents.length; i++) {
-
-        var content = result.contents[i];
-        var tags = stk.data.forceArray(content.data.tags); // Turn single tags into arrays.
-
-        // Loop through each tag entry in the post
-        for (var j = 0; j < tags.length; j++) {
-
-            // Put each unique tag into an object
-            var tagName = tags[j];
-            if(tagName in tagsGroup) {
-                // This tag name is already in the object so update the count.
-                tagsGroup[tagName].data.count += 1;
-                tagsGroup[tagName].data.title = tagsGroup[tagName].data.count + ' topics'
-            } else {
-                // This tag is not in the group so make an object and add it.
-                var tagData = {
-                    tagName: tagName,
-                    data: {
-                        tagUrl: site._path,
-                        count: 1,
-                        title: '1 topic'
-                    }
-                };
-                tagsGroup[tagName] = tagData;
-            }
-        }
-    }
 
     // Make the font sizes
     var smallest = 8;
     var largest = 22;
 
-    var counts = new Array();
-
-    for (var tagNameKey in tagsGroup) {
-        counts.push(tagsGroup[tagNameKey].data.count);
-    }
-    var minCount = Math.min.apply(null, counts); // smallest number for any tag count
-    var maxCount = Math.max.apply(null, counts); // largest number for any tag count
-
-    /*var newBucket = buckets.slice();
+    //Get the max and min counts
+    var newBucket = buckets.slice();
     newBucket.sort(function(a, b) {
         return a.doc_count - b.doc_count;
     });
     var minCount = newBucket[0].doc_count; // smallest number for any tag count
-    var maxCount = newBucket[newBucket.length -1].doc_count; // largest number for any tag count*/
+    var maxCount = newBucket[newBucket.length -1].doc_count; // largest number for any tag count
 
     // The difference between the most used tag and the least used.
     var spread = maxCount - minCount;
@@ -94,22 +50,16 @@ exports.get = function(req) {
     // How much bigger the font will be for each tag count.
     var fontStep = fontSpread / spread;
 
-    // Push each tag object into an array so it can be sorted and apply the font steps.
-    for (var tagNameKey in tagsGroup) {
-        var fontSize = smallest + (tagsGroup[tagNameKey].data.count - minCount) * fontStep;
-        tagsGroup[tagNameKey].data.font = 'font-size: ' + fontSize + 'pt;';
-        tagsArray.push(tagsGroup[tagNameKey]);
+    //Bucket logic
+    for (var i=0; i < buckets.length; i++) {
+        buckets[i].tagUrl = site._path;
+        buckets[i].title = buckets[i].doc_count + ((buckets[i].doc_count > 1) ? ' topics' : ' topic');
+        var fontSize = smallest + (buckets[i].doc_count - minCount) * fontStep;
+        buckets[i].font = 'font-size: ' + fontSize + 'pt;';
     }
 
-    // Sort the array alphabetically but it doesn't work because there is no locale
-    tagsArray.sort(function (a, b) {
-        return a.tagName.localeCompare(b.tagName);
-    });
-
     var params = {
-        tags: tagsArray,
-        site: site,
-        config: config,
+        tags: buckets,
         title: title
     }
 
