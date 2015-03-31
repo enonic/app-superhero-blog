@@ -40,7 +40,7 @@
     </input>
     <input name="commentSort" type="SingleSelector">
       <label>Comments sort</label>
-      <occurrences minimum="0" maximum="0"/>
+      <occurrences minimum="0" maximum="1"/>
       <config>
         <options>
           <option>
