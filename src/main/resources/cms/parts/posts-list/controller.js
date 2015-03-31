@@ -20,9 +20,6 @@ exports.get = function(req) {
     var header = {};
     var query = getQuery(up, folderPath, categories, header, site);
 
-    var headerText;
-
-
     // Only put sticky on top on the first page when there are no queries
     var orderBy = '';
     if (Object.keys(up).length == 0 || (Object.keys(up).length == 1 && up.paged)) {
@@ -179,15 +176,15 @@ var getQuery = function(up, folderPath, categories, header, site) {
         var authorContent = authorResult.contents[0];
 
         query = authorContent ? 'data.author LIKE "' + authorContent._id + '"' : 'data.author LIKE "0"';
-        // TODO: finish this!
+
         if (authorContent) {
             var authUrl = execute('portal.pageUrl', {
                 path: stk.content.getPath(site._path),
                 params: { author: up.author }
             });
-            header.headerText += '<a href="' + authUrl + '">' + authorContent.data.name + '</a>'
+            header.headerText = 'Author Archives: <span class="vcard"><a href="' + authUrl + '" class="url fn n">' + authorContent.data.name + '</a></span>'
         } else {
-            header.headerText += up.author + ' not found';
+            header.headerText = 'Author Archives: ' + up.author + ' not found';
         }
     }
 

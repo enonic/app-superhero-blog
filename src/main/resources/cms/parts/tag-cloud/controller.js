@@ -11,8 +11,8 @@ exports.get = function(req) {
     // Get all posts that have one or more tags.
     var result = execute('content.query', {
         start: 0,
-        count: 0, // TODO: Set count to 0 and implement the aggregation
-        query: 'data.tags LIKE "*"', // Only return posts that have tags
+        count: 0,
+        //query: 'data.tags LIKE "*"', // Only return posts that have tags
         contentTypes: [
             module.name + ':post'
         ],
