@@ -1,7 +1,12 @@
 var stk = require('stk/stk');
 var util = require('utilities');
 
+exports.post = handlePost;
+exports.get = handleGet;
+
 function handlePost(req) {
+    var me = this;
+
     var p = req.formParams;
     var contentCreated = null;
     var commentPost = stk.content.get(p.comment_post_ID);
@@ -65,6 +70,3 @@ function handlePost(req) {
 function handleGet(req) {
     stk.log('This is the GET!');
 }
-
-exports.post = handlePost;
-exports.get = handleGet;

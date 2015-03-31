@@ -1,52 +1,64 @@
 var stk = require('stk/stk');
 
-exports.get = function(req) {
+exports.get = handleGet;
 
-    var content = execute('portal.getContent');
-    var component = execute('portal.getComponent');
-    var config = component.config;
-    var title = config.title || 'Categories';
-    var site = execute('portal.getSite');
-    var categories = new Array();
+function handleGet(req) {
+    var me = this;
 
-    var result = execute('content.query', {
-        start: 0,
-        count: 1000,
-        //query: ,
-        sort: 'displayName ASC',
-        contentTypes: [
-            module.name + ':category'
-        ]
-    });
+    function renderView() {
+        var view = resolve('categories.html');
+        var model = createModel();
+        return stk.view.render(view, model);
+    }
 
-    for (var i = 0; i < result.contents.length; i++) {
-        var posts = execute('content.query', {
+    function createModel() {
+        var content = execute('portal.getContent');
+        var component = execute('portal.getComponent');
+        var config = component.config;
+        var title = config.title || 'Categories';
+        var site = execute('portal.getSite');
+        var categories = new Array();
+
+        var result = execute('content.query', {
             start: 0,
             count: 1000,
-            query: 'data.category IN ("' + result.contents[i]._id + '")',
-            sort: 'createdTime DESC',
+            //query: ,
+            sort: 'displayName ASC',
             contentTypes: [
-                module.name + ':post'
+                module.name + ':category'
             ]
         });
 
-        result.contents[i].data.numPosts = posts.total;
+        for (var i = 0; i < result.contents.length; i++) {
+            var posts = execute('content.query', {
+                start: 0,
+                count: 1000,
+                query: 'data.category IN ("' + result.contents[i]._id + '")',
+                sort: 'createdTime DESC',
+                contentTypes: [
+                    module.name + ':post'
+                ]
+            });
 
-        if (posts.total > 0) {
-            categories.push(result.contents[i]);
+            result.contents[i].data.numPosts = posts.total;
+
+            if (posts.total > 0) {
+                categories.push(result.contents[i]);
+            }
+
+            stk.data.deleteEmptyProperties(result.contents[i].data);
+
         }
 
-        stk.data.deleteEmptyProperties(result.contents[i].data);
+        var model = {
+            categories: categories,
+            site: site,
+            config: config,
+            title: title
+        }
 
+        return model;
     }
 
-    var params = {
-        categories: categories,
-        site: site,
-        config: config,
-        title: title
-    }
-
-    var view = resolve('categories.html');
-    return stk.view.render(view, params);
-};
+    return renderView();
+}

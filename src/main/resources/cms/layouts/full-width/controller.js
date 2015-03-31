@@ -8,11 +8,10 @@ function handleGet(req) {
 
     var params = {
         component: component,
-        leftRegion: component.regions["left"],
-        rightRegion: component.regions["right"]
+        leftRegion: component.regions["left"]
     };
 
-    var view = resolve('layout-70-30.html');
+    var view = resolve('full-width.html');
     return stk.view.render(view, params);
 
 }

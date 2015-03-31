@@ -1,18 +1,27 @@
 var stk = require('stk/stk');
 
-exports.get = function(req) {
+exports.get = handleGet;
 
-    var component = execute('portal.getComponent');
-    var title = component.config.title != '' ? component.config.title : null;
-    var urlParams = req.params;
-    var site = execute('portal.getSite');
+function handleGet(req) {
 
-    var params = {
-        site: site,
-        component: component,
-        title: title
+    function renderView() {
+        var view = resolve('search-form.html');
+        var model = createModel();
+        return stk.view.render(view, model);
     }
 
-    var view = resolve('search-form.html');
-    return stk.view.render(view, params);
-};
+    function createModel() {
+        var component = execute('portal.getComponent');
+        var title = component.config.title != '' ? component.config.title : null;
+        var site = execute('portal.getSite');
+
+        var model = {
+            site: site,
+            title: title
+        }
+
+        return model;
+    }
+
+    return renderView();
+}
