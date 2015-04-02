@@ -94,8 +94,8 @@
                                 </cite>
                                 <span class="says">says:</span>
                             </div>
-                            <div class="comment-meta commentmetadata">
-                                <a href="http://localhost:8888/?p=1#comment-1"><!-- TODO: fix this -->
+                            <div class="comment-meta commentmetadata"><!-- TODO: fix the datetime attribute -->
+                                <a href="#" data-th-href="${portal.pageUrl({'_id=' + post.id})} + '#comment-' + ${comment._id}">
                                     <time datetime="2014-11-17T01:52:00+00:00" data-th-text="${comment.data.pubDate}"> November 17, 2014 at 01:52 </time>
                                 </a>
                             </div>
