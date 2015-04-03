@@ -38,22 +38,22 @@ exports.get = function(req) {
 
     //for comments
     var postUrl = stk.serviceUrl('comments', {commentsFolder: util.commentsFolder()});
+    var postAuthor = stk.content.get(content.data.author); //86cc1301-0639-41d1-84ed-70ba443f38ba
 
-    var postAuthor = stk.content.get(content.data.author);
+    //TODO: Make sure only allowed tags can be used.
     var allowedTags = '<a href="" title=""> <abbr title=""> <acronym title=""> <b> <blockquote cite=""> <cite> <code> <del datetime=""> <em> <i> <q cite=""> <strike> <strong> ';
 
     var result = execute('content.query', {
         start: 0,
-        count: 1000,
-        query: "data.post = '" + content._id + "' AND data.commentParent NOT LIKE '*'",
-        sort: 'createdTime ' + moduleConfig.commentSort? moduleConfig.commentSort : 'ASC',
+        count: 0,
+        query: "data.post = '" + content._id + "'",
         contentTypes: [
             module.name + ':comment'
         ]
     });
-    //stk.log(result);
+
     var commentsTotal = result.total;
-    var comments = getComments(result.contents, postAuthor, content, moduleConfig);
+    var comments = getPostComments(content, moduleConfig, postAuthor, 1, null);
 
     //end comments
 
@@ -98,7 +98,7 @@ exports.get = function(req) {
 
         stk.data.deleteEmptyProperties(content.data);
     }
-    //stk.log(content);
+
     var params = {
         post: content.data,
         pageTemplate: content.type == 'portal:page-template' ? true : false,
@@ -115,54 +115,34 @@ exports.get = function(req) {
     return stk.view.render(view, params);
 };
 
-//TODO: Merge these two comment functions for proper recursion.
-function getComments(contents, postAuthor, post, moduleConfig) {
+function getPostComments(post, moduleConfig, postAuthor, depth, commentId) {
     var comments = [];
-    for (var i = 0; i < contents.length; i++) {
-        if (!contents[i].data.commentParent) {
-            contents[i].data.liClass = 'comment ' + (i%2 == 0) ? 'even thread-even ' : 'odd thread-odd ';
-            contents[i].data.liClass += 'depth-1 ';
-            if(contents[i].data.email == postAuthor.data.email) {
-                contents[i].data.liClass += ' bypostauthor';
-            }
 
-            var date = util.getFormattedDate(new Date(contents[i].createdTime));
-            date += ' at ' + contents[i].createdTime.substring(11, 16);
-            contents[i].data.pubDate = date;
-            contents[i].data.gravatar = util.getGravatar(contents[i].data.email, 40) + '&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&r=G';
-
-            contents[i].data.replyClick = "addComment.moveForm('comment-" + contents[i]._id + "', '" + contents[i]._id + "', 'respond', '" + post._id + "')";
-
-            contents[i].data.children = getChildComments(contents[i]._id, moduleConfig, postAuthor, post, 2);
-            //stk.log(contents[i].data.children);
-            comments.push(contents[i]);
-        }
-    }
-    return comments;
-}
-
-function getChildComments(id, moduleConfig, postAuthor, post, depth) {
-    var comments = [];
+    var query = depth == 1 ? "data.post = '" + post._id + "' AND data.commentParent NOT LIKE '*'" : "data.commentParent = '" + commentId + "'";
 
     var result = execute('content.query', {
         start: 0,
         count: 1000,
-        query: "data.commentParent = '" + id + "'",
+        query: query,
         sort: 'createdTime ' + moduleConfig.commentSort? moduleConfig.commentSort : 'ASC',
         contentTypes: [
             module.name + ':comment'
         ]
     });
+
     var contents = result.contents;
 
     for (var i = 0; i < contents.length; i++) {
-
-        contents[i].data.liClass = 'comment ';
-        contents[i].data.liClass += 'depth-' + depth + ' ';
-        if(contents[i].data.email == postAuthor.data.email) {
+        contents[i].data.liClass = 'comment ' + 'depth-' + depth + ' ';
+        if(postAuthor && postAuthor.data.email == contents[i].data.email) {
             contents[i].data.liClass += 'bypostauthor ';
         }
-        contents[i].data.liClass += (i%2 == 0)? 'even ' : 'odd ';
+
+        contents[i].data.liClass += (i%2 == 0) ? 'even ' : 'odd ';
+        if(depth = 1) {
+            contents[i].data.liClass += (i%2 == 0) ? 'even thread-even ' : 'odd thread-odd ';
+        }
+
         var date = util.getFormattedDate(new Date(contents[i].createdTime));
         date += ' at ' + contents[i].createdTime.substring(11, 16);
         contents[i].data.pubDate = date;
@@ -170,10 +150,9 @@ function getChildComments(id, moduleConfig, postAuthor, post, depth) {
 
         contents[i].data.replyClick = "addComment.moveForm('comment-" + contents[i]._id + "', '" + contents[i]._id + "', 'respond', '" + post._id + "')";
 
-        //contents[i].data.children = getChildComments(contents[i]._id, moduleConfig, postAuthor, post, depth + 1);
+        contents[i].data.children = getPostComments(post, moduleConfig, postAuthor, depth + 1, contents[i]._id);
 
         comments.push(contents[i]);
     }
-
     return comments.length > 0 ? comments : null;
 }

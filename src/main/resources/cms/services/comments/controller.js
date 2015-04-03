@@ -48,8 +48,7 @@ function handlePost(req) {
 
     // Make it redirect to the page if it is a landing page.
     var redirectPath;
-    var commentPostParentPath = stk.content.getParentPath(commentPost._path);
-    var commentPostParent = stk.content.get(commentPostParentPath);
+    var commentPostParent = stk.content.getParent(commentPost._path);
     if(commentPostParent.type == module.name + ':landing-page') {
         redirectPath = commentPostParent._path;
     } else {

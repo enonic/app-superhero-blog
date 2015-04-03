@@ -27,7 +27,6 @@ exports.content.exists = function(path) {
     return exports.content.get(path) ? true : false;
 };
 
-// Get content property
 /**
  * Returns the value of the specified property for the content with the specified key.
  * @param {String} Key of the content.
@@ -75,4 +74,15 @@ exports.content.getPath = function(contentKey, noDefault) {
 exports.content.getParentPath = function(path) {
     var pathArray = path.split('/')
     return pathArray.slice(0, pathArray.length -1).join('/');
+};
+
+/**
+* Returns the parent of the content id or path that is passed.
+* @param {String} path or id of the content.
+* @Return {Object} the parent content.
+*/
+exports.content.getParent = function(key) {
+    var content = exports.content.get(key);
+    var parentPath = exports.content.getParentPath(content._path);
+    return parentPath.length < 1 ? null : exports.content.get(parentPath);
 };
