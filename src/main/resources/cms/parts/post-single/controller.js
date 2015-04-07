@@ -38,7 +38,7 @@ exports.get = function(req) {
 
     //for comments
     var postUrl = stk.serviceUrl('comments', {commentsFolder: util.commentsFolder()});
-    var postAuthor = stk.content.get(content.data.author); //86cc1301-0639-41d1-84ed-70ba443f38ba
+    var postAuthor = stk.content.get(content.data.author);
 
     //TODO: Make sure only allowed tags can be used.
     var allowedTags = '<a href="" title=""> <abbr title=""> <acronym title=""> <b> <blockquote cite=""> <cite> <code> <del datetime=""> <em> <i> <q cite=""> <strike> <strong> ';
