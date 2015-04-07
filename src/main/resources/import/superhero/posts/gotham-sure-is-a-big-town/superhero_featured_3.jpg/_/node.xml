@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <node xmlns="urn:enonic:xp:export:1.0">
     <id>43d54e23-d8ce-4058-befb-777abe1a0d9f</id>
     <childOrder>modifiedtime DESC</childOrder>
@@ -15,10 +14,10 @@
         <string name="language">en</string>
         <property-set name="data">
             <string name="media">superhero_featured_3.jpg</string>
-            <string name="caption"></string>
-            <string name="artist"></string>
-            <string name="copyright"></string>
-            <string name="tags"></string>
+            <string name="caption"/>
+            <string name="artist"/>
+            <string name="copyright"/>
+            <string name="tags"/>
         </property-set>
         <property-set name="x">
             <property-set name="media">

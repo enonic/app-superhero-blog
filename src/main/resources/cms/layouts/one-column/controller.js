@@ -11,7 +11,7 @@ function handleGet(req) {
         leftRegion: component.regions["left"]
     };
 
-    var view = resolve('full-width.html');
+    var view = resolve('one-column.html');
     return stk.view.render(view, params);
 
 }

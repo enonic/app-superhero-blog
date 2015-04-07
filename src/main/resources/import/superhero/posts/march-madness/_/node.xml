@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <node xmlns="urn:enonic:xp:export:1.0">
     <id>8f6fed07-6d7c-4f31-b7ee-5fe9e9b7a3bf</id>
     <childOrder>modifiedtime DESC</childOrder>
@@ -9,7 +8,7 @@
         <string name="type">com.enonic.theme.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-09T18:56:34.974Z</dateTime>
+        <dateTime name="modifiedTime">2015-04-07T03:09:13.513Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-03-04T05:13:27.097Z</dateTime>
@@ -18,18 +17,18 @@
             <reference name="author">86cc1301-0639-41d1-84ed-70ba443f38ba</reference>
             <reference name="category">70ac4676-678d-408e-9561-fe98ddcc13be</reference>
             <reference name="category">e656bc02-10dd-45b1-b30f-c9deef28aa6f</reference>
-            <htmlPart name="post">&amp;lt;p&amp;gt;This is an example of a sticky post. It will appear at the top of the first page of the post list and the title will be red.&amp;lt;/p&amp;gt;</htmlPart>
+            <htmlPart name="post">&lt;p&gt;This is an example of a sticky post. It will appear at the top of the first page of the post list and the title will be red.&lt;/p&gt;</htmlPart>
             <string name="tags">test</string>
             <string name="tags">sticky</string>
             <boolean name="enableComments">true</boolean>
-            <boolean name="stickyPost">false</boolean>
+            <boolean name="stickyPost">true</boolean>
             <boolean name="slideshow">false</boolean>
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-theme-superhero">
                 <property-set name="menu-item">
                     <boolean name="menuItem">false</boolean>
-                    <string name="menuName"></string>
+                    <string name="menuName"/>
                 </property-set>
             </property-set>
         </property-set>

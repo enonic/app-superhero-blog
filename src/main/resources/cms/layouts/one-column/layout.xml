@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <layout-component>
-  <display-name>Full width</display-name>
+  <display-name>One column</display-name>
   <config/>
   <regions>
     <region name="left"/>

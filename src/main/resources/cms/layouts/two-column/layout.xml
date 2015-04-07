@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <layout-component>
-    <display-name>70/30</display-name>
+    <display-name>Two column</display-name>
     <config/>
     <regions>
         <region name="left"/>

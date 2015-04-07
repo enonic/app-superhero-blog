@@ -12,7 +12,7 @@ function handleGet(req) {
         rightRegion: component.regions["right"]
     };
 
-    var view = resolve('layout-70-30.html');
+    var view = resolve('two-column.html');
     return stk.view.render(view, params);
 
 }

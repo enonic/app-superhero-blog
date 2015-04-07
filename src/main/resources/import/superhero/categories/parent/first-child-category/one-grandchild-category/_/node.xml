@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <node xmlns="urn:enonic:xp:export:1.0">
     <id>db5af3a3-6f57-4c7f-b7fb-15794e25ddb3</id>
     <childOrder>modifiedtime DESC</childOrder>

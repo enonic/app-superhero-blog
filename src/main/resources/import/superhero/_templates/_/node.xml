@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <node xmlns="urn:enonic:xp:export:1.0">
     <id>73e3fb8e-6a27-48f0-9bea-15bc3833a753</id>
-    <childOrder>modifiedtime DESC</childOrder>
+    <childOrder>_manualordervalue DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
         <boolean name="valid">true</boolean>

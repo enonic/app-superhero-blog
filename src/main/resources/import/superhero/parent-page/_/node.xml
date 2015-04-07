@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <node xmlns="urn:enonic:xp:export:1.0">
     <id>11cdf60d-2b41-445d-bcbd-c74ff5282400</id>
     <childOrder>modifiedtime DESC</childOrder>
@@ -18,7 +17,7 @@
             <property-set name="com-enonic-theme-superhero">
                 <property-set name="menu-item">
                     <boolean name="menuItem">true</boolean>
-                    <string name="menuName"></string>
+                    <string name="menuName"/>
                 </property-set>
             </property-set>
         </property-set>
