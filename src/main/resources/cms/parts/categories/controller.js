@@ -17,6 +17,7 @@ function handleGet(req) {
         var config = component.config;
         var title = config.title || 'Categories';
         var site = execute('portal.getSite');
+        var searchUrl = site._path + '/search'; //TODO: Get search page from site config
         var categories = new Array();
 
         var result = execute('content.query', {
@@ -50,11 +51,12 @@ function handleGet(req) {
 
         }
 
+
         var model = {
             categories: categories,
-            site: site,
             config: config,
-            title: title
+            title: title,
+            searchUrl: searchUrl
         }
 
         return model;
