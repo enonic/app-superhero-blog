@@ -43,7 +43,7 @@ function handleGet(req) {
             var linkParam = year + content.createdTime.substring(5,7).toString();
             var linkText = monthName + ' ' + year;
             var linkUrl = execute('portal.pageUrl', {
-                path: site._path,
+                path: site._path + '/search', //TODO: Use site config for search page.
                 params: {m: linkParam}
             });
 
