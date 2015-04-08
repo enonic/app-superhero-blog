@@ -1,0 +1,4 @@
+post-show-two-columns
+post-show-one-column
+default
+rss

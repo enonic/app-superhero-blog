@@ -1,5 +1,3 @@
-about
-parent-page
 entries-rss
 posts
 comments

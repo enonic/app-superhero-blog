@@ -1,85 +1,46 @@
 <node xmlns="urn:enonic:xp:export:1.0">
-    <id>611c914b-46dd-431a-9344-806bd9d00e00</id>
+    <id>9169cc10-d134-4fcf-b157-765d9693fa1c</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">About</string>
-        <string name="type">com.enonic.theme.superhero:landing-page</string>
+        <string name="displayName">Post show - one column</string>
+        <string name="type">portal:page-template</string>
         <string name="owner">user:system:su</string>
-        <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-04-07T02:58:04.527Z</dateTime>
+        <dateTime name="modifiedTime">2015-04-07T03:01:06.105Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-03-20T03:38:37.116Z</dateTime>
-        <property-set name="data"/>
-        <property-set name="x">
-            <property-set name="com-enonic-theme-superhero">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">true</boolean>
-                    <string name="menuName">About</string>
-                </property-set>
-            </property-set>
+        <dateTime name="createdTime">2015-04-07T02:20:07.432Z</dateTime>
+        <property-set name="data">
+            <string name="supports">com.enonic.theme.superhero:landing-page</string>
+            <string name="supports">com.enonic.theme.superhero:post</string>
         </property-set>
         <property-set name="page">
-            <string isNull="true" name="controller"/>
-            <reference name="template">f2624852-d563-4343-80f7-86424f314c32</reference>
+            <string name="controller">com.enonic.theme.superhero:default</string>
+            <reference isNull="true" name="template"/>
             <property-set name="region">
                 <string name="name">main</string>
                 <property-set name="component">
                     <string name="type">LayoutComponent</string>
                     <property-set name="LayoutComponent">
-                        <string name="name">Two column</string>
-                        <string name="template">com.enonic.theme.superhero:two-column</string>
+                        <string name="name">One column</string>
+                        <string name="template">com.enonic.theme.superhero:one-column</string>
                         <property-set name="config"/>
                         <property-set name="region">
                             <string name="name">left</string>
                             <property-set name="component">
-                                <string name="type">TextComponent</string>
-                                <property-set name="TextComponent">
-                                    <string name="name">Text</string>
-                                    <string name="text">&lt;h2&gt;About&lt;/h2&gt;&lt;p&gt;This is the "About" page text.&lt;/p&gt;</string>
-                                </property-set>
-                            </property-set>
-                        </property-set>
-                        <property-set name="region">
-                            <string name="name">right</string>
-                            <property-set name="component">
                                 <string name="type">PartComponent</string>
                                 <property-set name="PartComponent">
-                                    <string name="name">Search form</string>
-                                    <string name="template">com.enonic.theme.superhero:search-form</string>
-                                    <property-set name="config">
-                                    <string name="title"/>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Recent posts</string>
-                                    <string name="template">com.enonic.theme.superhero:recent-posts</string>
-                                    <property-set name="config">
-                                    <string name="title"/>
-                                    <string name="maxPosts"/>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Recent comments</string>
-                                    <string name="template">com.enonic.theme.superhero:recent-comments</string>
-                                    <property-set name="config">
-                                    <string name="title"/>
-                                    <string name="maxComments"/>
-                                    </property-set>
+                                    <string name="name">Post single</string>
+                                    <string name="template">com.enonic.theme.superhero:post-single</string>
+                                    <property-set name="config"/>
                                 </property-set>
                             </property-set>
                         </property-set>
                     </property-set>
                 </property-set>
             </property-set>
+            <property-set name="config"/>
         </property-set>
     </data>
     <indexConfigs>

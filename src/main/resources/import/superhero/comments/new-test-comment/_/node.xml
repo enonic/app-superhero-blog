@@ -1,31 +1,23 @@
 <node xmlns="urn:enonic:xp:export:1.0">
-    <id>2208aa12-e952-4889-af18-69be2b65b564</id>
+    <id>d76a6065-b2f3-46d4-8ad7-a66352f4d7fa</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">About</string>
-        <string name="type">com.enonic.theme.superhero:post</string>
+        <string name="displayName">New test comment</string>
+        <string name="type">com.enonic.theme.superhero:comment</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-20T04:36:14.618Z</dateTime>
+        <dateTime name="modifiedTime">2015-04-07T03:28:32.046Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-02-28T01:00:26.740Z</dateTime>
+        <dateTime name="createdTime">2015-04-07T03:27:45.367Z</dateTime>
         <property-set name="data">
-            <string name="title">About</string>
-            <htmlPart name="post">This is an example of a WordPress page, you could edit this to put information about yourself or your site so readers know where you are coming from. You can create as many pages like this one or sub-pages as you like and manage all of your content inside of WordPress.</htmlPart>
-            <boolean name="enableComments">true</boolean>
-            <boolean name="stickyPost">false</boolean>
-            <boolean name="slideshow">false</boolean>
-        </property-set>
-        <property-set name="x">
-            <property-set name="com-enonic-theme-superhero">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string name="menuName"/>
-                </property-set>
-            </property-set>
+            <string name="name">New test comment</string>
+            <string name="email">mla@enonic.com</string>
+            <string name="website"/>
+            <htmlPart name="comment">Testing a comment that is created in admin.</htmlPart>
+            <reference name="post">886dfc12-70ed-44a1-92b0-7bebffe65ab6</reference>
         </property-set>
     </data>
     <indexConfigs>
