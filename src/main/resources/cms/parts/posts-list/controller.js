@@ -151,7 +151,8 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
     //Search filter
     if (up.s) {
-        query = 'fulltext("data.post", "' + up.s + '", "AND") OR fulltext("data.title", "' + up.s + '", "AND")';
+        //query = 'fulltext("data.post", "' + up.s + '", "AND") OR fulltext("data.title", "' + up.s + '", "AND")';
+        query = 'fulltext("_allText", "' + up.s + '", "AND")';
         header.headerText = 'Search Results for: ' + up.s;
     }
 
