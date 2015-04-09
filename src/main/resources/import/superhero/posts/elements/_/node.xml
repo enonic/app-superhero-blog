@@ -21,14 +21,6 @@
             <boolean name="stickyPost">false</boolean>
             <boolean name="slideshow">false</boolean>
         </property-set>
-        <property-set name="x">
-            <property-set name="com-enonic-theme-superhero">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string name="menuName"/>
-                </property-set>
-            </property-set>
-        </property-set>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>

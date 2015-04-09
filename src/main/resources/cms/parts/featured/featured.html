@@ -1,4 +1,4 @@
-<div data-th-class="${editMode == true ? 'edit-mode' : ''}" data-th-if="${!editMode} and ${!#lists.isEmpty(slides)}">
+<div data-th-class="${editMode == true ? 'edit-mode' : ''}" data-th-if="${editMode} or ${!#lists.isEmpty(slides)}">
     <div data-th-if="${editMode} and ${#lists.isEmpty(slides)}" class="edit-mode-configure">
         <h2>Configure "Featured" part</h2>
     </div>

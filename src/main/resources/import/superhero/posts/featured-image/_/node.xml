@@ -23,14 +23,6 @@
             <reference name="featuredImage">be1ca151-cf61-4a54-9ea4-c8d01ce83e0e</reference>
             <boolean name="slideshow">false</boolean>
         </property-set>
-        <property-set name="x">
-            <property-set name="com-enonic-theme-superhero">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string name="menuName"/>
-                </property-set>
-            </property-set>
-        </property-set>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>
