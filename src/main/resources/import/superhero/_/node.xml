@@ -1,6 +1,6 @@
 <node xmlns="urn:enonic:xp:export:1.0">
     <id>e1f57280-d672-4cd8-b674-98e26e5b69ae</id>
-    <childOrder>_manualordervalue DESC</childOrder>
+    <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
         <boolean name="valid">true</boolean>
@@ -8,7 +8,7 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-04-07T03:26:15.351Z</dateTime>
+        <dateTime name="modifiedTime">2015-04-08T08:15:06.426Z</dateTime>
         <string name="modifier">user:system:anonymous</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>

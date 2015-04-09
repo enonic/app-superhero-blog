@@ -8,7 +8,7 @@
         <string name="type">com.enonic.theme.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-20T05:06:52.995Z</dateTime>
+        <dateTime name="modifiedTime">2015-04-09T05:38:58.767Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-03-07T01:11:36.813Z</dateTime>
@@ -16,27 +16,19 @@
             <string name="title">Some Buildings to Leap</string>
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&amp;lt;div id=&amp;quot;attachment_45&amp;quot; class=&amp;quot;wp-caption alignnone&amp;quot; style=&amp;quot;width: 655px&amp;quot;&amp;gt;
-&amp;lt;a href=&amp;quot;superhero_4.jpg&amp;quot;&amp;gt;
-&amp;lt;img class=&amp;quot;wp-image-45 size-full&amp;quot; width=&amp;quot;645&amp;quot; height=&amp;quot;430&amp;quot; alt=&amp;quot;superhero_4&amp;quot; src=&amp;quot;_/image/32169e70-49e1-444c-a6ac-d38f22438134/superhero_4.jpg&amp;quot;&amp;gt;
-&amp;lt;/a&amp;gt;
-&amp;lt;p class=&amp;quot;wp-caption-text&amp;quot;&amp;gt;These are some building I saw the other day, that I think would make for some great hurdles.&amp;lt;/p&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;p&amp;gt; &amp;lt;/p&amp;gt;</htmlPart>
+            <htmlPart name="post">&lt;div id="attachment_45" class="wp-caption alignnone" style="width: 655px"&gt;
+&lt;a href="_/image/32169e70-49e1-444c-a6ac-d38f22438134/superhero_4.jpg"&gt;
+&lt;img class="wp-image-45 size-full" width="645" height="430" alt="superhero_4" src="_/image/32169e70-49e1-444c-a6ac-d38f22438134/superhero_4.jpg"&gt;
+&lt;/a&gt;
+&lt;p class="wp-caption-text"&gt;These are some building I saw the other day, that I think would make for some great hurdles.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt; &lt;/p&gt;</htmlPart>
             <string name="tags">Buildings</string>
             <string name="tags">Featured</string>
             <boolean name="enableComments">true</boolean>
             <boolean name="stickyPost">false</boolean>
             <reference name="featuredImage">81b1e3cd-575f-4565-a618-3c85d56224f6</reference>
             <boolean name="slideshow">true</boolean>
-        </property-set>
-        <property-set name="x">
-            <property-set name="com-enonic-theme-superhero">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string name="menuName"/>
-                </property-set>
-            </property-set>
         </property-set>
     </data>
     <indexConfigs>

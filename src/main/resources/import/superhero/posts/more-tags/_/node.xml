@@ -16,7 +16,7 @@
             <string name="title">More Tags</string>
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&amp;lt;p&amp;gt;More of these posts need tags.&amp;lt;/p&amp;gt;</htmlPart>
+            <htmlPart name="post">&lt;p&gt;More of these posts need tags.&lt;/p&gt;</htmlPart>
             <string name="tags">wordpress</string>
             <boolean name="enableComments">true</boolean>
         </property-set>

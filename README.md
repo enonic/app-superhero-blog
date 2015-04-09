@@ -40,10 +40,6 @@ add the Comments part. Add the same parts from the previous step to the right co
 
 Comprehensive documentation for this module is being created.
 
-* TODO: Rename full-width layout to one-column
-* TODO: Rename 70/30 layout to two-column
-* TODO: Create "Post show - Full width" page template
-* TODO: Rename "Post show" to "Post show - Two columns"
 * TODO: Finish the date meta data in various parts when the CMS date bugs are worked out.
 * TODO: Finish the dynamic classes and IDs in various parts.
 * TODO: Create the Meta part with login/out and stuff.
@@ -53,5 +49,3 @@ Comprehensive documentation for this module is being created.
 * TODO: Implement categories "Show hierarchy".
 * TODO: Write documentation and insert link
 * TODO: Make it possible to have the post-list page not the home page.
-* TODO: Fix image link in "Some buildings to leap".
-* TODO: Fix the elements post. 9169cc10-d134-4fcf-b157-765d9693fa1c

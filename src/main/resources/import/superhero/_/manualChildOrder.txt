@@ -1,6 +1,0 @@
-entries-rss
-posts
-comments
-categories
-authors
-_templates

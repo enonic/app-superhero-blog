@@ -8,7 +8,7 @@
         <string name="type">com.enonic.theme.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-10T19:05:52.313Z</dateTime>
+        <dateTime name="modifiedTime">2015-04-09T05:31:36.096Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-03-07T01:06:38.836Z</dateTime>
@@ -16,21 +16,13 @@
             <string name="title">Gotham Sure Is A Big Town</string>
             <reference name="author">86cc1301-0639-41d1-84ed-70ba443f38ba</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&amp;lt;p&amp;gt;There&amp;#8217;s so much area to cover. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non dapibus lectus. Vestibulum eget commodo mi. Donec in est sed quam ultricies pharetra at vitae quam. Nam dignissim orci accumsan odio bibendum non mattis nisl congue.&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;Curabitur rutrum pharetra velit, quis feugiat elit consectetur vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in interdum orci.&amp;lt;/p&amp;gt;</htmlPart>
+            <htmlPart name="post">&lt;p&gt;There’s so much area to cover. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non dapibus lectus. Vestibulum eget commodo mi. Donec in est sed quam ultricies pharetra at vitae quam. Nam dignissim orci accumsan odio bibendum non mattis nisl congue.&lt;/p&gt;
+&lt;p&gt;Curabitur rutrum pharetra velit, quis feugiat elit consectetur vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in interdum orci.&lt;/p&gt;</htmlPart>
             <string name="tags">Featured</string>
             <boolean name="enableComments">false</boolean>
             <boolean name="stickyPost">false</boolean>
             <reference name="featuredImage">43d54e23-d8ce-4058-befb-777abe1a0d9f</reference>
             <boolean name="slideshow">true</boolean>
-        </property-set>
-        <property-set name="x">
-            <property-set name="com-enonic-theme-superhero">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string name="menuName"/>
-                </property-set>
-            </property-set>
         </property-set>
     </data>
     <indexConfigs>

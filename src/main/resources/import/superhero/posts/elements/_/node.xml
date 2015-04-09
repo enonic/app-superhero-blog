@@ -29,10 +29,6 @@
                 </property-set>
             </property-set>
         </property-set>
-        <property-set name="page">
-            <string isNull="true" name="controller"/>
-            <reference name="template">9169cc10-d134-4fcf-b157-765d9693fa1c</reference>
-        </property-set>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>

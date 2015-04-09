@@ -16,8 +16,8 @@
             <string name="title">Worth A Thousand Words</string>
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&amp;lt;div style=&amp;quot;width: 445px&amp;quot; class=&amp;quot;wp-caption alignnone&amp;quot;&amp;gt;&amp;lt;img class=&amp;quot;wp-image-59&amp;quot; alt=&amp;quot;Boat&amp;quot; src=&amp;quot;https://wpdotorg.files.wordpress.com/2008/11/boat.jpg&amp;quot; width=&amp;quot;435&amp;quot; height=&amp;quot;288&amp;quot; /&amp;gt;&amp;lt;p class=&amp;quot;wp-caption-text&amp;quot;&amp;gt;Boat&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt;
-&amp;lt;p&amp;gt;Boat.&amp;lt;/p&amp;gt;</htmlPart>
+            <htmlPart name="post">&lt;div style="width: 445px" class="wp-caption alignnone"&gt;&lt;img class="wp-image-59" alt="Boat" src="https://wpdotorg.files.wordpress.com/2008/11/boat.jpg" width="435" height="288" /&gt;&lt;p class="wp-caption-text"&gt;Boat&lt;/p&gt;&lt;/div&gt;
+&lt;p&gt;Boat.&lt;/p&gt;</htmlPart>
             <string name="tags">boat</string>
             <string name="tags">lake</string>
             <boolean name="enableComments">false</boolean>

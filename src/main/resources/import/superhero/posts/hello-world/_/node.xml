@@ -16,7 +16,7 @@
             <string name="title">Hello world!</string>
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&amp;lt;p&amp;gt;Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!&amp;lt;/p&amp;gt;</htmlPart>
+            <htmlPart name="post">&lt;p&gt;Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!&lt;/p&gt;</htmlPart>
             <boolean name="enableComments">true</boolean>
             <boolean name="stickyPost">true</boolean>
             <boolean name="slideshow">false</boolean>

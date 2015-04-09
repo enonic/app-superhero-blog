@@ -1,5 +1,5 @@
 <node xmlns="urn:enonic:xp:export:1.0">
-    <id>9169cc10-d134-4fcf-b157-765d9693fa1c</id>
+    <id>9d8685e4-0ada-4a6a-a548-20279cc9ca2d</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
@@ -7,10 +7,11 @@
         <string name="displayName">Post show - one column</string>
         <string name="type">portal:page-template</string>
         <string name="owner">user:system:su</string>
-        <dateTime name="modifiedTime">2015-04-07T03:01:06.105Z</dateTime>
+        <string name="language">en-US</string>
+        <dateTime name="modifiedTime">2015-04-08T08:27:42.527Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-04-07T02:20:07.432Z</dateTime>
+        <dateTime name="createdTime">2015-04-08T08:26:42.586Z</dateTime>
         <property-set name="data">
             <string name="supports">com.enonic.theme.superhero:landing-page</string>
             <string name="supports">com.enonic.theme.superhero:post</string>
