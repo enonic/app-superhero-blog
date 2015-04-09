@@ -123,3 +123,15 @@ exports.postsFolder = function(local) {
     var moduleConfig = site.moduleConfigs[module.name];
     return moduleConfig.postsFolder ? stk.content.getPath(moduleConfig.postsFolder) : site._path + '/posts';
 };
+
+exports.getSearchPage = function() {
+    var site = execute('portal.getSite');
+    var moduleConfig = site.moduleConfigs[module.name];
+    var searchPageKey = moduleConfig.searchPage;
+    if(searchPageKey) {
+        var searchContent = stk.content.get(searchPageKey);
+        return searchContent._path;
+    } else {
+        return site._path + '/search';
+    }
+};

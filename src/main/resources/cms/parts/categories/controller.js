@@ -1,4 +1,5 @@
 var stk = require('stk/stk');
+var util = require('utilities');
 
 exports.get = handleGet;
 
@@ -17,7 +18,7 @@ function handleGet(req) {
         var config = component.config;
         var title = config.title || 'Categories';
         var site = execute('portal.getSite');
-        var searchUrl = site._path + '/search'; //TODO: Get search page from site config
+        var searchPath = util.getSearchPage();
         var categories = new Array();
 
         var result = execute('content.query', {
@@ -56,7 +57,7 @@ function handleGet(req) {
             categories: categories,
             config: config,
             title: title,
-            searchUrl: searchUrl
+            searchPath: searchPath
         }
 
         return model;

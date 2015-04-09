@@ -2,7 +2,7 @@
     <h1 class="widget-title" data-th-text="${title}">Categories</h1>
     <ul>
         <li data-th-each="category : ${categories}" class="cat-item" data-th-classappend="'cat-item-' + ${category._id}">
-            <a href="#" data-th-href="${portal.pageUrl({'_path=' + searchUrl, 'cat=' + category._name})}" data-th-text="${category.data.name}"></a>
+            <a href="#" data-th-href="${portal.pageUrl({'_path=' + searchPath, 'cat=' + category._name})}" data-th-text="${category.data.name}"></a>
             <span data-th-if="${config.showPostCount}" data-th-remove="tag">
                 (<span data-th-remove="tag" data-th-text="${category.data.numPosts}"></span>)
             </span>

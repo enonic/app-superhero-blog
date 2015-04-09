@@ -8,7 +8,7 @@
         <string name="type">com.enonic.theme.superhero:landing-page</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-04-08T08:49:07.227Z</dateTime>
+        <dateTime name="modifiedTime">2015-04-09T07:09:47.800Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-04-08T08:44:20.878Z</dateTime>
@@ -16,7 +16,7 @@
         <property-set name="x">
             <property-set name="com-enonic-theme-superhero">
                 <property-set name="menu-item">
-                    <boolean name="menuItem">true</boolean>
+                    <boolean name="menuItem">false</boolean>
                     <string name="menuName"/>
                 </property-set>
             </property-set>

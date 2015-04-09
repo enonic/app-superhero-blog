@@ -55,6 +55,14 @@
         <selector-type>DROPDOWN</selector-type>
       </config>
     </input>
+    <input type="ContentSelector" name="searchPage">
+      <label>Search page</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <reference-type>system:reference</reference-type>
+        <allow-content-type>com.enonic.theme.superhero:landing-page</allow-content-type>
+      </config>
+    </input>
     <input type="ContentSelector" name="postsList">
       <label>Posts list page</label>
       <occurrences minimum="0" maximum="1"/>
@@ -62,7 +70,6 @@
         <reference-type>system:reference</reference-type>
         <allow-content-type>portal:site</allow-content-type>
         <allow-content-type>com.enonic.theme.superhero:landing-page</allow-content-type>
-        <!-- TODO: Make a content type for post list -->
       </config>
     </input>
   </config>

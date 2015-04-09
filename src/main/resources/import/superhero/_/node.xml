@@ -8,8 +8,8 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-04-08T08:15:06.426Z</dateTime>
-        <string name="modifier">user:system:anonymous</string>
+        <dateTime name="modifiedTime">2015-04-09T20:43:39.227Z</dateTime>
+        <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
         <property-set name="data">
@@ -20,7 +20,11 @@
                     <string name="google-ua">UA-123ABC</string>
                     <string name="numPosts">5</string>
                     <string name="googleUA">UA-123ABC</string>
-                    <string isNull="true" name="commentSort"/>
+                    <string name="commentSort">ASC</string>
+                    <reference name="postsFolder">84ccc003-3d1b-4a99-8a02-753930848295</reference>
+                    <reference name="commentsFolder">4edbe4b6-9d61-4d4e-a022-2a7e00708a94</reference>
+                    <reference name="postsList">e1f57280-d672-4cd8-b674-98e26e5b69ae</reference>
+                    <reference name="searchPage">8ad9ab18-3e99-44c8-9883-9c3eef86b507</reference>
                 </property-set>
             </property-set>
         </property-set>

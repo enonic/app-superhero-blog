@@ -13,7 +13,7 @@ exports.get = function(req) {
     var newer = null, older = null; // For pagination
     var posts = new Array();
     var folderPath = util.postsFolder(config.contentFolder);
-    var searchPage = site._path + '/search'; //TODO: Use site config for search page
+    var searchPage = util.getSearchPage();
 
     var categories = util.getCategories();
 
