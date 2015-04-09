@@ -6,6 +6,7 @@ exports.get = function(req) {
     var component = execute('portal.getComponent');
     var up = req.params;
     var site = execute('portal.getSite');
+    var searchPage = site._path + '/search'; //TODO: Use site config for search page
     var content = util.getPost(); //Get the child content if it's a landing page.
     var moduleConfig = site.moduleConfigs[module.name];
 
@@ -108,6 +109,7 @@ exports.get = function(req) {
         next: (next && next.contents) ? next.contents[0] : null,
         allowedTags: allowedTags,
         postUrl: postUrl,
+        searchPage: searchPage,
         commentsTotal: commentsTotal,
         comments: comments,
         childFragment: childFragment

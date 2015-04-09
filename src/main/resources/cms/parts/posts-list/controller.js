@@ -13,6 +13,7 @@ exports.get = function(req) {
     var newer = null, older = null; // For pagination
     var posts = new Array();
     var folderPath = util.postsFolder(config.contentFolder);
+    var searchPage = site._path + '/search';
 
     var categories = util.getCategories();
 
@@ -133,6 +134,7 @@ exports.get = function(req) {
     var params = {
         posts: posts,
         site: site,
+        searchPage: searchPage,
         older: older,
         newer: newer,
         headerText: header.headerText

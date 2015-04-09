@@ -53,3 +53,5 @@ Comprehensive documentation for this module is being created.
 * TODO: Implement categories "Show hierarchy".
 * TODO: Write documentation and insert link
 * TODO: Make it possible to have the post-list page not the home page.
+* TODO: Fix image link in "Some buildings to leap".
+* TODO: Fix the elements post. 9169cc10-d134-4fcf-b157-765d9693fa1c

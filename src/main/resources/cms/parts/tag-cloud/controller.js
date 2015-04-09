@@ -63,7 +63,7 @@ function handleGet(req) {
 
         //Bucket logic
         for (var i=0; i < buckets.length; i++) {
-            buckets[i].tagUrl = site._path;
+            buckets[i].tagUrl = site._path + '/search'; //TODO: Use site config for search page
             buckets[i].title = buckets[i].doc_count + ((buckets[i].doc_count > 1) ? ' topics' : ' topic');
             var fontSize = smallest + (buckets[i].doc_count - minCount) * fontStep;
             buckets[i].font = 'font-size: ' + fontSize + 'pt;';
