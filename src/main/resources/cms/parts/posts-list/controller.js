@@ -13,7 +13,7 @@ exports.get = function(req) {
     var newer = null, older = null; // For pagination
     var posts = new Array();
     var folderPath = util.postsFolder(config.contentFolder);
-    var searchPage = site._path + '/search';
+    var searchPage = site._path + '/search'; //TODO: Use site config for search page
 
     var categories = util.getCategories();
 
@@ -53,7 +53,7 @@ exports.get = function(req) {
         if (start < (results.total - postsPerPage)) {
             urlParams.paged = stk.data.isInt(up.paged) ? (parseInt(up.paged) + 1).toString() : 2;
             older = execute('portal.pageUrl', {
-                path: site._path,
+                path: content._path == searchPage ? searchPage : site._path,
                 params: urlParams
             });
         }
@@ -67,7 +67,7 @@ exports.get = function(req) {
             }
 
             newer = execute('portal.pageUrl', {
-                path: site._path,
+                path: content._path == searchPage ? searchPage : site._path,
                 params: urlParams
             });
         }
