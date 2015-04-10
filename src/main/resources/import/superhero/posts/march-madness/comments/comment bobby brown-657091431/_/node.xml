@@ -14,9 +14,9 @@
         <string name="language">en</string>
         <property-set name="data">
             <string name="website">http://example.com</string>
-            <string name="post">8f6fed07-6d7c-4f31-b7ee-5fe9e9b7a3bf</string>
+            <reference name="post">8f6fed07-6d7c-4f31-b7ee-5fe9e9b7a3bf</reference>
             <string name="name">Bobby Brown</string>
-            <string name="comment">This is a new comment on March Madness.</string>
+            <htmlPart name="comment">This is a new comment on March Madness.</htmlPart>
             <string name="email">bob@example.com</string>
         </property-set>
     </data>

@@ -14,9 +14,9 @@
         <string name="language">en</string>
         <property-set name="data">
             <string name="website">https://enonic.com</string>
-            <string name="post">8f6fed07-6d7c-4f31-b7ee-5fe9e9b7a3bf</string>
+            <reference name="post">8f6fed07-6d7c-4f31-b7ee-5fe9e9b7a3bf</reference>
             <string name="name">Michael Lazell</string>
-            <string name="comment">This should create a new comments folder and save it in there under the March Madness post.</string>
+            <htmlPart name="comment">This should create a new comments folder and save it in there under the March Madness post.</htmlPart>
             <string name="email">mla@enonic.com</string>
         </property-set>
     </data>

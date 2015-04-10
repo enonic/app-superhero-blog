@@ -147,7 +147,7 @@ function getComments(post, moduleConfig, postAuthor, depth, commentId) {
         contents[i].data.pubDate = date;
         contents[i].data.gravatar = util.getGravatar(contents[i].data.email, 40) + '&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&r=G';
 
-        contents[i].data.replyClick = "addComment.moveForm('comment-" + contents[i]._id + "', '" + contents[i]._id + "', 'respond', '" + post._id + "')";
+        contents[i].data.replyClick = "return addComment.moveForm('comment-" + contents[i]._id + "', '" + contents[i]._id + "', 'respond', '" + post._id + "')";
 
         contents[i].data.children = getComments(post, moduleConfig, postAuthor, depth + 1, contents[i]._id);
 
