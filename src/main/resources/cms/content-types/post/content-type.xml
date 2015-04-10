@@ -3,6 +3,7 @@
   <display-name>Post</display-name>
   <content-display-name-script>$('title')</content-display-name-script>
   <super-type>base:structured</super-type>
+  <allow-child-content>true</allow-child-content>
   <form>
     <field-set name="basic">
       <label>Post</label>

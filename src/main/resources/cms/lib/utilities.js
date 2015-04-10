@@ -82,7 +82,7 @@ exports.getCategories = function() {
     return result.contents;
 };
 
-// Returns the post content, even when on a landing page.
+// Deprecated - Returns the post content, even when on a landing page.
 exports.getPost = function() {
     var currentContent = execute('portal.getContent');
     var content;

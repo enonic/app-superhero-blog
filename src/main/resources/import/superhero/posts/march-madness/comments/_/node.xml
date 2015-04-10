@@ -1,24 +1,18 @@
 <node xmlns="urn:enonic:xp:export:1.0">
-    <id>d76a6065-b2f3-46d4-8ad7-a66352f4d7fa</id>
+    <id>bfa6596e-ab36-4f95-8412-a20e6a1fb367</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">New test comment</string>
-        <string name="type">com.enonic.theme.superhero:comment</string>
+        <string name="displayName">Comments</string>
+        <string name="type">base:folder</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-04-07T03:28:32.046Z</dateTime>
+        <dateTime name="modifiedTime">2015-04-10T02:24:11.810Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-04-07T03:27:45.367Z</dateTime>
-        <property-set name="data">
-            <string name="name">New test comment</string>
-            <string name="email">mla@enonic.com</string>
-            <string name="website"/>
-            <htmlPart name="comment">Testing a comment that is created in admin.</htmlPart>
-            <reference name="post">886dfc12-70ed-44a1-92b0-7bebffe65ab6</reference>
-        </property-set>
+        <dateTime name="createdTime">2015-04-10T00:40:39.363Z</dateTime>
+        <property-set name="data"/>
     </data>
     <indexConfigs>
         <analyzer>content_default</analyzer>

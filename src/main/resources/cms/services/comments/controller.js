@@ -13,7 +13,35 @@ function handlePost(req) {
 
     //Make sure somebody doesn't alter the form to create a comment on a post that doesn't allow comments.
     if(commentPost.data && commentPost.data.enableComments == true) {
-        var saveLocation = req.params.commentsFolder;
+        var saveLocation;
+        var commentParent;
+        var commentsFolder;
+
+        // If it's a reply to a comment, saveLocation is the commentParent. Else check for and/or create a "comments" folder
+        if(p.comment_parent && stk.content.exists(p.comment_parent)) {
+            commentParent = stk.content.get(p.comment_parent);
+            saveLocation = commentParent._path;
+        } else {
+            //Check for an existing <post>/comments folder. Create one if it does not exist.
+            if(stk.content.exists(commentPost._path + '/comments')) {
+                saveLocation = commentPost._path + '/comments';
+            } else {
+                commentsFolder = execute('content.create', {
+                    name: 'comments',
+                    parentPath: commentPost._path,
+                    displayName: 'Comments',
+                    draft: true,
+                    requireValid: true,
+                    contentType: 'base:folder',
+                    data: {}
+                });
+                saveLocation = commentsFolder._path;
+            }
+        }
+
+
+        //change this to the post/comments folder
+        //saveLocation = req.params.commentsFolder;
 
         // Check required fields and create content
         if (p.author && p.email) {
@@ -46,19 +74,20 @@ function handlePost(req) {
         }
     }
 
+    // No longer needed now that there are no posts as a child of a landing page.
     // Make it redirect to the page if it is a landing page.
-    var redirectPath;
+    /*var redirectPath;
     var commentPostParent = stk.content.getParent(commentPost._path);
     if(commentPostParent.type == module.name + ':landing-page') {
         redirectPath = commentPostParent._path;
     } else {
         redirectPath = commentPost._path;
-    }
+    }*/
 
     return {
 
         redirect: execute('portal.pageUrl', {
-            path: redirectPath + '#comments',
+            path: commentPost._path + '#comments',
             params: {
                 submitted: contentCreated ? 'ok' : null
             }

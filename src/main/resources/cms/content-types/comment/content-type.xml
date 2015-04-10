@@ -3,6 +3,7 @@
   <display-name>Comment</display-name>
   <content-display-name-script>$('name')</content-display-name-script>
   <super-type>base:structured</super-type>
+  <allow-child-content>true</allow-child-content>
   <form>
     <field-set name="basic">
       <label>Comment</label>

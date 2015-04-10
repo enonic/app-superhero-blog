@@ -7,7 +7,7 @@ exports.get = function(req) {
     var up = req.params;
     var site = execute('portal.getSite');
     var searchPage = util.getSearchPage();
-    var content = util.getPost(); //Get the child content if it's a landing page.
+    var content = execute('portal.getContent');
     var moduleConfig = site.moduleConfigs[module.name];
 
     var view = resolve('post.html');
@@ -38,7 +38,8 @@ exports.get = function(req) {
     //End pagination
 
     //for comments
-    var postUrl = stk.serviceUrl('comments', {commentsFolder: util.commentsFolder()});
+    //var postUrl = stk.serviceUrl('comments', {commentsFolder: util.commentsFolder()});
+    var postUrl = stk.serviceUrl('comments', {});
     var postAuthor = stk.content.get(content.data.author);
 
     //TODO: Make sure only allowed tags can be used.
@@ -54,8 +55,8 @@ exports.get = function(req) {
     });
 
     var commentsTotal = result.total;
-    var comments = getPostComments(content, moduleConfig, postAuthor, 1, null);
-
+    //var comments = getPostComments(content, moduleConfig, postAuthor, 1, null);
+    var comments = getComments(content, moduleConfig, postAuthor, 1, null);
     //end comments
 
     var data = content.data;
@@ -117,6 +118,45 @@ exports.get = function(req) {
     return stk.view.render(view, params);
 };
 
+function getComments(post, moduleConfig, postAuthor, depth, commentId) {
+    var comments = [];
+    var key = depth == 1 ? post._path + '/comments' : commentId;
+
+    var result = execute('content.getChildren', {
+        key: key,
+        start: 0,
+        count: 1000,
+        sort: 'createdTime ' + moduleConfig.commentSort? moduleConfig.commentSort : 'ASC'
+    });
+
+    var contents = result.contents;
+
+    for (var i = 0; i < contents.length; i++) {
+        contents[i].data.liClass = 'comment ' + 'depth-' + depth + ' ';
+        if(postAuthor && postAuthor.data.email == contents[i].data.email) {
+            contents[i].data.liClass += 'bypostauthor ';
+        }
+
+        contents[i].data.liClass += (i%2 == 0) ? 'even ' : 'odd ';
+        if(depth = 1) {
+            contents[i].data.liClass += (i%2 == 0) ? 'even thread-even ' : 'odd thread-odd ';
+        }
+
+        var date = util.getFormattedDate(new Date(contents[i].createdTime));
+        date += ' at ' + contents[i].createdTime.substring(11, 16);
+        contents[i].data.pubDate = date;
+        contents[i].data.gravatar = util.getGravatar(contents[i].data.email, 40) + '&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&r=G';
+
+        contents[i].data.replyClick = "addComment.moveForm('comment-" + contents[i]._id + "', '" + contents[i]._id + "', 'respond', '" + post._id + "')";
+
+        contents[i].data.children = getComments(post, moduleConfig, postAuthor, depth + 1, contents[i]._id);
+
+        comments.push(contents[i]);
+    }
+    return comments.length > 0 ? comments : null;
+}
+
+/*
 function getPostComments(post, moduleConfig, postAuthor, depth, commentId) {
     var comments = [];
 
@@ -157,4 +197,4 @@ function getPostComments(post, moduleConfig, postAuthor, depth, commentId) {
         comments.push(contents[i]);
     }
     return comments.length > 0 ? comments : null;
-}
+}*/
