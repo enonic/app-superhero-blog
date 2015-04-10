@@ -78,6 +78,7 @@ function handleGet(req) {
             content: content,
             menuItems: menuItems,
             userLanguage: userLanguage,
+            googleUA: googleUA,
             headerStyle: req.mode == 'edit' ? 'position: absolute;' : null
         }
 
