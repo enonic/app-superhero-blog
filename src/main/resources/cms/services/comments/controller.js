@@ -40,19 +40,16 @@ function handlePost(req) {
         }
 
 
-        //change this to the post/comments folder
-        //saveLocation = req.params.commentsFolder;
-
         // Check required fields and create content
         if (p.author && p.email) {
             var result = execute('content.create', {
                 name: 'Comment ' + p.author + '-' + Math.floor((Math.random() * 1000000000) + 1),
-                //parentPath: commentPost._path,
                 parentPath: saveLocation,
                 displayName: p.author,
                 draft: true,
                 requireValid: true,
                 contentType: module.name + ':comment',
+                //branch: 'draft',
                 data: {
                     name: p.author,
                     email: p.email,
@@ -60,8 +57,7 @@ function handlePost(req) {
                     comment: p.comment,
                     post: commentPost._id,
                     commentParent: p.comment_parent.length > 2 ? p.comment_parent : null
-                },
-                branch: 'draft',
+                }
             });
 
             if (result._id) {

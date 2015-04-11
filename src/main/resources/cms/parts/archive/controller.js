@@ -48,9 +48,11 @@ function handleGet(req) {
             });
 
             if(linkParam in monthsGroup) {
-                monthsGroup[linkParam].data.count += 1;
+                //monthsGroup[linkParam].data.count += 1; // Does not work due to ThymeLeaf turning integers into decimals, 2.0 instead of 2
+                monthsGroup[linkParam].data.count = parseInt(monthsGroup[linkParam].data.count) + 1;
+                monthsGroup[linkParam].data.count = monthsGroup[linkParam].data.count.toString();
             } else {
-                var linkData = {linkParam: linkParam, data: {linkText: linkText, linkUrl: linkUrl, count: 1}};
+                var linkData = {linkParam: linkParam, data: {linkText: linkText, linkUrl: linkUrl, count: '1'}};
                 monthsGroup[linkParam] = linkData;
             }
 
