@@ -14,7 +14,7 @@
           <occurrences minimum="0" maximum="1"/>
         </input>
         <input type="ContentSelector" name="contentFolder">
-          <lable>Posts folder</lable>
+          <label>Posts folder</label>
           <occurrences minimum="0" maximum="1"/>
           <config>
             <relationship-type>system:reference</relationship-type>

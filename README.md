@@ -49,3 +49,5 @@ Comprehensive documentation for this module is being created.
 * TODO: Implement categories "Show hierarchy".
 * TODO: Write documentation and insert link
 * TODO: Make it possible to have the post-list page not the home page.
+* TODO: Calendar portlet
+* TODO: License file

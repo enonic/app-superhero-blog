@@ -70,16 +70,6 @@ function handlePost(req) {
         }
     }
 
-    // No longer needed now that there are no posts as a child of a landing page.
-    // Make it redirect to the page if it is a landing page.
-    /*var redirectPath;
-    var commentPostParent = stk.content.getParent(commentPost._path);
-    if(commentPostParent.type == module.name + ':landing-page') {
-        redirectPath = commentPostParent._path;
-    } else {
-        redirectPath = commentPost._path;
-    }*/
-
     return {
 
         redirect: execute('portal.pageUrl', {
