@@ -44,7 +44,6 @@ Comprehensive documentation for this module is being created.
 * TODO: Finish the dynamic classes and IDs in various parts.
 * TODO: Create the Meta part with login/out and stuff.
 * TODO: Finish the RSS page when the CDATA bug is fixed.
-* TODO: Finish the comments part when fragment bug is fixed.
 * TODO: Make a hidden comment manager page to approve or delete comments.
 * TODO: Implement categories "Show hierarchy".
 * TODO: Write documentation and insert link

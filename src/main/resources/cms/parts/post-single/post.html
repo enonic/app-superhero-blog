@@ -81,7 +81,7 @@
             </h2>
 
             <ol class="commentlist">
-                <li id="li-comment-1" data-th-id="'li-comment-' + ${comment._id}" data-th-class="${comment.data.liClass}"
+                <li data-th-id="'li-comment-' + ${comment._id}" data-th-class="${comment.data.liClass}"
                     class="comment even thread-even depth-1" data-th-each="comment,iterStat : ${comments}">
                     <article id="comment-1" data-th-id="'comment-' + ${comment._id}" class="comment">
                         <footer>
@@ -108,45 +108,13 @@
                             </p>
                         </div>
                         <div class="reply">
-                            <!--<a class="comment-reply-link" aria-label="Reply to Mr WordPress" data-th-onclick="${comment.data.replyClick}"
-                               onclick="return addComment.moveForm( 'comment-1', '1', 'respond', '1' )"
-                               data-th-href="${portal.pageUrl({'_path=' + content._path, 'replytocom=' + comment._id })} + '#respond'" href="/?p=1&amp;replytocom=1#respond">Reply</a>-->
                             <a class="comment-reply-link" aria-label="Reply to Mr WordPress" data-th-onclick="${comment.data.replyClick}"
                                onclick="return addComment.moveForm( 'comment-1', '1', 'respond', '1' )"
                                data-th-href="'?replytocom=' + ${comment._id } + '#respond'" href="/?p=1&amp;replytocom=1#respond">Reply</a>
                         </div>
                     </article>
 
-                    <ul class="children" data-th-if="${comment.data.children}">
-                        <li data-th-class="${child.data.liClass}" data-th-id="'li-comment-' + ${child._id}" data-th-each="child : ${comment.data.children}">
-                            <article data-th-id="'comment-' + ${child._id}" class="comment">
-                                <footer>
-                                    <div class="comment-author vcard">
-                                        <img class="avatar avatar-40 photo avatar-default" width="40" height="40" data-th-src="${child.data.gravatar}" src="http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=40" alt=""/>
-                                        <cite class="fn">
-                                            <a data-th-if="${child.data.website}" class="url" rel="external nofollow" data-th-href="${child.data.website}"
-                                               href="#" data-th-text="${child.data.name}">Mr WordPress</a>
-                                            <span data-th-if="${!child.data.website}" data-th-text="${child.data.name}" data-th-remove="tag"></span>
-                                        </cite>
-                                        <span class="says">says:</span>
-                                    </div>
-                                    <div class="comment-meta commentmetadata">
-                                        <a href="http://localhost:8888/?p=1#comment-1"><!-- TODO: fix this -->
-                                            <time datetime="2014-11-17T01:52:00+00:00" data-th-text="${child.data.pubDate}"> November 17, 2014 at 01:52 </time>
-                                        </a>
-                                    </div>
-                                </footer>
-                                <div class="comment-content" data-th-utext="${child.data.comment}">
-
-                                </div>
-                                <div class="reply">
-                                    <a class="comment-reply-link" aria-label="Reply to Mr WordPress" data-th-onclick="${child.data.replyClick}"
-                                       onclick="return addComment.moveForm( 'comment-1', '1', 'respond', '1' )"
-                                       data-th-href="'?replytocom=' + ${comment._id } + '#respond'" href="#">Reply</a>
-                                </div>
-                            </article>
-                        </li>
-                    </ul>
+                    <div data-th-if="${comment.data.children}" data-th-include="::children" data-th-with="children=${comment.data.children}" data-th-remove="tag"></div>
 
                 </li>
             </ol>
@@ -195,7 +163,44 @@
             </div>
         </div><!-- data-th-if -->
 
-
     </div>
 
 </div>
+
+<div data-th-fragment="children" data-th-remove="all">
+    <ul class="children" >
+        <li data-th-class="${child.data.liClass}" data-th-id="'li-comment-' + ${child._id}" data-th-each="child : ${children}">
+            <article data-th-id="'comment-' + ${child._id}" class="comment">
+                <footer>
+                    <div class="comment-author vcard">
+                        <img class="avatar avatar-40 photo avatar-default" width="40" height="40" data-th-src="${child.data.gravatar}" src="http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=40" alt=""/>
+                        <cite class="fn">
+                            <a data-th-if="${child.data.website}" class="url" rel="external nofollow" data-th-href="${child.data.website}"
+                               href="#" data-th-text="${child.data.name}">Mr WordPress</a>
+                            <span data-th-if="${!child.data.website}" data-th-text="${child.data.name}" data-th-remove="tag"></span>
+                        </cite>
+                        <span class="says">says:</span>
+                    </div>
+                    <div class="comment-meta commentmetadata">
+                        <a href="http://localhost:8888/?p=1#comment-1"><!-- TODO: fix this -->
+                            <time datetime="2014-11-17T01:52:00+00:00" data-th-text="${child.data.pubDate}"> November 17, 2014 at 01:52 </time>
+                        </a>
+                    </div>
+                </footer>
+                <div class="comment-content" data-th-utext="${child.data.comment}">
+
+                </div>
+                <div class="reply">
+                    <a class="comment-reply-link" aria-label="Reply to Mr WordPress" data-th-onclick="${child.data.replyClick}"
+                       onclick="return addComment.moveForm( 'comment-1', '1', 'respond', '1' )"
+                       data-th-href="'?replytocom=' + ${comment._id } + '#respond'" href="#">Reply</a>
+                </div>
+            </article>
+
+            <div data-th-if="${child.data.children}" data-th-include="::children" data-th-with="children=${child.data.children}"></div>
+
+        </li>
+    </ul>
+</div>
+
+
