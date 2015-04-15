@@ -18,6 +18,8 @@ Resetting and rebuilding styles have been helped along thanks to the fine work o
 Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
 along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 and Blueprint http://www.blueprintcss.org/
+
+This CSS file was modified by Enonic to work with Enonic XP
 */
 
 
@@ -424,7 +426,7 @@ a:active {
 	font-size: .9em;
 }
 
-#main {
+.main {
 	font-size: .8em;
 	line-height: 24px;
 	margin: 25px auto;
@@ -1194,7 +1196,7 @@ img#wpstats:hover {
 	#featured-content.flexslider .slides .featured-hentry-wrap {
 		width: 100%;
 	}
-	#main {
+	.main {
 		width: 96%;
 	}
 	.primary {
@@ -1216,7 +1218,7 @@ img#wpstats:hover {
 /* --- Smartphones and small Tablet PCs --- */
 @media screen and (max-width: 767px) {
 	#masthead,
-	#main,
+	.main,
 	.primary,
 	.secondary,
 	#colophon,

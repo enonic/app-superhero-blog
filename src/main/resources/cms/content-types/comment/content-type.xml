@@ -20,7 +20,7 @@
           <label>Website</label>
           <occurrences minimum="0" maximum="1"/>
         </input>
-        <input type="HtmlArea" name="comment">
+        <input type="TinyMCE" name="comment">
           <label>Comment</label>
           <occurrences minimum="1" maximum="1"/>
         </input>
