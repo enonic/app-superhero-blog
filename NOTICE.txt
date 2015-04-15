@@ -1,0 +1,24 @@
+This software contains the following third party software:
+
+jQuery
+  MIT License http://jquery.org/license
+
+jQuery Migrate
+  MIT License https://github.com/jquery/jquery-migrate/blob/master/LICENSE.txt
+
+jQuery FlexSlider by WooThemes
+  http://www.woothemes.com/flexslider/
+  GNU GPLv2 License https://www.gnu.org/licenses/gpl-2.0.html
+
+MD5 (Message-Digest Algorithm) by WebToolkit
+  http://www.deluxeblogtips.com/2010/04/get-gravatar-using-only-javascript.html
+  GNU GPLv2 License https://www.gnu.org/licenses/gpl-2.0.html
+
+Superhero by Automattic
+  https://wordpress.com/themes/superhero/
+  License: GNU General Public License v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+  Superhero is based on Underscores http://underscores.me/, (C) 2012-2014 Automattic, Inc.
+  Resetting and rebuilding styles have been helped along thanks to the fine work of
+  Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
+  along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+  and Blueprint http://www.blueprintcss.org/
