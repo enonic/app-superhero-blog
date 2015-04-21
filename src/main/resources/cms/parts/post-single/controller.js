@@ -10,6 +10,8 @@ exports.get = function(req) {
     var content = execute('portal.getContent');
     var moduleConfig = site.moduleConfigs[module.name];
 
+    stk.log(content);
+
     var view = resolve('post.html');
     var childFragment = resolve('comment-fragment.html');
 
@@ -89,11 +91,15 @@ exports.get = function(req) {
         data.categories = categoriesArray.length > 0 ? categoriesArray : null
 
         if (data.featuredImage) {
+            var scale = 'scalewidth(695)';
+            if(content.page.regions.main.components[0].descriptor == module.name + ':one-column') {
+                scale = 'scalewidth(960)';
+            }
             var img = stk.content.get(data.featuredImage);
             data.fImageName = img.displayName;
             data.fImageUrl = execute('portal.imageUrl', {
                 id: data.featuredImage,
-                filter: 'scalewidth(695)',
+                filter: scale,
                 format: 'jpeg'
             });
         }
