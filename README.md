@@ -6,18 +6,18 @@ Theme by [automattic](https://profiles.wordpress.org/automattic/) for [WordPress
 
 Adapted for [Enonic XP](https://github.com/enonic/xp) by Michael Lazell
 
-You can download WordPress and Superhero and use MAMP to run it and see how it looks and works in WordPress.
-
 ## Work in progress
 
 This is still being developed and is not ready for production yet.
 
-## Building
+## Requirements
 
-Gradle is required to build the project. From the base of the project, enter ./gradlew in the terminal or on Windows, double-click the
-gradlew.bat file. Or type 'gradle clean build' from the command line.
+First, Enonic XP must be installed and running. See the [XP installation documentation](https://enonic.com/docs/latest/guides/installation/index.html).
 
-Put the jar file from build/lib into the XP_HOME/deploy directory.
+Gradle is required to build this project. From the base of the project, enter "./gradlew" in the terminal or "gradle clean build". On
+Windows, double-click the gradlew.bat file.
+
+Move the generated jar file from build/lib into the $XP_HOME/deploy directory.
 
 ## Creating a site
 
@@ -25,15 +25,15 @@ If the content folder is empty then sample content will be imported automaticall
 follow the steps below to create the site.
 
 - In the admin console, create a site and give it a name.
-- Create folders called Authors, Categories, Comments and Posts.
+- Create folders called Authors, Categories and Posts.
 - Create a Category and an Author content in their respective folders.
 - Create a Post content in the Posts folder and add the Category and Author content.
 - When the above steps are done, create a page template and add the 70-30 Layout.
 - Add the "Header" and "Posts list" parts to the left side of the layout.
 - Add the following parts to the right side of the layout: Search form, Recent posts, Recent comments, Archives, Categories and Tags.
 - Make this page template support the Site content type.
-- Create another page template called "Post show". Add the "Post single" part in the left instead of the "Posts list" and also
-add the Comments part. Add the same parts from the previous step to the right column.
+- Create another page template called "Post show". Add the "Post single" part in the left instead of the "Posts list". Add the same parts
+from the previous step to the right column.
 - Make the Post show template support the Post content type.
 
 ## Documentation
