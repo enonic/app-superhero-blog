@@ -41,7 +41,7 @@ function handleGet(req) {
             var slide = {};
             var imgUrl = execute('portal.imageUrl', {
                 id: data.featuredImage,
-                filter: 'scalewidth(1024)'
+                scale: 'width(1024)'
             });
 
             slide.id = content._id;
