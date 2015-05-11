@@ -122,7 +122,8 @@ exports.get = function(req) {
             data.fImageName = img.displayName;
             data.fImageUrl = execute('portal.imageUrl', {
                 id: data.featuredImage,
-                scale: 'width(695)',
+                //scale: 'width(695)',
+		scale: 'wide(695,300)',
                 format: 'jpeg'
             });
         }
