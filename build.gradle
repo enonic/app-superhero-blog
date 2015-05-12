@@ -7,7 +7,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.enonic.xp.gradle:gradle-plugin:1.0.3'
+        classpath 'com.enonic.xp.gradle:gradle-plugin:1.1.0'
         classpath 'com.eriwen:gradle-js-plugin:1.12.1'
     }
 }
@@ -19,7 +19,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.eriwen.gradle.js'
 apply plugin: 'base'
 
-version = '0.1.0-SNAPSHOT'
+version = '0.1.1-SNAPSHOT'
 group = 'com.enonic.theme'
 
 module {
@@ -27,7 +27,7 @@ module {
 }
 
 dependencies {
-    compile 'com.enonic.xp:core-api:5.1.0'
+    compile 'com.enonic.xp:core-api:5.2.0-SNAPSHOT'
 }
 
 repositories {
