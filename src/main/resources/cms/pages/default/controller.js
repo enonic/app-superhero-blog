@@ -22,7 +22,7 @@ function handleGet(req) {
         stk.data.deleteEmptyProperties(moduleConfig);
 
         var facebookConfig = site.moduleConfigs[util.facebookModule] || {};
-        var twitterConfig = site.moduleConfigs[util.twitterModule] || {};
+        //var twitterConfig = site.moduleConfigs[util.twitterModule] || {};
         var disqusConfig = site.moduleConfigs[util.disqusModule] || {};
 
         var content = execute('portal.getContent');
@@ -70,7 +70,7 @@ function handleGet(req) {
             facebookConfig: facebookConfig,
             facebookAppID: facebookAppID,
             facebookApiVersion: facebookApiVersion,
-            twitterConfig: twitterConfig,
+            //twitterConfig: twitterConfig,
             disqusConfig: disqusConfig,
             disqusShortName: disqusShortName,
             backgroundImage: backgroundImage,

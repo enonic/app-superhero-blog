@@ -1,7 +1,7 @@
 var stk = require('stk/stk');
 
 exports.facebookModule = 'com.enonic.xp.modules.facebook-module';
-exports.twitterModule = 'com.enonic.xp.modules.twitter-module';
+//exports.twitterModule = 'com.enonic.xp.modules.twitter-module';
 
 // Returns the full month name from a Date object.
 exports.getMonthName = function(date) {

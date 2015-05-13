@@ -10,7 +10,7 @@ exports.get = function(req) {
     var content = execute('portal.getContent');
     var moduleConfig = site.moduleConfigs[module.name];
 
-    stk.log(content);
+    //stk.log(content);
 
     var view = resolve('post.html');
     var childFragment = resolve('comment-fragment.html');
