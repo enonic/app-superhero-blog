@@ -28,7 +28,6 @@ function handleGet(req) {
 
         // For facebook module
         var facebookAppID = facebookConfig.facebookAppID && facebookConfig.facebookAppID.length > 1 ? facebookConfig.facebookAppID : null; // Hack to prevent empty string
-        var facebookApiVersion = facebookConfig.facebookApiVersion && facebookConfig.facebookApiVersion.length > 1 ? facebookConfig.facebookApiVersion : null; // Hack to prevent empty string
         var disqusShortName = disqusConfig.shortname && disqusConfig.shortname.length > 1 ? disqusConfig.shortname : null;
         var userLanguage = 'en_US';
         if(req.headers && req.headers['Accept-Language']) {
@@ -68,7 +67,6 @@ function handleGet(req) {
             moduleConfig: moduleConfig,
             facebookConfig: facebookConfig,
             facebookAppID: facebookAppID,
-            facebookApiVersion: facebookApiVersion,
             disqusConfig: disqusConfig,
             disqusShortName: disqusShortName,
             backgroundImage: backgroundImage,
