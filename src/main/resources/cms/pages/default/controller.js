@@ -21,18 +21,11 @@ function handleGet(req) {
         var moduleConfig = site.moduleConfigs[module.name];
         stk.data.deleteEmptyProperties(moduleConfig);
 
-        var facebookConfig = site.moduleConfigs[util.facebookModule] || {};
         var disqusConfig = site.moduleConfigs[util.disqusModule] || {};
 
         var content = execute('portal.getContent');
 
-        // For facebook module
-        var facebookAppID = facebookConfig.facebookAppID && facebookConfig.facebookAppID.length > 1 ? facebookConfig.facebookAppID : null; // Hack to prevent empty string
         var disqusShortName = disqusConfig.shortname && disqusConfig.shortname.length > 1 ? disqusConfig.shortname : null;
-        var userLanguage = 'en_US';
-        if(req.headers && req.headers['Accept-Language']) {
-            userLanguage = req.headers['Accept-Language'].substring(0, req.headers['Accept-Language'].indexOf(',')); // So Facebook stuff comes out in the right language
-        }
 
         var googleUA = moduleConfig.googleUA && moduleConfig.googleUA.length > 1 ? moduleConfig.googleUA : null;
         var bodyClass = '';
@@ -65,15 +58,12 @@ function handleGet(req) {
             site: site,
             bodyClass: bodyClass,
             moduleConfig: moduleConfig,
-            facebookConfig: facebookConfig,
-            facebookAppID: facebookAppID,
             disqusConfig: disqusConfig,
             disqusShortName: disqusShortName,
             backgroundImage: backgroundImage,
             mainRegion: content.page.regions['main'],
             content: content,
             menuItems: menuItems,
-            userLanguage: userLanguage,
             googleUA: googleUA,
             headerStyle: req.mode == 'edit' ? 'position: absolute;' : null
         }
