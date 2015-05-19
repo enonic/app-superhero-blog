@@ -16,12 +16,8 @@
             <string name="title">Some Buildings to Leap</string>
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&lt;div id="attachment_45" class="wp-caption alignnone" style="width: 655px"&gt;
-&lt;a href="_/image/32169e70-49e1-444c-a6ac-d38f22438134/superhero_4.jpg"&gt;
-&lt;img class="wp-image-45 size-full" width="645" height="430" alt="superhero_4" src="_/image/32169e70-49e1-444c-a6ac-d38f22438134/superhero_4.jpg"&gt;
-&lt;/a&gt;
-&lt;p class="wp-caption-text"&gt;These are some building I saw the other day, that I think would make for some great hurdles.&lt;/p&gt;
-&lt;/div&gt;
+            <htmlPart name="post">
+&lt;p&gt;These are some buildings I saw the other day, that I think would make for some great hurdles.&lt;/p&gt;
 &lt;p&gt; &lt;/p&gt;</htmlPart>
             <string name="tags">Buildings</string>
             <string name="tags">Featured</string>
