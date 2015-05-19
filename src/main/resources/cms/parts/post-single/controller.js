@@ -67,6 +67,7 @@ exports.get = function(req) {
 
     if (content.type == module.name + ':post') {
 
+        data.title = content.displayName;
         data.path = content._path;
         data.id = content._id;
         data.createdTime = content.createdTime;
