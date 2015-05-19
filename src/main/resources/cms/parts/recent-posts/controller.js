@@ -34,6 +34,7 @@ function handleGet(req) {
         for (var i = 0; i < results.contents.length; i++) {
             stk.data.deleteEmptyProperties(results.contents[i].data);
             results.contents[i].data.path = results.contents[i]._path;
+            results.contents[i].data.title = results.contents[i].displayName
             posts.push(results.contents[i].data);
         }
 
