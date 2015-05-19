@@ -8,8 +8,8 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-04-09T20:43:39.227Z</dateTime>
-        <string name="modifier">user:system:su</string>
+        <dateTime name="modifiedTime">2015-05-19T22:13:36.120Z</dateTime>
+        <string name="modifier">user:system:anonymous</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
         <property-set name="data">
