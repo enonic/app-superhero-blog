@@ -27,7 +27,7 @@
             <p>This text will be replaced with the content of your post.</p>
         </div>
 
-        <div class="entry-content" data-th-if="${post.post}" data-th-utext="${post.post}">
+        <div class="entry-content" data-th-if="${post.post}" data-th-utext="${portal.processHtml({'_value=' + post.post})}">
 
         </div><!-- .entry-content -->
 
@@ -100,7 +100,7 @@
                                 </a>
                             </div>
                         </footer>
-                        <div class="comment-content" data-th-utext="${comment.data.comment}">
+                        <div class="comment-content" data-th-utext="${portal.processHtml({'_value=' + comment.data.comment})}">
                             <p>
                                 Hi, this is a comment.
                                 <br/>
@@ -187,7 +187,7 @@
                         </a>
                     </div>
                 </footer>
-                <div class="comment-content" data-th-utext="${child.data.comment}">
+                <div class="comment-content" data-th-utext="${portal.processHtml({'_value=' + child.data.comment})}">
 
                 </div>
                 <div class="reply">
