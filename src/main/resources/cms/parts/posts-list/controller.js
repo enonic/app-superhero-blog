@@ -76,6 +76,7 @@ exports.get = function(req) {
     // Loop through the posts and get the comments, categories and author
     for (var i = 0; i < results.contents.length; i++) {
         var data = results.contents[i].data;
+        data.title = results.contents[i].displayName;
         var categoriesArray = new Array();
         data.class = 'post-' + results.contents[i]._id + ' post type-post status-publish format-standard hentry';
         if (data.stickyPost && Object.keys(up).length == 0) {
