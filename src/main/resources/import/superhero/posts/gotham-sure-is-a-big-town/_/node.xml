@@ -13,7 +13,6 @@
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-03-07T01:06:38.836Z</dateTime>
         <property-set name="data">
-            <string name="title">Gotham Sure Is A Big Town</string>
             <reference name="author">86cc1301-0639-41d1-84ed-70ba443f38ba</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
             <htmlPart name="post">&lt;p&gt;There’s so much area to cover. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non dapibus lectus. Vestibulum eget commodo mi. Donec in est sed quam ultricies pharetra at vitae quam. Nam dignissim orci accumsan odio bibendum non mattis nisl congue.&lt;/p&gt;

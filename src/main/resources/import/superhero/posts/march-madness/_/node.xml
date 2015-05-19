@@ -13,7 +13,6 @@
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-03-04T05:13:27.097Z</dateTime>
         <property-set name="data">
-            <string name="title">March Madness</string>
             <reference name="author">86cc1301-0639-41d1-84ed-70ba443f38ba</reference>
             <reference name="category">70ac4676-678d-408e-9561-fe98ddcc13be</reference>
             <reference name="category">e656bc02-10dd-45b1-b30f-c9deef28aa6f</reference>

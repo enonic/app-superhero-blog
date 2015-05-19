@@ -13,7 +13,6 @@
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-28T00:23:33.953Z</dateTime>
         <property-set name="data">
-            <string name="title">Links</string>
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
             <htmlPart name="post">&lt;p&gt;A few well known WordPress links: &lt;a href="http://wordpress.org/"&gt;WordPress.org&lt;/a&gt;, &lt;a href="http://codex.wordpress.org/Main_Page"&gt;the Codex&lt;/a&gt; and &lt;a href="http://wordpress.org/download/"&gt;the download page&lt;/a&gt;.&lt;/p&gt;</htmlPart>

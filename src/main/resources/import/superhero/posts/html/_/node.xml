@@ -13,7 +13,6 @@
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-28T00:24:57.302Z</dateTime>
         <property-set name="data">
-            <string name="title">HTML</string>
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
             <htmlPart name="post">&lt;p&gt;What HTML tags would you like to see?&lt;/p&gt;
