@@ -9,7 +9,14 @@ function handleGet(req) {
     function renderView() {
         var view = resolve('recent-posts.html');
         var model = createModel();
-        return stk.view.render(view, model);
+
+        return {
+            body: execute('thymeleaf.render', {
+                view: view,
+                model: model
+            }),
+            contentType: 'text/html'
+        };
     }
 
     function createModel() {
@@ -17,11 +24,11 @@ function handleGet(req) {
         var config = component.config;
         var title = config.title || 'Recent posts';
         var maxPosts = config.maxPosts || 5;
+
+        // Where to look for recent posts. Part config will override module config
         var folderPath = util.postsFolder(config.contentFolder);
 
-        var posts = new Array();
-
-        var results = execute('content.query', {
+        var result = execute('content.query', {
             start: 0,
             count: maxPosts,
             query: '_parentPath="/content' + folderPath + '"',
@@ -31,11 +38,17 @@ function handleGet(req) {
             ]
         });
 
-        for (var i = 0; i < results.contents.length; i++) {
-            stk.data.deleteEmptyProperties(results.contents[i].data);
-            results.contents[i].data.path = results.contents[i]._path;
-            results.contents[i].data.title = results.contents[i].displayName
-            posts.push(results.contents[i].data);
+        var posts = new Array();
+
+        // Build an object for each post with the displayName and URL and add it to the array of posts
+        for (var i = 0; i < result.contents.length; i++) {
+            var content = result.contents[i];
+            var post = {};
+            post.displayName = content.displayName;
+            post.url = execute('portal.pageUrl', {
+                path: content._path
+            });
+            posts.push(post);
         }
 
         var model = {

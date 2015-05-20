@@ -2,7 +2,17 @@
     <h1 class="widget-title" data-th-text="${title}">Recent Posts</h1>
     <ul>
         <li data-th-each="post : ${posts}">
-            <a data-th-href="${portal.pageUrl({'_path=' + post.path })}" href="#" data-th-text="${post.title}">Name of post</a>
+            <a data-th-href="${post.url}" href="#" data-th-text="${post.displayName}">Name of post</a>
+        </li>
+
+        <li data-th-remove="all">
+            <a href="#">Hit movies</a>
+        </li>
+        <li data-th-remove="all">
+            <a href="#">Great books</a>
+        </li>
+        <li data-th-remove="all">
+            <a href="#">Dance music</a>
         </li>
     </ul>
 </aside>
