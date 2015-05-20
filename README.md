@@ -12,7 +12,7 @@ This is still being developed and is not ready for production yet.
 
 ## Requirements
 
-First, Enonic XP must be installed and running. See the [XP installation documentation](https://enonic.com/docs/latest/guides/installation/index.html).
+First, Enonic XP must be installed and running. See the [XP installation documentation](https://enonic.com/docs/latest/#installing).
 
 Gradle is required to build this project. From the base of the project, enter "./gradlew" in the terminal or "gradle clean build". On
 Windows, double-click the gradlew.bat file.
