@@ -21,11 +21,7 @@ function handleGet(req) {
         var moduleConfig = site.moduleConfigs[module.name];
         stk.data.deleteEmptyProperties(moduleConfig);
 
-        var disqusConfig = site.moduleConfigs[util.disqusModule] || {};
-
         var content = execute('portal.getContent');
-
-        var disqusShortName = disqusConfig.shortname && disqusConfig.shortname.length > 1 ? disqusConfig.shortname : null;
 
         var googleUA = moduleConfig.googleUA && moduleConfig.googleUA.length > 1 ? moduleConfig.googleUA : null;
         var bodyClass = '';
@@ -58,8 +54,6 @@ function handleGet(req) {
             site: site,
             bodyClass: bodyClass,
             moduleConfig: moduleConfig,
-            disqusConfig: disqusConfig,
-            disqusShortName: disqusShortName,
             backgroundImage: backgroundImage,
             mainRegion: content.page.regions['main'],
             content: content,
