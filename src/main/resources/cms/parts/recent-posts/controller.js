@@ -1,10 +1,8 @@
-var stk = require('stk/stk');
 var util = require('utilities');
 
 exports.get = handleGet;
 
 function handleGet(req) {
-    var me = this;
 
     function renderView() {
         var view = resolve('recent-posts.html');
