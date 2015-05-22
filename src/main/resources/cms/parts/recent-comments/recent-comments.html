@@ -1,6 +1,6 @@
 <aside class="widget widget_recent_comments">
     <h1 class="widget-title" data-th-text="${title}">Recent Comments</h1>
-    <ul id="recentcomments">
+    <ul>
         <li class="recentcomments" data-th-each="comment : ${comments}">
             <a data-th-if="${comment.website}" data-th-href="${comment.website}" href="#" data-th-text="${comment.name}" rel="external nofollow" class="url">Name</a>
             <span data-th-if="${!comment.website}" data-th-text="${comment.name}"></span> on

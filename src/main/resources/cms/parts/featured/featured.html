@@ -2,7 +2,7 @@
     <div data-th-if="${editMode} and ${#lists.isEmpty(slides)}" class="edit-mode-configure">
         <h2>Configure "Featured" part</h2>
     </div>
-    <div id="featured-content" class="flexslider" data-th-if="${!#lists.isEmpty(slides)}">
+    <div class="featured-content flexslider" data-th-if="${!#lists.isEmpty(slides)}">
         <ul class="featured-posts slides">
             <li class="featured" data-th-each="slide : ${slides}">
                 <a href="#" data-th-href="${slide.url}" data-th-title="'Permalink to ' + ${slide.name}" title="" rel="bookmark">

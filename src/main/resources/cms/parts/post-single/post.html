@@ -83,7 +83,7 @@
             <ol class="commentlist">
                 <li data-th-id="'li-comment-' + ${comment._id}" data-th-class="${comment.data.liClass}"
                     class="comment even thread-even depth-1" data-th-each="comment,iterStat : ${comments}">
-                    <article id="comment-1" data-th-id="'comment-' + ${comment._id}" class="comment">
+                    <article data-th-id="'comment-' + ${comment._id}" class="comment">
                         <footer>
                             <div class="comment-author vcard">
                                 <img class="avatar avatar-40 photo avatar-default" width="40" height="40" data-th-src="${comment.data.gravatar}" src="http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=40" alt=""/>

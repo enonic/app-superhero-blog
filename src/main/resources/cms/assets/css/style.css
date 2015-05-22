@@ -538,21 +538,21 @@ a:active {
 /* =Featured Content
 ----------------------------------------------- */
 
-#featured-content.flexslider {
+.featured-content.flexslider {
 	border: none 0;
 	margin-bottom: 25px;
 	overflow: hidden;
 }
-#featured-content.flexslider .slides img {
+.featured-content.flexslider .slides img {
 	height: auto;
 	margin: 0 auto
 }
-#featured-content.flexslider .slides .featured-hentry-wrap {
+.featured-content.flexslider .slides .featured-hentry-wrap {
 	margin: 0 auto;
 	position: relative;
 	width: 960px;
 }
-#featured-content.flexslider .slides .hentry .entry-header {
+.featured-content.flexslider .slides .hentry .entry-header {
 	background: rgba(255,255,255,.95);
 	border-bottom: 5px solid #1e4a66;
 	margin-bottom: 25px;
@@ -566,16 +566,16 @@ a:active {
 	transition: all 0.2s ease;
 	max-width: 500px;
 }
-#featured-content.flexslider .slides .hentry {
+.featured-content.flexslider .slides .hentry {
 	background: transparent;
 	border: 0 none;
 	margin: 0;
 	padding: 0;
 }
-#featured-content.flexslider .slides .hentry .entry-header:hover {
+.featured-content.flexslider .slides .hentry .entry-header:hover {
 	background: rgba(255,255,255,1);
 }
-#featured-content .flex-direction-nav li a {
+.featured-content .flex-direction-nav li a {
 	background-color: #fff;
 	color: #1e4a66;
 	font-size: 1.9em;
@@ -592,29 +592,29 @@ a:active {
 	width: auto;
 	height: auto;
 }
-#featured-content:hover .flex-direction-nav li a {
+.featured-content:hover .flex-direction-nav li a {
 	opacity: .5;
 }
-#featured-content.flexslider:hover .flex-direction-nav li a {
+.featured-content.flexslider:hover .flex-direction-nav li a {
 	background-color: #fff;
 	opacity: .5;
 }
-#featured-content.flexslider .flex-direction-nav li a:hover {
+.featured-content.flexslider .flex-direction-nav li a:hover {
 	background-color: #fff;
 	opacity: .95;
 }
-#featured-content .flex-direction-nav li .next {
+.featured-content .flex-direction-nav li .next {
 	right: 0;
 }
-#featured-content .flex-direction-nav li .prev {
+.featured-content .flex-direction-nav li .prev {
 	left: 0;
 }
-#featured-content .flex-control-nav {
+.featured-content .flex-control-nav {
 	bottom: 1%;
 	right: 0;
 	width: 100%;
 }
-#featured-content .flex-control-nav li {
+.featured-content .flex-control-nav li {
 	background-color: rgba(30,74,102,0);
 	border-radius: 10px;
 	padding: 3px;
@@ -623,13 +623,13 @@ a:active {
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
-#featured-content:hover .flex-control-nav li {
+.featured-content:hover .flex-control-nav li {
 	background-color: rgba(30,74,102,.5);
 }
-#featured-content .flex-control-nav li:hover {
+.featured-content .flex-control-nav li:hover {
 	background-color: rgba(30,74,102,.95);
 }
-#featured-content .flex-control-nav li a {
+.featured-content .flex-control-nav li a {
 	background-color: rgba(255,255,255,0);
 	border-radius: 7px;
 	-webkit-box-shadow: none;
@@ -641,10 +641,10 @@ a:active {
 	-o-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
-#featured-content:hover .flex-control-nav li a {
+.featured-content:hover .flex-control-nav li a {
 	background-color: rgba(255,255,255,0.5);
 }
-#featured-content .flex-control-nav li a:hover, #slider-wrapper .flex-control-nav li a.active {
+.featured-content .flex-control-nav li a:hover, #slider-wrapper .flex-control-nav li a.active {
 	background-color: rgba(255,255,255,.95);
 }
 
@@ -1193,7 +1193,7 @@ img#wpstats:hover {
 @media screen and (min-width: 768px) and (max-width: 959px) {
 	#masthead,
 	#colophon,
-	#featured-content.flexslider .slides .featured-hentry-wrap {
+	.featured-content.flexslider .slides .featured-hentry-wrap {
 		width: 100%;
 	}
 	.main {
@@ -1222,13 +1222,13 @@ img#wpstats:hover {
 	.primary,
 	.secondary,
 	#colophon,
-	#featured-content.flexslider .slides .featured-hentry-wrap {
+	.featured-content.flexslider .slides .featured-hentry-wrap {
 		width: 100%;
 	}
 	.logged-in #masthead-wrap {
 		top: 46px;
 	}
-	#featured-content.flexslider .slides .hentry {
+	.featured-content.flexslider .slides .hentry {
 		bottom: 2%;
 		max-width: 50%;
 	}
@@ -1276,7 +1276,7 @@ img#wpstats:hover {
 	.main-small-navigation ul ul {
 		list-style-type: none;
 	}
-	#featured-content.flexslider .slides .featured-hentry-wrap {
+	.featured-content.flexslider .slides .featured-hentry-wrap {
 		display: none;
 	}
 }
