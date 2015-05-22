@@ -2,7 +2,7 @@
     <header class="page-header" data-th-if="${headerText}">
         <h1 class="page-title" data-th-utext="${headerText}"></h1>
     </header>
-    <article data-th-each="post : ${posts}" data-th-id="'post-' + ${post.id}"  id="post-19" data-th-class="${post.class}" class="post-19 post type-post status-publish format-standard hentry">
+    <article data-th-each="post : ${posts}" data-th-id="'post-' + ${post.id}" data-th-class="${post.class}" class="post-19 post type-post status-publish format-standard hentry">
 
         <img src="#" data-th-src="${post.fImageUrl}" data-th-if="${post.fImageUrl}" width="695" class="attachment-feat-img wp-post-image" alt="${post.fImageName}"/>
 
