@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<module>
-  <display-name>Superhero Blog</display-name>
-  <info>Superhero theme</info>
-  <url></url>
-  <vendor>
-    <name>Michael Lazell</name>
-    <url>http://www.enonic.com</url>
-  </vendor>
-  <dependencies system-min-version="5.0.0" system-max-version="6.0.0"/>
+<site>
+  <content/>
   <config>
     <input type="TextLine" name="googleUA">
       <label>Google Analytics UA</label>
@@ -73,4 +66,4 @@
       </config>
     </input>
   </config>
-</module>
+</site>
