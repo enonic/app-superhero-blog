@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<part-component>
+<part>
   <display-name>Featured</display-name>
   <config>
     <input type="ContentSelector" name="postsFolder">
@@ -11,4 +11,4 @@
       </config>
     </input>
   </config>
-</part-component>
+</part>

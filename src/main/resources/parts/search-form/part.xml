@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<part-component>
+<part>
   <display-name>Search form</display-name>
   <config>
     <field-set name="config">
@@ -12,4 +12,4 @@
       </items>
     </field-set>
   </config>
-</part-component>
+</part>
