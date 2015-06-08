@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<part-component>
+<part>
   <display-name>Tag cloud</display-name>
   <config>
     <input type="TextLine" name="title">
@@ -7,4 +7,4 @@
       <occurrences minimum="0" maximum="1"/>
     </input>
   </config>
-</part-component>
+</part>

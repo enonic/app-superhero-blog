@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<page-component>
+<page>
   <display-name>RSS Page</display-name>
   <config>
     <input type="ContentSelector" name="contentFolder">
@@ -12,4 +12,4 @@
     </input>
   </config>
   <regions/>
-</page-component>
+</page>
