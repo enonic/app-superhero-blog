@@ -68,7 +68,7 @@ public class DemoInitializer
 
         final Bundle bundle = FrameworkUtil.getBundle( this.getClass() );
 
-        final VirtualFile source = VirtualFiles.from( bundle, "/import" );
+        final VirtualFile source = VirtualFiles.from( bundle, "/app/import" );
 
         final NodeImportResult nodeImportResult = this.exportService.importNodes( ImportNodesParams.create().
             source( source ).
