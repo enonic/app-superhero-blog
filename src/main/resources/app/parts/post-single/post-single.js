@@ -1,14 +1,14 @@
 var stk = require('stk/stk');
 var util = require('utilities');
 
-exports.get = function(req) {
+exports.get = function (req) {
 
     var component = execute('portal.getComponent');
     var up = req.params;
     var site = execute('portal.getSite');
     var searchPage = util.getSearchPage();
     var content = execute('portal.getContent');
-    var moduleConfig = site.moduleConfigs[module.name];
+    var moduleConfig = site.siteConfigs[module.name];
 
     stk.log(content);
 
@@ -20,7 +20,7 @@ exports.get = function(req) {
     var prev, next;
 
     // Pagination if it's a single post in the posts folder
-    if(stk.content.getParentPath(content._path) == folderPath) {
+    if (stk.content.getParentPath(content._path) == folderPath) {
         prev = execute('content.query', {
             start: 0,
             count: 1,
@@ -77,9 +77,9 @@ exports.get = function(req) {
 
         data.category = data.category ? stk.data.forceArray(data.category) : null;
 
-        if(data.category) {
-            for(var i = 0; i < data.category.length; i++) {
-                if(data.category[i]) {
+        if (data.category) {
+            for (var i = 0; i < data.category.length; i++) {
+                if (data.category[i]) {
                     //var category = stk.content.get(data.category[i]);
                     var category = util.getCategory({id: data.category[i]}, categories);
                     categoriesArray.push(category);
@@ -92,7 +92,7 @@ exports.get = function(req) {
 
         if (data.featuredImage) {
             var scale = 'width(695)';
-            if(content.page.regions.main.components[0].descriptor == module.name + ':one-column') {
+            if (content.page.regions.main.components[0].descriptor == module.name + ':one-column') {
                 scale = 'width(960)';
             }
             var img = stk.content.get(data.featuredImage);
@@ -132,28 +132,30 @@ function getComments(post, moduleConfig, postAuthor, depth, commentId) {
         key: key,
         start: 0,
         count: 1000,
-        sort: 'createdTime ' + moduleConfig.commentSort? moduleConfig.commentSort : 'ASC'
+        sort: 'createdTime ' + moduleConfig.commentSort ? moduleConfig.commentSort : 'ASC'
     });
 
     var contents = result.contents;
 
     for (var i = 0; i < contents.length; i++) {
         contents[i].data.liClass = 'comment ' + 'depth-' + depth + ' ';
-        if(postAuthor && postAuthor.data.email == contents[i].data.email) {
+        if (postAuthor && postAuthor.data.email == contents[i].data.email) {
             contents[i].data.liClass += 'bypostauthor ';
         }
 
-        contents[i].data.liClass += (i%2 == 0) ? 'even ' : 'odd ';
-        if(depth = 1) {
-            contents[i].data.liClass += (i%2 == 0) ? 'even thread-even ' : 'odd thread-odd ';
+        contents[i].data.liClass += (i % 2 == 0) ? 'even ' : 'odd ';
+        if (depth = 1) {
+            contents[i].data.liClass += (i % 2 == 0) ? 'even thread-even ' : 'odd thread-odd ';
         }
 
         var date = util.getFormattedDate(new Date(contents[i].createdTime));
         date += ' at ' + contents[i].createdTime.substring(11, 16);
         contents[i].data.pubDate = date;
-        contents[i].data.gravatar = util.getGravatar(contents[i].data.email, 40) + '&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&r=G';
+        contents[i].data.gravatar = util.getGravatar(contents[i].data.email, 40) +
+                                    '&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&r=G';
 
-        contents[i].data.replyClick = "return addComment.moveForm('comment-" + contents[i]._id + "', '" + contents[i]._id + "', 'respond', '" + post._id + "')";
+        contents[i].data.replyClick =
+            "return addComment.moveForm('comment-" + contents[i]._id + "', '" + contents[i]._id + "', 'respond', '" + post._id + "')";
 
         contents[i].data.children = getComments(post, moduleConfig, postAuthor, depth + 1, contents[i]._id);
 

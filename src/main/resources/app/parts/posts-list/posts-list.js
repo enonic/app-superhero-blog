@@ -1,14 +1,14 @@
 var stk = require('stk/stk');
 var util = require('utilities');
 
-exports.get = function(req) {
+exports.get = function (req) {
 
     var component = execute('portal.getComponent');
     var config = component.config;
     var up = req.params; // URL params
     var content = execute('portal.getContent');
     var site = execute('portal.getSite');
-    var moduleConfig = site.moduleConfigs[module.name];
+    var moduleConfig = site.siteConfigs[module.name];
     var postsPerPage = moduleConfig.numPosts ? moduleConfig.numPosts : 10;
     var newer = null, older = null; // For pagination
     var posts = new Array();
@@ -43,7 +43,7 @@ exports.get = function(req) {
 
         // Must include other URL params in the pagination links.
         var urlParams = {};
-        for(var param in up) {
+        for (var param in up) {
             if (param != 'paged') {
                 urlParams[param] = up[param];
             }
@@ -60,7 +60,7 @@ exports.get = function(req) {
         // Needs a "newer" link if...
         if (start != 0) {
 
-            if(stk.data.isInt(up.paged) && up.paged > 2) {
+            if (stk.data.isInt(up.paged) && up.paged > 2) {
                 urlParams.paged = (parseInt(up.paged) - 1).toString();
             } else {
                 urlParams.paged = null;
@@ -98,7 +98,8 @@ exports.get = function(req) {
             ]
         });
 
-        data.commentsText = data.comments.total == 0 ? 'Leave a comment' : data.comments.total + ' comment' + (+ data.comments.total > 1 ? 's' : '');
+        data.commentsText =
+            data.comments.total == 0 ? 'Leave a comment' : data.comments.total + ' comment' + (+data.comments.total > 1 ? 's' : '');
 
         data.author = stk.content.get(data.author);
 
@@ -107,7 +108,7 @@ exports.get = function(req) {
 
         if (data.category) {
             for (var j = 0; j < data.category.length; j++) {
-                if(data.category[j]) {
+                if (data.category[j]) {
                     var category = util.getCategory({id: data.category[j]}, categories);
                     categoriesArray.push(category);
                     data.class += ' category-' + category._name + ' ';
@@ -123,7 +124,7 @@ exports.get = function(req) {
             data.fImageUrl = execute('portal.imageUrl', {
                 id: data.featuredImage,
                 //scale: 'width(695)',
-		scale: 'wide(695,300)',
+                scale: 'wide(695,300)',
                 format: 'jpeg'
             });
         }
@@ -145,8 +146,7 @@ exports.get = function(req) {
 };
 
 
-
-var getQuery = function(up, folderPath, categories, header, site) {
+var getQuery = function (up, folderPath, categories, header, site) {
     // Default query
     var query = '_parentPath="/content' + folderPath + '" AND data.slideshow != "true"';
 
@@ -175,7 +175,7 @@ var getQuery = function(up, folderPath, categories, header, site) {
         var authorResult = execute('content.query', {
             count: 1,
             query: '_name LIKE "' + up.author + '"',
-            contentTypes: [ module.name + ':author' ]
+            contentTypes: [module.name + ':author']
         });
         var authorContent = authorResult.contents[0];
 
@@ -184,9 +184,10 @@ var getQuery = function(up, folderPath, categories, header, site) {
         if (authorContent) {
             var authUrl = execute('portal.pageUrl', {
                 path: stk.content.getPath(site._path),
-                params: { author: up.author }
+                params: {author: up.author}
             });
-            header.headerText = 'Author Archives: <span class="vcard"><a href="' + authUrl + '" class="url fn n">' + authorContent.data.name + '</a></span>'
+            header.headerText =
+                'Author Archives: <span class="vcard"><a href="' + authUrl + '" class="url fn n">' + authorContent.data.name + '</a></span>'
         } else {
             header.headerText = 'Author Archives: ' + up.author + ' not found';
         }
@@ -195,8 +196,8 @@ var getQuery = function(up, folderPath, categories, header, site) {
     //Filter for monthly archives
     if (up.m && stk.data.isInt(up.m) && up.m.length == 6) {
 
-        var year = up.m.substring(0,4); //Get the year from the querystring
-        var month = up.m.substring(4,6); //Get the month from the querystring
+        var year = up.m.substring(0, 4); //Get the year from the querystring
+        var month = up.m.substring(4, 6); //Get the month from the querystring
 
         // Get the last day of the month for the content query
         var date = new Date(year, month, 0);
@@ -205,7 +206,8 @@ var getQuery = function(up, folderPath, categories, header, site) {
         var first = year + '-' + month + '-01T00:00:00Z';
         var last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
 
-        query = '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
+        query =
+            '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
 
         var monthName = util.getMonthName(date);
         header.headerText = 'Monthly Archives: ' + monthName + ' ' + year;

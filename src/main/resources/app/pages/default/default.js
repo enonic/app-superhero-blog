@@ -18,21 +18,23 @@ function handleGet(req) {
         var up = req.params;
         var site = execute('portal.getSite');
         var menuItems = menu.getSiteMenu(3);
-        var moduleConfig = site.moduleConfigs[module.name];
+        var moduleConfig = site.siteConfigs[module.name];
         stk.data.deleteEmptyProperties(moduleConfig);
 
-        var facebookConfig = site.moduleConfigs[util.facebookModule] || {};
-        var twitterConfig = site.moduleConfigs[util.twitterModule] || {};
-        var disqusConfig = site.moduleConfigs[util.disqusModule] || {};
+        var facebookConfig = site.siteConfigs[util.facebookModule] || {};
+        var twitterConfig = site.siteConfigs[util.twitterModule] || {};
+        var disqusConfig = site.siteConfigs[util.disqusModule] || {};
 
         var content = execute('portal.getContent');
 
         // For facebook module
         var facebookAppID = facebookConfig.facebookAppID && facebookConfig.facebookAppID.length > 1 ? facebookConfig.facebookAppID : null; // Hack to prevent empty string
-        var facebookApiVersion = facebookConfig.facebookApiVersion && facebookConfig.facebookApiVersion.length > 1 ? facebookConfig.facebookApiVersion : null; // Hack to prevent empty string
+        var facebookApiVersion = facebookConfig.facebookApiVersion && facebookConfig.facebookApiVersion.length > 1
+            ? facebookConfig.facebookApiVersion
+            : null; // Hack to prevent empty string
         var disqusShortName = disqusConfig.shortname && disqusConfig.shortname.length > 1 ? disqusConfig.shortname : null;
         var userLanguage = 'en_US';
-        if(req.headers && req.headers['Accept-Language']) {
+        if (req.headers && req.headers['Accept-Language']) {
             userLanguage = req.headers['Accept-Language'].substring(0, req.headers['Accept-Language'].indexOf(',')); // So Facebook stuff comes out in the right language
         }
 
@@ -46,7 +48,8 @@ function handleGet(req) {
             });
 
             backgroundImage = '<style type="text/css" id="custom-background-css">body.custom-background { background-image: url("' +
-                bgImageUrl + '"); background-repeat: repeat; background-position: top left; background-attachment: scroll; }</style>';
+                              bgImageUrl +
+                              '"); background-repeat: repeat; background-position: top left; background-attachment: scroll; }</style>';
 
             bodyClass += 'custom-background ';
         }
