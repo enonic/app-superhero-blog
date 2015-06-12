@@ -22,3 +22,8 @@ Superhero by Automattic
   Eric Meyer http://meyerweb.com/eric/tools/css/reset/index.html
   along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   and Blueprint http://www.blueprintcss.org/
+
+Icomoon free version
+  https://icomoon.io/#icons-icomoon
+  License: GPLv3 http://www.gnu.org/licenses/gpl.html
+  License: CC https://creativecommons.org/licenses/by/4.0/
