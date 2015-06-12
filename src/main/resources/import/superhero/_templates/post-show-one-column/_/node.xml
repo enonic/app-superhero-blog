@@ -8,12 +8,11 @@
         <string name="type">portal:page-template</string>
         <string name="owner">user:system:su</string>
         <string name="language">en-US</string>
-        <dateTime name="modifiedTime">2015-04-08T08:27:42.527Z</dateTime>
+        <dateTime name="modifiedTime">2015-06-12T19:33:06.091Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-04-08T08:26:42.586Z</dateTime>
         <property-set name="data">
-            <string name="supports">com.enonic.theme.superhero:landing-page</string>
             <string name="supports">com.enonic.theme.superhero:post</string>
         </property-set>
         <property-set name="page">

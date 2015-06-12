@@ -5,7 +5,7 @@
   <super-type>base:structured</super-type>
   <form>
     <field-set name="basic">
-      <label>Post</label>
+      <label>RSS info</label>
       <items>
         <input type="TextLine" name="title">
           <label>Title</label>

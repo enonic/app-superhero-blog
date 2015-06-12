@@ -8,7 +8,7 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-05-19T22:13:36.120Z</dateTime>
+        <dateTime name="modifiedTime">2015-06-12T19:31:37.261Z</dateTime>
         <string name="modifier">user:system:anonymous</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
