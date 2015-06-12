@@ -18,8 +18,8 @@ function handleGet(req) {
         var up = req.params;
         var site = execute('portal.getSite');
         var menuItems = menu.getSiteMenu(3);
-        var moduleConfig = site.siteConfigs[module.name];
-        stk.data.deleteEmptyProperties(moduleConfig);
+        var siteConfig = site.siteConfigs[module.name];
+        stk.data.deleteEmptyProperties(siteConfig);
 
         var facebookConfig = site.siteConfigs[util.facebookModule] || {};
         var twitterConfig = site.siteConfigs[util.twitterModule] || {};
@@ -38,12 +38,12 @@ function handleGet(req) {
             userLanguage = req.headers['Accept-Language'].substring(0, req.headers['Accept-Language'].indexOf(',')); // So Facebook stuff comes out in the right language
         }
 
-        var googleUA = moduleConfig.googleUA && moduleConfig.googleUA.length > 1 ? moduleConfig.googleUA : null;
+        var googleUA = siteConfig.googleUA && siteConfig.googleUA.length > 1 ? siteConfig.googleUA : null;
         var bodyClass = '';
         var backgroundImage;
-        if (moduleConfig.backgroundImage) {
+        if (siteConfig.backgroundImage) {
             var bgImageUrl = execute('portal.imageUrl', {
-                id: moduleConfig.backgroundImage,
+                id: siteConfig.backgroundImage,
                 format: 'jpeg'
             });
 
@@ -69,7 +69,7 @@ function handleGet(req) {
         var model = {
             site: site,
             bodyClass: bodyClass,
-            moduleConfig: moduleConfig,
+            siteConfig: siteConfig,
             facebookConfig: facebookConfig,
             facebookAppID: facebookAppID,
             facebookApiVersion: facebookApiVersion,

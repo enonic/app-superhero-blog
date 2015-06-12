@@ -325,8 +325,8 @@ exports.getPost = function () {
 // Return the site config comments folder (if exits) or the default comments folder.
 exports.commentsFolder = function () {
     var site = execute('portal.getSite');
-    var moduleConfig = site.siteConfigs[module.name];
-    return moduleConfig.commentsFolder ? stk.content.getPath(moduleConfig.commentsFolder) : site._path + '/comments';
+    var siteConfig = site.siteConfigs[module.name];
+    return siteConfig.commentsFolder ? stk.content.getPath(siteConfig.commentsFolder) : site._path + '/comments';
 };
 
 // Return the local config posts path (if exits) ele the site config path (if exits) else the default /posts folder.
@@ -338,14 +338,14 @@ exports.postsFolder = function (local) {
         }
     }
     var site = execute('portal.getSite');
-    var moduleConfig = site.siteConfigs[module.name];
-    return moduleConfig.postsFolder ? stk.content.getPath(moduleConfig.postsFolder) : site._path + '/posts';
+    var siteConfig = site.siteConfigs[module.name];
+    return siteConfig.postsFolder ? stk.content.getPath(siteConfig.postsFolder) : site._path + '/posts';
 };
 
 exports.getSearchPage = function () {
     var site = execute('portal.getSite');
-    var moduleConfig = site.siteConfigs[module.name];
-    var searchPageKey = moduleConfig.searchPage;
+    var siteConfig = site.siteConfigs[module.name];
+    var searchPageKey = siteConfig.searchPage;
     if (searchPageKey) {
         var searchContent = stk.content.get(searchPageKey);
         return searchContent._path;
