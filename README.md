@@ -24,17 +24,15 @@ Move the generated jar file from build/lib into the $XP_HOME/deploy directory.
 If the content folder is empty then sample content will be imported automatically. If you delete this content to create your own then
 follow the steps below to create the site.
 
-- In the admin console, create a site and give it a name.
-- Create folders called Authors, Categories and Posts.
+- In the admin console, create a Site and give it a name. Make it support your new module.
+- Create folders called Authors, Categories and Posts under your new site.
 - Create a Category and an Author content in their respective folders.
 - Create a Post content in the Posts folder and add the Category and Author content.
-- When the above steps are done, create a page template and add the 70-30 Layout.
-- Add the "Header" and "Posts list" parts to the left side of the layout.
-- Add the following parts to the right side of the layout: Search form, Recent posts, Recent comments, Archives, Categories and Tags.
-- Make this page template support the Site content type.
-- Create another page template called "Post show". Add the "Post single" part in the left instead of the "Posts list". Add the same parts
-from the previous step to the right column.
-- Make the Post show template support the Post content type.
+- When the above steps are done, create a page template using the Page controller, supporting content of type Site, and add the Layout called "Two columns".
+- Add the "Posts list" part to the left side of the layout.
+- Add the following parts to the right side of the layout: "Search form", "Recent posts", "Recent comments", Categories, "Monthly archive" and "Tag cloud".
+- Create another page template called "Post show" using the same controller (Page). Make it support the content type Post. Add the layout "Two columns" and then add the "Post single" part on the left instead of the "Posts list". Add the same parts from the previous step to the right column.
+- Done!
 
 ## Documentation
 
