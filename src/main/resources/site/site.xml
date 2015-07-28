@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<site>
+  <display-name>Superhero Blog</display-name>
+  <info>Superhero theme</info>
+  <url></url>
+  <vendor>
+    <name>Michael Lazell</name>
+    <url>http://www.enonic.com</url>
+  </vendor>
+  <dependencies system-min-version="6.0.0" system-max-version="6.1.0"/>
+  <config>
+    <input type="TextLine" name="googleUA">
+      <label>Google Analytics UA</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
+    <input type="ImageSelector" name="backgroundImage">
+      <label>Background image</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config/>
+    </input>
+    <input type="TextLine" name="numPosts">
+      <label>Max posts per page</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
+    <input type="ContentSelector" name="postsFolder">
+      <label>Posts folder</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <reference-type>system:reference</reference-type>
+        <allow-content-type>base:folder</allow-content-type>
+      </config>
+    </input>
+    <input type="ContentSelector" name="commentsFolder">
+      <label>Comments folder</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <reference-type>system:reference</reference-type>
+        <allow-content-type>base:folder</allow-content-type>
+      </config>
+    </input>
+    <input name="commentSort" type="SingleSelector">
+      <label>Comments sort</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <options>
+          <option>
+            <label>Oldest on top</label>
+            <value>ASC</value>
+          </option>
+          <option>
+            <label>Newest on top</label>
+            <value>DESC</value>
+          </option>
+        </options>
+        <selector-type>DROPDOWN</selector-type>
+      </config>
+    </input>
+    <input type="ContentSelector" name="searchPage">
+      <label>Search page</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <reference-type>system:reference</reference-type>
+        <allow-content-type>com.enonic.theme.superhero:landing-page</allow-content-type>
+      </config>
+    </input>
+    <input type="ContentSelector" name="postsList">
+      <label>Posts list page</label>
+      <occurrences minimum="0" maximum="1"/>
+      <config>
+        <reference-type>system:reference</reference-type>
+        <allow-content-type>portal:site</allow-content-type>
+        <allow-content-type>com.enonic.theme.superhero:landing-page</allow-content-type>
+      </config>
+    </input>
+  </config>
+</site>

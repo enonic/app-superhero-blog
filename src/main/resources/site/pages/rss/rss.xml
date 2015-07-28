@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<page>
+  <display-name>RSS Page</display-name>
+  <config>
+    <input type="ContentSelector" name="contentFolder">
+      <label>Folder</label>
+      <occurrences minimum="1" maximum="1"/>
+      <config>
+        <relationship-type>system:reference</relationship-type>
+        <allow-content-type>base:folder</allow-content-type>
+      </config>
+    </input>
+  </config>
+  <regions/>
+</page>

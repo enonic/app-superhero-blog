@@ -72,7 +72,7 @@ public class DemoInitializer
 
         final NodeImportResult nodeImportResult = this.exportService.importNodes( ImportNodesParams.create().
             source( source ).
-            targetNodePath( NodePath.newPath( "/content" ).build() ).
+            targetNodePath( NodePath.create( "/content" ).build() ).
             includeNodeIds( true ).
             dryRun( false ).
             build() );

@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+        mavenLocal()
         jcenter()
         maven {
             url 'http://repo.enonic.net/public'
@@ -7,45 +8,46 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.enonic.xp.gradle:gradle-plugin:1.1.0'
-        classpath 'com.eriwen:gradle-js-plugin:1.12.1'
+        classpath 'com.enonic.xp:gradle-plugin:6.0.0-SNAPSHOT'
     }
 }
 
-apply plugin: 'idea'
-apply plugin: 'com.enonic.xp.gradle.module'
 apply plugin: 'maven'
-apply plugin: 'maven-publish'
-apply plugin: 'com.eriwen.gradle.js'
-apply plugin: 'base'
+apply plugin: 'com.enonic.xp.app'
 
-version = '0.1.1-SNAPSHOT'
+version = '1.0.0-SNAPSHOT'
 group = 'com.enonic.theme'
 
-module {
+app {
+    name = 'com.enonic.app.superhero'
     displayName = 'Superhero theme'
+    vendorName = 'Enonic USA'
+    vendorUrl = 'https://enonic.com'
 }
 
 dependencies {
-    compile 'com.enonic.xp:core-api:5.2.0-SNAPSHOT'
+    compile 'com.enonic.xp:core-api:6.0.0-SNAPSHOT'
+    compile 'com.enonic.xp:portal-api:6.0.0-SNAPSHOT'
+    include 'com.enonic.xp:lib-content:6.0.0-SNAPSHOT'
+    include 'com.enonic.xp:lib-portal:6.0.0-SNAPSHOT'
+    include 'com.enonic.xp:lib-thymeleaf:6.0.0-SNAPSHOT'
+    include 'com.enonic.xp:lib-xslt:6.0.0-SNAPSHOT'
+    include 'com.enonic.xp:lib-mustache:6.0.0-SNAPSHOT'
+    include 'com.enonic.xp:lib-i18n:6.0.0-SNAPSHOT'
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven {
-        url 'http://repo.enonic.net/public'
+        url 'http://repo.enonic.com/public'
     }
 }
 
-publishing {
-    publications {
-        mavenJava( MavenPublication ) {
-            from components.java
-        }
-    }
+uploadArchives {
     repositories {
-        maven {
-            url 'http://repo.enonic.net/artifactory/public'
+        mavenDeployer {
+            repository( url: 'http://repo.enonic.com/artifactory/public' )
         }
     }
 }
