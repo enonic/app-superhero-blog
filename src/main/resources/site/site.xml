@@ -38,7 +38,7 @@
         <allow-content-type>base:folder</allow-content-type>
       </config>
     </input>
-    <input name="commentSort" type="SingleSelector">
+    <input name="commentSort" type="ComboBox">
       <label>Comments sort</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
@@ -52,7 +52,6 @@
             <value>DESC</value>
           </option>
         </options>
-        <selector-type>DROPDOWN</selector-type>
       </config>
     </input>
     <input type="ContentSelector" name="searchPage">
