@@ -1,7 +1,29 @@
-<node xmlns="urn:enonic:xp:export:1.0">
+<node>
     <id>5e7ccee7-6d82-4729-8628-4f7933657803</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
+    <timestamp>2015-06-12T19:31:37.612Z</timestamp>
+    <inheritPermissions>true</inheritPermissions>
+    <permissions>
+        <principal key="role:cms.admin">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+    </permissions>
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Gotham Sure Is A Big Town</string>
@@ -15,8 +37,8 @@
         <property-set name="data">
             <reference name="author">86cc1301-0639-41d1-84ed-70ba443f38ba</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&lt;p&gt;There’s so much area to cover. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non dapibus lectus. Vestibulum eget commodo mi. Donec in est sed quam ultricies pharetra at vitae quam. Nam dignissim orci accumsan odio bibendum non mattis nisl congue.&lt;/p&gt;
-&lt;p&gt;Curabitur rutrum pharetra velit, quis feugiat elit consectetur vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in interdum orci.&lt;/p&gt;</htmlPart>
+            <string name="post">&lt;p&gt;There’s so much area to cover. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non dapibus lectus. Vestibulum eget commodo mi. Donec in est sed quam ultricies pharetra at vitae quam. Nam dignissim orci accumsan odio bibendum non mattis nisl congue.&lt;/p&gt;
+&lt;p&gt;Curabitur rutrum pharetra velit, quis feugiat elit consectetur vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in interdum orci.&lt;/p&gt;</string>
             <string name="tags">Featured</string>
             <boolean name="enableComments">false</boolean>
             <boolean name="stickyPost">false</boolean>

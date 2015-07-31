@@ -19,7 +19,7 @@ version = '1.0.0-SNAPSHOT'
 group = 'com.enonic.theme'
 
 app {
-    name = 'com.enonic.app.superhero'
+    name = 'com.enonic.theme.superhero'
     displayName = 'Superhero theme'
     vendorName = 'Enonic USA'
     vendorUrl = 'https://enonic.com'

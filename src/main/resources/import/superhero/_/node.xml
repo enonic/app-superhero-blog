@@ -1,7 +1,29 @@
-<node xmlns="urn:enonic:xp:export:1.0">
+<node>
     <id>e1f57280-d672-4cd8-b674-98e26e5b69ae</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
+    <timestamp>2015-06-12T19:31:37.286Z</timestamp>
+    <inheritPermissions>false</inheritPermissions>
+    <permissions>
+        <principal key="role:cms.admin">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+    </permissions>
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Superhero</string>
@@ -14,8 +36,8 @@
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
         <property-set name="data">
             <string name="description">Superhero WordPress theme for Enonic XP</string>
-            <property-set name="moduleConfig">
-                <string name="moduleKey">com.enonic.theme.superhero</string>
+            <property-set name="siteConfig">
+                <string name="applicationKey">com.enonic.theme.superhero</string>
                 <property-set name="config">
                     <string name="google-ua">UA-123ABC</string>
                     <string name="numPosts">5</string>

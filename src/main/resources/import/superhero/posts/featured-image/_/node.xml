@@ -1,7 +1,29 @@
-<node xmlns="urn:enonic:xp:export:1.0">
+<node>
     <id>086d5877-6f0f-4514-ab16-fcfe43f28bdf</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
+    <timestamp>2015-06-12T19:31:38.044Z</timestamp>
+    <inheritPermissions>true</inheritPermissions>
+    <permissions>
+        <principal key="role:cms.admin">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+    </permissions>
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Featured Image</string>
@@ -15,7 +37,7 @@
         <property-set name="data">
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&lt;p&gt;This is a featured image. See how the picture is large and appears above the title?&lt;/p&gt;</htmlPart>
+            <string name="post">&lt;p&gt;This is a featured image. See how the picture is large and appears above the title?&lt;/p&gt;</string>
             <string name="tags">Featured</string>
             <boolean name="enableComments">false</boolean>
             <boolean name="stickyPost">false</boolean>

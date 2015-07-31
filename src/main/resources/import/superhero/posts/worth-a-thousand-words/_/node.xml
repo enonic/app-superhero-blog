@@ -1,7 +1,29 @@
-<node xmlns="urn:enonic:xp:export:1.0">
+<node>
     <id>bdc9b662-578f-406a-8577-bea4555772db</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
+    <timestamp>2015-06-12T19:31:38.121Z</timestamp>
+    <inheritPermissions>true</inheritPermissions>
+    <permissions>
+        <principal key="role:cms.admin">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+    </permissions>
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Worth A Thousand Words</string>
@@ -15,8 +37,8 @@
         <property-set name="data">
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&lt;div style="width: 445px" class="wp-caption alignnone"&gt;&lt;img class="wp-image-59" alt="Boat" src="https://wpdotorg.files.wordpress.com/2008/11/boat.jpg" width="435" height="288" /&gt;&lt;p class="wp-caption-text"&gt;Boat&lt;/p&gt;&lt;/div&gt;
-&lt;p&gt;Boat.&lt;/p&gt;</htmlPart>
+            <string name="post">&lt;div style="width: 445px" class="wp-caption alignnone"&gt;&lt;img class="wp-image-59" alt="Boat" src="https://wpdotorg.files.wordpress.com/2008/11/boat.jpg" width="435" height="288" /&gt;&lt;p class="wp-caption-text"&gt;Boat&lt;/p&gt;&lt;/div&gt;
+&lt;p&gt;Boat.&lt;/p&gt;</string>
             <string name="tags">boat</string>
             <string name="tags">lake</string>
             <boolean name="enableComments">false</boolean>

@@ -95,15 +95,15 @@ exports.get = function(req) {
         data.categories = categoriesArray.length > 0 ? categoriesArray : null
 
         if (data.featuredImage) {
-            var scale = 'scalewidth(695)';
+            var scale = 'width(695)';
             if(content.page.regions.main.components[0].descriptor == module.name + ':one-column') {
-                scale = 'scalewidth(960)';
+                scale = 'width(960)';
             }
             var img = stk.content.get(data.featuredImage);
             data.fImageName = img.displayName;
             data.fImageUrl = portal.imageUrl( {
                 id: data.featuredImage,
-                filter: scale,
+                scale: scale,
                 format: 'jpeg'
             });
         }

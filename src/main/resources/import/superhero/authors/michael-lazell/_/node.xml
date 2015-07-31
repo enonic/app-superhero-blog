@@ -1,7 +1,29 @@
-<node xmlns="urn:enonic:xp:export:1.0">
+<node>
     <id>86cc1301-0639-41d1-84ed-70ba443f38ba</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
+    <timestamp>2015-06-12T19:31:38.495Z</timestamp>
+    <inheritPermissions>true</inheritPermissions>
+    <permissions>
+        <principal key="role:cms.admin">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+    </permissions>
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Michael Lazell</string>
@@ -16,7 +38,7 @@
             <string name="name">Michael Lazell</string>
             <string name="email">mla@example.com</string>
             <string name="website">https://enonic.com</string>
-            <htmlPart name="bio">This is my bio. There are many like it but this one is mine.</htmlPart>
+            <string name="bio">This is my bio. There are many like it but this one is mine.</string>
         </property-set>
     </data>
     <indexConfigs>

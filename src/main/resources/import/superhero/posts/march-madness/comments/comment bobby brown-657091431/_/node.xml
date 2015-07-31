@@ -1,7 +1,29 @@
-<node xmlns="urn:enonic:xp:export:1.0">
+<node>
     <id>358386f3-302d-4061-87b0-4572e4500e13</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
+    <timestamp>2015-06-12T19:31:37.779Z</timestamp>
+    <inheritPermissions>true</inheritPermissions>
+    <permissions>
+        <principal key="role:cms.admin">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+    </permissions>
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Bobby Brown</string>
@@ -16,7 +38,7 @@
             <string name="website">http://example.com</string>
             <reference name="post">8f6fed07-6d7c-4f31-b7ee-5fe9e9b7a3bf</reference>
             <string name="name">Bobby Brown</string>
-            <htmlPart name="comment">This is a new comment on March Madness.</htmlPart>
+            <string name="comment">This is a new comment on March Madness.</string>
             <string name="email">bob@example.com</string>
         </property-set>
     </data>

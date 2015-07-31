@@ -1,5 +1,6 @@
 var stk = require('stk/stk');
 var contentSvc = require('/lib/xp/content');
+var portal = require('/lib/xp/portal');
 
 // Returns the full month name from a Date object.
 exports.getMonthName = function(date) {
