@@ -8,23 +8,23 @@ exports.log = function (data) {
     log.info('STK log %s', JSON.stringify(data, null, 4));
 };
 
-exports.serviceUrl = function (service, params, module) {
+exports.serviceUrl = function (service, params, application) {
     var url;
-    if (params && module) {
+    if (params && application) {
         url = portal.serviceUrl( {
             service: service,
             params: params,
-            module: module
+            application: application
         });
     } else if (params) {
         url = portal.serviceUrl( {
             service: service,
             params: params
         });
-    } else if(module) {
+    } else if(application) {
         url = portal.serviceUrl( {
             service: service,
-            module: module
+            application: application
         });
     } else {
         url = portal.serviceUrl( {

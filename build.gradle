@@ -3,7 +3,7 @@ buildscript {
         mavenLocal()
         jcenter()
         maven {
-            url 'http://repo.enonic.net/public'
+            url 'http://repo.enonic.com/public'
         }
     }
 
@@ -32,7 +32,6 @@ dependencies {
     include 'com.enonic.xp:lib-portal:6.0.0-SNAPSHOT'
     include 'com.enonic.xp:lib-thymeleaf:6.0.0-SNAPSHOT'
     include 'com.enonic.xp:lib-xslt:6.0.0-SNAPSHOT'
-    include 'com.enonic.xp:lib-mustache:6.0.0-SNAPSHOT'
     include 'com.enonic.xp:lib-i18n:6.0.0-SNAPSHOT'
 }
 
