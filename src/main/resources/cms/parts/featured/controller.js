@@ -41,7 +41,7 @@ function handleGet(req) {
             var slide = {};
             var imgUrl = execute('portal.imageUrl', {
                 id: data.featuredImage,
-                filter: 'scalewidth(1024)'
+                filter: 'scaleblock(1024,355)' // Keeps the aspect ratio the same for all pictures. Original should be at least 1024 wide.
             });
 
             slide.id = content._id;

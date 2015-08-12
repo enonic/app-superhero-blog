@@ -2,7 +2,7 @@ buildscript {
     repositories {
         jcenter()
         maven {
-            url 'http://repo.enonic.net/public'
+            url 'http://repo.enonic.com/public'
         }
     }
 
@@ -27,7 +27,7 @@ module {
 }
 
 dependencies {
-    compile 'com.enonic.xp:core-api:5.2.0-SNAPSHOT'
+    compile 'com.enonic.xp:core-api:5.3.0'
 }
 
 repositories {
@@ -45,7 +45,7 @@ publishing {
     }
     repositories {
         maven {
-            url 'http://repo.enonic.net/artifactory/public'
+            url 'http://repo.enonic.com/artifactory/public'
         }
     }
 }
