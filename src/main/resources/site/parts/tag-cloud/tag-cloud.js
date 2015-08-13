@@ -20,7 +20,6 @@ function handleGet(req) {
         var component = portal.getComponent();
         var config = component.config;
         var title = config.title || 'Tags';
-        var site = portal.getSite()
 
         // Get all posts that have one or more tags.
         var result = contentSvc.query( {
