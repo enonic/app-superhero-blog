@@ -41,8 +41,6 @@ function handleGet(req) {
             }
         });
 
-        stk.log(result);
-
         var buckets = null;
 
         if(result && result.aggregations && result.aggregations.tags && result.aggregations.tags.buckets) {
