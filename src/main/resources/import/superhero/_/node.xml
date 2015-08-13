@@ -2,7 +2,7 @@
     <id>e1f57280-d672-4cd8-b674-98e26e5b69ae</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-06-12T19:31:37.286Z</timestamp>
+    <timestamp>2015-08-12T23:19:02.011Z</timestamp>
     <inheritPermissions>false</inheritPermissions>
     <permissions>
         <principal key="role:cms.admin">
@@ -30,7 +30,7 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-06-12T19:31:37.261Z</dateTime>
+        <dateTime name="modifiedTime">2015-08-12T23:19:02.004Z</dateTime>
         <string name="modifier">user:system:anonymous</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
@@ -154,7 +154,7 @@
         </property-set>
     </data>
     <indexConfigs>
-        <analyzer>content_default</analyzer>
+        <analyzer>document_index_default</analyzer>
         <defaultConfig>
             <decideByType>true</decideByType>
             <enabled>true</enabled>
@@ -172,16 +172,6 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>page.regions</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>attachment</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -232,6 +222,46 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>type</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>creator</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>modifier</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>owner</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>

@@ -44,7 +44,7 @@ function handleGet(req) {
             var slide = {};
             var imgUrl = portal.imageUrl( {
                 id: data.featuredImage,
-                scale: 'width(1024)'
+                scale: 'block(1024,355)'
             });
 
             slide.id = content._id;
