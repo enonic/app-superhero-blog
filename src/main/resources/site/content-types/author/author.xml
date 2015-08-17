@@ -19,7 +19,7 @@
           <label>Website</label>
           <occurrences minimum="0" maximum="1"/>
         </input>
-        <input type="TinyMCE" name="bio">
+        <input type="HtmlArea" name="bio">
           <label>Bio</label>
           <occurrences minimum="1" maximum="1"/>
         </input>

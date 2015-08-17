@@ -23,7 +23,7 @@
             <allow-content-type>category</allow-content-type>
           </config>
         </input>
-        <input type="TinyMCE" name="post">
+        <input type="HtmlArea" name="post">
           <label>Post text</label>
           <indexed>true</indexed>
           <occurrences minimum="1" maximum="1"/>

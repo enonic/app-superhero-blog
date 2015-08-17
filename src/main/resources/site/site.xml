@@ -42,16 +42,11 @@
       <label>Comments sort</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
-        <options>
-          <option>
-            <label>Oldest on top</label>
-            <value>ASC</value>
-          </option>
-          <option>
-            <label>Newest on top</label>
-            <value>DESC</value>
-          </option>
-        </options>
+        <property name="option.label">Oldest on top</property>
+        <property name="option.value">ASC</property>
+
+        <property name="option.label">Newest on top</property>
+        <property name="option.value">DESC</property>
       </config>
     </input>
     <input type="ContentSelector" name="searchPage">
