@@ -15,20 +15,11 @@
           <label>SY Update period</label>
           <occurrences minimum="0" maximum="1"/>
           <config>
-            <property name="option.value">hourly</property>
-            <property name="option.label">Hourly</property>
-
-            <property name="option.value">daily</property>
-            <property name="option.label">Daily</property>
-
-            <property name="option.value">weekly</property>
-            <property name="option.label">Weekly</property>
-
-            <property name="option.value">monthly</property>
-            <property name="option.label">Monthly</property>
-
-            <property name="option.value">yearly</property>
-            <property name="option.label">Yearly</property>
+            <option value="hourly">Hourly</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="yearly">Yearly</option>
           </config>
         </input>
         <input type="TextLine" name="updateFrequency">
