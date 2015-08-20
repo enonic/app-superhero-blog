@@ -34,7 +34,7 @@ function handleGet(req) {
             query: query,
             sort: orderBy,
             contentTypes: [
-                module.name + ':post'
+                app.name + ':post'
             ]
         });
 

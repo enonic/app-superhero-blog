@@ -27,7 +27,7 @@ function handleGet(req) {
             count: 0,
             //query: 'data.tags LIKE "*"', // Only return posts that have tags
             contentTypes: [
-                module.name + ':post'
+                app.name + ':post'
             ],
             aggregations: {
                 tags: {

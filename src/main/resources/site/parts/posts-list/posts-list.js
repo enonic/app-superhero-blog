@@ -37,7 +37,7 @@ exports.get = function(req) {
         query: query,
         sort: orderBy,
         contentTypes: [
-            module.name + ':post'
+            app.name + ':post'
         ]
     });
 
@@ -98,7 +98,7 @@ exports.get = function(req) {
             query: "data.post = '" + results.contents[i]._id + "'",
             sort: 'createdTime DESC',
             contentTypes: [
-                module.name + ':comment'
+                app.name + ':comment'
             ]
         });
 
@@ -178,7 +178,7 @@ var getQuery = function(up, folderPath, categories, header, site) {
         var authorResult = contentSvc.query( {
             count: 1,
             query: '_name LIKE "' + up.author + '"',
-            contentTypes: [ module.name + ':author' ]
+            contentTypes: [ app.name + ':author' ]
         });
         var authorContent = authorResult.contents[0];
 

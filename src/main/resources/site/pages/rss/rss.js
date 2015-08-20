@@ -21,8 +21,7 @@ exports.get = function (req) {
         query: '_parentPath="/content' + folderPath + '"',
         sort: 'createdTime DESC',
         contentTypes: [
-            //module.name + ':post'
-            'com.enonic.theme.superhero:post'
+            app.name + ':post'
         ]
     });
 
@@ -48,7 +47,7 @@ exports.get = function (req) {
             query: "data.post = '" + posts[i]._id + "'",
             sort: 'createdTime DESC',
             contentTypes: [
-                module.name + ':comment'
+                app.name + ':comment'
             ]
         });
 

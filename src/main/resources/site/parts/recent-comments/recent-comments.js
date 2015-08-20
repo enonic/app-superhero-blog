@@ -28,7 +28,7 @@ function handleGet(req) {
             //query: ,
             sort: 'createdTime DESC',
             contentTypes: [
-                module.name + ':comment'
+                app.name + ':comment'
             ]
         });
 

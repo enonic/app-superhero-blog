@@ -51,7 +51,7 @@ function handlePost(req) {
                 displayName: p.author,
                 draft: true,
                 requireValid: true,
-                contentType: module.name + ':comment',
+                contentType: app.name + ':comment',
                 //branch: 'draft',
                 data: {
                     name: p.author,

@@ -45,7 +45,7 @@ function handleGet(req) {
         if (up.cat || up.tag || up.author) {
             bodyClass += ' archive ';
         }
-        if (content.type == module.name + ':post' || content.type == 'portal:page-template') {
+        if (content.type == app.name + ':post' || content.type == 'portal:page-template') {
             bodyClass += 'single single-post single-format-standard ';
         }
         if (up.author) {
