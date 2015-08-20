@@ -33,11 +33,11 @@ function handleGet(req) {
             query: '_parentPath="/content' + folderPath + '"',
             sort: 'createdTime DESC',
             contentTypes: [
-                module.name + ':post'
+                app.name + ':post'
             ]
         });
 
-        var posts = new Array();
+        var posts = [];
 
         // Build an object for each post with the displayName and URL and add it to the array of posts
         for (var i = 0; i < result.contents.length; i++) {
@@ -53,7 +53,7 @@ function handleGet(req) {
         var model = {
             posts: posts,
             title: title
-        }
+        };
 
         return model;
     }

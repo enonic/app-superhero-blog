@@ -34,7 +34,7 @@ exports.get = function (req) {
         posts[i].data.tags = stk.data.forceArray(posts[i].data.tags);
 
         posts[i].data.category = stk.data.forceArray(posts[i].data.category);
-        posts[i].data.categoryNames = new Array();
+        posts[i].data.categoryNames = [];
 
         if(posts[i].data.category) {
             for(var j = 0; j < posts[i].data.category.length; j++) {

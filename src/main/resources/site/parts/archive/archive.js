@@ -32,7 +32,7 @@ function handleGet(req) {
             query: '_parentPath="/content' + folderPath + '"',
             sort: 'createdTime DESC',
             contentTypes: [
-                module.name + ':post'
+                app.name + ':post'
             ]
         });
 

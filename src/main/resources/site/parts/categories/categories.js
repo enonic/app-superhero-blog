@@ -22,7 +22,7 @@ function handleGet(req) {
         var title = config.title || 'Categories';
         var site = portal.getSite();
         var searchPath = util.getSearchPage();
-        var categories = new Array();
+        var categories = [];
 
         var result = contentSvc.query( {
             start: 0,
@@ -30,7 +30,7 @@ function handleGet(req) {
             //query: ,
             sort: 'displayName ASC',
             contentTypes: [
-                module.name + ':category'
+                app.name + ':category'
             ]
         });
 
@@ -41,7 +41,7 @@ function handleGet(req) {
                 query: 'data.category IN ("' + result.contents[i]._id + '")',
                 sort: 'createdTime DESC',
                 contentTypes: [
-                    module.name + ':post'
+                    app.name + ':post'
                 ]
             });
 

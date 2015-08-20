@@ -64,7 +64,7 @@ exports.get = function(req) {
     //end comments
 
     var data = content.data;
-    var categoriesArray = new Array();
+    var categoriesArray = [];
     var categories = util.getCategories();
 
     if (content.type == module.name + ':post') {
