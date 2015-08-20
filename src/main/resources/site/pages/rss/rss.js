@@ -27,6 +27,30 @@ exports.get = function (req) {
 
     var posts = result.contents;
 
+    // Strip html from the description element
+    var tagBody = '(?:[^"\'>]|"[^"]*"|\'[^\']*\')*';
+    var tagOrComment = new RegExp(
+        '<(?:'
+        // Comment body.
+        + '!--(?:(?:-*[^->])*--+|-?)'
+        // Special "raw text" elements whose content should be elided.
+        + '|script\\b' + tagBody + '>[\\s\\S]*?</script\\s*'
+        + '|style\\b' + tagBody + '>[\\s\\S]*?</style\\s*'
+        // Regular name
+        + '|/?[a-z]'
+        + tagBody
+        + ')>',
+        'gi');
+    function removeTags(html) {
+      var oldHtml;
+      do {
+        oldHtml = html;
+        html = html.replace(tagOrComment, '');
+      } while (html !== oldHtml);
+      return html.replace(/</g, '&lt;');
+    }
+
+
     for(var i = 0; i < posts.length; i++) {
         var author = stk.content.get(posts[i].data.author);
         posts[i].data.authorName = author.data.name;
@@ -34,6 +58,7 @@ exports.get = function (req) {
 
         posts[i].data.category = stk.data.forceArray(posts[i].data.category);
         posts[i].data.categoryNames = [];
+        posts[i].data.description = removeTags(posts[i].data.post);
 
         if(posts[i].data.category) {
             for(var j = 0; j < posts[i].data.category.length; j++) {
