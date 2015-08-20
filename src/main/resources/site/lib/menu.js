@@ -15,11 +15,7 @@ function isMenuItem(content) {
     if (!extraData) {
         return false;
     }
-<<<<<<< HEAD
-    var moduleNamePropertyName = app.name.replace(/\./g,'-');
-=======
     var moduleNamePropertyName = app.name.replace(/\./g, '-');
->>>>>>> f3eee87b3ad3f522ec498a78e5f21f6a46315de0
     var extraDataModule = extraData[moduleNamePropertyName];
     if (!extraDataModule || !extraDataModule['menu-item']) {
         return false;
