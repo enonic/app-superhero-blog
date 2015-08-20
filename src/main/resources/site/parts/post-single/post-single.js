@@ -28,7 +28,7 @@ exports.get = function(req) {
             count: 1,
             query: '_parentPath="/content' + folderPath + '" AND createdTime < instant("' + content.createdTime + '")',
             sort: 'createdTime DESC',
-            contentTypes: [module.name + ':post']
+            contentTypes: [app.name + ':post']
         });
 
         next = contentSvc.query( {
@@ -36,7 +36,7 @@ exports.get = function(req) {
             count: 1,
             query: '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + content.createdTime + '")',
             sort: 'createdTime ASC',
-            contentTypes: [module.name + ':post']
+            contentTypes: [app.name + ':post']
         });
     }
     //End pagination
@@ -54,7 +54,7 @@ exports.get = function(req) {
         count: 0,
         query: "data.post = '" + content._id + "'",
         contentTypes: [
-            module.name + ':comment'
+            app.name + ':comment'
         ]
     });
 
@@ -67,7 +67,7 @@ exports.get = function(req) {
     var categoriesArray = [];
     var categories = util.getCategories();
 
-    if (content.type == module.name + ':post') {
+    if (content.type == app.name + ':post') {
 
         data.title = content.displayName;
         data.path = content._path;
@@ -95,7 +95,7 @@ exports.get = function(req) {
 
         if (data.featuredImage) {
             var scale = 'width(695)';
-            if(content.page.regions.main.components[0].descriptor == module.name + ':one-column') {
+            if(content.page.regions.main.components[0].descriptor == app.name + ':one-column') {
                 scale = 'width(960)';
             }
             var img = stk.content.get(data.featuredImage);

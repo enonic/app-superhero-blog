@@ -75,7 +75,7 @@ exports.getCategories = function() {
         start: 0,
         count: 1000,
         contentTypes: [
-            module.name + ':category'
+            app.name + ':category'
         ]
     });
     return result.contents;
@@ -87,18 +87,18 @@ exports.getPost = function() {
     var content;
     var childContent;
 
-    if(currentContent.type == module.name + ':post') {
+    if(currentContent.type == app.name + ':post') {
         content = currentContent;
-    } else if (currentContent.type == module.name + ':landing-page') {
+    } else if (currentContent.type == app.name + ':landing-page') {
         childContent = contentSvc.query( {
             start: 0,
             count: 1,
             query: '_parentPath="/content' + currentContent._path + '"',
             contentTypes: [
-                module.name + ":post"
+                app.name + ":post"
             ]
         });
-        content = (childContent.contents && childContent.contents[0] && childContent.contents[0].type == module.name + ':post') ? childContent.contents[0] : currentContent
+        content = (childContent.contents && childContent.contents[0] && childContent.contents[0].type == app.name + ':post') ? childContent.contents[0] : currentContent
     }
     return content || currentContent;
 };
