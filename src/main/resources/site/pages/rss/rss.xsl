@@ -72,7 +72,7 @@
       </description>
 
       <content:encoded>
-        <xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text><xsl:value-of select="data/post"/><xsl:text disable-output-escaping="yes">]]&gt;</xsl:text>
+        <xsl:text disable-output-escaping="yes">&lt;![CDATA[</xsl:text><xsl:value-of select="data/post" disable-output-escaping="yes"/><xsl:text disable-output-escaping="yes">]]&gt;</xsl:text>
       </content:encoded>
 
       <!--<wfw:commentRss></wfw:commentRss>-->
