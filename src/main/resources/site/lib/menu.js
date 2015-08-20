@@ -15,8 +15,7 @@ function isMenuItem(content) {
     if (!extraData) {
         return false;
     }
-    //var moduleNamePropertyName = app.name.replace(/\./g,'-');
-    var moduleNamePropertyName = 'com.enonic.theme.superhero'.replace(/\./g,'-');
+    var moduleNamePropertyName = app.name.replace(/\./g, '-');
     var extraDataModule = extraData[moduleNamePropertyName];
     if (!extraDataModule || !extraDataModule['menu-item']) {
         return false;
@@ -65,8 +64,7 @@ function menuItemToJson(content, levels) {
      subMenus = getSubMenus(content, levels);
     }
 
-    //var moduleNamePropertyName = app.name.replace(/\./g,'-');
-    var moduleNamePropertyName = 'com.enonic.theme.superhero'.replace(/\./g,'-');
+    var moduleNamePropertyName = app.name.replace(/\./g, '-');
     var menuItem = content.x[moduleNamePropertyName]['menu-item'];
     return {
         displayName: content.displayName,
