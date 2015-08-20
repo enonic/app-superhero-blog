@@ -21,7 +21,8 @@ exports.get = function (req) {
         query: '_parentPath="/content' + folderPath + '"',
         sort: 'createdTime DESC',
         contentTypes: [
-            module.name + ':post'
+            //module.name + ':post'
+            'com.enonic.theme.superhero:post'
         ]
     });
 
@@ -58,16 +59,14 @@ exports.get = function (req) {
     var params = {
         content: content,
         posts: posts,
-        pageUrl: portal.pageUrl( {path: content._path}),
+        pageUrl: pageUrl,
         site: site
     };
 
     var view = resolve('rss.xsl');
-    //var copy = resolve('./copy-of.xsl');
-    var body = xslt.render({
-        view: view,
-        model: params
-    });
+    //var copy = resolve('copy-of.xsl');
+
+    var body = xslt.render(view, params);
 
     return {
         contentType: 'text/xml',

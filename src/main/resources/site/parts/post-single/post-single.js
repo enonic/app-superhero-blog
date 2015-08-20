@@ -8,10 +8,9 @@ exports.get = function(req) {
 
     var component = portal.getComponent();
     var up = req.params;
-    var site = portal.getSite();
     var searchPage = util.getSearchPage();
     var content = portal.getContent();
-    var moduleConfig = site.siteConfigs[module.name];
+    var siteConfig = portal.getSiteConfig();
 
     //stk.log(content);
 
@@ -60,8 +59,8 @@ exports.get = function(req) {
     });
 
     var commentsTotal = result.total;
-    //var comments = getPostComments(content, moduleConfig, postAuthor, 1, null);
-    var comments = getComments(content, moduleConfig, postAuthor, 1, null);
+    //var comments = getPostComments(content, siteConfig, postAuthor, 1, null);
+    var comments = getComments(content, siteConfig, postAuthor, 1, null);
     //end comments
 
     var data = content.data;
@@ -114,7 +113,6 @@ exports.get = function(req) {
     var params = {
         post: content.data,
         pageTemplate: content.type == 'portal:page-template' ? true : false,
-        site: site,
         content: content,
         prev: (prev && prev.contents) ? prev.contents[0] : null,
         next: (next && next.contents) ? next.contents[0] : null,
@@ -128,7 +126,7 @@ exports.get = function(req) {
     return stk.view.render(view, params);
 };
 
-function getComments(post, moduleConfig, postAuthor, depth, commentId) {
+function getComments(post, siteConfig, postAuthor, depth, commentId) {
     var comments = [];
     var key = depth == 1 ? post._path + '/comments' : commentId;
 
@@ -136,7 +134,7 @@ function getComments(post, moduleConfig, postAuthor, depth, commentId) {
         key: key,
         start: 0,
         count: 1000,
-        sort: 'createdTime ' + moduleConfig.commentSort? moduleConfig.commentSort : 'ASC'
+        sort: 'createdTime ' + siteConfig.commentSort? siteConfig.commentSort : 'ASC'
     });
 
     var contents = result.contents;
@@ -159,7 +157,7 @@ function getComments(post, moduleConfig, postAuthor, depth, commentId) {
 
         contents[i].data.replyClick = "return addComment.moveForm('comment-" + contents[i]._id + "', '" + contents[i]._id + "', 'respond', '" + post._id + "')";
 
-        contents[i].data.children = getComments(post, moduleConfig, postAuthor, depth + 1, contents[i]._id);
+        contents[i].data.children = getComments(post, siteConfig, postAuthor, depth + 1, contents[i]._id);
 
         comments.push(contents[i]);
     }

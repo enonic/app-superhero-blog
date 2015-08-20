@@ -10,21 +10,20 @@
   xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
   exclude-result-prefixes="portal xs">
 
-  <!--<xsl:output method="xml" omit-xml-declaration="no" cdata-section-elements="{http://purl.org/dc/elements/1.1/}creator category description {http://purl.org/rss/1.0/modules/content/}encoded" />-->
   <xsl:output method="xml" omit-xml-declaration="no"/>
+  <!--<xsl:output method="xml" omit-xml-declaration="no" cdata-section-elements="{http://purl.org/dc/elements/1.1/}creator category description {http://purl.org/rss/1.0/modules/content/}encoded" />-->
+
 
   <xsl:variable name="date-format-string" select="'[FNn,*-3], [D01] [MNn,*-3] [Y0001] [H01]:[m01]:[s01]'"/>
-  <xsl:variable name="lastBuild" select="/root/posts/contents/item[1]/modifiedTime"/>
+  <xsl:variable name="lastBuild" select="/root/posts/item[1]/modifiedTime"/>
 
   <xsl:template match="/">
     <rss version="2.0">
       <channel>
         <title><xsl:value-of select="/root/site/displayName"/></title>
-        <atom:link href="{portal:pageUrl(root/content/_path)}" rel="self" type="application/rss+xml"/>
-        <!--<atom:link3 href="{root/pageUrl}" rel="self" type="application/rss+xml"/>
-        <atom:link4 href="{portal:pageUrl('_path=/superhero/entries-rss')}" rel="self" type="application/rss+xml"/>-->
+        <atom:link href="{portal:pageUrl(concat('_path=', root/content/_path), '_type=absolute')}" rel="self" type="application/rss+xml"/>
         <link>
-          <xsl:value-of select="portal:pageUrl()"/>
+          <xsl:value-of select="portal:pageUrl(concat('_path=', root/content/_path), '_type=absolute')"/>
         </link>
         <description><xsl:value-of select="/root/site/data/description"/></description>
         <lastBuildDate><xsl:value-of select="format-dateTime(xs:dateTime($lastBuild), $date-format-string)"/></lastBuildDate>
@@ -43,13 +42,13 @@
   <xsl:template match="item">
     <item>
       <title>
-        <xsl:value-of select="data/title"/>
+        <xsl:value-of select="displayName"/>
       </title>
       <link>
-        <xsl:value-of select="portal:pageUrl(concat('_path=', _path))"/>
+        <xsl:value-of select="portal:pageUrl(concat('_path=', _path), '_type=absolute')"/>
       </link>
       <comments>
-        <xsl:value-of select="concat(portal:pageUrl(concat('_path=', _path)),'#comments')"/>
+        <xsl:value-of select="concat(portal:pageUrl(concat('_path=', _path), '_type=absolute'),'#comments')"/>
       </comments>
 
       <pubDate>
@@ -57,23 +56,23 @@
       </pubDate>
 
       <dc:creator>
-        <xsl:value-of select="data/authorName"/>
+        <xsl:text>&lt;![CDATA[ </xsl:text><xsl:value-of select="data/authorName"/><xsl:text> ]]&gt;</xsl:text>
       </dc:creator>
 
       <xsl:for-each select="data/tags/item | data/categoryNames/item">
-        <category><xsl:value-of select="."/></category>
+        <category><xsl:text>&lt;![CDATA[ </xsl:text><xsl:value-of select="."/><xsl:text> ]]&gt;</xsl:text></category>
       </xsl:for-each>
 
       <guid isPermaLink="false">
-        <xsl:value-of select="portal:pageUrl(concat('_path=', _path))"/>
+        <xsl:value-of select="portal:pageUrl(concat('_path=', _path), '_type=absolute')"/>
       </guid>
 
       <description>
-        <xsl:value-of select="data/post"/>
+        <xsl:text>&lt;![CDATA[ </xsl:text><xsl:value-of select="data/post"/><xsl:text> ]]&gt;</xsl:text>
       </description>
 
       <content:encoded>
-        <xsl:value-of select="data/post"/>
+        <xsl:text>&lt;![CDATA[ </xsl:text><xsl:value-of select="data/post"/><xsl:text> ]]&gt;</xsl:text>
       </content:encoded>
 
       <wfw:commentRss></wfw:commentRss>

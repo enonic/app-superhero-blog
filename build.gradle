@@ -16,7 +16,7 @@ apply plugin: 'maven'
 apply plugin: 'com.enonic.xp.app'
 
 version = '1.0.0-SNAPSHOT'
-group = 'com.enonic.theme'
+group = 'com.enonic.app'
 
 app {
     name = 'com.enonic.theme.superhero'

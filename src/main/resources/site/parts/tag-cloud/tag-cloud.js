@@ -49,7 +49,7 @@ function handleGet(req) {
 
             // Prevent ghost tags from appearing in the part
             for(var i = 0; i < results.length; i++) {
-                if(results[i]['doc_count'] > 0) {
+                if(results[i].docCount > 0) {
                     buckets.push(results[i]);
                 }
             }
@@ -63,10 +63,10 @@ function handleGet(req) {
                 //Get the max and min counts
                 var newBucket = buckets.slice();
                 newBucket.sort(function(a, b) {
-                    return a.doc_count - b.doc_count;
+                    return a.docCount - b.docCount;
                 });
-                var minCount = newBucket[0].doc_count; // smallest number for any tag count
-                var maxCount = newBucket[newBucket.length -1].doc_count; // largest number for any tag count
+                var minCount = newBucket[0].docCount; // smallest number for any tag count
+                var maxCount = newBucket[newBucket.length -1].docCount; // largest number for any tag count
 
                 // The difference between the most used tag and the least used.
                 var spread = maxCount - minCount;
@@ -80,8 +80,8 @@ function handleGet(req) {
                 //Bucket logic
                 for (var i=0; i < buckets.length; i++) {
                     buckets[i].tagUrl = util.getSearchPage();
-                    buckets[i].title = buckets[i].doc_count + ((buckets[i].doc_count > 1) ? ' topics' : ' topic');
-                    var fontSize = smallest + (buckets[i].doc_count - minCount) * fontStep;
+                    buckets[i].title = buckets[i].docCount + ((buckets[i].docCount > 1) ? ' topics' : ' topic');
+                    var fontSize = smallest + (buckets[i].docCount - minCount) * fontStep;
                     buckets[i].font = 'font-size: ' + fontSize + 'pt;';
                 }
             }

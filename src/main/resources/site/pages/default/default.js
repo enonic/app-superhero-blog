@@ -20,17 +20,17 @@ function handleGet(req) {
         var up = req.params;
         var site = portal.getSite();
         var menuItems = menu.getSiteMenu(3);
-        var moduleConfig = site.siteConfigs[module.name];
-        stk.data.deleteEmptyProperties(moduleConfig);
+        var siteConfig = portal.getSiteConfig();
+        stk.data.deleteEmptyProperties(siteConfig);
 
         var content = portal.getContent();
 
-        var googleUA = moduleConfig.googleUA && moduleConfig.googleUA.length > 1 ? moduleConfig.googleUA : null;
+        var googleUA = siteConfig.googleUA && siteConfig.googleUA.length > 1 ? siteConfig.googleUA : null;
         var bodyClass = '';
         var backgroundImage;
-        if (moduleConfig.backgroundImage) {
+        if (siteConfig.backgroundImage) {
             var bgImageUrl = portal.imageUrl( {
-                id: moduleConfig.backgroundImage,
+                id: siteConfig.backgroundImage,
                 format: 'jpeg'
             });
 
@@ -55,7 +55,6 @@ function handleGet(req) {
         var model = {
             site: site,
             bodyClass: bodyClass,
-            moduleConfig: moduleConfig,
             backgroundImage: backgroundImage,
             mainRegion: content.page.regions['main'],
             content: content,

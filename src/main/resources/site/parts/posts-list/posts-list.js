@@ -11,8 +11,8 @@ exports.get = function(req) {
     var up = req.params; // URL params
     var content = portal.getContent();
     var site = portal.getSite();
-    var moduleConfig = site.siteConfigs[module.name];
-    var postsPerPage = moduleConfig.numPosts ? moduleConfig.numPosts : 10;
+    var siteConfig = portal.getSiteConfig();
+    var postsPerPage = siteConfig.numPosts ? siteConfig.numPosts : 10;
     var newer = null, older = null; // For pagination
     var posts = new Array();
     var folderPath = util.postsFolder(config.contentFolder);
