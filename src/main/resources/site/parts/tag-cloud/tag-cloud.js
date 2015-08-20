@@ -43,7 +43,7 @@ function handleGet(req) {
         var buckets = null;
 
         if(result && result.aggregations && result.aggregations.tags && result.aggregations.tags.buckets) {
-            buckets = new Array();
+            buckets = [];
 
             var results = result.aggregations.tags.buckets;
 
@@ -90,7 +90,7 @@ function handleGet(req) {
         var model = {
             tags: buckets,
             title: title
-        }
+        };
         return model;
     }
     return renderView();

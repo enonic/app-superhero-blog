@@ -20,7 +20,7 @@ function handleGet(req) {
         var maxComments = config.maxComments || 5;
         var title = config.title || 'Recent comments';
         var content = portal.getContent();
-        var comments = new Array();
+        var comments = [];
 
         var results = contentSvc.query( {
             start: 0,

@@ -26,7 +26,7 @@ function handleGet(req) {
         var query = '_parentPath="/content' + folderPath + '" AND data.featuredImage != "" AND data.slideshow = "true"';
         var orderBy = 'createdTime DESC';
 
-        var slides = new Array();
+        var slides = [];
 
         var results = contentSvc.query( {
             start: 0,

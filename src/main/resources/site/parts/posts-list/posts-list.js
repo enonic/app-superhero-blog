@@ -14,7 +14,7 @@ exports.get = function(req) {
     var siteConfig = portal.getSiteConfig();
     var postsPerPage = siteConfig.numPosts ? siteConfig.numPosts : 10;
     var newer = null, older = null; // For pagination
-    var posts = new Array();
+    var posts = [];
     var folderPath = util.postsFolder(config.contentFolder);
     var searchPage = util.getSearchPage();
 
@@ -80,7 +80,7 @@ exports.get = function(req) {
     for (var i = 0; i < results.contents.length; i++) {
         var data = results.contents[i].data;
         data.title = results.contents[i].displayName;
-        var categoriesArray = new Array();
+        var categoriesArray = [];
         data.class = 'post-' + results.contents[i]._id + ' post type-post status-publish format-standard hentry';
         if (data.stickyPost && Object.keys(up).length == 0) {
             data.class += ' sticky';
@@ -168,6 +168,8 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
     //Filter for categories.
     if (up.cat) {
+        log.info('STK log %s', categories);
+
         var category = util.getCategory({name: up.cat}, categories);
         query = 'data.category IN ("' + category._id + '")';
         header.headerText = 'Category Archives: ' + category.displayName;

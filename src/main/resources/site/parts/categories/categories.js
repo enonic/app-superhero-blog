@@ -22,7 +22,7 @@ function handleGet(req) {
         var title = config.title || 'Categories';
         var site = portal.getSite();
         var searchPath = util.getSearchPage();
-        var categories = new Array();
+        var categories = [];
 
         var result = contentSvc.query( {
             start: 0,
