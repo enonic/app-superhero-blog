@@ -40,8 +40,8 @@ function handleGet(req) {
         var posts = [];
 
         // Build an object for each post with the displayName and URL and add it to the array of posts
-        for (var i = 0; i < result.contents.length; i++) {
-            var content = result.contents[i];
+        for (var i = 0; i < result.hits.length; i++) {
+            var content = result.hits[i];
             var post = {};
             post.displayName = content.displayName;
             post.url = portal.pageUrl( {

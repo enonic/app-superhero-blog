@@ -44,7 +44,7 @@ function getSubMenus(parentContent, levels) {
     levels--;
 
     var subMenus = [];
-    children.contents.forEach(function (child) {
+    children.hits.forEach(function (child) {
         if (isMenuItem(child)) {
             subMenus.push(menuItemToJson(child, levels));
         }

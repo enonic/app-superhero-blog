@@ -34,24 +34,24 @@ function handleGet(req) {
             ]
         });
 
-        for (var i = 0; i < result.contents.length; i++) {
+        for (var i = 0; i < result.hits.length; i++) {
             var posts = contentSvc.query( {
                 start: 0,
                 count: 1000,
-                query: 'data.category IN ("' + result.contents[i]._id + '")',
+                query: 'data.category IN ("' + result.hits[i]._id + '")',
                 sort: 'createdTime DESC',
                 contentTypes: [
                     app.name + ':post'
                 ]
             });
 
-            result.contents[i].data.numPosts = posts.total;
+            result.hits[i].data.numPosts = posts.total;
 
             if (posts.total > 0) {
-                categories.push(result.contents[i]);
+                categories.push(result.hits[i]);
             }
 
-            stk.data.deleteEmptyProperties(result.contents[i].data);
+            stk.data.deleteEmptyProperties(result.hits[i].data);
 
         }
 

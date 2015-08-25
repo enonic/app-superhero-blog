@@ -38,8 +38,8 @@ function handleGet(req) {
             ]
         });
 
-        for (var i = 0; i < results.contents.length; i++) {
-            var content = results.contents[i];
+        for (var i = 0; i < results.hits.length; i++) {
+            var content = results.hits[i];
             var data = content.data;
             var slide = {};
             var imgUrl = portal.imageUrl( {

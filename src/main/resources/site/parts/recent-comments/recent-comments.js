@@ -32,15 +32,15 @@ function handleGet(req) {
             ]
         });
 
-        for (var i = 0; i < results.contents.length; i++) {
-            stk.data.deleteEmptyProperties(results.contents[i].data);
-            results.contents[i].data.key = results.contents[i]._id;
+        for (var i = 0; i < results.hits.length; i++) {
+            stk.data.deleteEmptyProperties(results.hits[i].data);
+            results.hits[i].data.key = results.hits[i]._id;
 
-            var post = stk.content.get(results.contents[i].data.post);
-            results.contents[i].data.postTitle = post.displayName;
-            results.contents[i].data.postPath = post._path;
+            var post = stk.content.get(results.hits[i].data.post);
+            results.hits[i].data.postTitle = post.displayName;
+            results.hits[i].data.postPath = post._path;
 
-            comments.push(results.contents[i].data);
+            comments.push(results.hits[i].data);
         }
 
         var model = {

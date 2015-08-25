@@ -36,9 +36,9 @@ function handleGet(req) {
             ]
         });
 
-        for (var i = 0; i < result.contents.length; i++) {
+        for (var i = 0; i < result.hits.length; i++) {
 
-            var content = result.contents[i];
+            var content = result.hits[i];
             var date = new Date(content.createdTime);
             var year = date.getFullYear();
             var monthName = util.getMonthName(date);

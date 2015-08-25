@@ -77,25 +77,25 @@ exports.get = function(req) {
     }
 
     // Loop through the posts and get the comments, categories and author
-    for (var i = 0; i < results.contents.length; i++) {
-        var data = results.contents[i].data;
-        data.title = results.contents[i].displayName;
+    for (var i = 0; i < results.hits.length; i++) {
+        var data = results.hits[i].data;
+        data.title = results.hits[i].displayName;
         var categoriesArray = [];
-        data.class = 'post-' + results.contents[i]._id + ' post type-post status-publish format-standard hentry';
+        data.class = 'post-' + results.hits[i]._id + ' post type-post status-publish format-standard hentry';
         if (data.stickyPost && Object.keys(up).length == 0) {
             data.class += ' sticky';
         }
 
-        var date = new Date(results.contents[i].createdTime);
+        var date = new Date(results.hits[i].createdTime);
         date = util.getFormattedDate(date);
         data.pubDate = date;
 
-        data.path = results.contents[i]._path;
-        data.createdTime = results.contents[i].createdTime;
+        data.path = results.hits[i]._path;
+        data.createdTime = results.hits[i].createdTime;
         data.comments = contentSvc.query( {
             start: 0,
             count: 1000,
-            query: "data.post = '" + results.contents[i]._id + "'",
+            query: "data.post = '" + results.hits[i]._id + "'",
             sort: 'createdTime DESC',
             contentTypes: [
                 app.name + ':comment'
@@ -182,7 +182,7 @@ var getQuery = function(up, folderPath, categories, header, site) {
             query: '_name LIKE "' + up.author + '"',
             contentTypes: [ app.name + ':author' ]
         });
-        var authorContent = authorResult.contents[0];
+        var authorContent = authorResult.hits[0];
 
         query = authorContent ? 'data.author LIKE "' + authorContent._id + '"' : 'data.author LIKE "0"';
 

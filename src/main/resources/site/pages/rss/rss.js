@@ -25,7 +25,7 @@ exports.get = function (req) {
         ]
     });
 
-    var posts = result.contents;
+    var posts = result.hits;
 
     // Strip html from the description element
     var tagBody = '(?:[^"\'>]|"[^"]*"|\'[^\']*\')*';

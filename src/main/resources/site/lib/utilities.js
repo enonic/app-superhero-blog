@@ -78,7 +78,7 @@ exports.getCategories = function() {
             app.name + ':category'
         ]
     });
-    return result.contents;
+    return result.hits;
 };
 
 // Deprecated - Returns the post content, even when on a landing page.
@@ -98,7 +98,7 @@ exports.getPost = function() {
                 app.name + ":post"
             ]
         });
-        content = (childContent.contents && childContent.contents[0] && childContent.contents[0].type == app.name + ':post') ? childContent.contents[0] : currentContent
+        content = (childContent.hits && childContent.hits[0] && childContent.hits[0].type == app.name + ':post') ? childContent.hits[0] : currentContent
     }
     return content || currentContent;
 };

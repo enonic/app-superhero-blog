@@ -114,8 +114,8 @@ exports.get = function(req) {
         post: content.data,
         pageTemplate: content.type == 'portal:page-template' ? true : false,
         content: content,
-        prev: (prev && prev.contents) ? prev.contents[0] : null,
-        next: (next && next.contents) ? next.contents[0] : null,
+        prev: (prev && prev.hits) ? prev.hits[0] : null,
+        next: (next && next.hits) ? next.hits[0] : null,
         allowedTags: allowedTags,
         postUrl: postUrl,
         searchPage: searchPage,
@@ -137,7 +137,7 @@ function getComments(post, siteConfig, postAuthor, depth, commentId) {
         sort: 'createdTime ' + siteConfig.commentSort? siteConfig.commentSort : 'ASC'
     });
 
-    var contents = result.contents;
+    var contents = result.hits;
 
     for (var i = 0; i < contents.length; i++) {
         contents[i].data.liClass = 'comment ' + 'depth-' + depth + ' ';
