@@ -1,4 +1,4 @@
+rss
 post-show-2-columns
 post-show-one-column
 default
-rss

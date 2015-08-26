@@ -545,7 +545,9 @@ a:active {
 }
 .featured-content.flexslider .slides img {
 	height: auto;
-	margin: 0 auto
+	margin: 0 auto;
+	/*max-height: 355px;
+	max-width: 1024px;*/
 }
 .featured-content.flexslider .slides .featured-hentry-wrap {
 	margin: 0 auto;
