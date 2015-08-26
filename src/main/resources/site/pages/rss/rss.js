@@ -11,11 +11,11 @@ exports.get = function (req) {
     var site = portal.getSite();
     var folderPath = util.postsFolder();
 
-    var pageUrl = portal.pageUrl( {
+    var pageUrl = portal.pageUrl({
         path: content._path
     });
 
-    var result = contentSvc.query( {
+    var result = contentSvc.query({
         start: 0,
         count: 20,
         query: '_parentPath="/content' + folderPath + '"',
@@ -41,17 +41,18 @@ exports.get = function (req) {
         + tagBody
         + ')>',
         'gi');
+
     function removeTags(html) {
-      var oldHtml;
-      do {
-        oldHtml = html;
-        html = html.replace(tagOrComment, '');
-      } while (html !== oldHtml);
-      return html.replace(/</g, '&lt;');
+        var oldHtml;
+        do {
+            oldHtml = html;
+            html = html.replace(tagOrComment, '');
+        } while (html !== oldHtml);
+        return html.replace(/</g, '&lt;');
     }
 
 
-    for(var i = 0; i < posts.length; i++) {
+    for (var i = 0; i < posts.length; i++) {
         var author = stk.content.get(posts[i].data.author);
         posts[i].data.authorName = author.data.name;
         posts[i].data.tags = stk.data.forceArray(posts[i].data.tags);
@@ -60,13 +61,13 @@ exports.get = function (req) {
         posts[i].data.categoryNames = [];
         posts[i].data.description = removeTags(posts[i].data.post);
 
-        if(posts[i].data.category) {
-            for(var j = 0; j < posts[i].data.category.length; j++) {
+        if (posts[i].data.category) {
+            for (var j = 0; j < posts[i].data.category.length; j++) {
                 posts[i].data.categoryNames.push(stk.content.getProperty(posts[i].data.category[j], 'displayName'));
             }
         }
 
-        var comments = contentSvc.query( {
+        var comments = contentSvc.query({
             start: 0,
             count: 1000,
             query: "data.post = '" + posts[i]._id + "'",

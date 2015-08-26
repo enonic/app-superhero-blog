@@ -24,7 +24,7 @@ function handleGet(req) {
         var searchPath = util.getSearchPage();
         var categories = [];
 
-        var result = contentSvc.query( {
+        var result = contentSvc.query({
             start: 0,
             count: 1000,
             //query: ,
@@ -35,7 +35,7 @@ function handleGet(req) {
         });
 
         for (var i = 0; i < result.hits.length; i++) {
-            var posts = contentSvc.query( {
+            var posts = contentSvc.query({
                 start: 0,
                 count: 1000,
                 query: 'data.category IN ("' + result.hits[i]._id + '")',

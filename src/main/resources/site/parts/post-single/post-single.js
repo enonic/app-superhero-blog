@@ -23,7 +23,7 @@ exports.get = function(req) {
 
     // Pagination if it's a single post in the posts folder
     if(stk.content.getParentPath(content._path) == folderPath) {
-        prev = contentSvc.query( {
+        prev = contentSvc.query({
             start: 0,
             count: 1,
             query: '_parentPath="/content' + folderPath + '" AND createdTime < instant("' + content.createdTime + '")',
@@ -31,7 +31,7 @@ exports.get = function(req) {
             contentTypes: [app.name + ':post']
         });
 
-        next = contentSvc.query( {
+        next = contentSvc.query({
             start: 0,
             count: 1,
             query: '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + content.createdTime + '")',
@@ -49,7 +49,7 @@ exports.get = function(req) {
     //TODO: Make sure only allowed tags can be used.
     var allowedTags = '<a href="" title=""> <abbr title=""> <acronym title=""> <b> <blockquote cite=""> <cite> <code> <del datetime=""> <em> <i> <q cite=""> <strike> <strong> ';
 
-    var result = contentSvc.query( {
+    var result = contentSvc.query({
         start: 0,
         count: 0,
         query: "data.post = '" + content._id + "'",
@@ -95,12 +95,12 @@ exports.get = function(req) {
 
         if (data.featuredImage) {
             var scale = 'width(695)';
-            if(content.page.regions.main.components[0].descriptor == app.name + ':one-column') {
+            if (content.page.regions.main.components[0].descriptor == app.name + ':one-column') {
                 scale = 'width(960)';
             }
             var img = stk.content.get(data.featuredImage);
             data.fImageName = img.displayName;
-            data.fImageUrl = portal.imageUrl( {
+            data.fImageUrl = portal.imageUrl({
                 id: data.featuredImage,
                 scale: scale,
                 format: 'jpeg'
@@ -130,11 +130,11 @@ function getComments(post, siteConfig, postAuthor, depth, commentId) {
     var comments = [];
     var key = depth == 1 ? post._path + '/comments' : commentId;
 
-    var result = contentSvc.getChildren( {
+    var result = contentSvc.getChildren({
         key: key,
         start: 0,
         count: 1000,
-        sort: 'createdTime ' + siteConfig.commentSort? siteConfig.commentSort : 'ASC'
+        sort: 'createdTime ' + siteConfig.commentSort ? siteConfig.commentSort : 'ASC'
     });
 
     var contents = result.hits;

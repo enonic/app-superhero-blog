@@ -71,7 +71,7 @@ exports.getCategory = function(obj, categories) {
 
 // Returns the category contents.
 exports.getCategories = function() {
-    var result = contentSvc.query( {
+    var result = contentSvc.query({
         start: 0,
         count: 1000,
         contentTypes: [
@@ -87,10 +87,10 @@ exports.getPost = function() {
     var content;
     var childContent;
 
-    if(currentContent.type == app.name + ':post') {
+    if (currentContent.type == app.name + ':post') {
         content = currentContent;
     } else if (currentContent.type == app.name + ':landing-page') {
-        childContent = contentSvc.query( {
+        childContent = contentSvc.query({
             start: 0,
             count: 1,
             query: '_parentPath="/content' + currentContent._path + '"',
@@ -98,7 +98,9 @@ exports.getPost = function() {
                 app.name + ":post"
             ]
         });
-        content = (childContent.hits && childContent.hits[0] && childContent.hits[0].type == app.name + ':post') ? childContent.hits[0] : currentContent
+        content = (childContent.hits && childContent.hits[0] && childContent.hits[0].type == app.name + ':post')
+            ? childContent.hits[0]
+            : currentContent
     }
     return content || currentContent;
 };
@@ -112,7 +114,7 @@ exports.commentsFolder = function() {
 // Return the local config posts path (if exits) else the site config path (if exits) else the default /posts folder.
 exports.postsFolder = function(local) {
     if(local) {
-        var folder = contentSvc.get( {key: local});
+        var folder = contentSvc.get({key: local});
         if(folder) {
             return folder._path;
         }

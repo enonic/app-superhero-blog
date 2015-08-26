@@ -16,7 +16,7 @@ function isMenuItem(content) {
         return false;
     }
 
-    var moduleNamePropertyName = app.name.replace(/\./g,'-');
+    var moduleNamePropertyName = app.name.replace(/\./g, '-');
 
     var extraDataModule = extraData[moduleNamePropertyName];
     if (!extraDataModule || !extraDataModule['menu-item']) {
@@ -36,7 +36,7 @@ function isMenuItem(content) {
  */
 
 function getSubMenus(parentContent, levels) {
-    var children = contentSvc.getChildren( {
+    var children = contentSvc.getChildren({
         key: parentContent._id,
         count: 100
     });

@@ -31,7 +31,7 @@ exports.get = function(req) {
     }
     orderBy += 'createdTime DESC';
 
-    var results = contentSvc.query( {
+    var results = contentSvc.query({
         start: start,
         count: postsPerPage,
         query: query,
@@ -55,7 +55,7 @@ exports.get = function(req) {
         // Needs an "older" link if...
         if (start < (results.total - postsPerPage)) {
             urlParams.paged = stk.data.isInt(up.paged) ? (parseInt(up.paged) + 1).toString() : 2;
-            older = portal.pageUrl( {
+            older = portal.pageUrl({
                 path: content._path == searchPage ? searchPage : site._path,
                 params: urlParams
             });
@@ -69,7 +69,7 @@ exports.get = function(req) {
                 urlParams.paged = null;
             }
 
-            newer = portal.pageUrl( {
+            newer = portal.pageUrl({
                 path: content._path == searchPage ? searchPage : site._path,
                 params: urlParams
             });
@@ -92,7 +92,7 @@ exports.get = function(req) {
 
         data.path = results.hits[i]._path;
         data.createdTime = results.hits[i].createdTime;
-        data.comments = contentSvc.query( {
+        data.comments = contentSvc.query({
             start: 0,
             count: 1000,
             query: "data.post = '" + results.hits[i]._id + "'",
@@ -124,7 +124,7 @@ exports.get = function(req) {
         if (data.featuredImage) {
             var img = stk.content.get(data.featuredImage);
             data.fImageName = img.displayName;
-            data.fImageUrl = portal.imageUrl( {
+            data.fImageUrl = portal.imageUrl({
                 id: data.featuredImage,
                 scale: 'width(695)',
                 format: 'jpeg'
@@ -177,17 +177,17 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
     //Filter for authors
     if (up.author) {
-        var authorResult = contentSvc.query( {
+        var authorResult = contentSvc.query({
             count: 1,
             query: '_name LIKE "' + up.author + '"',
-            contentTypes: [ app.name + ':author' ]
+            contentTypes: [app.name + ':author']
         });
         var authorContent = authorResult.hits[0];
 
         query = authorContent ? 'data.author LIKE "' + authorContent._id + '"' : 'data.author LIKE "0"';
 
         if (authorContent) {
-            var authUrl = portal.pageUrl( {
+            var authUrl = portal.pageUrl({
                 path: stk.content.getPath(site._path),
                 params: { author: up.author }
             });

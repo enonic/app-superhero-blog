@@ -16,7 +16,7 @@ function handleGet(req) {
         var component = portal.getComponent();
         var title = component.config.title != '' ? component.config.title : null;
         var site = portal.getSite();
-        var searchPage = portal.pageUrl( {
+        var searchPage = portal.pageUrl({
             path: util.getSearchPage()
         });
 

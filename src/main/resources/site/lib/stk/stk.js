@@ -11,23 +11,23 @@ exports.log = function (data) {
 exports.serviceUrl = function (service, params, application) {
     var url;
     if (params && application) {
-        url = portal.serviceUrl( {
+        url = portal.serviceUrl({
             service: service,
             params: params,
             application: application
         });
     } else if (params) {
-        url = portal.serviceUrl( {
+        url = portal.serviceUrl({
             service: service,
             params: params
         });
-    } else if(application) {
-        url = portal.serviceUrl( {
+    } else if (application) {
+        url = portal.serviceUrl({
             service: service,
             application: application
         });
     } else {
-        url = portal.serviceUrl( {
+        url = portal.serviceUrl({
             service: service
         });
     }

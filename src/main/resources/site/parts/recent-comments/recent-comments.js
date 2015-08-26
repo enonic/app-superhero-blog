@@ -22,7 +22,7 @@ function handleGet(req) {
         var content = portal.getContent();
         var comments = [];
 
-        var results = contentSvc.query( {
+        var results = contentSvc.query({
             start: 0,
             count: maxComments,
             //query: ,

@@ -29,7 +29,7 @@ function handleGet(req) {
         var bodyClass = '';
         var backgroundImage;
         if (siteConfig.backgroundImage) {
-            var bgImageUrl = portal.imageUrl( {
+            var bgImageUrl = portal.imageUrl({
                 id: siteConfig.backgroundImage,
                 format: 'jpeg'
             });

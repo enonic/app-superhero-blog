@@ -14,7 +14,7 @@ exports.content.get = function (key) {
         content = portal.getContent();
     }
     else {
-        content = contentSvc.get( {
+        content = contentSvc.get({
             key: key
         });
     }

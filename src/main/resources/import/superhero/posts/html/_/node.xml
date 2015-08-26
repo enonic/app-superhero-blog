@@ -72,7 +72,7 @@
 &lt;li&gt;Nineteen, twenty, my platter’s empty …&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
-&lt;/ol&gt;</string>
+                &lt;/ol&gt;</string>
             <string name="tags">html</string>
             <string name="tags">wordpress</string>
             <boolean name="enableComments">true</boolean>

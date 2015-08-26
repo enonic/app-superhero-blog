@@ -28,7 +28,7 @@ function handleGet(req) {
 
         var slides = [];
 
-        var results = contentSvc.query( {
+        var results = contentSvc.query({
             start: 0,
             count: 10,
             query: query,
@@ -42,14 +42,14 @@ function handleGet(req) {
             var content = results.hits[i];
             var data = content.data;
             var slide = {};
-            var imgUrl = portal.imageUrl( {
+            var imgUrl = portal.imageUrl({
                 id: data.featuredImage,
                 scale: 'block(1024,355)'
             });
 
             slide.id = content._id;
             slide.name = content.displayName;
-            slide.url = portal.pageUrl( {path: content._path});
+            slide.url = portal.pageUrl({path: content._path});
             slide.imageUrl = imgUrl;
 
             slides.push(slide);

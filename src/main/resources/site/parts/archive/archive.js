@@ -26,7 +26,7 @@ function handleGet(req) {
         var monthsArray = [];
         var monthsGroup = {};
 
-        var result = contentSvc.query( {
+        var result = contentSvc.query({
             start: 0,
             count: 1000,
             query: '_parentPath="/content' + folderPath + '"',
@@ -45,7 +45,7 @@ function handleGet(req) {
 
             var linkParam = year + content.createdTime.substring(5,7).toString();
             var linkText = monthName + ' ' + year;
-            var linkUrl = portal.pageUrl( {
+            var linkUrl = portal.pageUrl({
                 path: util.getSearchPage(),
                 params: {m: linkParam}
             });

@@ -37,8 +37,9 @@
         <property-set name="data">
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <string name="post">&lt;div style="width: 445px" class="wp-caption alignnone"&gt;&lt;img class="wp-image-59" alt="Boat" src="https://wpdotorg.files.wordpress.com/2008/11/boat.jpg" width="435" height="288" /&gt;&lt;p class="wp-caption-text"&gt;Boat&lt;/p&gt;&lt;/div&gt;
-&lt;p&gt;Boat.&lt;/p&gt;</string>
+            <string name="post">&lt;div style="width: 445px" class="wp-caption alignnone"&gt;&lt;img class="wp-image-59" alt="Boat"
+                src="https://wpdotorg.files.wordpress.com/2008/11/boat.jpg" width="435" height="288" /&gt;&lt;p class="wp-caption-text"&gt;Boat&lt;/p&gt;&lt;/div&gt;
+                &lt;p&gt;Boat.&lt;/p&gt;</string>
             <string name="tags">boat</string>
             <string name="tags">lake</string>
             <boolean name="enableComments">false</boolean>

@@ -22,7 +22,7 @@ function handleGet(req) {
         var title = config.title || 'Tags';
 
         // Get all posts that have one or more tags.
-        var result = contentSvc.query( {
+        var result = contentSvc.query({
             start: 0,
             count: 0,
             //query: 'data.tags LIKE "*"', // Only return posts that have tags
@@ -42,19 +42,19 @@ function handleGet(req) {
 
         var buckets = null;
 
-        if(result && result.aggregations && result.aggregations.tags && result.aggregations.tags.buckets) {
+        if (result && result.aggregations && result.aggregations.tags && result.aggregations.tags.buckets) {
             buckets = [];
 
             var results = result.aggregations.tags.buckets;
 
             // Prevent ghost tags from appearing in the part
-            for(var i = 0; i < results.length; i++) {
-                if(results[i].docCount > 0) {
+            for (var i = 0; i < results.length; i++) {
+                if (results[i].docCount > 0) {
                     buckets.push(results[i]);
                 }
             }
 
-            if(buckets.length > 0) {
+            if (buckets.length > 0) {
 
                 // Make the font sizes
                 var smallest = 8;
@@ -62,15 +62,18 @@ function handleGet(req) {
 
                 //Get the max and min counts
                 var newBucket = buckets.slice();
-                newBucket.sort(function(a, b) {
+                newBucket.sort(function (a, b) {
                     return a.docCount - b.docCount;
                 });
                 var minCount = newBucket[0].docCount; // smallest number for any tag count
-                var maxCount = newBucket[newBucket.length -1].docCount; // largest number for any tag count
+                var maxCount = newBucket[newBucket.length - 1].docCount; // largest number for any tag count
 
                 // The difference between the most used tag and the least used.
                 var spread = maxCount - minCount;
-                if (spread < 1) {spread = 1};
+                if (spread < 1) {
+                    spread = 1
+                }
+                ;
 
                 // The difference between the largest font and the smallest font
                 var fontSpread = largest - smallest;
@@ -78,7 +81,7 @@ function handleGet(req) {
                 var fontStep = fontSpread / spread;
 
                 //Bucket logic
-                for (var i=0; i < buckets.length; i++) {
+                for (var i = 0; i < buckets.length; i++) {
                     buckets[i].tagUrl = util.getSearchPage();
                     buckets[i].title = buckets[i].docCount + ((buckets[i].docCount > 1) ? ' topics' : ' topic');
                     var fontSize = smallest + (buckets[i].docCount - minCount) * fontStep;
@@ -93,5 +96,6 @@ function handleGet(req) {
         };
         return model;
     }
+
     return renderView();
 }

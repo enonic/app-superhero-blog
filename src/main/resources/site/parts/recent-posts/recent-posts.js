@@ -13,7 +13,7 @@ function handleGet(req) {
         var model = createModel();
 
         return {
-            body: thymeleaf.render( view, model ),
+            body: thymeleaf.render(view, model),
             contentType: 'text/html'
         };
     }
@@ -27,7 +27,7 @@ function handleGet(req) {
         // Where to look for recent posts. Part config will override module config
         var folderPath = util.postsFolder(config.contentFolder);
 
-        var result = contentSvc.query( {
+        var result = contentSvc.query({
             start: 0,
             count: maxPosts,
             query: '_parentPath="/content' + folderPath + '"',
@@ -44,7 +44,7 @@ function handleGet(req) {
             var content = result.hits[i];
             var post = {};
             post.displayName = content.displayName;
-            post.url = portal.pageUrl( {
+            post.url = portal.pageUrl({
                 path: content._path
             });
             posts.push(post);
