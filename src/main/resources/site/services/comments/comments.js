@@ -1,7 +1,7 @@
 var stk = require('stk/stk');
 var util = require('utilities');
 
-var contentSvc = require('/lib/xp/content');
+var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
 
 exports.post = handlePost;
@@ -29,7 +29,7 @@ function handlePost(req) {
             if(stk.content.exists(commentPost._path + '/comments')) {
                 saveLocation = commentPost._path + '/comments';
             } else {
-                commentsFolder = contentSvc.create({
+                commentsFolder = contentLib.create({
                     name: 'comments',
                     parentPath: commentPost._path,
                     displayName: 'Comments',
@@ -45,7 +45,7 @@ function handlePost(req) {
 
         // Check required fields and create content
         if (p.author && p.email) {
-            var result = contentSvc.create({
+            var result = contentLib.create({
                 name: 'Comment ' + p.author + '-' + Math.floor((Math.random() * 1000000000) + 1),
                 parentPath: saveLocation,
                 displayName: p.author,

@@ -1,7 +1,7 @@
 var stk = require('stk/stk');
 var util = require('utilities');
 
-var contentSvc = require('/lib/xp/content');
+var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
 
 exports.get = function(req) {
@@ -23,7 +23,7 @@ exports.get = function(req) {
 
     // Pagination if it's a single post in the posts folder
     if(stk.content.getParentPath(content._path) == folderPath) {
-        prev = contentSvc.query({
+        prev = contentLib.query({
             start: 0,
             count: 1,
             query: '_parentPath="/content' + folderPath + '" AND createdTime < instant("' + content.createdTime + '")',
@@ -31,7 +31,7 @@ exports.get = function(req) {
             contentTypes: [app.name + ':post']
         });
 
-        next = contentSvc.query({
+        next = contentLib.query({
             start: 0,
             count: 1,
             query: '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + content.createdTime + '")',
@@ -49,7 +49,7 @@ exports.get = function(req) {
     //TODO: Make sure only allowed tags can be used.
     var allowedTags = '<a href="" title=""> <abbr title=""> <acronym title=""> <b> <blockquote cite=""> <cite> <code> <del datetime=""> <em> <i> <q cite=""> <strike> <strong> ';
 
-    var result = contentSvc.query({
+    var result = contentLib.query({
         start: 0,
         count: 0,
         query: "data.post = '" + content._id + "'",
@@ -130,7 +130,7 @@ function getComments(post, siteConfig, postAuthor, depth, commentId) {
     var comments = [];
     var key = depth == 1 ? post._path + '/comments' : commentId;
 
-    var result = contentSvc.getChildren({
+    var result = contentLib.getChildren({
         key: key,
         start: 0,
         count: 1000,

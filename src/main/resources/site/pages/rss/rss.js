@@ -1,7 +1,7 @@
 var stk = require('stk/stk');
 var util = require('utilities');
 
-var contentSvc = require('/lib/xp/content');
+var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
 var xslt = require('/lib/xp/xslt');
 
@@ -15,7 +15,7 @@ exports.get = function (req) {
         path: content._path
     });
 
-    var result = contentSvc.query({
+    var result = contentLib.query({
         start: 0,
         count: 20,
         query: '_parentPath="/content' + folderPath + '"',
@@ -67,7 +67,7 @@ exports.get = function (req) {
             }
         }
 
-        var comments = contentSvc.query({
+        var comments = contentLib.query({
             start: 0,
             count: 1000,
             query: "data.post = '" + posts[i]._id + "'",

@@ -1,4 +1,4 @@
-var contentSvc = require('/lib/xp/content');
+var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
 
 function isInteger(x) {
@@ -36,7 +36,7 @@ function isMenuItem(content) {
  */
 
 function getSubMenus(parentContent, levels) {
-    var children = contentSvc.getChildren({
+    var children = contentLib.getChildren({
         key: parentContent._id,
         count: 100
     });

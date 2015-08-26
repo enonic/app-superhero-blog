@@ -1,7 +1,7 @@
 var stk = require('stk/stk');
 var util = require('utilities');
 
-var contentSvc = require('/lib/xp/content');
+var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
 
 exports.get = handleGet;
@@ -28,7 +28,7 @@ function handleGet(req) {
 
         var slides = [];
 
-        var results = contentSvc.query({
+        var results = contentLib.query({
             start: 0,
             count: 10,
             query: query,

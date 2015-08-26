@@ -1,7 +1,7 @@
 var stk = require('stk/stk');
 var util = require('utilities');
 
-var contentSvc = require('/lib/xp/content');
+var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
 
 exports.get = handleGet;
@@ -22,7 +22,7 @@ function handleGet(req) {
         var title = config.title || 'Tags';
 
         // Get all posts that have one or more tags.
-        var result = contentSvc.query({
+        var result = contentLib.query({
             start: 0,
             count: 0,
             //query: 'data.tags LIKE "*"', // Only return posts that have tags

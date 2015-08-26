@@ -1,6 +1,6 @@
 var util = require('utilities');
 
-var contentSvc = require('/lib/xp/content');
+var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
 var thymeleaf = require('/lib/xp/thymeleaf');
 
@@ -27,7 +27,7 @@ function handleGet(req) {
         // Where to look for recent posts. Part config will override module config
         var folderPath = util.postsFolder(config.contentFolder);
 
-        var result = contentSvc.query({
+        var result = contentLib.query({
             start: 0,
             count: maxPosts,
             query: '_parentPath="/content' + folderPath + '"',

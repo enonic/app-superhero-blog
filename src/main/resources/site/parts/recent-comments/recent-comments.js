@@ -1,7 +1,7 @@
 var stk = require('stk/stk');
 var portal = require('/lib/xp/portal');
 
-var contentSvc = require('/lib/xp/content');
+var contentLib = require('/lib/xp/content');
 
 exports.get = handleGet;
 
@@ -22,7 +22,7 @@ function handleGet(req) {
         var content = portal.getContent();
         var comments = [];
 
-        var results = contentSvc.query({
+        var results = contentLib.query({
             start: 0,
             count: maxComments,
             //query: ,

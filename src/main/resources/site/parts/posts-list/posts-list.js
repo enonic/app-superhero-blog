@@ -1,7 +1,7 @@
 var stk = require('stk/stk');
 var util = require('utilities');
 
-var contentSvc = require('/lib/xp/content');
+var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
 
 exports.get = function(req) {
@@ -31,7 +31,7 @@ exports.get = function(req) {
     }
     orderBy += 'createdTime DESC';
 
-    var results = contentSvc.query({
+    var results = contentLib.query({
         start: start,
         count: postsPerPage,
         query: query,
@@ -92,7 +92,7 @@ exports.get = function(req) {
 
         data.path = results.hits[i]._path;
         data.createdTime = results.hits[i].createdTime;
-        data.comments = contentSvc.query({
+        data.comments = contentLib.query({
             start: 0,
             count: 1000,
             query: "data.post = '" + results.hits[i]._id + "'",
@@ -177,7 +177,7 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
     //Filter for authors
     if (up.author) {
-        var authorResult = contentSvc.query({
+        var authorResult = contentLib.query({
             count: 1,
             query: '_name LIKE "' + up.author + '"',
             contentTypes: [app.name + ':author']

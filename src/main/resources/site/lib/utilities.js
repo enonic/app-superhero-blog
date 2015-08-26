@@ -1,5 +1,5 @@
 var stk = require('stk/stk');
-var contentSvc = require('/lib/xp/content');
+var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
 
 // Returns the full month name from a Date object.
@@ -71,7 +71,7 @@ exports.getCategory = function(obj, categories) {
 
 // Returns the category contents.
 exports.getCategories = function() {
-    var result = contentSvc.query({
+    var result = contentLib.query({
         start: 0,
         count: 1000,
         contentTypes: [
@@ -90,7 +90,7 @@ exports.getPost = function() {
     if (currentContent.type == app.name + ':post') {
         content = currentContent;
     } else if (currentContent.type == app.name + ':landing-page') {
-        childContent = contentSvc.query({
+        childContent = contentLib.query({
             start: 0,
             count: 1,
             query: '_parentPath="/content' + currentContent._path + '"',
@@ -114,7 +114,7 @@ exports.commentsFolder = function() {
 // Return the local config posts path (if exits) else the site config path (if exits) else the default /posts folder.
 exports.postsFolder = function(local) {
     if(local) {
-        var folder = contentSvc.get({key: local});
+        var folder = contentLib.get({key: local});
         if(folder) {
             return folder._path;
         }
