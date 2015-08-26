@@ -27,7 +27,7 @@ module {
 }
 
 dependencies {
-    compile 'com.enonic.xp:core-api:5.3.0'
+    compile 'com.enonic.xp:core-api:5.3.1'
 }
 
 repositories {
