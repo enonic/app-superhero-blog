@@ -1,7 +1,29 @@
-<node xmlns="urn:enonic:xp:export:1.0">
+<node>
     <id>df6e7c83-946f-4b57-b1ce-20c965adaaee</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
+    <timestamp>2015-08-12T23:19:02.605Z</timestamp>
+    <inheritPermissions>true</inheritPermissions>
+    <permissions>
+        <principal key="role:cms.admin">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+    </permissions>
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">More Tags</string>
@@ -15,13 +37,13 @@
         <property-set name="data">
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">&lt;p&gt;More of these posts need tags.&lt;/p&gt;</htmlPart>
+            <string name="post">&lt;p&gt;More of these posts need tags.&lt;/p&gt;</string>
             <string name="tags">wordpress</string>
             <boolean name="enableComments">true</boolean>
         </property-set>
     </data>
     <indexConfigs>
-        <analyzer>content_default</analyzer>
+        <analyzer>document_index_default</analyzer>
         <defaultConfig>
             <decideByType>true</decideByType>
             <enabled>true</enabled>
@@ -39,16 +61,6 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>page.regions</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>attachment</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -99,6 +111,46 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>type</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>creator</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>modifier</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>owner</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>

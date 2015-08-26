@@ -1,7 +1,29 @@
-<node xmlns="urn:enonic:xp:export:1.0">
+<node>
     <id>03ff15b2-954c-4131-b58f-7bcd84698dd0</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
+    <timestamp>2015-08-12T23:19:02.127Z</timestamp>
+    <inheritPermissions>true</inheritPermissions>
+    <permissions>
+        <principal key="role:cms.admin">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+    </permissions>
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Some Buildings to Leap</string>
@@ -15,9 +37,8 @@
         <property-set name="data">
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <htmlPart name="post">
-&lt;p&gt;These are some buildings I saw the other day, that I think would make for some great hurdles.&lt;/p&gt;
-&lt;p&gt; &lt;/p&gt;</htmlPart>
+            <string name="post">&lt;p&gt;These are some buildings I saw the other day, that I think would make for some great hurdles.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;</string>
             <string name="tags">Buildings</string>
             <string name="tags">Featured</string>
             <boolean name="enableComments">true</boolean>
@@ -27,7 +48,7 @@
         </property-set>
     </data>
     <indexConfigs>
-        <analyzer>content_default</analyzer>
+        <analyzer>document_index_default</analyzer>
         <defaultConfig>
             <decideByType>true</decideByType>
             <enabled>true</enabled>
@@ -45,16 +66,6 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>page.regions</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>attachment</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -105,6 +116,46 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>type</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>creator</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>modifier</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>owner</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>

@@ -1,7 +1,29 @@
-<node xmlns="urn:enonic:xp:export:1.0">
+<node>
     <id>5f579f93-c4d9-42f6-b225-ae13732d7489</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
+    <timestamp>2015-08-12T23:19:02.626Z</timestamp>
+    <inheritPermissions>true</inheritPermissions>
+    <permissions>
+        <principal key="role:cms.admin">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+    </permissions>
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Category Hierarchy</string>
@@ -18,13 +40,13 @@
             <reference name="category">e656bc02-10dd-45b1-b30f-c9deef28aa6f</reference>
             <reference name="category">db5af3a3-6f57-4c7f-b7fb-15794e25ddb3</reference>
             <reference name="category">11b7c8c5-5633-47d3-a488-9c4d5060b690</reference>
-            <htmlPart name="post">&lt;p&gt;This post has 4 categories, part of a hierarchy that is 3 deep.&lt;/p&gt;
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce euismod commodo ante. Suspendisse potenti. Nunc pellentesque quam vel pede. Ut a lorem non urna molestie euismod. Fusce consequat tortor eu urna. Pellentesque aliquam, pede eget tincidunt feugiat, nunc massa hendrerit magna, non ultricies neque lectus nec dui. In hac habitasse platea dictumst. Sed feugiat quam eget lectus. Fusce at pede. Morbi sagittis tristique tortor. Sed erat justo, blandit ac, dignissim in, pretium ut, urna.&lt;/p&gt;</htmlPart>
+            <string name="post">&lt;p&gt;This post has 4 categories, part of a hierarchy that is 3 deep.&lt;/p&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce euismod commodo ante. Suspendisse potenti. Nunc pellentesque quam vel pede. Ut a lorem non urna molestie euismod. Fusce consequat tortor eu urna. Pellentesque aliquam, pede eget tincidunt feugiat, nunc massa hendrerit magna, non ultricies neque lectus nec dui. In hac habitasse platea dictumst. Sed feugiat quam eget lectus. Fusce at pede. Morbi sagittis tristique tortor. Sed erat justo, blandit ac, dignissim in, pretium ut, urna.&lt;/p&gt;</string>
             <boolean name="enableComments">false</boolean>
         </property-set>
     </data>
     <indexConfigs>
-        <analyzer>content_default</analyzer>
+        <analyzer>document_index_default</analyzer>
         <defaultConfig>
             <decideByType>true</decideByType>
             <enabled>true</enabled>
@@ -42,16 +64,6 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>page.regions</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>attachment</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -102,6 +114,46 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>type</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>creator</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>modifier</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>owner</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>

@@ -1,0 +1,11 @@
+<div class="main site-main">
+
+    <div class="primary content-area full-width-page">
+        <div class="site-content content" role="main" data-portal-region="left" data-portal-component-type="region">
+            <div data-th-each="component : ${leftRegion.components}" data-th-remove="tag">
+                <div data-portal-component="${component.path}" data-th-remove="tag"/>
+            </div>
+        </div>
+    </div>
+
+</div>
