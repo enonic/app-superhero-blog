@@ -119,6 +119,7 @@ exports.postsFolder = function(local) {
             return folder._path;
         }
     }
+    var site = portal.getSite();
     var siteConfig = portal.getSiteConfig();
     return siteConfig.postsFolder ? stk.content.getPath(siteConfig.postsFolder) : site._path + '/posts';
 };
