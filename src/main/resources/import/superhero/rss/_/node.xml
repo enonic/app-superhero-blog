@@ -1,8 +1,8 @@
 <node>
-    <id>6f3ff11c-22d5-496d-bab7-e66aa787c15d</id>
+    <id>94c0dd9f-cea1-4923-b266-48ba2809f265</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-08-12T23:19:02.079Z</timestamp>
+    <timestamp>2015-08-27T08:07:34.053Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.admin">
@@ -26,26 +26,33 @@
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Entries RSS</string>
+        <string name="displayName">RSS</string>
         <string name="type">com.enonic.theme.superhero:rss-page</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-03-03T02:12:21.185Z</dateTime>
+        <dateTime name="modifiedTime">2015-08-27T08:07:34.052Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-03-03T02:11:54.236Z</dateTime>
+        <dateTime name="createdTime">2015-08-27T08:07:11.301Z</dateTime>
         <property-set name="data">
-            <string name="title">Entries RSS</string>
-            <string name="updatePeriod">daily</string>
-            <string name="updateFrequency">2</string>
+            <string name="title">RSS</string>
+            <string name="updatePeriod">weekly</string>
+            <string name="updateFrequency">1</string>
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-theme-superhero">
                 <property-set name="menu-item">
                     <boolean name="menuItem">false</boolean>
-                    <string name="menuName"/>
+                    <string isNull="true" name="menuName"/>
                 </property-set>
             </property-set>
+        </property-set>
+        <property-set name="page">
+            <string name="controller">com.enonic.theme.superhero:rss</string>
+            <reference isNull="true" name="template"/>
+            <property-set isNull="true" name="region"/>
+            <property-set name="config"/>
+            <boolean name="customized">true</boolean>
         </property-set>
     </data>
     <indexConfigs>
@@ -67,6 +74,49 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>page.regions</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
+                    <indexValueProcessors>
+                        <indexValueProcessor>htmlStripper</indexValueProcessor>
+                    </indexValueProcessors>
+                </indexConfig>
+                <path>data.htmlarea_text</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>modifier</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>owner</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -136,7 +186,7 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>modifier</path>
+                <path>createdTime</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -146,17 +196,7 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>owner</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>attachment</path>
+                <path>modifiedTime</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>
