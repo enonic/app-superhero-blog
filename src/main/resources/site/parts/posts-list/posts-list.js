@@ -41,6 +41,8 @@ exports.get = function(req) {
         ]
     });
 
+    var hasPosts = results.hits.length > 0? true : false;
+
     // If the results total is more than the postsPerPage then it will need pagination.
     if (results.total > postsPerPage) {
 
@@ -141,7 +143,8 @@ exports.get = function(req) {
         searchPage: searchPage,
         older: older,
         newer: newer,
-        headerText: header.headerText
+        headerText: header.headerText,
+        hasPosts: hasPosts
     }
     var view = resolve('post-list.html');
     return stk.view.render(view, params);

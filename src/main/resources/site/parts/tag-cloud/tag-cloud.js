@@ -20,12 +20,14 @@ function handleGet(req) {
         var component = portal.getComponent();
         var config = component.config;
         var title = config.title || 'Tags';
+        var site = portal.getSite();
 
         // Get all posts that have one or more tags.
         var result = contentLib.query({
             start: 0,
             count: 0,
-            //query: 'data.tags LIKE "*"', // Only return posts that have tags
+            //query: "ngram('_path', '" + site._path + "', 'AND')",
+            //query: "_path = '/superhero/posts/gotham-sure-is-a-big-town'",
             contentTypes: [
                 app.name + ':post'
             ],

@@ -62,6 +62,18 @@
         </footer><!-- .entry-meta -->
 
     </article><!-- #post-## -->
+
+    <article data-th-if="!${hasPosts}" class="post type-post status-publish format-standard hentry">
+        <header class="entry-header">
+            <h1 class="entry-title">
+                No posts
+            </h1>
+        </header><!-- .entry-header -->
+        <div class="entry-content">
+            <p>Add some Posts content or configure the site's Posts folder</p>
+        </div><!-- .entry-content -->
+    </article>
+
     <nav data-th-if="${older} or ${newer}" role="navigation" id="nav-below" class="site-navigation page-navigation">
         <h1 class="assistive-text">Post navigation</h1>
         <div data-th-if="${older}" class="nav-previous">
