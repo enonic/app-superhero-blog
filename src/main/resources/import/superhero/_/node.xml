@@ -2,7 +2,7 @@
     <id>e1f57280-d672-4cd8-b674-98e26e5b69ae</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-08-27T08:04:25.870Z</timestamp>
+    <timestamp>2015-08-27T08:21:14.874Z</timestamp>
     <inheritPermissions>false</inheritPermissions>
     <permissions>
         <principal key="role:cms.admin">
@@ -30,8 +30,8 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-08-27T08:04:25.869Z</dateTime>
-        <string name="modifier">user:system:anonymous</string>
+        <dateTime name="modifiedTime">2015-08-27T08:21:14.872Z</dateTime>
+        <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
         <property-set name="data">
@@ -47,6 +47,13 @@
                     <reference name="commentsFolder">4edbe4b6-9d61-4d4e-a022-2a7e00708a94</reference>
                     <reference name="postsList">e1f57280-d672-4cd8-b674-98e26e5b69ae</reference>
                     <reference name="searchPage">8ad9ab18-3e99-44c8-9883-9c3eef86b507</reference>
+                </property-set>
+            </property-set>
+            <property-set name="siteConfig">
+                <string name="applicationKey">com.enonic.xp.social.facebook</string>
+                <property-set name="config">
+                    <string isNull="true" name="facebookAppID"/>
+                    <string isNull="true" name="colorscheme"/>
                 </property-set>
             </property-set>
         </property-set>
@@ -88,7 +95,7 @@
                                     <string name="name">Search form</string>
                                     <string name="template">com.enonic.theme.superhero:search-form</string>
                                     <property-set name="config">
-                                    <string name="title"/>
+                                    <string isNull="true" name="title"/>
                                     </property-set>
                                 </property-set>
                             </property-set>
@@ -98,8 +105,8 @@
                                     <string name="name">Recent comments</string>
                                     <string name="template">com.enonic.theme.superhero:recent-comments</string>
                                     <property-set name="config">
-                                    <string name="title"/>
-                                    <string name="maxComments"/>
+                                    <string isNull="true" name="title"/>
+                                    <string isNull="true" name="maxComments"/>
                                     </property-set>
                                 </property-set>
                             </property-set>
@@ -109,8 +116,8 @@
                                     <string name="name">Recent posts</string>
                                     <string name="template">com.enonic.theme.superhero:recent-posts</string>
                                     <property-set name="config">
-                                    <string name="title"/>
-                                    <string name="maxPosts"/>
+                                    <string isNull="true" name="title"/>
+                                    <string isNull="true" name="maxPosts"/>
                                     </property-set>
                                 </property-set>
                             </property-set>
@@ -120,7 +127,7 @@
                                     <string name="name">Categories</string>
                                     <string name="template">com.enonic.theme.superhero:categories</string>
                                     <property-set name="config">
-                                    <string name="title"/>
+                                    <string isNull="true" name="title"/>
                                     <boolean name="showPostCount">false</boolean>
                                     <boolean name="showHierarchy">false</boolean>
                                     </property-set>
@@ -132,7 +139,7 @@
                                     <string name="name">Monthly archive</string>
                                     <string name="template">com.enonic.theme.superhero:archive</string>
                                     <property-set name="config">
-                                    <string name="title"/>
+                                    <string isNull="true" name="title"/>
                                     <boolean name="showPostCount">false</boolean>
                                     </property-set>
                                 </property-set>
@@ -143,7 +150,7 @@
                                     <string name="name">Tag cloud</string>
                                     <string name="template">com.enonic.theme.superhero:tag-cloud</string>
                                     <property-set name="config">
-                                    <string name="title"/>
+                                    <string isNull="true" name="title"/>
                                     </property-set>
                                 </property-set>
                             </property-set>

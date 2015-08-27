@@ -2,7 +2,7 @@
     <id>8ad9ab18-3e99-44c8-9883-9c3eef86b507</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-08-12T23:19:02.057Z</timestamp>
+    <timestamp>2015-08-27T09:05:14.704Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.admin">
@@ -30,7 +30,7 @@
         <string name="type">com.enonic.theme.superhero:landing-page</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-04-09T07:09:47.800Z</dateTime>
+        <dateTime name="modifiedTime">2015-08-27T09:05:14.704Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-04-08T08:44:20.878Z</dateTime>
@@ -39,7 +39,7 @@
             <property-set name="com-enonic-theme-superhero">
                 <property-set name="menu-item">
                     <boolean name="menuItem">false</boolean>
-                    <string name="menuName"/>
+                    <string isNull="true" name="menuName"/>
                 </property-set>
             </property-set>
         </property-set>
@@ -73,7 +73,7 @@
                                     <string name="name">Search form</string>
                                     <string name="template">com.enonic.theme.superhero:search-form</string>
                                     <property-set name="config">
-                                    <string name="title"/>
+                                    <string isNull="true" name="title"/>
                                     </property-set>
                                 </property-set>
                             </property-set>
@@ -83,8 +83,8 @@
                                     <string name="name">Recent posts</string>
                                     <string name="template">com.enonic.theme.superhero:recent-posts</string>
                                     <property-set name="config">
-                                    <string name="title"/>
-                                    <string name="maxPosts"/>
+                                    <string isNull="true" name="title"/>
+                                    <string isNull="true" name="maxPosts"/>
                                     </property-set>
                                 </property-set>
                             </property-set>
@@ -94,8 +94,8 @@
                                     <string name="name">Recent comments</string>
                                     <string name="template">com.enonic.theme.superhero:recent-comments</string>
                                     <property-set name="config">
-                                    <string name="title"/>
-                                    <string name="maxComments"/>
+                                    <string isNull="true" name="title"/>
+                                    <string isNull="true" name="maxComments"/>
                                     </property-set>
                                 </property-set>
                             </property-set>
@@ -105,7 +105,7 @@
                                     <string name="name">Categories</string>
                                     <string name="template">com.enonic.theme.superhero:categories</string>
                                     <property-set name="config">
-                                    <string name="title"/>
+                                    <string isNull="true" name="title"/>
                                     <boolean name="showPostCount">false</boolean>
                                     <boolean name="showHierarchy">false</boolean>
                                     </property-set>
@@ -117,7 +117,7 @@
                                     <string name="name">Monthly archive</string>
                                     <string name="template">com.enonic.theme.superhero:archive</string>
                                     <property-set name="config">
-                                    <string name="title"/>
+                                    <string isNull="true" name="title"/>
                                     <boolean name="showPostCount">false</boolean>
                                     </property-set>
                                 </property-set>
@@ -128,7 +128,7 @@
                                     <string name="name">Tag cloud</string>
                                     <string name="template">com.enonic.theme.superhero:tag-cloud</string>
                                     <property-set name="config">
-                                    <string name="title"/>
+                                    <string isNull="true" name="title"/>
                                     </property-set>
                                 </property-set>
                             </property-set>
@@ -136,6 +136,7 @@
                     </property-set>
                 </property-set>
             </property-set>
+            <boolean name="customized">false</boolean>
         </property-set>
     </data>
     <indexConfigs>
@@ -157,6 +158,49 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>page.regions</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
+                    <indexValueProcessors>
+                        <indexValueProcessor>htmlStripper</indexValueProcessor>
+                    </indexValueProcessors>
+                </indexConfig>
+                <path>data.htmlarea_text</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>modifier</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>owner</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -226,7 +270,7 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>modifier</path>
+                <path>createdTime</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -236,17 +280,7 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>owner</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>attachment</path>
+                <path>modifiedTime</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>

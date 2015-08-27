@@ -1,8 +1,8 @@
 <node>
-    <id>94c0dd9f-cea1-4923-b266-48ba2809f265</id>
+    <id>47a72154-1b22-4d44-9cfc-8f56c01614ff</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-08-27T08:07:34.053Z</timestamp>
+    <timestamp>2015-08-27T08:48:33.257Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.admin">
@@ -26,24 +26,25 @@
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">RSS</string>
+        <string name="displayName">RSS page</string>
         <string name="type">com.enonic.theme.superhero:rss-page</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-08-27T08:07:34.052Z</dateTime>
+        <dateTime name="modifiedTime">2015-08-27T08:48:33.257Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-08-27T08:07:11.301Z</dateTime>
+        <dateTime name="createdTime">2015-08-27T08:47:32.771Z</dateTime>
         <property-set name="data">
-            <string name="title">RSS</string>
+            <string name="title">RSS page</string>
             <string name="updatePeriod">weekly</string>
             <string name="updateFrequency">1</string>
+            <reference name="postsFolder">84ccc003-3d1b-4a99-8a02-753930848295</reference>
         </property-set>
         <property-set name="x">
             <property-set name="com-enonic-theme-superhero">
                 <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string isNull="true" name="menuName"/>
+                    <boolean name="menuItem">true</boolean>
+                    <string name="menuName">RSS</string>
                 </property-set>
             </property-set>
         </property-set>
