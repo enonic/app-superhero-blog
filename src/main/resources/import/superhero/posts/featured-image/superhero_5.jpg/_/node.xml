@@ -2,7 +2,7 @@
     <id>be1ca151-cf61-4a54-9ea4-c8d01ce83e0e</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-08-12T23:19:02.538Z</timestamp>
+    <timestamp>2015-08-28T02:06:51.025Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.admin">
@@ -28,27 +28,58 @@
         <boolean name="valid">true</boolean>
         <string name="displayName">superhero_5.jpg</string>
         <string name="type">media:image</string>
-        <dateTime name="createdTime">2015-03-07T20:17:32.153Z</dateTime>
-        <string name="creator">user:system:su</string>
-        <string name="modifier">user:system:su</string>
-        <dateTime name="modifiedTime">2015-03-07T20:17:32.153Z</dateTime>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
+        <dateTime name="modifiedTime">2015-08-28T02:06:51.024Z</dateTime>
+        <string name="modifier">user:system:su</string>
+        <string name="creator">user:system:su</string>
+        <dateTime name="createdTime">2015-03-07T20:17:32.153Z</dateTime>
         <property-set name="data">
             <string name="media">superhero_5.jpg</string>
-            <string name="caption"/>
-            <string name="artist"/>
-            <string name="copyright"/>
-            <string name="tags"/>
+            <string isNull="true" name="caption"/>
+            <string isNull="true" name="artist"/>
+            <string isNull="true" name="copyright"/>
+            <string isNull="true" name="tags"/>
         </property-set>
         <property-set name="x">
             <property-set name="media">
                 <property-set name="imageInfo">
-                    <string name="imageHeight">464</string>
-                    <string name="imageWidth">695</string>
+                    <long name="imageHeight">464</long>
+                    <long name="imageWidth">695</long>
                     <string name="contentType">image/jpeg</string>
-                    <string name="bytesize">196646</string>
                     <long name="pixelSize">322480</long>
+                    <string isNull="true" name="description"/>
+                    <long name="byteSize">196646</long>
+                    <string isNull="true" name="colorSpace"/>
+                    <string isNull="true" name="fileSource"/>
+                </property-set>
+                <property-set name="cameraInfo">
+                    <localDateTime isNull="true" name="date"/>
+                    <string isNull="true" name="make"/>
+                    <string isNull="true" name="model"/>
+                    <string isNull="true" name="lens"/>
+                    <string isNull="true" name="iso"/>
+                    <string isNull="true" name="focalLength"/>
+                    <string isNull="true" name="focalLength35"/>
+                    <string isNull="true" name="exposureBias"/>
+                    <string isNull="true" name="aperture"/>
+                    <string isNull="true" name="shutterTime"/>
+                    <string isNull="true" name="flash"/>
+                    <string isNull="true" name="autoFlashCompensation"/>
+                    <string isNull="true" name="whiteBalance"/>
+                    <string isNull="true" name="exposureProgram"/>
+                    <string isNull="true" name="shootingMode"/>
+                    <string isNull="true" name="meteringMode"/>
+                    <string isNull="true" name="exposureMode"/>
+                    <string isNull="true" name="focusDistance"/>
+                    <string isNull="true" name="orientation"/>
+                </property-set>
+            </property-set>
+            <property-set name="base">
+                <property-set name="gpsInfo">
+                    <geoPoint isNull="true" name="geoPoint"/>
+                    <string isNull="true" name="altitude"/>
+                    <string isNull="true" name="direction"/>
                 </property-set>
             </property-set>
         </property-set>
@@ -79,6 +110,49 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>page.regions</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
+                    <indexValueProcessors>
+                        <indexValueProcessor>htmlStripper</indexValueProcessor>
+                    </indexValueProcessors>
+                </indexConfig>
+                <path>data.htmlarea_text</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>modifier</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>owner</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -148,7 +222,7 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>modifier</path>
+                <path>createdTime</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -158,17 +232,7 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>owner</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>attachment</path>
+                <path>modifiedTime</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>
