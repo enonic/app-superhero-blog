@@ -26,8 +26,7 @@ function handleGet(req) {
         var result = contentLib.query({
             start: 0,
             count: 0,
-            //query: "ngram('_path', '" + site._path + "', 'AND')",
-            //query: "_path = '/superhero/posts/gotham-sure-is-a-big-town'",
+            query: "_path LIKE '/content" + site._path + "/*'", // Only get tags from this site.
             contentTypes: [
                 app.name + ':post'
             ],
