@@ -1,8 +1,8 @@
 <node>
-    <id>47a72154-1b22-4d44-9cfc-8f56c01614ff</id>
+    <id>16c9c9ee-2f16-425e-ba98-d4b20391c500</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-08-27T08:48:33.257Z</timestamp>
+    <timestamp>2015-08-28T01:23:24.435Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.admin">
@@ -26,16 +26,16 @@
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">RSS page</string>
+        <string name="displayName">RSS</string>
         <string name="type">com.enonic.theme.superhero:rss-page</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-08-27T08:48:33.257Z</dateTime>
+        <dateTime name="modifiedTime">2015-08-28T01:23:24.434Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-08-27T08:47:32.771Z</dateTime>
+        <dateTime name="createdTime">2015-08-28T01:22:30.610Z</dateTime>
         <property-set name="data">
-            <string name="title">RSS page</string>
+            <string name="title">Superhero RSS</string>
             <string name="updatePeriod">weekly</string>
             <string name="updateFrequency">1</string>
             <reference name="postsFolder">84ccc003-3d1b-4a99-8a02-753930848295</reference>
