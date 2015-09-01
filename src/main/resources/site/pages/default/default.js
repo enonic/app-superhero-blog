@@ -31,6 +31,7 @@ function handleGet(req) {
         if (siteConfig.backgroundImage) {
             var bgImageUrl = portal.imageUrl({
                 id: siteConfig.backgroundImage,
+                scale: '(1,1)',
                 format: 'jpeg'
             });
 
