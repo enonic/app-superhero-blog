@@ -105,12 +105,6 @@ exports.getPost = function() {
     return content || currentContent;
 };
 
-// Return the site config comments folder (if exits) or the default comments folder.
-exports.commentsFolder = function() {
-    var siteConfig = portal.getSiteConfig();
-    return siteConfig.commentsFolder ? stk.content.getPath(siteConfig.commentsFolder) : site._path + '/comments';
-};
-
 // Return the local config posts path (if exits) else the site config path (if exits) else the default /posts folder.
 exports.postsFolder = function(local) {
     if(local) {

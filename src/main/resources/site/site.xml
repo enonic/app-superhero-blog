@@ -22,13 +22,9 @@
         <allow-content-type>base:folder</allow-content-type>
       </config>
     </input>
-    <input type="ContentSelector" name="commentsFolder">
-      <label>Comments folder</label>
+    <input type="HtmlArea" name="footerText">
+      <label>Footer text</label>
       <occurrences minimum="0" maximum="1"/>
-      <config>
-        <reference-type>system:reference</reference-type>
-        <allow-content-type>base:folder</allow-content-type>
-      </config>
     </input>
     <input name="commentSort" type="ComboBox">
       <label>Comments sort</label>

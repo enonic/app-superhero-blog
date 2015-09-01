@@ -2,7 +2,7 @@
     <id>e1f57280-d672-4cd8-b674-98e26e5b69ae</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-08-28T01:33:27.204Z</timestamp>
+    <timestamp>2015-09-01T05:08:57.039Z</timestamp>
     <inheritPermissions>false</inheritPermissions>
     <permissions>
         <principal key="role:cms.admin">
@@ -30,8 +30,8 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-08-28T01:33:27.198Z</dateTime>
-        <string name="modifier">user:system:anonymous</string>
+        <dateTime name="modifiedTime">2015-09-01T05:08:57.038Z</dateTime>
+        <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
         <property-set name="data">
@@ -44,9 +44,9 @@
                     <string name="googleUA">UA-123ABC</string>
                     <string name="commentSort">ASC</string>
                     <reference name="postsFolder">84ccc003-3d1b-4a99-8a02-753930848295</reference>
-                    <reference name="commentsFolder">4edbe4b6-9d61-4d4e-a022-2a7e00708a94</reference>
                     <reference name="postsList">e1f57280-d672-4cd8-b674-98e26e5b69ae</reference>
                     <reference name="searchPage">8ad9ab18-3e99-44c8-9883-9c3eef86b507</reference>
+                    <string name="footerText">&lt;p&gt;&lt;a title="Fastest way from idea to digital experience." href="https://enonic.com/" target="_blank"&gt;Proudly powered by Enonic XP&lt;/a&gt;&lt;span class="sep"&gt; | &lt;/span&gt;Theme: Superhero by &lt;a href="https://wordpress.com/themes/" target="_blank"&gt;WordPress.com&lt;/a&gt;.&lt;/p&gt;</string>
                 </property-set>
             </property-set>
         </property-set>

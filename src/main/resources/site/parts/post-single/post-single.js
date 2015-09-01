@@ -42,7 +42,6 @@ exports.get = function(req) {
     //End pagination
 
     //for comments
-    //var postUrl = stk.serviceUrl('comments', {commentsFolder: util.commentsFolder()});
     var postUrl = stk.serviceUrl('comments', {});
     var postAuthor = stk.content.get(content.data.author);
 

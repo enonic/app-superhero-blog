@@ -73,14 +73,16 @@ function handlePost(req) {
         }
     }
 
-    return {
+    var redirectUrl = portal.pageUrl({
+        path: commentPost._path,
+        params: {
+            submitted: contentCreated ? 'ok' : null
+        }
+    });
+    redirectUrl += "#comments";
 
-        redirect: portal.pageUrl({
-            path: commentPost._path + '#comments',
-            params: {
-                submitted: contentCreated ? 'ok' : null
-            }
-        })
+    return {
+        redirect: redirectUrl
     }
 }
 
