@@ -45,6 +45,6 @@ For help with this app, use the [Enonic Forum](https://discuss.enonic.com/).
 * TODO: Make comments work with Ajax.
 * TODO: Implement categories "Show hierarchy".
 * TODO: Write documentation and insert link.
-* TODO: Make it possible to have the post-list page not the home page.
-* TODO: Calendar portlet.
+* TODO: Make it possible to have the post-list on a page other than the home page.
+* TODO: Calendar part.
 * TODO: Only allowed tags in comments.
