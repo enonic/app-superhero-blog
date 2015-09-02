@@ -39,7 +39,6 @@
             <property-set name="siteConfig">
                 <string name="applicationKey">com.enonic.theme.superhero</string>
                 <property-set name="config">
-                    <string name="google-ua">UA-123ABC</string>
                     <string name="numPosts">5</string>
                     <string name="googleUA">UA-123ABC</string>
                     <string name="commentSort">ASC</string>
