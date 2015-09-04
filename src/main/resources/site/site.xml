@@ -39,7 +39,7 @@
       <occurrences minimum="0" maximum="1"/>
       <config>
         <reference-type>system:reference</reference-type>
-        <allow-content-type>com.enonic.theme.superhero:landing-page</allow-content-type>
+        <allow-content-type>landing-page</allow-content-type>
       </config>
     </input>
     <input type="ContentSelector" name="postsList">
@@ -48,7 +48,7 @@
       <config>
         <reference-type>system:reference</reference-type>
         <allow-content-type>portal:site</allow-content-type>
-        <allow-content-type>com.enonic.theme.superhero:landing-page</allow-content-type>
+        <allow-content-type>landing-page</allow-content-type>
       </config>
     </input>
   </config>
