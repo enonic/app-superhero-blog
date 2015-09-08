@@ -10,7 +10,7 @@ exports.get = handleGet;
 function handlePost(req) {
     var me = this;
 
-    var p = req.formParams;
+    var p = req.params;
     var contentCreated = null;
     var commentPost = stk.content.get(p.comment_post_ID);
 
