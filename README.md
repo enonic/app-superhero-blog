@@ -10,6 +10,12 @@ Adapted for [Enonic XP](https://github.com/enonic/xp) by Michael Lazell
 
 This is still being developed and is not ready for production yet.
 
+## Releases
+
+Here's a list of released versions with compatibility notes:
+
+* [1.0.0](http://repo.enonic.com/public/com/enonic/app/superhero/1.0.0/superhero-1.0.0.jar) - Enonic XP 6.x
+
 ## Requirements
 
 First, Enonic XP 6.0 must be installed and running. See the [XP installation documentation](http://xp.readthedocs.org/en/latest/getting-started/installation.html).
@@ -48,3 +54,13 @@ For help with this app, use the [Enonic Forum](https://discuss.enonic.com/).
 * TODO: Make it possible to have the post-list on a page other than the home page.
 * TODO: Calendar part.
 * TODO: Only allowed tags in comments.
+
+## Building
+
+To build this application, just do the following:
+
+  ./gradlew clean build
+
+To publish a new version, just type:
+
+  ./gradlew clean build uploadArchives
