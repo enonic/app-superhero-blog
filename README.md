@@ -59,8 +59,8 @@ For help with this app, use the [Enonic Forum](https://discuss.enonic.com/).
 
 To build this application, just do the following:
 
-  ./gradlew clean build
+    ./gradlew clean build
 
 To publish a new version, just type:
 
-  ./gradlew clean build uploadArchives
+    ./gradlew clean build uploadArchives
