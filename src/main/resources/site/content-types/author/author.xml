@@ -5,7 +5,7 @@
   <super-type>base:structured</super-type>
   <form>
     <field-set name="basic">
-      <label>Comment</label>
+      <label>Author info</label>
       <items>
         <input type="TextLine" name="name">
           <label>Name</label>
