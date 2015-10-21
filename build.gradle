@@ -8,14 +8,14 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.enonic.xp:gradle-plugin:6.0.0'
+        classpath 'com.enonic.xp:gradle-plugin:6.1.0'
     }
 }
 
 apply plugin: 'maven'
 apply plugin: 'com.enonic.xp.app'
 
-version = '1.0.1-SNAPSHOT'
+version = '1.1.0-SNAPSHOT'
 group = 'com.enonic.app'
 
 app {
@@ -26,12 +26,12 @@ app {
 }
 
 dependencies {
-    compile 'com.enonic.xp:core-api:6.0.0'
-    compile 'com.enonic.xp:portal-api:6.0.0'
-    include 'com.enonic.xp:lib-content:6.0.0'
-    include 'com.enonic.xp:lib-portal:6.0.0'
-    include 'com.enonic.xp:lib-thymeleaf:6.0.0'
-    include 'com.enonic.xp:lib-xslt:6.0.0'
+    compile 'com.enonic.xp:core-api:6.1.0'
+    compile 'com.enonic.xp:portal-api:6.1.0'
+    include 'com.enonic.xp:lib-content:6.1.0'
+    include 'com.enonic.xp:lib-portal:6.1.0'
+    include 'com.enonic.xp:lib-thymeleaf:6.1.0'
+    include 'com.enonic.xp:lib-xslt:6.1.0'
 }
 
 repositories {
