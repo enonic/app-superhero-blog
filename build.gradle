@@ -8,30 +8,29 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.enonic.xp:gradle-plugin:6.1.0'
+        classpath "com.enonic.xp:gradle-plugin:${xpVersion}"
     }
 }
 
 apply plugin: 'maven'
 apply plugin: 'com.enonic.xp.app'
 
-version = '1.1.0-SNAPSHOT'
-group = 'com.enonic.app'
+
 
 app {
-    name = 'com.enonic.theme.superhero'
-    displayName = 'Superhero theme'
+    name = project.appName
+    displayName = project.displayName
     vendorName = 'Enonic USA'
     vendorUrl = 'https://enonic.com'
 }
 
 dependencies {
-    compile 'com.enonic.xp:core-api:6.1.0'
-    compile 'com.enonic.xp:portal-api:6.1.0'
-    include 'com.enonic.xp:lib-content:6.1.0'
-    include 'com.enonic.xp:lib-portal:6.1.0'
-    include 'com.enonic.xp:lib-thymeleaf:6.1.0'
-    include 'com.enonic.xp:lib-xslt:6.1.0'
+    compile "com.enonic.xp:core-api:${xpVersion}"
+    compile "com.enonic.xp:portal-api:${xpVersion}"
+    include "com.enonic.xp:lib-content:${xpVersion}"
+    include "com.enonic.xp:lib-portal:${xpVersion}"
+    include "com.enonic.xp:lib-thymeleaf:${xpVersion}"
+    include "com.enonic.xp:lib-xslt:${xpVersion}"
 }
 
 repositories {
