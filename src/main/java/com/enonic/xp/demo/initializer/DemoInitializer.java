@@ -22,8 +22,11 @@ import com.enonic.xp.export.ImportNodesParams;
 import com.enonic.xp.export.NodeImportResult;
 import com.enonic.xp.node.NodePath;
 import com.enonic.xp.security.PrincipalKey;
+import com.enonic.xp.security.PrincipalKeys;
 import com.enonic.xp.security.RoleKeys;
+import com.enonic.xp.security.SecurityService;
 import com.enonic.xp.security.User;
+import com.enonic.xp.security.UserStoreKey;
 import com.enonic.xp.security.acl.AccessControlEntry;
 import com.enonic.xp.security.acl.AccessControlList;
 import com.enonic.xp.security.acl.Permission;
@@ -45,13 +48,17 @@ public class DemoInitializer
 
     private ExportService exportService;
 
+    private SecurityService securityService;
+
     private final Logger LOG = LoggerFactory.getLogger( DemoInitializer.class );
+
+    private static final PrincipalKey SUPER_USER_KEY = PrincipalKey.ofUser( UserStoreKey.system(), "su" );
 
     @Activate
     public void initialize()
         throws Exception
     {
-        runAs( RoleKeys.CONTENT_MANAGER_ADMIN, () -> {
+        runAsSuperUser( () -> {
             doInitialize();
             return null;
         } );
@@ -93,7 +100,8 @@ public class DemoInitializer
 
             contentService.applyPermissions( ApplyContentPermissionsParams.create().
                 contentId( demoContent.getId() ).
-                modifier( PrincipalKey.ofAnonymous() ).
+                overwriteChildPermissions( true ).
+                modifier( SUPER_USER_KEY ).
                 build() );
         }
     }
@@ -143,10 +151,31 @@ public class DemoInitializer
         this.contentService = contentService;
     }
 
+    @Reference
+    public void setSecurityService( final SecurityService securityService )
+    {
+        this.securityService = securityService;
+    }
+
+    private <T> T runAsSuperUser( final Callable<T> runnable )
+    {
+        final AuthenticationInfo authInfo = getSuperUserAuthInfo();
+        return ContextBuilder.from( ContextAccessor.current() ).authInfo( authInfo ).build().callWith( runnable );
+    }
+
+    private AuthenticationInfo getSuperUserAuthInfo()
+    {
+        return runAs( RoleKeys.ADMIN, () -> {
+            final User superUser = this.securityService.getUser( SUPER_USER_KEY ).
+                orElseThrow( () -> new RuntimeException( "User " + SUPER_USER_KEY + " not found." ) );
+            final PrincipalKeys principals = this.securityService.getMemberships( SUPER_USER_KEY );
+            return AuthenticationInfo.create().principals( principals ).user( superUser ).build();
+        } );
+    }
+
     private <T> T runAs( final PrincipalKey role, final Callable<T> runnable )
     {
         final AuthenticationInfo authInfo = AuthenticationInfo.create().principals( role ).user( User.ANONYMOUS ).build();
         return ContextBuilder.from( ContextAccessor.current() ).authInfo( authInfo ).build().callWith( runnable );
     }
-
 }
