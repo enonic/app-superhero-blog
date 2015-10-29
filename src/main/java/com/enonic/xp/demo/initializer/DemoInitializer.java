@@ -43,7 +43,7 @@ public class DemoInitializer
         AccessControlList.of( AccessControlEntry.create().principal( RoleKeys.EVERYONE ).allow( Permission.READ ).build(),
                               AccessControlEntry.create().principal( RoleKeys.CONTENT_MANAGER_ADMIN ).allowAll().build(),
                               AccessControlEntry.create().principal( RoleKeys.CONTENT_MANAGER_APP ).allow( Permission.READ ).build(),
-                              AccessControlEntry.create().principal( RoleKeys.ADMIN ).allowAll().build());
+                              AccessControlEntry.create().principal( RoleKeys.ADMIN ).allowAll().build() );
 
 
     private ContentService contentService;
@@ -103,7 +103,6 @@ public class DemoInitializer
             contentService.applyPermissions( ApplyContentPermissionsParams.create().
                 contentId( demoContent.getId() ).
                 overwriteChildPermissions( true ).
-                modifier( SUPER_USER_KEY ).
                 build() );
         }
     }
