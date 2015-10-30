@@ -123,9 +123,10 @@ exports.getSearchPage = function() {
     var siteConfig = portal.getSiteConfig();
     var searchPageKey = siteConfig.searchPage;
     if(searchPageKey) {
-        var searchContent = stk.content.get(searchPageKey);
-        return searchContent._path;
-    } else {
-        return site._path + '/search';
+        var searchContent = contentLib.get({key: searchPageKey});
+        if(searchContent) {
+            return searchContent._path;
+        }
     }
+    return site._path + '/search';
 };

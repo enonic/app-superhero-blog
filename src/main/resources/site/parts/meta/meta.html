@@ -1,0 +1,8 @@
+<aside class="widget widget_meta">
+    <h1 class="widget-title" data-th-text="${title}"></h1>
+    <ul>
+        <li data-th-each="item : ${items}">
+            <a data-th-href="${item.url}" data-th-text="${item.text}" data-th-title="${item.linkTitle}"></a>
+        </li>
+    </ul>
+</aside>
