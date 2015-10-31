@@ -10,14 +10,6 @@ function handleGet(req) {
     var me = this;
 
     function renderView() {
-        var logout = req.params.logout;
-
-        if (logout) {
-            auth.logout();
-            return {
-                redirect: portal.pageUrl({id: portal.getSite()._id})
-            }
-        }
 
         var view = resolve('meta.html');
         var model = createModel();
@@ -38,7 +30,7 @@ function handleGet(req) {
 
         if(user) {
             item.text = 'Log out';
-            item.url = portal.componentUrl({params:{logout: 'true'}});
+            item.url = portal.serviceUrl({service: 'logout'});
             items.push(item);
         }
 

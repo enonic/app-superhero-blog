@@ -1,6 +1,7 @@
 var stk = require('stk/stk');
 var util = require('utilities');
 
+var auth = require('/lib/xp/auth');
 var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
 
@@ -13,6 +14,7 @@ function handlePost(req) {
     var p = req.params;
     var contentCreated = null;
     var commentPost = stk.content.get(p.comment_post_ID);
+    var user = auth.getUser();
 
     //Make sure somebody doesn't alter the form to create a comment on a post that doesn't allow comments.
     if(commentPost.data && commentPost.data.enableComments == true) {
@@ -44,18 +46,18 @@ function handlePost(req) {
 
 
         // Check required fields and create content
-        if (p.author && p.email) {
+        if (user || (p.author && p.email)) {
             var result = contentLib.create({
-                name: 'Comment ' + p.author + '-' + Math.floor((Math.random() * 1000000000) + 1),
+                name: 'Comment ' + p.author || user.displayName + '-' + Math.floor((Math.random() * 1000000000) + 1),
                 parentPath: saveLocation,
-                displayName: p.author,
+                displayName: p.author || user.displayName,
                 draft: true,
                 requireValid: true,
                 contentType: app.name + ':comment',
                 //branch: 'draft',
                 data: {
-                    name: p.author,
-                    email: p.email,
+                    name: p.author || user.displayName,
+                    email: p.email || user.email,
                     website: p.url,
                     comment: p.comment,
                     post: commentPost._id,

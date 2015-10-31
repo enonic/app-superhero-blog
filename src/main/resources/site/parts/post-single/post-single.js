@@ -1,6 +1,7 @@
 var stk = require('stk/stk');
 var util = require('utilities');
 
+var auth = require('/lib/xp/auth');
 var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
 
@@ -11,6 +12,8 @@ exports.get = function(req) {
     var searchPage = util.getSearchPage();
     var content = portal.getContent();
     var siteConfig = portal.getSiteConfig();
+    var user = auth.getUser();
+    var logoutUrl = portal.serviceUrl({service: 'logout', params: {redirectPageKey: content._id}});
 
     //stk.log(content);
 
@@ -120,7 +123,10 @@ exports.get = function(req) {
         searchPage: searchPage,
         commentsTotal: commentsTotal,
         comments: comments,
-        childFragment: childFragment
+        childFragment: childFragment,
+        user: user,
+        logoutUrl: logoutUrl,
+        profilePage: portal.pageUrl({id: siteConfig.loginPage})
     }
     return stk.view.render(view, params);
 };

@@ -128,22 +128,31 @@
                     </small>
                 </h3>
                 <form action="#" data-th-action="${postUrl}" method="post" id="commentform" class="comment-form">
-                    <p class="comment-notes">
-                        <span id="email-notes">Your email address will not be published.</span>
-                        Required fields are marked <span class="required">*</span>
-                    </p>
-                    <p class="comment-form-author">
-                        <label for="author">Name<span class="required">*</span></label>
-                        <input id="author" name="author" type="text" size="30" aria-required="true"/>
-                    </p>
-                    <p class="comment-form-email">
-                        <label for="email">Email<span class="required">*</span></label>
-                        <input id="email" name="email" type="text" size="30" aria-describedby="email-notes" aria-required="true"/>
-                    </p>
-                    <p class="comment-form-url">
-                        <label for="url">Website</label>
-                        <input id="url" name="url" type="text" size="30"/>
-                    </p>
+                    <div data-th-if="${user}" data-th-remove="tag">
+                        <p class="logged-in-as">
+                            Logged in as <a data-th-href="${profilePage}" data-th-text="${user.displayName}"></a>.
+                            <a data-th-href="${logoutUrl}">Log out?</a>
+                        </p>
+                    </div>
+                    <div data-th-if="${!user}" data-th-remove="tag">
+                        <p class="comment-notes">
+                            <span id="email-notes">Your email address will not be published.</span>
+                            Required fields are marked <span class="required">*</span>
+                        </p>
+                        <p class="comment-form-author">
+                            <label for="author">Name<span class="required">*</span></label>
+                            <input id="author" name="author" type="text" size="30" aria-required="true" />
+                        </p>
+                        <p class="comment-form-email">
+                            <label for="email">Email<span class="required">*</span></label>
+                            <input id="email" name="email" type="text" size="30" aria-describedby="email-notes" aria-required="true" />
+                        </p>
+                        <p class="comment-form-url">
+                            <label for="url">Website</label>
+                            <input id="url" name="url" type="text" size="30"/>
+                        </p>
+                    </div>
+
                     <p class="comment-form-comment">
                         <label for="comment">Comment</label>
                         <textarea id="comment" name="comment" cols="45" rows="8" aria-describedby="form-allowed-tags" aria-required="true"></textarea>
