@@ -11,32 +11,22 @@
         </input>
       </items>
     </field-set>
-    <field-set name="login">
-      <label>Login</label>
-      <items>
-        <input type="ContentSelector" name="loginPage">
-          <label>Login page</label>
-          <config>
-            <relationship-type>system:reference</relationship-type>
-            <allow-content-type>landing-page</allow-content-type>
-          </config>
-          <occurrences minimum="0" maximum="1"/>
-        </input>
-        <input type="Checkbox" name="allowLogin">
-          <label>Allow login</label>
-          <occurrences minimum="0" maximum="1"/>
-        </input>
-      </items>
-    </field-set>
     <field-set name="links">
       <label>Links</label>
       <items>
         <item-set name="links">
           <label>Link</label>
+          <occurrences minimum="0" maximum="0"/>
           <items>
             <input type="ContentSelector" name="contentLink">
               <label>Content link</label>
               <occurrences minimum="0" maximum="1"/>
+              <config>
+                <reference-type>system:reference</reference-type>
+                <allow-content-type>landing-page</allow-content-type>
+                <allow-content-type>post</allow-content-type>
+                <allow-content-type>rss-page</allow-content-type>
+              </config>
             </input>
             <input type="TextLine" name="externalUrl">
               <label>External URL</label>
@@ -51,7 +41,6 @@
               <occurrences minimum="0" maximum="1"/>
             </input>
           </items>
-          <occurrences minimum="0" maximum="0"/>
         </item-set>
       </items>
     </field-set>

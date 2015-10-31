@@ -1,12 +1,56 @@
-<div>
-    <form method="post" data-th-action="${postUrl}" role="form">
-        <div class="form-group">
-            <label for="user">Username</label>
-            <input type="text" name="user" id="user" class="form-control"/>
-
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" class="form-control"/>
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+<div id="login" class="login wp-core-ui" style="padding-top:30px;">
+    <div data-th-if="${loginFail}">
+        <p>No match found for that username and password.</p>
+    </div>
+    <form data-th-if="${!user}" name="loginform" method="post" data-th-action="${postUrl}" role="form" id="loginform">
+        <p>
+            <label for="user">Username</label><br/>
+            <input type="text" name="user" id="user" class="input"/>
+        </p>
+        <p>
+            <label for="password">Password</label><br/>
+            <input type="password" name="password" id="password" class="input"/>
+        </p>
+        <p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever"/> Remember me</label></p>
+        <p class="submit">
+            <input type="submit" name="submit" id="wp-submit" class="button button-primary button-large" value="Log In"/>
+            <input type="hidden" name="redirect_to" data-th-value="${redirectTo}"/>
+            <input type="hidden" name="testcookie" value="1"/>
+        </p>
     </form>
+
+    <div data-th-if="${user}" class="hentry">
+        <header class="entry-header" style="margin:20px 25px 0; padding:25px 0 0;">
+            <h2 style="margin-bottom:15px;">User details</h2>
+            <p data-th-text="${'Name: ' + user.displayName}"></p>
+            <p data-th-text="${'Login : ' + user.login}"></p>
+            <p data-th-text="${'Email : ' + user.email}"></p>
+        </header>
+
+        <p data-th-if="${noMatch}">
+            The passwords did not match.
+        </p>
+        <p data-th-if="${passwordChanged}">
+            Your password has been changed.
+        </p>
+
+        <form name="changePasswordForm" method="post" data-th-action="${postUrl}" role="form">
+            <h3 style="margin-bottom:15px;">Change password</h3>
+            <p>
+                <label for="password1">Password</label><br/>
+                <input type="password" name="password1" id="password1" class="input"/>
+            </p>
+            <p>
+                <label for="password2">Re-enter password</label><br/>
+                <input type="password" name="password2" id="password2" class="input"/>
+            </p>
+            <p class="submit">
+                <input type="submit" name="submit" id="wp-submit" class="button button-primary button-large" value="Submit"/>
+                <input type="hidden" name="redirect_to" data-th-value="${redirectTo}"/>
+                <input type="hidden" name="changePassword" value="true"/>
+            </p>
+        </form>
+
+    </div>
+
 </div>

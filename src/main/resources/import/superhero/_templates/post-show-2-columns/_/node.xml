@@ -2,7 +2,7 @@
     <id>9053d9b6-0a27-420e-86f8-a5d49d420292</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-10-29T07:27:53.111Z</timestamp>
+    <timestamp>2015-10-30T23:50:38.270Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -48,7 +48,7 @@
         <string name="type">portal:page-template</string>
         <string name="owner">user:system:su</string>
         <string name="language">en-US</string>
-        <dateTime name="modifiedTime">2015-06-12T19:33:29.763Z</dateTime>
+        <dateTime name="modifiedTime">2015-10-30T23:49:23.304Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-04-08T08:20:10.964Z</dateTime>
@@ -85,7 +85,7 @@
                                     <string name="name">Search form</string>
                                     <string name="template">com.enonic.theme.superhero:search-form</string>
                                     <property-set name="config">
-                                    <string name="title"/>
+                                    <string isNull="true" name="title"/>
                                     </property-set>
                                 </property-set>
                             </property-set>
@@ -95,8 +95,8 @@
                                     <string name="name">Recent posts</string>
                                     <string name="template">com.enonic.theme.superhero:recent-posts</string>
                                     <property-set name="config">
-                                    <string name="title"/>
-                                    <string name="maxPosts"/>
+                                    <string isNull="true" name="title"/>
+                                    <string isNull="true" name="maxPosts"/>
                                     </property-set>
                                 </property-set>
                             </property-set>
@@ -106,8 +106,8 @@
                                     <string name="name">Recent comments</string>
                                     <string name="template">com.enonic.theme.superhero:recent-comments</string>
                                     <property-set name="config">
-                                    <string name="title"/>
-                                    <string name="maxComments"/>
+                                    <string isNull="true" name="title"/>
+                                    <string isNull="true" name="maxComments"/>
                                     </property-set>
                                 </property-set>
                             </property-set>
@@ -117,9 +117,30 @@
                                     <string name="name">Categories</string>
                                     <string name="template">com.enonic.theme.superhero:categories</string>
                                     <property-set name="config">
-                                    <string name="title"/>
+                                    <string isNull="true" name="title"/>
                                     <boolean name="showPostCount">false</boolean>
                                     <boolean name="showHierarchy">false</boolean>
+                                    </property-set>
+                                </property-set>
+                            </property-set>
+                            <property-set name="component">
+                                <string name="type">PartComponent</string>
+                                <property-set name="PartComponent">
+                                    <string name="name">Meta</string>
+                                    <string name="template">com.enonic.theme.superhero:meta</string>
+                                    <property-set name="config">
+                                    <string isNull="true" name="title"/>
+                                    <property-set name="links">
+                                    <string name="externalUrl">https://enonic.com</string>
+                                    <string name="linkText">Enonic</string>
+                                    <string name="linkTitle">Enonic</string>
+                                    </property-set>
+                                    <property-set name="links">
+                                    <reference name="contentLink">16c9c9ee-2f16-425e-ba98-d4b20391c500</reference>
+                                    <string isNull="true" name="externalUrl"/>
+                                    <string name="linkText">Entries RSS</string>
+                                    <string name="linkTitle">Really Simple Syndication</string>
+                                    </property-set>
                                     </property-set>
                                 </property-set>
                             </property-set>
@@ -129,7 +150,7 @@
                                     <string name="name">Monthly archive</string>
                                     <string name="template">com.enonic.theme.superhero:archive</string>
                                     <property-set name="config">
-                                    <string name="title"/>
+                                    <string isNull="true" name="title"/>
                                     <boolean name="showPostCount">false</boolean>
                                     </property-set>
                                 </property-set>
@@ -140,7 +161,7 @@
                                     <string name="name">Tag cloud</string>
                                     <string name="template">com.enonic.theme.superhero:tag-cloud</string>
                                     <property-set name="config">
-                                    <string name="title"/>
+                                    <string isNull="true" name="title"/>
                                     </property-set>
                                 </property-set>
                             </property-set>
@@ -149,6 +170,7 @@
                 </property-set>
             </property-set>
             <property-set name="config"/>
+            <boolean name="customized">false</boolean>
         </property-set>
     </data>
     <indexConfigs>
@@ -170,6 +192,49 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>page.regions</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
+                    <indexValueProcessors>
+                        <indexValueProcessor>htmlStripper</indexValueProcessor>
+                    </indexValueProcessors>
+                </indexConfig>
+                <path>data.htmlarea_text</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>creator</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>createdTime</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>modifiedTime</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -250,16 +315,6 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>type</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>creator</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>

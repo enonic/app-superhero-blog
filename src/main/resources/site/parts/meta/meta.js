@@ -27,6 +27,7 @@ function handleGet(req) {
     function createModel() {
         var component = portal.getComponent();
         var config = component.config;
+        var siteConfig = portal.getSiteConfig();
         var title = config.title || 'Meta';
         var user = auth.getUser();
 
@@ -41,9 +42,9 @@ function handleGet(req) {
             items.push(item);
         }
 
-        if(config.allowLogin && config.loginPage && !user) {
+        if(!siteConfig.noLogin && siteConfig.loginPage && !user) {
             item.text = "Login";
-            item.url = portal.pageUrl({id: config.loginPage});
+            item.url = portal.pageUrl({id: siteConfig.loginPage});
             items.push(item);
         }
 
