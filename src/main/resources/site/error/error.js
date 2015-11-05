@@ -1,15 +1,28 @@
 var thymeleaf = require('/lib/xp/thymeleaf');
 var portal = require('/lib/xp/portal');
+var stk = require('stk/stk');
 
 var viewGeneric = resolve('error.html');
 
 exports.handle403 = function (err) {
 
     var siteConfig = portal.getSiteConfig();
-    //var redirectPageId = siteConfig && siteconfig.loginPage ? siteConfig.loginPage : portal.getSite()._id;
+
+    var redirectPageId = siteConfig && siteConfig.loginPage ? siteConfig.loginPage : portal.getSite()._id;
+    var redirectPageUrl = portal.pageUrl({id: redirectPageId});
+
+    if(err.request.params.debug == 'true') {
+        log.info('Error handle403');
+        log.info('The siteConfig is: ');
+        stk.log(siteConfig);
+        log.info('The redirectPagId is: %s', redirectPageId);
+        log.info('The redirectPageUrl is: %s', redirectPageUrl);
+    }
+
 
     return {
-        redirect: portal.pageUrl({id: '75f6f354-491d-4102-a2e8-843270b63f23'})
+        status: 200,
+        redirect: portal.pageUrl({id: redirectPageId})
     }
 };
 
