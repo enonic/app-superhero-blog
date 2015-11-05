@@ -27,3 +27,7 @@ Icomoon free version
   https://icomoon.io/#icons-icomoon
   License: GPLv3 http://www.gnu.org/licenses/gpl.html
   License: CC https://creativecommons.org/licenses/by/4.0/
+
+Google font Carrois Gothic
+  https://fonts.googleapis.com/css?family=Carrois+Gothic
+  License: Apache 2.0 http://www.apache.org/licenses/LICENSE-2.0
