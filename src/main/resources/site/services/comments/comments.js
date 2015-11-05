@@ -48,7 +48,6 @@ function handlePost(req) {
         // Check required fields and create content
         if (user || (p.author && p.email)) {
             var result = contentLib.create({
-                name: 'Comment ' + p.author || user.displayName + '-' + Math.floor((Math.random() * 1000000000) + 1),
                 parentPath: saveLocation,
                 displayName: p.author || user.displayName,
                 draft: true,
