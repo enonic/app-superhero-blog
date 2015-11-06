@@ -1,7 +1,5 @@
 var portal = require('/lib/xp/portal');
 var stk = require('stk/stk');
-var menu = require('menu');
-var util = require('utilities');
 
 var viewGeneric = resolve('error.html');
 
@@ -22,7 +20,7 @@ exports.handle403 = function (err) {
 
     return {
         status: 200,
-        redirect: portal.pageUrl({id: redirectPageId})
+        redirect: redirectPageUrl
     }
 };
 
@@ -42,38 +40,17 @@ exports.handleError = function (err) {
 
     function createModel() {
 
-        var up = err.request.params;
         var site = portal.getSite();
-        var menuItems = menu.getSiteMenu(3);
         var siteConfig = portal.getSiteConfig();
         stk.data.deleteEmptyProperties(siteConfig);
 
-        var googleUA = siteConfig.googleUA && siteConfig.googleUA.length > 1 ? siteConfig.googleUA : null;
-        var bodyClass = 'home blog ';
-        var backgroundImage;
-        if (siteConfig.backgroundImage) {
-            var bgImageUrl = portal.imageUrl({
-                id: siteConfig.backgroundImage,
-                scale: '(1,1)',
-                format: 'jpeg'
-            });
-
-            backgroundImage = '<style type="text/css" id="custom-background-css">body.custom-background { background-image: url("' +
-                bgImageUrl + '"); background-repeat: repeat; background-position: top left; background-attachment: scroll; }</style>';
-
-            bodyClass += 'custom-background ';
-        }
-
+        var googleUA = siteConfig.googleUA && siteConfig.googleUA.trim().length > 1 ? siteConfig.googleUA.trim() : null;
         var footerText = siteConfig.footerText ? portal.processHtml({value: siteConfig.footerText}): 'Configure footer text.';
 
         var model = {
             site: site,
-            bodyClass: bodyClass,
-            backgroundImage: backgroundImage,
-            menuItems: menuItems,
             googleUA: googleUA,
             footerText: footerText,
-            headerStyle: err.request.mode == 'edit' ? 'position: absolute;' : null,
             error: err
         }
 

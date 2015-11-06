@@ -5,11 +5,11 @@
     <form data-th-if="${!user}" name="loginform" method="post" data-th-action="${postUrl}" role="form" id="loginform">
         <p>
             <label for="user">Username</label><br/>
-            <input type="text" name="user" id="user" class="input"/>
+            <input type="text" name="user" id="user" class="input" tabindex="1"/>
         </p>
         <p>
             <label for="password">Password</label><br/>
-            <input type="password" name="password" id="password" class="input"/>
+            <input type="password" name="password" id="password" class="input" tabindex="2"/>
         </p>
         <p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever"/> Remember me</label></p>
         <p class="submit">
