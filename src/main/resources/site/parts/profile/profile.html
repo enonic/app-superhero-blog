@@ -25,23 +25,35 @@
             <p data-th-text="${'Name: ' + user.displayName}"></p>
             <p data-th-text="${'Login : ' + user.login}"></p>
             <p data-th-text="${'Email : ' + user.email}"></p>
+
+            <p data-th-if="${noMatch}">
+                <br/>
+                The passwords did not match.
+            </p>
+            <p data-th-if="${passwordChanged}">
+                <br/>
+                Your password has been changed.
+            </p>
+            <p data-th-if="${oldPWFail}">
+                <br/>
+                The old password is wrong.
+            </p>
         </header>
 
-        <p data-th-if="${noMatch}">
-            The passwords did not match.
-        </p>
-        <p data-th-if="${passwordChanged}">
-            Your password has been changed.
-        </p>
+
 
         <form name="changePasswordForm" method="post" data-th-action="${postUrl}" role="form">
             <h3 style="margin-bottom:15px;">Change password</h3>
             <p>
-                <label for="password1">Password</label><br/>
+                <label for="oldpassword">Current password</label><br/>
+                <input type="password" name="oldpassword" id="oldpassword" class="input"/>
+            </p>
+            <p>
+                <label for="password1">New password</label><br/>
                 <input type="password" name="password1" id="password1" class="input"/>
             </p>
             <p>
-                <label for="password2">Re-enter password</label><br/>
+                <label for="password2">Re-enter new password</label><br/>
                 <input type="password" name="password2" id="password2" class="input"/>
             </p>
             <p class="submit">

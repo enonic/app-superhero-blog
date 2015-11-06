@@ -25,15 +25,26 @@ function handlePost(req) {
 
     if(req.params.changePassword) {
         var user = auth.getUser();
-        if(req.params.password1 == req.params.password2) {
+        //check login with old password
+        var userCheck = auth.login({user: user.login, password: req.params.oldpassword});
+
+        if(req.params.password1 == req.params.password2 && userCheck.authenticated) {
+            // If all checks out, change the password and redirect with success param
             auth.changePassword({userKey: user.key, password: req.params.password1});
+            return {
+                redirect: portal.pageUrl({id: portal.getContent()._id, params: {passwordChanged: 'true'}})
+            }
         } else {
+            if(!userCheck.authenticated) {
+                // Old password is wrong
+                return {
+                    redirect: portal.pageUrl({id: portal.getContent()._id, params: {oldpassword: 'noMatch'}})
+                }
+            }
+            // New passwords don't match.
             return {
                 redirect: portal.pageUrl({id: portal.getContent()._id, params: {passwords: 'noMatch'}})
             }
-        }
-        return {
-            redirect: portal.pageUrl({id: portal.getContent()._id, params: {passwordChanged: 'true'}})
         }
     }
 
@@ -52,12 +63,12 @@ function handleGet(req) {
         var model = {};
 
         model.user = user;
-        model.postUrl = portal.componentUrl({});
-        //model.redirectTo = portal.pageUrl({id: portal.getSite()._id});
+        model.postUrl = portal.componentUrl({params: {debug: 'true'}});
         model.redirectTo = req.headers.Referer || portal.pageUrl({id: portal.getSite()._id});
         model.noMatch = req.params.passwords == 'noMatch' ? true: false;
         model.passwordChanged = req.params.passwordChanged ? true: false;
         model.loginFail = req.params.loginFail == 'true' ? true : false;
+        model.oldPWFail = req.params.oldpassword == 'noMatch' ? true: false;
 
         return model;
     }
