@@ -70,7 +70,7 @@
         </div>
     </nav>
 
-    <!--TODO: Make this recursive when the fragment bug is fixed -->
+    <!--TODO: Make this recursive -->
     <div id="comments" class="comments-area" data-th-if="${content.data.enableComments} eq true OR ${commentsTotal} gt 0">
 
         <div data-th-remove="tag" data-th-if="${commentsTotal} gt 0">
@@ -110,7 +110,8 @@
                         <div class="reply">
                             <a class="comment-reply-link" aria-label="Reply to Mr WordPress" data-th-onclick="${comment.data.replyClick}"
                                onclick="return addComment.moveForm( 'comment-1', '1', 'respond', '1' )"
-                               data-th-href="'?replytocom=' + ${comment._id } + '#respond'" href="/?p=1&amp;replytocom=1#respond">Reply</a>
+                               data-th-href="'?replytocom=' + ${comment._id } + '#respond'" href="/?p=1&amp;replytocom=1#respond"
+                               data-th-attr="aria-label='Reply to ' + ${comment.data.name}">Reply</a>
                         </div>
                     </article>
 
@@ -127,7 +128,7 @@
                         <a rel="nofollow" id="cancel-comment-reply-link" data-th-href="${portal.pageUrl({'_path=' + content._path})} + '#respond'" href="/?p=7#respond" style="display:none;">Cancel reply</a>
                     </small>
                 </h3>
-                <form action="#" data-th-action="${postUrl}" method="post" id="commentform" class="comment-form">
+                <form action="#" data-th-action="${postUrl}" data-th-attr="data-posturl=${postUrl}" method="post" id="commentform" class="comment-form">
                     <div data-th-if="${user}" data-th-remove="tag">
                         <p class="logged-in-as">
                             Logged in as <a data-th-href="${profilePage}" data-th-text="${user.displayName}"></a>.
@@ -201,12 +202,12 @@
                 </div>
                 <div class="reply">
                     <a class="comment-reply-link" aria-label="Reply to Mr WordPress" data-th-onclick="${child.data.replyClick}"
-                       onclick="return addComment.moveForm( 'comment-1', '1', 'respond', '1' )"
+                       onclick="return addComment.moveForm( 'comment-1', '1', 'respond', '1' )" data-th-attr="aria-label='Reply to ' + ${child.data.name}"
                        data-th-href="'?replytocom=' + ${comment._id } + '#respond'" href="#">Reply</a>
                 </div>
             </article>
 
-            <div data-th-if="${child.data.children}" data-th-include="::children" data-th-with="children=${child.data.children}"></div>
+            <div data-th-if="${child.data.children}" data-th-include="::children" data-th-with="children=${child.data.children}" data-th-remove="tag"></div>
 
         </li>
     </ul>

@@ -15,11 +15,17 @@ function handlePost(req) {
     var contentCreated = null;
     var commentPost = stk.content.get(p.comment_post_ID);
     var user = auth.getUser();
+    var newComment = null;
+    // comment vars
+    var email = p.email || user.email;
+    var name = p.author || user.displayName;
+    var website = p.url;
+    var commentText = p.comment;
+    var commentParent;
 
     //Make sure somebody doesn't alter the form to create a comment on a post that doesn't allow comments.
     if(commentPost.data && commentPost.data.enableComments == true) {
         var saveLocation;
-        var commentParent;
         var commentsFolder;
 
         // If it's a reply to a comment, saveLocation is the commentParent. Else check for and/or create a "comments" folder
@@ -35,7 +41,6 @@ function handlePost(req) {
                     name: 'comments',
                     parentPath: commentPost._path,
                     displayName: 'Comments',
-                    draft: true,
                     requireValid: true,
                     contentType: 'base:folder',
                     data: {}
@@ -47,26 +52,25 @@ function handlePost(req) {
 
         // Check required fields and create content
         if (user || (p.author && p.email)) {
-            var result = contentLib.create({
+            newComment = contentLib.create({
                 parentPath: saveLocation,
                 displayName: p.author || user.displayName,
-                draft: true,
                 requireValid: true,
                 contentType: app.name + ':comment',
                 //branch: 'draft',
                 data: {
-                    name: p.author || user.displayName,
-                    email: p.email || user.email,
-                    website: p.url,
-                    comment: p.comment,
+                    name: name,
+                    email: email,
+                    website: website,
+                    comment: commentText,
                     post: commentPost._id,
                     commentParent: p.comment_parent.length > 2 ? p.comment_parent : null
                 }
             });
 
-            if (result._id) {
+            if (newComment._id) {
                 contentCreated = true;
-                log.info('Comment content created with id ' + result._id);
+                log.info('Comment content created with id ' + newComment._id);
             } else {
                 stk.log('Something went wrong creating comment for ' + commentPost.displayName);
             }
@@ -82,8 +86,25 @@ function handlePost(req) {
     });
     redirectUrl += "#comments";
 
-    return {
+    /*return {
         redirect: redirectUrl
+    }*/
+    return {
+        contentType: 'application/json',
+        body: {
+            success: contentCreated ? true : false,
+            name: name,
+            email: email,
+            website: website,
+            comment: portal.processHtml({value: commentText}),
+            commentId: newComment._id,
+            postId: commentPost._id,
+            commentParent: p.comment_parent.length > 2 ? p.comment_parent : null,
+            gravatar: util.getGravatar(email, 40) + '&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&r=G',
+            pubDate: util.getFormattedDate(new Date(newComment.createdTime)),
+            postUrl: portal.pageUrl({id: newComment.post}),
+            replyClick: "return addComment.moveForm('comment-" + newComment._id + "', '" + newComment._id + "', 'respond', '" + commentPost._id + "')"
+        }
     }
 }
 
