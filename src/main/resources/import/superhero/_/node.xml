@@ -2,7 +2,7 @@
     <id>e1f57280-d672-4cd8-b674-98e26e5b69ae</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-10-30T23:47:31.285Z</timestamp>
+    <timestamp>2015-11-11T18:56:12.453Z</timestamp>
     <inheritPermissions>false</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -48,7 +48,7 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-10-30T23:47:31.284Z</dateTime>
+        <dateTime name="modifiedTime">2015-11-11T18:56:12.452Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
@@ -58,7 +58,7 @@
                 <string name="applicationKey">com.enonic.theme.superhero</string>
                 <property-set name="config">
                     <string name="numPosts">5</string>
-                    <string name="googleUA">UA-123ABC</string>
+                    <string isNull="true" name="googleUA"/>
                     <string name="commentSort">ASC</string>
                     <reference name="postsFolder">84ccc003-3d1b-4a99-8a02-753930848295</reference>
                     <reference name="postsList">e1f57280-d672-4cd8-b674-98e26e5b69ae</reference>

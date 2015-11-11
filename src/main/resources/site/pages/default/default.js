@@ -25,7 +25,6 @@ function handleGet(req) {
 
         var content = portal.getContent();
 
-        var googleUA = siteConfig.googleUA && siteConfig.googleUA.length > 1 ? siteConfig.googleUA : null;
         var bodyClass = '';
         var backgroundImage;
         if (siteConfig.backgroundImage) {
@@ -66,7 +65,6 @@ function handleGet(req) {
             mainRegion: content.page.regions['main'],
             content: content,
             menuItems: menuItems,
-            googleUA: googleUA,
             footerText: footerText,
             headerStyle: req.mode == 'edit' ? 'position: absolute;' : null
         }
