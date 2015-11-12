@@ -22,7 +22,7 @@
               <label>Content link</label>
               <occurrences minimum="0" maximum="1"/>
               <config>
-                <reference-type>system:reference</reference-type>
+                <relationship-type>system:reference</relationship-type>
                 <allow-content-type>landing-page</allow-content-type>
                 <allow-content-type>post</allow-content-type>
                 <allow-content-type>rss-page</allow-content-type>

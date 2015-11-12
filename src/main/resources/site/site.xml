@@ -14,7 +14,7 @@
       <label>Posts folder</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
-        <reference-type>system:reference</reference-type>
+        <relationship-type>system:reference</relationship-type>
         <allow-content-type>base:folder</allow-content-type>
       </config>
     </input>
@@ -34,7 +34,7 @@
       <label>Search page</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
-        <reference-type>system:reference</reference-type>
+        <relationship-type>system:reference</relationship-type>
         <allow-content-type>landing-page</allow-content-type>
       </config>
     </input>
@@ -42,7 +42,7 @@
       <label>Posts list page</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
-        <reference-type>system:reference</reference-type>
+        <relationship-type>system:reference</relationship-type>
         <allow-content-type>portal:site</allow-content-type>
         <allow-content-type>landing-page</allow-content-type>
       </config>
