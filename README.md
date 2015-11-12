@@ -16,7 +16,7 @@ do so at your own risk.
 
 ## Releases and Compatibility
 
-* [Download version 1.1.0](http://repo.enonic.com/public/com/enonic/app/superhero/1.1.0/superhero-1.1.0.jar) - Runs on Enonic XP 6.2
+* [Download version 1.1.0](http://repo.enonic.com/public/com/enonic/theme/superhero/1.1.0/superhero-1.1.0.jar) - Runs on Enonic XP 6.2
 
 | Version        | XP version |
 | ------------- | ------------- |
