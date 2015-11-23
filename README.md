@@ -6,7 +6,7 @@ Theme by [automattic](https://profiles.wordpress.org/automattic/) for [WordPress
 
 Adapted for [Enonic XP](https://github.com/enonic/xp) by Michael Lazell
 
-If you just want to get blogging then download the [JAR file](http://repo.enonic.com/public/com/enonic/app/superhero/1.1.0/superhero-1.1.0.jar) 
+If you just want to get blogging then download the [JAR file](http://repo.enonic.com/public/com/enonic/theme/superhero/1.1.0/superhero-1.1.0.jar) 
 and drop it into your $XP_HOME/deploy folder. Watch the [YouTube video](https://www.youtube.com/watch?v=YBOghlzIHDg) to understand the 
 basics. If you want to explore the code and build it yourself then feel free to clone or fork this repo. You can also rip the project with 
 the XP [CLI tool](http://xp.readthedocs.org/en/stable/reference/toolbox/init-project.html). See the "Building and Deploying" section below.
