@@ -45,7 +45,7 @@
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Profile</string>
-        <string name="type">com.enonic.theme.superhero:landing-page</string>
+        <string name="type">com.enonic.app.superhero:landing-page</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
         <dateTime name="modifiedTime">2015-10-30T23:45:25.393Z</dateTime>
@@ -70,7 +70,7 @@
                     <string name="type">PartComponent</string>
                     <property-set name="PartComponent">
                         <string name="name">Profile</string>
-                        <string name="template">com.enonic.theme.superhero:profile</string>
+                        <string name="template">com.enonic.app.superhero:profile</string>
                         <property-set name="config"/>
                     </property-set>
                 </property-set>

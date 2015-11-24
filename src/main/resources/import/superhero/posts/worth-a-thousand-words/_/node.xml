@@ -45,7 +45,7 @@
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Worth A Thousand Words</string>
-        <string name="type">com.enonic.theme.superhero:post</string>
+        <string name="type">com.enonic.app.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
         <dateTime name="modifiedTime">2015-03-06T01:01:12.783Z</dateTime>

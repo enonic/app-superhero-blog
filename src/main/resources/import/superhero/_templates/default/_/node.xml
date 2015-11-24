@@ -54,10 +54,10 @@
         <dateTime name="createdTime">2015-02-27T23:47:32.165Z</dateTime>
         <property-set name="data">
             <string name="supports">portal:site</string>
-            <string name="supports">com.enonic.theme.superhero:landing-page</string>
+            <string name="supports">com.enonic.app.superhero:landing-page</string>
         </property-set>
         <property-set name="page">
-            <string name="controller">com.enonic.theme.superhero:default</string>
+            <string name="controller">com.enonic.app.superhero:default</string>
             <reference isNull="true" name="template"/>
             <property-set name="region">
                 <string name="name">main</string>

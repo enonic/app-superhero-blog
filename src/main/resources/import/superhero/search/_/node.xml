@@ -45,7 +45,7 @@
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Search</string>
-        <string name="type">com.enonic.theme.superhero:landing-page</string>
+        <string name="type">com.enonic.app.superhero:landing-page</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
         <dateTime name="modifiedTime">2015-08-27T09:05:14.704Z</dateTime>
@@ -70,7 +70,7 @@
                     <string name="type">LayoutComponent</string>
                     <property-set name="LayoutComponent">
                         <string name="name">Two column</string>
-                        <string name="template">com.enonic.theme.superhero:two-column</string>
+                        <string name="template">com.enonic.app.superhero:two-column</string>
                         <property-set name="config"/>
                         <property-set name="region">
                             <string name="name">left</string>
@@ -78,7 +78,7 @@
                                 <string name="type">PartComponent</string>
                                 <property-set name="PartComponent">
                                     <string name="name">Posts list</string>
-                                    <string name="template">com.enonic.theme.superhero:posts-list</string>
+                                    <string name="template">com.enonic.app.superhero:posts-list</string>
                                     <property-set name="config"/>
                                 </property-set>
                             </property-set>
@@ -89,7 +89,7 @@
                                 <string name="type">PartComponent</string>
                                 <property-set name="PartComponent">
                                     <string name="name">Search form</string>
-                                    <string name="template">com.enonic.theme.superhero:search-form</string>
+                                    <string name="template">com.enonic.app.superhero:search-form</string>
                                     <property-set name="config">
                                     <string isNull="true" name="title"/>
                                     </property-set>
@@ -99,7 +99,7 @@
                                 <string name="type">PartComponent</string>
                                 <property-set name="PartComponent">
                                     <string name="name">Recent posts</string>
-                                    <string name="template">com.enonic.theme.superhero:recent-posts</string>
+                                    <string name="template">com.enonic.app.superhero:recent-posts</string>
                                     <property-set name="config">
                                     <string isNull="true" name="title"/>
                                     <string isNull="true" name="maxPosts"/>
@@ -110,7 +110,7 @@
                                 <string name="type">PartComponent</string>
                                 <property-set name="PartComponent">
                                     <string name="name">Recent comments</string>
-                                    <string name="template">com.enonic.theme.superhero:recent-comments</string>
+                                    <string name="template">com.enonic.app.superhero:recent-comments</string>
                                     <property-set name="config">
                                     <string isNull="true" name="title"/>
                                     <string isNull="true" name="maxComments"/>
@@ -121,7 +121,7 @@
                                 <string name="type">PartComponent</string>
                                 <property-set name="PartComponent">
                                     <string name="name">Categories</string>
-                                    <string name="template">com.enonic.theme.superhero:categories</string>
+                                    <string name="template">com.enonic.app.superhero:categories</string>
                                     <property-set name="config">
                                     <string isNull="true" name="title"/>
                                     <boolean name="showPostCount">false</boolean>
@@ -133,7 +133,7 @@
                                 <string name="type">PartComponent</string>
                                 <property-set name="PartComponent">
                                     <string name="name">Monthly archive</string>
-                                    <string name="template">com.enonic.theme.superhero:archive</string>
+                                    <string name="template">com.enonic.app.superhero:archive</string>
                                     <property-set name="config">
                                     <string isNull="true" name="title"/>
                                     <boolean name="showPostCount">false</boolean>
@@ -144,7 +144,7 @@
                                 <string name="type">PartComponent</string>
                                 <property-set name="PartComponent">
                                     <string name="name">Tag cloud</string>
-                                    <string name="template">com.enonic.theme.superhero:tag-cloud</string>
+                                    <string name="template">com.enonic.app.superhero:tag-cloud</string>
                                     <property-set name="config">
                                     <string isNull="true" name="title"/>
                                     </property-set>

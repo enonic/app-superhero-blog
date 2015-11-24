@@ -45,7 +45,7 @@
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">RSS</string>
-        <string name="type">com.enonic.theme.superhero:rss-page</string>
+        <string name="type">com.enonic.app.superhero:rss-page</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
         <dateTime name="modifiedTime">2015-08-28T01:23:24.434Z</dateTime>
@@ -67,7 +67,7 @@
             </property-set>
         </property-set>
         <property-set name="page">
-            <string name="controller">com.enonic.theme.superhero:rss</string>
+            <string name="controller">com.enonic.app.superhero:rss</string>
             <reference isNull="true" name="template"/>
             <property-set isNull="true" name="region"/>
             <property-set name="config"/>

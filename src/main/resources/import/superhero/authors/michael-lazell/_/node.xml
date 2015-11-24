@@ -45,7 +45,7 @@
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">Michael Lazell</string>
-        <string name="type">com.enonic.theme.superhero:author</string>
+        <string name="type">com.enonic.app.superhero:author</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
         <dateTime name="modifiedTime">2015-02-27T23:50:44.614Z</dateTime>

@@ -45,7 +45,7 @@
     <data>
         <boolean name="valid">true</boolean>
         <string name="displayName">March Madness</string>
-        <string name="type">com.enonic.theme.superhero:post</string>
+        <string name="type">com.enonic.app.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
         <dateTime name="modifiedTime">2015-04-07T03:09:13.513Z</dateTime>
