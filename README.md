@@ -26,6 +26,11 @@ do so at your own risk.
 
 ### Change log
 
+Version 1.2.0-SNAPSHOT
+
+* Changed the app name to com.enonic.app.superhero. 
+* Updated to use XP 6.2.1 libraries.
+
 Version 1.1.0
 
 * Added x-data menu mixin to the Post content type so an individual post can be added as a page in the menu.
@@ -38,8 +43,8 @@ Version 1.1.0
 * Added custom error page.
 * Replaced external JavaScript and CSS from CDN to local files. 
 * Changed the way comment contents are named.
-* Comments are now created with Ajax 
-* Removed Google Analytics (to be replaced with the Google Analytics app)
+* Comments are now created with Ajax.
+* Removed Google Tag code (to be replaced with the Google Tag Manager app)
 
 
 ## Requirements
