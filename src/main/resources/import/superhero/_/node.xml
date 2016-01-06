@@ -55,7 +55,7 @@
         <property-set name="data">
             <string name="description">Superhero WordPress theme for Enonic XP</string>
             <property-set name="siteConfig">
-                <string name="applicationKey">com.enonic.theme.superhero</string>
+                <string name="applicationKey">com.enonic.app.superhero</string>
                 <property-set name="config">
                     <string name="numPosts">5</string>
                     <string isNull="true" name="googleUA"/>
