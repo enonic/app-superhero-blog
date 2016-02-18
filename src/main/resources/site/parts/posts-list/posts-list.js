@@ -113,7 +113,7 @@ exports.get = function(req) {
 
         if (data.category) {
             for (var j = 0; j < data.category.length; j++) {
-                if(data.category[j]) {
+                if(data.category[j] && stk.content.exists(data.category[j])) {
                     var category = util.getCategory({id: data.category[j]}, categories);
                     categoriesArray.push(category);
                     data.class += ' category-' + category._name + ' ';

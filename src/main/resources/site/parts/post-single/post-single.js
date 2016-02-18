@@ -84,7 +84,7 @@ exports.get = function(req) {
 
         if(data.category) {
             for(var i = 0; i < data.category.length; i++) {
-                if(data.category[i]) {
+                if(data.category[i] && stk.content.exists(data.category[i])) {
                     //var category = stk.content.get(data.category[i]);
                     var category = util.getCategory({id: data.category[i]}, categories);
                     categoriesArray.push(category);
