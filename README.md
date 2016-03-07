@@ -20,12 +20,18 @@ do so at your own risk.
 
 | Version        | XP version |
 | ------------- | ------------- |
+| 1.3.0 | 6.4.1 |
 | 1.2.0 | 6.3.0 |
 | 1.1.0 | 6.2.0 |
 | 1.0.0 | 6.0.0 |
 | 0.1.0 | 5.3.0 |
 
 ### Change log
+
+Version 1.3.0
+
+* Fixed issue with content initializing
+* Prevent deleted categories from breaking pages with posts that were using the category
 
 Version 1.2.0
 
