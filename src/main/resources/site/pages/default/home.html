@@ -70,11 +70,16 @@
         </div><!-- #masthead-wrap -->
 
         <!-- new .main -->
-        <div data-portal-region="main">
-            <div data-th-each="component : ${mainRegion.components}" data-th-remove="tag">
-                <div data-portal-component="${component.path}" data-th-remove="tag" />
-            </div>
-        </div><!-- .site-main .main -->
+        <div data-th-if="${mainRegion}" data-th-remove="tag">
+            <div data-portal-region="main">
+                <div data-th-each="component : ${mainRegion.components}" data-th-remove="tag">
+                    <div data-portal-component="${component.path}" data-th-remove="tag"/>
+                </div>
+            </div><!-- .site-main .main -->
+        </div>
+        <div data-th-if="${isFragment}" data-th-remove="tag">
+            <div data-portal-component="fragment" data-th-remove="tag"/>
+        </div>
 
         <div id="colophon-wrap">
             <footer id="colophon" class="site-footer" role="contentinfo">

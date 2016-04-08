@@ -1,6 +1,5 @@
 var stk = require('stk/stk');
 var menu = require('menu');
-var util = require('utilities');
 
 var portal = require('/lib/xp/portal');
 
@@ -58,16 +57,18 @@ function handleGet(req) {
             'digital experience." rel="generator">Proudly powered by Enonic XP</a> <span class="sep"> | </span> Theme: Superhero by ' +
             '<a href="https://wordpress.com/themes/" rel="designer">WordPress.com</a>.';*/
 
+        var isFragment = content.type === 'portal:fragment';
         var model = {
             site: site,
             bodyClass: bodyClass,
             backgroundImage: backgroundImage,
-            mainRegion: content.page.regions['main'],
+            mainRegion: isFragment ? null : content.page.regions['main'],
+            isFragment: isFragment,
             content: content,
             menuItems: menuItems,
             footerText: footerText,
             headerStyle: req.mode == 'edit' ? 'position: absolute;' : null
-        }
+        };
 
         return model;
     }
