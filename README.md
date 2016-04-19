@@ -37,6 +37,9 @@ Version 1.4.0
 
 Version 1.3.0
 
+* Added author meta tag (used on CMS-projects)
+* Added robots flag to prevent bad open directory listing
+* Fixed clickable links in edit mode
 * Fixed issue with content initializing
 * Prevent deleted categories from breaking pages with posts that were using the category
 
