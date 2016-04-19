@@ -6,20 +6,21 @@ Theme by [automattic](https://profiles.wordpress.org/automattic/) for [WordPress
 
 Adapted for [Enonic XP](https://github.com/enonic/xp) by Michael Lazell
 
-If you just want to get blogging then download the [JAR file](http://repo.enonic.com/public/com/enonic/app/superhero/1.2.0/superhero-1.2.0.jar) 
-and drop it into your $XP_HOME/deploy folder. Watch the [YouTube video](https://www.youtube.com/watch?v=YBOghlzIHDg) to understand the 
-basics. If you want to explore the code and build it yourself then feel free to clone or fork this repo. You can also rip the project with 
-the XP [CLI tool](http://xp.readthedocs.org/en/stable/reference/toolbox/init-project.html). See the "Building and Deploying" section below.
+## Installation
 
-This is still being developed and is mostly used for demos and experimenting with XP features. If you want to use it for a production blog,
-do so at your own risk.
+Open your XP installation's Applications tool and click the "Install" button in the toolbar. Find 
+the Superhero Blog app in the Enonic Market tab and click "Install". 
+
+Watch the [YouTube video](https://www.youtube.com/watch?v=YBOghlzIHDg) to understand the basics. 
+
+This is still being developed and is mostly used for demos and experimenting with XP features. Use it at your own risk.
 
 ## Releases and Compatibility
 
-* [Download version 1.2.0](http://repo.enonic.com/public/com/enonic/app/superhero/1.2.0/superhero-1.2.0.jar) - Runs on Enonic XP 6.3
 
 | Version        | XP version |
 | ------------- | ------------- |
+| 1.4.0 | 6.5.0 |
 | 1.3.0 | 6.4.1 |
 | 1.2.0 | 6.3.0 |
 | 1.1.0 | 6.2.0 |
@@ -27,6 +28,12 @@ do so at your own risk.
 | 0.1.0 | 5.3.0 |
 
 ### Change log
+
+Version 1.4.0
+
+* Now supports fragments
+* Minor updates to import content
+* Update gradle wrapper
 
 Version 1.3.0
 
@@ -63,11 +70,14 @@ Java 8 JDK update 40 or higher is required to build this app.
 
 ## Building and deploying
 
+If you want to explore the code and build it yourself then feel free to clone or fork this repo. You can also rip the project with 
+the XP [CLI tool](http://xp.readthedocs.org/en/stable/reference/toolbox/init-project.html).
+
 Build this application from the command line. Go to the root of the project and enter:
 
     ./gradlew clean build
 
-Then move the jar file from build/libs to your $XP_HOME/deploy folder. 
+Then move the jar file from build/libs to your $XP_HOME/deploy folder, or upload it with the Applications tool. 
 
 If the $XP_HOME environment variable is set then you can build and deploy with one step:
 

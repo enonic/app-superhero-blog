@@ -2,7 +2,7 @@
     <id>e1f57280-d672-4cd8-b674-98e26e5b69ae</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2015-11-11T18:56:12.453Z</timestamp>
+    <timestamp>2016-04-19T19:30:39.346Z</timestamp>
     <inheritPermissions>false</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -48,12 +48,12 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-11-11T18:56:12.452Z</dateTime>
+        <dateTime name="modifiedTime">2016-04-19T19:30:39.344Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
         <property-set name="data">
-            <string name="description">Superhero WordPress theme for Enonic XP</string>
+            <string name="description">Blog application for Enonic XP</string>
             <property-set name="siteConfig">
                 <string name="applicationKey">com.enonic.app.superhero</string>
                 <property-set name="config">
