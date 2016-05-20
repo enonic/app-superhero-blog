@@ -21,7 +21,7 @@ function handleGet(req) {
         var config = component.config;
         var up = req.params; // URL params
         var content = portal.getContent();
-        var folderPath = util.postsFolder(config.postsFolder);
+        var folderPath = util.postsFolder();
 
         var query = '_parentPath="/content' + folderPath + '" AND data.featuredImage != "" AND data.slideshow = "true"';
         var orderBy = 'createdTime DESC';
