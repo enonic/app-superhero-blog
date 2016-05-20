@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <layout>
-    <display-name>Two column</display-name>
+    <display-name>Two columns</display-name>
     <config/>
     <regions>
         <region name="left"/>

@@ -1296,3 +1296,38 @@ img#wpstats:hover {
 .edit-mode-configure {
     text-align: center;
 }
+
+/* --- Three column layout --- */
+.three-col {
+
+}
+.col-3 {
+    float: left;
+    max-width: 310px;
+    width: 100%;
+    margin-right: 15px;
+}
+.col-3-right {
+    margin-right: 0;
+}
+@media screen and (max-width : 959px) {
+    .col-3 {
+        max-width: 100%;
+    }
+    .col-3-left {
+        margin-right: 0;
+    }
+    .col-3-middle {
+        max-width: 49%;
+        margin-right: 2%;
+    }
+    .col-3-right {
+        max-width: 49%;
+    }
+}
+@media screen and (max-width : 569px) {
+    .col-3 {
+        max-width: 100%;
+        margin-right: 0;
+    }
+}

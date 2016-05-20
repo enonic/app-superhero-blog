@@ -29,6 +29,11 @@ This is still being developed and is mostly used for demos and experimenting wit
 
 ### Change log
 
+Version 1.5.0
+
+* Remove option to override the default posts folder from the Featured images part.
+* Add three column layout
+
 Version 1.4.0
 
 * Now supports fragments

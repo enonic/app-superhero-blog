@@ -1,0 +1,18 @@
+<div class="main site-main three-col">
+
+    <div class="widget-area col-3 col-3-left" role="main" data-portal-region="left">
+        <div data-th-each="component : ${leftRegion.components}" data-th-remove="tag">
+            <div data-portal-component="${component.path}" data-th-remove="tag"/>
+        </div>
+    </div>
+    <div class="widget-area col-3 col-3-middle" role="complementary" data-portal-region="middle">
+        <div data-th-each="component : ${middleRegion.components}" data-th-remove="tag">
+            <div data-portal-component="${component.path}" data-th-remove="tag"/>
+        </div>
+    </div>
+    <div class="widget-area col-3 col-3-right" role="complementary" data-portal-region="right">
+        <div data-th-each="component : ${rightRegion.components}" data-th-remove="tag">
+            <div data-portal-component="${component.path}" data-th-remove="tag"/>
+        </div>
+    </div>
+</div>
