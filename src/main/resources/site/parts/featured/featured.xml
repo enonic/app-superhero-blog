@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part>
   <display-name>Featured</display-name>
-  <config/>
+  <config>
+    <input type="ContentSelector" name="posts">
+      <label>Featured posts</label>
+      <occurrences minimum="0" maximum="5"/>
+      <config>
+        <relationship>system:reference</relationship>
+        <allowType>post</allowType>
+        <allowPath>${site}/*</allowPath>
+      </config>
+    </input>
+  </config>
 </part>

@@ -19,27 +19,23 @@ function handleGet(req) {
 
         var component = portal.getComponent();
         var config = component.config;
-        var up = req.params; // URL params
-        var content = portal.getContent();
-        var folderPath = util.postsFolder();
 
-        var query = '_parentPath="/content' + folderPath + '" AND data.featuredImage != "" AND data.slideshow = "true"';
-        var orderBy = 'createdTime DESC';
+        var featuredPosts = config.posts? getConfigPosts(config.posts) : getSlideshowPosts();
 
+        var slides = makeSlides(featuredPosts);
+
+        var model = {
+            slides: slides,
+            editMode: req.mode == 'edit' ? true : false
+        }
+
+        return model;
+    }
+
+    function makeSlides(hits) {
         var slides = [];
-
-        var results = contentLib.query({
-            start: 0,
-            count: 10,
-            query: query,
-            sort: orderBy,
-            contentTypes: [
-                app.name + ':post'
-            ]
-        });
-
-        for (var i = 0; i < results.hits.length; i++) {
-            var content = results.hits[i];
+        for (var i = 0; i < hits.length; i++) {
+            var content = hits[i];
             var data = content.data;
             var slide = {};
             var imgUrl = portal.imageUrl({
@@ -54,14 +50,57 @@ function handleGet(req) {
 
             slides.push(slide);
         }
-
-        var model = {
-            slides: slides,
-            editMode: req.mode == 'edit' ? true : false
-        }
-
-        return model;
+        return slides;
     }
+
+    function getSlideshowPosts() {
+        var folderPath = util.postsFolder();
+        var query = '_parentPath="/content' + util.postsFolder() + '" AND data.featuredImage != "" AND data.slideshow = "true"';
+        var orderBy = 'createdTime DESC';
+
+        var results = contentLib.query({
+            start: 0,
+            count: 10,
+            query: query,
+            sort: orderBy,
+            contentTypes: [
+                app.name + ':post'
+            ]
+        });
+
+        return removeInvalidPosts(results.hits);
+    }
+
+    function getConfigPosts(postIDs) {
+        if(!postIDs) {
+            return null;
+        }
+        var postIDs = stk.data.forceArray(postIDs);
+
+        var query = '_id IN (' + JSON.stringify(postIDs).replace('[','').replace(']','') + ')';
+
+        var results = contentLib.query({
+            start: 0,
+            count: 10,
+            query: query,
+            contentTypes: [app.name + ':post']
+        });
+
+        return removeInvalidPosts(results.hits);
+    }
+
+
+    function removeInvalidPosts(posts) {
+        var posts = stk.data.forceArray(posts);
+        var hits = [];
+        for (var i = 0; i < posts.length; i++) {
+            if(posts[i].data.featuredImage) {
+                hits.push(posts[i]);
+            }
+        }
+        return hits ? hits : null;
+    }
+
 
     return renderView();
 }

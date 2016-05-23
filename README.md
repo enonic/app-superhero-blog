@@ -32,6 +32,7 @@ This is still being developed and is mostly used for demos and experimenting wit
 Version 1.5.0
 
 * Remove option to override the default posts folder from the Featured images part.
+* Add ability to manually add posts to the featured images carousel in the part config. Manually added posts will override those chosen with the Slideshow checkbox and posts that have "Slideshwow" checked will not appear in the post list.
 * Add three column layout
 
 Version 1.4.0
