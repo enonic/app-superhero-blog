@@ -1,5 +1,6 @@
 var stk = require('stk/stk');
 var util = require('utilities');
+var thymeleaf = require('/lib/xp/thymeleaf');
 
 var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
@@ -11,8 +12,20 @@ function handleGet(req) {
 
     function renderView() {
         var view = resolve('featured.html');
+        var view = stk.isMobile(req) ? resolve('featured-amp.html') : resolve('featured.html');
         var model = createModel();
-        return stk.view.render(view, model);
+        //return stk.view.render(view, model);
+        var headEnd = [];
+        if(stk.isMobile(req)) {
+            headEnd.push(stk.ampCarousel());
+        }
+
+        return {
+            body: thymeleaf.render(view, model),
+            pageContributions: {
+                headEnd: headEnd
+            }
+        }
     }
 
     function createModel() {
@@ -26,7 +39,8 @@ function handleGet(req) {
 
         var model = {
             slides: slides,
-            editMode: req.mode == 'edit' ? true : false
+            editMode: req.mode == 'edit' ? true : false,
+            amp: stk.isMobile(req)
         }
 
         return model;

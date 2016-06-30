@@ -1,0 +1,23 @@
+<div data-th-class="${editMode == true ? 'edit-mode' : ''}" data-th-if="${editMode} or ${!#lists.isEmpty(slides)}">
+    <div data-th-if="${editMode} and ${#lists.isEmpty(slides)}" class="edit-mode-configure">
+        <h2>Configure "Featured" part</h2>
+    </div>
+    <div class="featured-content flexslider" data-th-if="${!#lists.isEmpty(slides)}">
+        <amp-carousel class="featured-posts slides" width="1024" height="355" layout="responsive" type="slides">
+            <div class="featured" data-th-each="slide : ${slides}">
+                <a href="#" data-th-href="${slide.url}" data-th-title="'Permalink to ' + ${slide.name}" title="" rel="bookmark">
+                    <amp-img src="#" data-th-src="${slide.imageUrl}" layout="responsive" width="1024" height="355"/>
+                </a>
+                <div class="featured-hentry-wrap">
+                    <div data-th-id="'post-' + ${slide.id}" class="post type-post status-publish format-standard has-post-thumbnail hentry">
+                        <div class="entry-header">
+                            <h2 class="entry-title">
+                                <a href="#" data-th-href="${slide.url}" rel="bookmark" data-th-text="${slide.name}"></a>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </amp-carousel>
+    </div>
+</div>

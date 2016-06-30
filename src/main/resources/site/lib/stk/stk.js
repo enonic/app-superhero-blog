@@ -33,3 +33,28 @@ exports.serviceUrl = function (service, params, application) {
     }
     return url;
 };
+
+exports.isMobile = function(req) {
+    if(req.params.amp) {
+        return true;
+    }
+    var userAgent = req.headers['User-Agent'] || '';
+    if(userAgent.indexOf("Mobile") > -1) {
+        return true;
+    }
+    return false;
+};
+
+exports.ampCarousel = function() {
+    return '<script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>';
+};
+
+exports.getImageHeight = function(img, width) {
+    if(width != 0 && img && img.x && img.x.media && img.x.media.imageInfo && img.x.media.imageInfo.imageHeight) {
+        var oWidth = img.x.media.imageInfo.imageWidth;
+        var oHeight = img.x.media.imageInfo.imageHeight;
+        var ratio = oWidth / oHeight;
+        return Math.round(width / ratio);
+    }
+    return 0;
+};

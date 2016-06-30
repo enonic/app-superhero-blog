@@ -15,9 +15,7 @@ exports.get = function(req) {
     var user = auth.getUser();
     var logoutUrl = portal.serviceUrl({service: 'logout', params: {redirectPageKey: content._id}});
 
-    //stk.log(content);
-
-    var view = resolve('post.html');
+    var view = stk.isMobile(req) ? resolve('post-amp.html') : resolve('post.html');
     var childFragment = resolve('comment-fragment.html');
 
     //For pagination
@@ -96,17 +94,21 @@ exports.get = function(req) {
         data.categories = categoriesArray.length > 0 ? categoriesArray : null
 
         if (data.featuredImage) {
-            var scale = 'width(695)';
+            var scale = 695;
             if (content.page.regions.main.components[0].descriptor == app.name + ':one-column') {
-                scale = 'width(960)';
+                scale = 960;
             }
             var img = stk.content.get(data.featuredImage);
+            stk.log(img);
             data.fImageName = img.displayName;
             data.fImageUrl = portal.imageUrl({
                 id: data.featuredImage,
-                scale: scale,
+                scale: 'width(' + scale + ')',
                 format: 'jpeg'
             });
+            data.fImageHeight = stk.getImageHeight(img, scale);
+            log.info('height is: ' + data.fImageHeight);
+            data.fImageWidth = scale;
         }
 
         stk.data.deleteEmptyProperties(content.data);
@@ -126,7 +128,8 @@ exports.get = function(req) {
         childFragment: childFragment,
         user: user,
         logoutUrl: logoutUrl,
-        profilePage: portal.pageUrl({id: siteConfig.loginPage})
+        profilePage: portal.pageUrl({id: siteConfig.loginPage}),
+        amp: stk.isMobile(req)
     }
     return stk.view.render(view, params);
 };

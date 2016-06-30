@@ -1,4 +1,4 @@
-<aside class="widget widget_search">
+<aside class="widget widget_search" data-th-if="${!amp}">
     <h1 data-th-if="${title}" data-th-text="${title}" class="widget-title"></h1>
     <form method="get" id="searchform" data-th-action="${searchPage}" action="#" role="search">
         <label for="s" class="assistive-text">Search</label>

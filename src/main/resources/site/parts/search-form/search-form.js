@@ -22,7 +22,8 @@ function handleGet(req) {
 
         var model = {
             title: title,
-            searchPage: searchPage
+            searchPage: searchPage,
+            amp : stk.isMobile(req)
         }
 
         return model;

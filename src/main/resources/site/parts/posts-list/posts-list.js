@@ -125,12 +125,14 @@ exports.get = function(req) {
 
         if (data.featuredImage) {
             var img = stk.content.get(data.featuredImage);
+            stk.log(img);
             data.fImageName = img.displayName;
             data.fImageUrl = portal.imageUrl({
                 id: data.featuredImage,
                 scale: 'width(695)',
                 format: 'jpeg'
             });
+            data.fImageHeight = stk.getImageHeight(img, 695);
         }
 
         stk.data.deleteEmptyProperties(data);
@@ -146,10 +148,19 @@ exports.get = function(req) {
         headerText: header.headerText,
         hasPosts: hasPosts
     }
-    var view = resolve('post-list.html');
+    //var view = resolve('post-list.html');
+    var view = stk.isMobile(req) ? resolve('post-list-amp.html') : resolve('post-list.html');
     return stk.view.render(view, params);
 };
 
+function getImageHeight(img, width) {
+    if(width != 0 && img && img.x && img.x.media && img.x.media.imageInfo && img.x.media.imageInfo.imageHeight) {
+        var oHeight = img.x.media.imageInfo.imageHeight;
+        var oWidth = img.x.media.imageInfo.imageWidth;
+        var ratio = oWidth / width;
+        return Math.round(oHeight * ratio);
+    }
+}
 
 
 var getQuery = function(up, folderPath, categories, header, site) {

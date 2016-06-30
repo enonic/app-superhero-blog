@@ -9,7 +9,7 @@ function handleGet(req) {
     var me = this;
 
     function renderView() {
-        var view = resolve('home.html');
+        var view = stk.isMobile(req) ? resolve('amp.html') : resolve('home.html');
         var model = createModel();
         return stk.view.render(view, model);
     }

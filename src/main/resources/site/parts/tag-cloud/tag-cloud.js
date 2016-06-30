@@ -1,6 +1,5 @@
 var stk = require('stk/stk');
 var util = require('utilities');
-
 var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
 
@@ -10,7 +9,7 @@ function handleGet(req) {
     var me = this;
 
     function renderView() {
-        var view = resolve('tag-cloud.html');
+        var view = stk.isMobile(req) ? resolve('tag-cloud-amp.html') : resolve('tag-cloud.html');
         var model = createModel();
         return stk.view.render(view, model);
     }
