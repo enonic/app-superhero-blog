@@ -2,7 +2,7 @@
     <id>c968ae2e-9da6-454c-9ec6-b5760842f59c</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2016-04-19T19:29:11.165Z</timestamp>
+    <timestamp>2016-07-01T01:39:20.851Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -128,16 +128,6 @@
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>true</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>data</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
                     <decideByType>false</decideByType>
                     <enabled>true</enabled>
                     <nGram>false</nGram>
@@ -165,6 +155,16 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>type</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>data</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>

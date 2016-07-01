@@ -2,7 +2,7 @@
     <id>e1f57280-d672-4cd8-b674-98e26e5b69ae</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2016-04-19T19:30:39.346Z</timestamp>
+    <timestamp>2016-07-01T01:54:20.874Z</timestamp>
     <inheritPermissions>false</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -48,7 +48,7 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2016-04-19T19:30:39.344Z</dateTime>
+        <dateTime name="modifiedTime">2016-07-01T01:54:20.873Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
@@ -66,6 +66,7 @@
                     <string name="footerText">&lt;p&gt;&lt;a title="Fastest way from idea to digital experience." href="https://enonic.com/" target="_blank"&gt;Proudly powered by Enonic XP&lt;/a&gt;&lt;span class="sep"&gt; | &lt;/span&gt;Theme: Superhero by &lt;a href="https://wordpress.com/themes/" target="_blank"&gt;WordPress.com&lt;/a&gt;.&lt;/p&gt;</string>
                     <reference name="loginPage">75f6f354-491d-4102-a2e8-843270b63f23</reference>
                     <boolean name="noLogin">false</boolean>
+                    <boolean name="enableAmp">true</boolean>
                 </property-set>
             </property-set>
         </property-set>
@@ -207,6 +208,26 @@
             <pathIndexConfig>
                 <indexConfig>
                     <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
+                </indexConfig>
+                <path>page.region.**.text</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment.text</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
                     <enabled>false</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
@@ -218,14 +239,31 @@
                 <indexConfig>
                     <decideByType>false</decideByType>
                     <enabled>true</enabled>
-                    <nGram>true</nGram>
-                    <fulltext>true</fulltext>
-                    <includeInAllText>true</includeInAllText>
-                    <indexValueProcessors>
-                        <indexValueProcessor>htmlStripper</indexValueProcessor>
-                    </indexValueProcessors>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>data.htmlarea_text</path>
+                <path>creator</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>createdTime</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>modifiedTime</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -269,18 +307,8 @@
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>true</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>data</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
                     <decideByType>false</decideByType>
-                    <enabled>true</enabled>
+                    <enabled>false</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
@@ -309,33 +337,13 @@
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>false</decideByType>
+                    <decideByType>true</decideByType>
                     <enabled>true</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>creator</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>createdTime</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>modifiedTime</path>
+                <path>data</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>
