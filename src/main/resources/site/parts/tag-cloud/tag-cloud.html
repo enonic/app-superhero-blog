@@ -1,10 +1,11 @@
 <aside class="widget widget_tag_cloud">
     <h1 class="widget-title" data-th-text="${title}">Tags</h1>
     <div class="tagcloud">
-        <a data-th-if="${tags}" data-th-each="tag : ${tags}" href="#"
-           data-th-href="${portal.pageUrl({'_path=' + tag.tagUrl, 'tag=' + tag.key})}"
-           data-th-title="${tag.title}" data-th-style="${tag.font}" data-th-text="${tag.key}">
-            tag
-        </a>
+        <div data-th-if="${tags}" data-th-each="tag : ${tags}" data-th-remove="tag">
+            <a data-th-href="${portal.pageUrl({'_path=' + tag.tagUrl, 'tag=' + tag.key})}"
+               data-th-title="${tag.title}" data-th-style="${tag.font}" data-th-text="${tag.key}">
+                tag
+            </a>
+        </div>
     </div>
 </aside>
