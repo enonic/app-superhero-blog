@@ -67,7 +67,8 @@ function handleGet(req) {
             content: content,
             menuItems: menuItems,
             footerText: footerText,
-            headerStyle: req.mode == 'edit' ? 'position: absolute;' : null
+            headerStyle: req.mode == 'edit' ? 'position: absolute;' : null,
+            ampSupport: siteConfig.enableAmp
         };
 
         return model;

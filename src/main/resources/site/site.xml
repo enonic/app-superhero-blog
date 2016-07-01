@@ -59,6 +59,10 @@
       <label>Disallow login</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
+    <input type="Checkbox" name="enableAmp">
+      <label>Enable AMP (See documentation)</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
   </config>
 
   <mappings>

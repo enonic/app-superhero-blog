@@ -23,7 +23,7 @@ function handleGet(req) {
         var model = {
             title: title,
             searchPage: searchPage,
-            amp : stk.isMobile(req)
+            amp : stk.isMobile(req) && portal.getSiteConfig().enableAmp
         }
 
         return model;

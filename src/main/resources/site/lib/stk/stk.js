@@ -49,6 +49,7 @@ exports.ampCarousel = function() {
     return '<script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>';
 };
 
+// For getting the height with proper aspect ratio when scale width is used. Both width and height are required for AMP images.
 exports.getImageHeight = function(img, width) {
     if(width != 0 && img && img.x && img.x.media && img.x.media.imageInfo && img.x.media.imageInfo.imageHeight) {
         var oWidth = img.x.media.imageInfo.imageWidth;

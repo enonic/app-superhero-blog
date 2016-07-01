@@ -125,7 +125,6 @@ exports.get = function(req) {
 
         if (data.featuredImage) {
             var img = stk.content.get(data.featuredImage);
-            stk.log(img);
             data.fImageName = img.displayName;
             data.fImageUrl = portal.imageUrl({
                 id: data.featuredImage,
@@ -149,7 +148,7 @@ exports.get = function(req) {
         hasPosts: hasPosts
     }
     //var view = resolve('post-list.html');
-    var view = stk.isMobile(req) ? resolve('post-list-amp.html') : resolve('post-list.html');
+    var view = stk.isMobile(req) && siteConfig.enableAmp ? resolve('post-list-amp.html') : resolve('post-list.html');
     return stk.view.render(view, params);
 };
 
@@ -182,7 +181,6 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
     //Filter for categories.
     if (up.cat) {
-        log.info('STK log %s', categories);
 
         var category = util.getCategory({name: up.cat}, categories);
         query = 'data.category IN ("' + category._id + '")';

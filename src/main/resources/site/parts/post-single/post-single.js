@@ -15,7 +15,7 @@ exports.get = function(req) {
     var user = auth.getUser();
     var logoutUrl = portal.serviceUrl({service: 'logout', params: {redirectPageKey: content._id}});
 
-    var view = stk.isMobile(req) ? resolve('post-amp.html') : resolve('post.html');
+    var view = stk.isMobile(req) && siteConfig.enableAmp ? resolve('post-amp.html') : resolve('post.html');
     var childFragment = resolve('comment-fragment.html');
 
     //For pagination
@@ -99,7 +99,6 @@ exports.get = function(req) {
                 scale = 960;
             }
             var img = stk.content.get(data.featuredImage);
-            stk.log(img);
             data.fImageName = img.displayName;
             data.fImageUrl = portal.imageUrl({
                 id: data.featuredImage,
@@ -129,7 +128,7 @@ exports.get = function(req) {
         user: user,
         logoutUrl: logoutUrl,
         profilePage: portal.pageUrl({id: siteConfig.loginPage}),
-        amp: stk.isMobile(req)
+        amp: stk.isMobile(req) && siteConfig.enableAmp
     }
     return stk.view.render(view, params);
 };

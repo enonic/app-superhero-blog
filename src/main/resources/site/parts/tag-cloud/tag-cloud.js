@@ -9,7 +9,7 @@ function handleGet(req) {
     var me = this;
 
     function renderView() {
-        var view = stk.isMobile(req) ? resolve('tag-cloud-amp.html') : resolve('tag-cloud.html');
+        var view = stk.isMobile(req) && portal.getSiteConfig().enableAmp ? resolve('tag-cloud-amp.html') : resolve('tag-cloud.html');
         var model = createModel();
         return stk.view.render(view, model);
     }
@@ -73,7 +73,6 @@ function handleGet(req) {
                 if (spread < 1) {
                     spread = 1
                 }
-                ;
 
                 // The difference between the largest font and the smallest font
                 var fontSpread = largest - smallest;

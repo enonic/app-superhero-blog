@@ -40,7 +40,7 @@ function handleGet(req) {
         var model = {
             slides: slides,
             editMode: req.mode == 'edit' ? true : false,
-            amp: stk.isMobile(req)
+            amp: stk.isMobile(req) && portal.getSiteConfig().enableAmp
         }
 
         return model;

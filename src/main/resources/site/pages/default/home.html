@@ -9,6 +9,8 @@
     <script data-th-src="${portal.assetUrl({'_path=js/html5.js'})}" src="../assets/js/html5.js" type="text/javascript"></script>
     <![endif]-->
 
+    <link rel="amphtml" data-th-if="${ampSupport}" data-th-href="${portal.pageUrl({'_type=absolute'})}" />
+
     <link rel="stylesheet" id="style-css" data-th-href="${portal.assetUrl({'_path=css/style.css'})}"  href="../assets/css/style.css" type="text/css" media="all"/>
     <link rel="stylesheet" data-th-href="${portal.assetUrl({'_path=css/flexslider.css'})}"  href="../assets/css/flexslider.css" type="text/css" media="all"/>
     <link rel="stylesheet" id="superhero-carrois-gothic-css" data-th-href="${portal.assetUrl({'_path=css/google-font-carrois-gothic.css'})}" href="https://fonts.googleapis.com/css?family=Carrois+Gothic&amp;ver=4.1-alpha-30340" type="text/css" media="all"/>
