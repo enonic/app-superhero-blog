@@ -74,7 +74,6 @@ function handleGet(req) {
                 if (spread < 1) {
                     spread = 1
                 }
-                ;
 
                 // The difference between the largest font and the smallest font
                 var fontSpread = largest - smallest;

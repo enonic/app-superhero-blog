@@ -4,7 +4,7 @@
     </header>
     <article data-th-each="post : ${posts}" data-th-id="'post-' + ${post.id}" data-th-class="${post.class}" class="post-19 post type-post status-publish format-standard hentry">
 
-        <img src="#" data-th-src="${post.fImageUrl}" data-th-if="${post.fImageUrl}" width="695" class="attachment-feat-img wp-post-image" alt="${post.fImageName}"/>
+        <img src="#" data-th-src="${post.fImageUrl}" data-th-if="${post.fImageUrl}" width="695" class="attachment-feat-img wp-post-image" data-th-alt="${post.fImageName}"/>
 
         <header class="entry-header">
             <h1 class="entry-title">
