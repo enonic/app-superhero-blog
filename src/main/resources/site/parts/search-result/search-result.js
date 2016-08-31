@@ -54,6 +54,8 @@ exports.get = function(req) {
 
     var hasPosts = results.hits.length > 0? true : false;
 
+    var numMatches = results.total;
+
     // If the results total is more than the postsPerPage then it will need pagination.
     if (results.total > postsPerPage) {
 
@@ -156,6 +158,7 @@ exports.get = function(req) {
         newer: newer,
         headerText: header.headerText,
         hasPosts: hasPosts,
+        numMatches: numMatches,
         searchTerm: up.s,
         aggregations: getAggregations(),
         componentUrl: portal.componentUrl({}),

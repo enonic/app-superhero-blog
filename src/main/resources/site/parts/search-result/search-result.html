@@ -11,7 +11,7 @@
 
     <div class="primary content-area">
 
-
+        <h2 data-th-text="${numMatches} + ' matches'"></h2>
 
         <div class="search-result-content">
             <article data-th-each="post : ${posts}" data-th-id="'post-' + ${post.id}" data-th-class="${post.class}" class="post-19 post type-post status-publish format-standard hentry">
@@ -77,13 +77,13 @@
 
             <article data-th-if="!${hasPosts}" class="post type-post status-publish format-standard hentry">
                 <header class="entry-header">
-                    <h1 class="entry-title">
+                    <h1 class="entry-title" data-th-text="'Sorry, no matches found for ' + ${searchTerm}">
                         No posts
                     </h1>
                 </header><!-- .entry-header -->
-                <div class="entry-content">
+                <!--<div class="entry-content">
                     <p>Add some Posts content or configure the site's Posts folder</p>
-                </div><!-- .entry-content -->
+                </div>&lt;!&ndash; .entry-content &ndash;&gt;-->
             </article>
 
             <nav data-th-if="${older} or ${newer}" role="navigation" id="nav-below" class="site-navigation page-navigation">
