@@ -54,7 +54,7 @@ exports.get = function(req) {
 
     var hasPosts = results.hits.length > 0? true : false;
 
-    var numMatches = results.total;
+    var numMatches = results.total | 0;
 
     // If the results total is more than the postsPerPage then it will need pagination.
     if (results.total > postsPerPage) {
