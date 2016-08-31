@@ -11,7 +11,7 @@
 
     <div class="primary content-area">
 
-        <h2 data-th-text="${numMatches} + ' matches'"></h2>
+        <h2 data-th-if="${numMatches gt 0}" data-th-text="${numMatches} + ' matches'"></h2>
 
         <div class="search-result-content">
             <article data-th-each="post : ${posts}" data-th-id="'post-' + ${post.id}" data-th-class="${post.class}" class="post-19 post type-post status-publish format-standard hentry">

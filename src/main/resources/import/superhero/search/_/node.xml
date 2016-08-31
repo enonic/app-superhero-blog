@@ -2,7 +2,7 @@
     <id>8ad9ab18-3e99-44c8-9883-9c3eef86b507</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2016-04-19T19:29:10.983Z</timestamp>
+    <timestamp>2016-08-31T18:02:09.314Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -48,13 +48,13 @@
         <string name="type">com.enonic.app.superhero:landing-page</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-08-27T09:05:14.704Z</dateTime>
+        <dateTime name="modifiedTime">2016-08-31T18:02:09.313Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-04-08T08:44:20.878Z</dateTime>
         <property-set name="data"/>
         <property-set name="x">
-            <property-set name="com-enonic-theme-superhero">
+            <property-set name="com-enonic-app-superhero">
                 <property-set name="menu-item">
                     <boolean name="menuItem">false</boolean>
                     <string isNull="true" name="menuName"/>
@@ -67,90 +67,11 @@
             <property-set name="region">
                 <string name="name">main</string>
                 <property-set name="component">
-                    <string name="type">LayoutComponent</string>
-                    <property-set name="LayoutComponent">
-                        <string name="name">Two column</string>
-                        <string name="template">com.enonic.app.superhero:two-column</string>
+                    <string name="type">PartComponent</string>
+                    <property-set name="PartComponent">
+                        <string name="name">Search result</string>
+                        <string name="template">com.enonic.app.superhero:search-result</string>
                         <property-set name="config"/>
-                        <property-set name="region">
-                            <string name="name">left</string>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Posts list</string>
-                                    <string name="template">com.enonic.app.superhero:posts-list</string>
-                                    <property-set name="config"/>
-                                </property-set>
-                            </property-set>
-                        </property-set>
-                        <property-set name="region">
-                            <string name="name">right</string>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Search form</string>
-                                    <string name="template">com.enonic.app.superhero:search-form</string>
-                                    <property-set name="config">
-                                    <string isNull="true" name="title"/>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Recent posts</string>
-                                    <string name="template">com.enonic.app.superhero:recent-posts</string>
-                                    <property-set name="config">
-                                    <string isNull="true" name="title"/>
-                                    <string isNull="true" name="maxPosts"/>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Recent comments</string>
-                                    <string name="template">com.enonic.app.superhero:recent-comments</string>
-                                    <property-set name="config">
-                                    <string isNull="true" name="title"/>
-                                    <string isNull="true" name="maxComments"/>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Categories</string>
-                                    <string name="template">com.enonic.app.superhero:categories</string>
-                                    <property-set name="config">
-                                    <string isNull="true" name="title"/>
-                                    <boolean name="showPostCount">false</boolean>
-                                    <boolean name="showHierarchy">false</boolean>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Monthly archive</string>
-                                    <string name="template">com.enonic.app.superhero:archive</string>
-                                    <property-set name="config">
-                                    <string isNull="true" name="title"/>
-                                    <boolean name="showPostCount">false</boolean>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Tag cloud</string>
-                                    <string name="template">com.enonic.app.superhero:tag-cloud</string>
-                                    <property-set name="config">
-                                    <string isNull="true" name="title"/>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                        </property-set>
                     </property-set>
                 </property-set>
             </property-set>
@@ -170,12 +91,12 @@
             <pathIndexConfig>
                 <indexConfig>
                     <decideByType>false</decideByType>
-                    <enabled>false</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
                 </indexConfig>
-                <path>page.regions</path>
+                <path>page.region.**.text</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -183,12 +104,19 @@
                     <enabled>true</enabled>
                     <nGram>true</nGram>
                     <fulltext>true</fulltext>
-                    <includeInAllText>true</includeInAllText>
-                    <indexValueProcessors>
-                        <indexValueProcessor>htmlStripper</indexValueProcessor>
-                    </indexValueProcessors>
+                    <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>data.htmlarea_text</path>
+                <path>attachment.text</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page.regions</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -262,18 +190,8 @@
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>true</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>data</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
                     <decideByType>false</decideByType>
-                    <enabled>true</enabled>
+                    <enabled>false</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
@@ -299,6 +217,16 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>type</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>data</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>
