@@ -207,6 +207,8 @@ exports.get = function(req) {
                 item.month = monthParts[1] + monthParts[0];
                 relevantMonths.push(item);
 
+                item.docCount = item.docCount | 0;
+
 
                 if (up.m && up.m.indexOf(item.month) !== -1) {
                     item.checked = true;
@@ -251,6 +253,8 @@ exports.get = function(req) {
                     break;
             }
 
+            item.docCount = item.docCount | 0;
+
             if (up.cty && up.cty.indexOf(item.shortName) !== -1) {
                 item.checked = true;
             }
@@ -285,6 +289,8 @@ exports.get = function(req) {
             item.displayName = author.displayName;
             item.name = author._name;
 
+            item.docCount = item.docCount | 0;
+
             if (up.author && up.author.indexOf(item.key) !== -1) {
                 item.checked = true;
             }
@@ -318,6 +324,8 @@ exports.get = function(req) {
             var category = getCategory(item.key);
             item.displayName = category.displayName;
             item.name = category._name;
+
+            item.docCount = item.docCount | 0;
 
             if (up.cat && up.cat.indexOf(item.key) !== -1) {
                 item.checked = true;

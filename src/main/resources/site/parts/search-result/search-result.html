@@ -4,7 +4,7 @@
     <div class="search-result__search-box">
         <form method="get" class="search-result__search-form" id="searchform" data-th-action="${portal.pageUrl({'_path=' + searchPage})}" action="#" role="search">
             <label for="s" class="assistive-text">Search</label>
-            <input type="text" class="field search-result__search-input" name="s" value="" id="s" placeholder="Search ..."/>
+            <input type="text" class="field search-result__search-input" name="s" value="" data-th-value="${searchTerm}" id="s" placeholder="Search ..."/>
             <input type="submit" class="submit search-result__search-submit" name="submit" id="searchsubmit" value="Search"/>
         </form>
     </div>
@@ -14,13 +14,10 @@
 
 
         <div class="search-result-content">
-            <header class="page-header" data-th-if="${headerText}">
-                <h1 class="page-title" data-th-utext="${headerText}"></h1>
-            </header>
             <article data-th-each="post : ${posts}" data-th-id="'post-' + ${post.id}" data-th-class="${post.class}" class="post-19 post type-post status-publish format-standard hentry">
 
-                <img src="#" data-th-src="${post.fImageUrl}" data-th-if="${post.fImageUrl}" width="695" class="attachment-feat-img wp-post-image" data-th-alt="${post.fImageName}"/>
-
+                <!--<img src="#" data-th-src="${post.fImageUrl}" data-th-if="${post.fImageUrl}" width="695" class="attachment-feat-img wp-post-image" data-th-alt="${post.fImageName}"/>
+-->
                 <header class="entry-header">
                     <h1 class="entry-title">
                         <a data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" rel="bookmark" data-th-text="${post.title}">Worth A Thousand Words</a>
@@ -39,13 +36,13 @@
                     </div><!-- .entry-meta -->
                 </header><!-- .entry-header -->
 
-                <div class="entry-content" data-th-utext="${portal.processHtml({'_value=' + post.post})}">
+                <!--<div class="entry-content" data-th-utext="${portal.processHtml({'_value=' + post.post})}">
                     <div style="width: 445px" class="wp-caption alignnone">
                         <img class="wp-image-59" alt="Boat" src="https://wpdotorg.files.wordpress.com/2008/11/boat.jpg" width="435" height="288"/><p class="wp-caption-text">Boat</p>
                     </div>
                     <p>Boat.</p>
-                </div><!-- .entry-content -->
-
+                </div>&lt;!&ndash; .entry-content &ndash;&gt;
+-->
                 <footer class="entry-meta">
             <span class="cat-links" data-th-if="${post.categories != null}">Posted in
                 <div data-th-remove="tag" data-th-each="category,iterStat : ${post.categories}">
@@ -101,13 +98,13 @@
         </div>
     </div>
 
-    <div class="secondary widget-area"  data-th-remove="${ajaxCall} ? all">
+    <div class="secondary widget-area">
 
         <input class="search-term" type="hidden" name="s" data-th-value="${searchTerm}"/>
 
         <aside data-th-replace="/site/lib/superhero/fragments::tag-cloud-widget-fragment(tags=${tags},title='Related Tags')"></aside>
 
-        <aside class="widget">
+        <aside class="widget" data-th-if="!${#lists.isEmpty(aggregations.author)}">
             <h1 class="widget-title">By Author</h1>
 
             <div data-th-each="bucket : ${aggregations.author}">
@@ -123,7 +120,7 @@
         </aside>
 
 
-        <aside class="widget">
+        <aside class="widget" data-th-if="!${#lists.isEmpty(aggregations.category)}">
             <h1 class="widget-title">By Category</h1>
             <div data-th-each="bucket : ${aggregations.category}">
                 <label>
@@ -137,7 +134,7 @@
             </div>
         </aside>
 
-        <aside class="widget">
+        <aside class="widget" data-th-if="!${#lists.isEmpty(aggregations.date)}">
             <h1 class="widget-title">By Date</h1>
 
             <div data-th-each="bucket : ${aggregations.date}">
@@ -152,7 +149,7 @@
             </div>
         </aside>
 
-        <aside class="widget">
+        <aside class="widget" data-th-if="!${#lists.isEmpty(aggregations.cty)}">
             <h1 class="widget-title">By Type</h1>
 
             <div data-th-each="bucket : ${aggregations.cty}">
