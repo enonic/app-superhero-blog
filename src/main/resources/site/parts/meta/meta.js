@@ -1,13 +1,11 @@
 var stk = require('stk/stk');
 var portal = require('/lib/xp/portal');
 var auth = require('/lib/xp/auth');
-
 var contentLib = require('/lib/xp/content');
 
 exports.get = handleGet;
 
 function handleGet(req) {
-    var me = this;
 
     function renderView() {
 
@@ -19,7 +17,6 @@ function handleGet(req) {
     function createModel() {
         var component = portal.getComponent();
         var config = component.config;
-        var siteConfig = portal.getSiteConfig();
         var title = config.title || 'Meta';
         var user = auth.getUser();
 
@@ -30,13 +27,17 @@ function handleGet(req) {
 
         if(user) {
             item.text = 'Log out';
-            item.url = portal.serviceUrl({service: 'logout'});
+            item.url = item.url = portal.logoutUrl({
+                redirect: portal.pageUrl({})
+            });
             items.push(item);
         }
 
-        if(!siteConfig.noLogin && siteConfig.loginPage && !user) {
+        if (portal.getUserStoreKey() && !user) {
             item.text = "Login";
-            item.url = portal.pageUrl({id: siteConfig.loginPage});
+            item.url = portal.loginUrl({
+                redirect: portal.pageUrl({})
+            });
             items.push(item);
         }
 
@@ -72,12 +73,10 @@ function handleGet(req) {
 
         }
 
-        var model = {
+        return {
             items: items,
             title: title
-        }
-
-        return model;
+        };
     }
 
     return renderView();
