@@ -65,6 +65,9 @@
     <mapping controller="/site/pages/default/default.js">
       <match>type:'portal:fragment'</match>
     </mapping>
+    <mapping controller="/site/pages/rss/rss.js">
+      <pattern>.*\/rss.xml</pattern>
+    </mapping>
   </mappings>
 
 </site>
