@@ -13,7 +13,6 @@ exports.get = function(req) {
     var content = portal.getContent();
     var siteConfig = portal.getSiteConfig();
     var user = auth.getUser();
-    var logoutUrl = portal.serviceUrl({service: 'logout', params: {redirectPageKey: content._id}});
 
     //stk.log(content);
 
@@ -125,7 +124,6 @@ exports.get = function(req) {
         comments: comments,
         childFragment: childFragment,
         user: user,
-        logoutUrl: logoutUrl,
         profilePage: portal.pageUrl({id: siteConfig.loginPage})
     }
     return stk.view.render(view, params);
