@@ -124,8 +124,8 @@ exports.get = function(req) {
         comments: comments,
         childFragment: childFragment,
         user: user,
-        profilePage: portal.pageUrl({id: siteConfig.loginPage})
-    }
+        profilePage: portal.idProviderUrl()
+    };
     return stk.view.render(view, params);
 };
 
