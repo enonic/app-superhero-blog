@@ -2,7 +2,7 @@
     <id>73e3fb8e-6a27-48f0-9bea-15bc3833a753</id>
     <childOrder>_manualordervalue DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2016-08-31T18:01:31.512Z</timestamp>
+    <timestamp>2016-08-31T18:10:14.417Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
