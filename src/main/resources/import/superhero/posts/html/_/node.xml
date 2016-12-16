@@ -1,8 +1,8 @@
 <node>
-    <id>75f6f354-491d-4102-a2e8-843270b63f23</id>
+    <id>566e3f36-ff84-476c-b36a-34d97a9862c5</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2016-07-01T01:39:20.704Z</timestamp>
+    <timestamp>2016-08-31T18:10:14.167Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -44,38 +44,57 @@
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Profile</string>
-        <string name="type">com.enonic.app.superhero:landing-page</string>
+        <string name="displayName">HTML</string>
+        <string name="type">com.enonic.app.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-10-30T23:45:25.393Z</dateTime>
+        <dateTime name="modifiedTime">2015-08-27T08:45:12.966Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-10-30T23:44:56.406Z</dateTime>
-        <property-set name="data"/>
-        <property-set name="x">
-            <property-set name="com-enonic-theme-superhero">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">false</boolean>
-                    <string isNull="true" name="menuName"/>
-                </property-set>
-            </property-set>
-        </property-set>
-        <property-set name="page">
-            <string isNull="true" name="controller"/>
-            <reference name="template">f2624852-d563-4343-80f7-86424f314c32</reference>
-            <property-set name="region">
-                <string name="name">main</string>
-                <property-set name="component">
-                    <string name="type">PartComponent</string>
-                    <property-set name="PartComponent">
-                        <string name="name">Profile</string>
-                        <string name="template">com.enonic.app.superhero:profile</string>
-                        <property-set name="config"/>
-                    </property-set>
-                </property-set>
-            </property-set>
-            <boolean name="customized">false</boolean>
+        <dateTime name="createdTime">2015-02-28T00:24:57.302Z</dateTime>
+        <property-set name="data">
+            <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
+            <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
+            <string name="post">&lt;p&gt;What HTML tags would you like to see?&lt;/p&gt;
+&lt;p&gt;Let’s start with an unordered list:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;One&lt;/li&gt;
+&lt;li&gt;Two&lt;/li&gt;
+&lt;li&gt;Three&lt;/li&gt;
+&lt;li&gt;Four&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And then move on to a more interesting ordered list:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;one, two
+&lt;ol&gt;
+&lt;li&gt;buckle my shoe&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;three, four
+&lt;ol&gt;
+&lt;li&gt;knock at the door&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Five, six
+&lt;ol&gt;
+&lt;li&gt;pick up sticks&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Seven, eight, lay them straight
+&lt;ol&gt;
+&lt;li&gt;Nine, ten, a big fat hen&lt;/li&gt;
+&lt;li&gt;Eleven, twelve, dig and delve&lt;/li&gt;
+&lt;li&gt;Thirteen, fourteen, maids a’courting&lt;/li&gt;
+&lt;li&gt;Fifteen, sixteen, maids in the kitchen&lt;/li&gt;
+&lt;li&gt;Seventeen, eighteen, maids a’waiting&lt;/li&gt;
+&lt;li&gt;Nineteen, twenty, my platter’s empty …&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+                &lt;/ol&gt;</string>
+            <string name="tags">html</string>
+            <boolean name="enableComments">true</boolean>
+            <boolean name="stickyPost">false</boolean>
+            <boolean name="slideshow">false</boolean>
         </property-set>
     </data>
     <indexConfigs>
@@ -110,6 +129,56 @@
                     </indexValueProcessors>
                 </indexConfig>
                 <path>data.htmlarea_text</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>x</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>page</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>false</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>site</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>type</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>data</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -170,56 +239,6 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>attachment</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>x</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>page</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>false</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>site</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>type</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>true</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>data</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>

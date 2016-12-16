@@ -1,8 +1,8 @@
 <node>
-    <id>be95965e-8865-43de-874b-acc708019624</id>
+    <id>e84b17cd-71ef-440c-9663-6b4c4aa3f341</id>
     <childOrder>displayname ASC</childOrder>
     <nodeType>default</nodeType>
-    <timestamp>2016-02-18T20:23:56.224Z</timestamp>
+    <timestamp>2016-08-31T18:09:52.706Z</timestamp>
     <inheritPermissions>false</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -42,7 +42,7 @@
         <property-set name="data"/>
         <property-set name="form"/>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2016-02-18T20:23:56.222Z</dateTime>
+        <dateTime name="createdTime">2016-08-31T18:09:52.703Z</dateTime>
     </data>
     <indexConfigs>
         <defaultConfig>

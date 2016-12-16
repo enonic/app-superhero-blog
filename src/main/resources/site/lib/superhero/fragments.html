@@ -1,4 +1,4 @@
-<aside class="widget widget_tag_cloud">
+<aside data-th-fragment="tag-cloud-widget-fragment" data-th-if="${tags and !#lists.isEmpty(tags)}" class="widget widget_tag_cloud">
     <h1 class="widget-title" data-th-text="${title}">Tags</h1>
     <div class="tagcloud">
         <a data-th-if="${tags}" data-th-each="tag : ${tags}" href="#"

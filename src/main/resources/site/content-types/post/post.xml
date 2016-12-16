@@ -13,7 +13,7 @@
           <config>
             <relationship-type>system:reference</relationship-type>
             <allow-content-type>author</allow-content-type>
-	    <allowPath>${site}/authors/</allowPath> 
+	          <allowPath>${site}/authors/</allowPath>
           </config>
         </input>
         <input type="ContentSelector" name="category">
@@ -22,7 +22,7 @@
           <config>
             <relationship-type>system:reference</relationship-type>
             <allow-content-type>category</allow-content-type>
-	    <allowPath>${site}/categories/</allowPath> 
+	          <allowPath>${site}/categories/</allowPath>
           </config>
         </input>
         <input type="HtmlArea" name="post">

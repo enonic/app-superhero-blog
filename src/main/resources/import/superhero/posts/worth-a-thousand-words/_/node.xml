@@ -1,8 +1,8 @@
 <node>
-    <id>16c9c9ee-2f16-425e-ba98-d4b20391c500</id>
+    <id>bdc9b662-578f-406a-8577-bea4555772db</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2016-07-01T01:39:20.710Z</timestamp>
+    <timestamp>2016-08-31T18:10:14.337Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -44,34 +44,23 @@
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">RSS</string>
-        <string name="type">com.enonic.app.superhero:rss-page</string>
+        <string name="displayName">Worth A Thousand Words</string>
+        <string name="type">com.enonic.app.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-08-28T01:23:24.434Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-06T01:01:12.783Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-08-28T01:22:30.610Z</dateTime>
+        <dateTime name="createdTime">2015-02-28T00:32:18.010Z</dateTime>
         <property-set name="data">
-            <string name="title">Superhero RSS</string>
-            <string name="updatePeriod">weekly</string>
-            <string name="updateFrequency">1</string>
-            <reference name="postsFolder">84ccc003-3d1b-4a99-8a02-753930848295</reference>
-        </property-set>
-        <property-set name="x">
-            <property-set name="com-enonic-theme-superhero">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">true</boolean>
-                    <string name="menuName">RSS</string>
-                </property-set>
-            </property-set>
-        </property-set>
-        <property-set name="page">
-            <string name="controller">com.enonic.app.superhero:rss</string>
-            <reference isNull="true" name="template"/>
-            <property-set isNull="true" name="region"/>
-            <property-set name="config"/>
-            <boolean name="customized">true</boolean>
+            <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
+            <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
+            <string name="post">&lt;div style="width: 445px" class="wp-caption alignnone"&gt;&lt;img class="wp-image-59" alt="Boat"
+                src="https://wpdotorg.files.wordpress.com/2008/11/boat.jpg" width="435" height="288" /&gt;&lt;p class="wp-caption-text"&gt;Boat&lt;/p&gt;&lt;/div&gt;
+                &lt;p&gt;Boat.&lt;/p&gt;</string>
+            <string name="tags">boat</string>
+            <string name="tags">lake</string>
+            <boolean name="enableComments">false</boolean>
         </property-set>
     </data>
     <indexConfigs>
@@ -93,49 +82,6 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>page.regions</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>true</nGram>
-                    <fulltext>true</fulltext>
-                    <includeInAllText>true</includeInAllText>
-                    <indexValueProcessors>
-                        <indexValueProcessor>htmlStripper</indexValueProcessor>
-                    </indexValueProcessors>
-                </indexConfig>
-                <path>data.htmlarea_text</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>creator</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>createdTime</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>modifiedTime</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -216,6 +162,16 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>data</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>creator</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>

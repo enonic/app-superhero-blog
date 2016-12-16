@@ -101,3 +101,85 @@ $(document).ready(function(){
 
 });
 
+
+$(function() {
+
+
+
+	$('.search-result input[type=checkbox]').change(function (e) {
+		e.preventDefault();
+
+		var pageUrl = $('.search-result').attr('pageUrl')
+		var urlParams = '';
+
+		var searchTermInput = $('.search-result input.search-term');
+		urlParams += '?s=' + searchTermInput.val();
+
+
+		var checkboxes = $('.search-result input[type=checkbox]');
+		$.each(checkboxes, function () {
+
+			// see if checked
+			if ($(this).is(':checked')) {
+
+				var urlParamName = $(this).attr('name');
+				var urlParamValue = $(this).val();
+
+				// append value
+				urlParams += '&' + urlParamName + '=' + urlParamValue;
+			}
+		});
+
+		pageUrl += urlParams;
+
+		window.location = pageUrl;
+
+		//$('.search-result-content').load(pageUrl + ' .search-result-content');
+
+
+
+	});
+});
+
+
+
+/*
+$(function() {
+
+
+
+	$('.search-result input[type=checkbox]').change(function (e) {
+		e.preventDefault();
+
+		var componentUrl = $('.search-result').attr('componenturl')
+		var urlParams = '';
+
+		var searchTermInput = $('.search-result input.search-term');
+		urlParams += '&s=' + searchTermInput.val();
+
+
+		var checkboxes = $('.search-result input[type=checkbox]');
+		$.each(checkboxes, function () {
+
+			// see if checked
+			if ($(this).is(':checked')) {
+
+				var urlParamName = $(this).attr('name');
+				var urlParamValue = $(this).val();
+
+				// append value
+				urlParams += '&' + urlParamName + '=' + urlParamValue;
+			}
+		});
+
+		componentUrl += '?ajax=true' + urlParams;
+
+
+		$('.search-result-content').load(componentUrl + ' .search-result-content');
+
+
+
+	});
+});*/
+
+

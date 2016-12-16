@@ -13,7 +13,6 @@ exports.get = function(req) {
     var content = portal.getContent();
     var siteConfig = portal.getSiteConfig();
     var user = auth.getUser();
-    var logoutUrl = portal.serviceUrl({service: 'logout', params: {redirectPageKey: content._id}});
 
     var view = stk.isMobile(req) && siteConfig.enableAmp ? resolve('post-amp.html') : resolve('post.html');
     var childFragment = resolve('comment-fragment.html');
@@ -106,7 +105,6 @@ exports.get = function(req) {
                 format: 'jpeg'
             });
             data.fImageHeight = stk.getImageHeight(img, scale);
-            log.info('height is: ' + data.fImageHeight);
             data.fImageWidth = scale;
         }
 
@@ -126,10 +124,9 @@ exports.get = function(req) {
         comments: comments,
         childFragment: childFragment,
         user: user,
-        logoutUrl: logoutUrl,
-        profilePage: portal.pageUrl({id: siteConfig.loginPage}),
+        profilePage: portal.idProviderUrl(),
         amp: stk.isMobile(req) && siteConfig.enableAmp
-    }
+    };
     return stk.view.render(view, params);
 };
 

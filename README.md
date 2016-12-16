@@ -20,6 +20,9 @@ This is still being developed and is mostly used for demos and experimenting wit
 
 | Version        | XP version |
 | ------------- | ------------- |
+| 1.7.0 | 6.7.0 |
+| 1.6.0 | 6.7.0 |
+| 1.5.0 | 6.5.0 |
 | 1.4.0 | 6.5.0 |
 | 1.3.0 | 6.4.1 |
 | 1.2.0 | 6.3.0 |
@@ -28,6 +31,17 @@ This is still being developed and is mostly used for demos and experimenting wit
 | 0.1.0 | 5.3.0 |
 
 ### Change log
+
+Version 1.7.0
+
+* New faceted search
+* Replaced custom profile/login functionality with standard idprovider check / usage (try it with the simple id provider app on Enonic Market for example)
+* Replaced RSS menu item with RSS url mapping
+
+Version 1.6.0
+
+* Added application icon and descriptor
+* Updated controller mappings for 6.7
 
 Version 1.5.0
 
