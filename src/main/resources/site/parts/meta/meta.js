@@ -7,6 +7,13 @@ exports.get = handleGet;
 
 function handleGet(req) {
 
+    // Prevent the meta part from showing for AMP pages since these links take you to the search page and we only want AMP for post-show.
+    var content = portal.getContent();
+    var siteConfig = portal.getSiteConfig();
+    if(req.params.amp && siteConfig.enableAmp && content.type == app.name + ':post') {
+        return;
+    }
+
     function renderView() {
 
         var view = resolve('meta.html');

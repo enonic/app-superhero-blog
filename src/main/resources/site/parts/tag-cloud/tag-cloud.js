@@ -8,8 +8,15 @@ exports.get = handleGet;
 function handleGet(req) {
     var me = this;
 
+    // Prevent tag cloud from showing for AMP pages since these links take you to the search page and we only want AMP for post-show.
+    var content = portal.getContent();
+    var siteConfig = portal.getSiteConfig();
+    if(req.params.amp && siteConfig.enableAmp && content.type == app.name + ':post') {
+        return;
+    }
+
     function renderView() {
-        var view = stk.isMobile(req) && portal.getSiteConfig().enableAmp ? resolve('tag-cloud-amp.html') : resolve('tag-cloud.html');
+        var view = resolve('tag-cloud.html');
         var model = createModel();
         return stk.view.render(view, model);
     }

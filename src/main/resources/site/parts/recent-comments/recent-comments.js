@@ -8,6 +8,13 @@ exports.get = handleGet;
 function handleGet(req) {
     var me = this;
 
+    // Prevent comments from showing for AMP pages since you can't see comments in AMP view.
+    var content = portal.getContent();
+    var siteConfig = portal.getSiteConfig();
+    if(req.params.amp && siteConfig.enableAmp && content.type == app.name + ':post') {
+        return;
+    }
+
     function renderView() {
         var view = resolve('recent-comments.html');
         var model = createModel();
@@ -19,7 +26,6 @@ function handleGet(req) {
         var config = component.config;
         var maxComments = config.maxComments || 5;
         var title = config.title || 'Recent comments';
-        var content = portal.getContent();
         var comments = [];
 
         var results = contentLib.query({

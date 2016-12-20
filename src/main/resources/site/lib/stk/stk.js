@@ -38,10 +38,10 @@ exports.isMobile = function(req) {
     if(req.params.amp) {
         return true;
     }
-    var userAgent = req.headers['User-Agent'] || '';
+    /*var userAgent = req.headers['User-Agent'] || '';
     if(userAgent.indexOf("Mobile") > -1) {
         return true;
-    }
+    }*/
     return false;
 };
 

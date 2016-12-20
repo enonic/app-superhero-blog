@@ -52,7 +52,8 @@
       <occurrences minimum="0" maximum="1"/>
     </input>
     <input type="Checkbox" name="enableAmp">
-      <label>Enable AMP (See documentation)</label>
+      <label>Enable AMP</label>
+      <help-text>Accelerated Mobile Pages are optimized for mobile and Google search results on mobile devices. Only used on Post pages.</help-text>
       <occurrences minimum="0" maximum="1"/>
     </input>
   </config>

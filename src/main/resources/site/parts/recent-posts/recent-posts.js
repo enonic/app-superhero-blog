@@ -23,6 +23,10 @@ function handleGet(req) {
         var config = component.config;
         var title = config.title || 'Recent posts';
         var maxPosts = config.maxPosts || 5;
+        var content = portal.getContent();
+
+        var siteConfig = portal.getSiteConfig();
+        var isAmp =  req.params.amp && siteConfig.enableAmp && content.type == app.name + ':post';
 
         // Where to look for recent posts. Part config will override module config
         var folderPath = util.postsFolder(config.contentFolder);
@@ -44,9 +48,19 @@ function handleGet(req) {
             var content = result.hits[i];
             var post = {};
             post.displayName = content.displayName;
-            post.url = portal.pageUrl({
-                path: content._path
-            });
+
+            if(isAmp) {
+                post.url = portal.pageUrl({
+                    path: content._path,
+                    params: {amp: true}
+                });
+            } else {
+                post.url = portal.pageUrl({
+                    path: content._path
+                });
+            }
+
+
             posts.push(post);
         }
 

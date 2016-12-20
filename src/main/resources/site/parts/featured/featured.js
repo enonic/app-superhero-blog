@@ -12,19 +12,10 @@ function handleGet(req) {
 
     function renderView() {
         var view = resolve('featured.html');
-        var view = stk.isMobile(req) ? resolve('featured-amp.html') : resolve('featured.html');
         var model = createModel();
-        //return stk.view.render(view, model);
-        var headEnd = [];
-        if(stk.isMobile(req)) {
-            headEnd.push(stk.ampCarousel());
-        }
 
         return {
-            body: thymeleaf.render(view, model),
-            pageContributions: {
-                headEnd: headEnd
-            }
+            body: thymeleaf.render(view, model)
         }
     }
 
@@ -39,8 +30,7 @@ function handleGet(req) {
 
         var model = {
             slides: slides,
-            editMode: req.mode == 'edit' ? true : false,
-            amp: stk.isMobile(req) && portal.getSiteConfig().enableAmp
+            editMode: req.mode == 'edit' ? true : false
         }
 
         return model;

@@ -8,8 +8,16 @@ exports.get = handleGet;
 function handleGet(req) {
     var me = this;
 
+    // Prevent the meta part from showing for AMP pages since these links take you to the search page and we only want AMP for post-show.
+    var content = portal.getContent();
+    var siteConfig = portal.getSiteConfig();
+    var isAmp = false;
+    if(req.params.amp && siteConfig.enableAmp && content.type == app.name + ':post') {
+        isAmp = true;
+    }
+
     function renderView() {
-        var view = stk.isMobile(req) ? resolve('amp.html') : resolve('home.html');
+        var view = isAmp ? resolve('amp.html') : resolve('home.html');
         var model = createModel();
         return stk.view.render(view, model);
     }
@@ -19,10 +27,9 @@ function handleGet(req) {
         var up = req.params;
         var site = portal.getSite();
         var menuItems = menu.getSiteMenu(3);
-        var siteConfig = portal.getSiteConfig();
         stk.data.deleteEmptyProperties(siteConfig);
 
-        var content = portal.getContent();
+
 
         var bodyClass = '';
         var backgroundImage;
@@ -68,7 +75,7 @@ function handleGet(req) {
             menuItems: menuItems,
             footerText: footerText,
             headerStyle: req.mode == 'edit' ? 'position: absolute;' : null,
-            ampSupport: siteConfig.enableAmp
+            ampSupport: siteConfig.enableAmp && content.type == app.name + ':post'
         };
 
         return model;
