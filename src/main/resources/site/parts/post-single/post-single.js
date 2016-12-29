@@ -4,6 +4,17 @@ var util = require('utilities');
 var auth = require('/lib/xp/auth');
 var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
+var xslt = require('/lib/xp/xslt');
+
+if (!String.prototype.decodeHTML) {
+  String.prototype.decodeHTML = function () {
+    return this.replace(/&apos;/g, "'")
+               .replace(/&quot;/g, '"')
+               .replace(/&gt;/g, '>')
+               .replace(/&lt;/g, '<')
+               .replace(/&amp;/g, '&');
+  };
+}
 
 exports.get = function(req) {
 
@@ -111,10 +122,27 @@ exports.get = function(req) {
         stk.data.deleteEmptyProperties(content.data);
     }
 
+    var postText = portal.processHtml({value: content.data.post});
+    log.info('postText:');
+    log.info(postText);
+    var xsltPage = resolve('process.xslt');
+    var processedPostText = xslt.render(xsltPage, {code: postText}).decodeHTML();
+    //var processedPostText = xslt.render(xsltPage, {code: content.data.post}).decodeHTML();
+
+    //stk.log(postText);
+    log.info('processedPostText');
+    //stk.log(processedPostText);
+    stk.log(processedPostText);
+
+    var test = Math.random();
+    log.info('test2 ' + test);
+
+
     var params = {
         post: content.data,
         pageTemplate: content.type == 'portal:page-template' ? true : false,
         content: content,
+        processedPostText: processedPostText,
         prev: (prev && prev.hits) ? prev.hits[0] : null,
         next: (next && next.hits) ? next.hits[0] : null,
         allowedTags: allowedTags,

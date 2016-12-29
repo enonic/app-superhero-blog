@@ -27,7 +27,8 @@
             <p>This text will be replaced with the content of your post.</p>
         </div>
 
-        <div class="entry-content" data-th-if="${post.post}" data-th-utext="${portal.processHtml({'_value=' + post.post})}">
+        <!--<div class="entry-content" data-th-if="${post.post}" data-th-utext="${portal.processHtml({'_value=' + post.post})}">-->
+        <div class="entry-content" data-th-if="${post.post}" data-th-utext="${processedPostText}">
 
         </div><!-- .entry-content -->
 
