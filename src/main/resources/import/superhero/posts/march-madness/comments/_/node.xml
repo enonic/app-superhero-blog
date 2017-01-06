@@ -48,7 +48,6 @@
         <string name="type">base:folder</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-04-10T02:24:11.810Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-04-10T00:40:39.363Z</dateTime>

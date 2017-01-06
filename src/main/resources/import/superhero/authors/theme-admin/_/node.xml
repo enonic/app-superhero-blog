@@ -56,7 +56,7 @@
             <string name="name">Theme Admin</string>
             <string name="email">theme@example.com</string>
             <string name="website">http://example.com</string>
-            <string name="bio">I'm the theme admin!</string>
+            <string name="bio">&lt;p&gt;I'm the theme admin!&lt;/p&gt;</string>
         </property-set>
     </data>
     <indexConfigs>
