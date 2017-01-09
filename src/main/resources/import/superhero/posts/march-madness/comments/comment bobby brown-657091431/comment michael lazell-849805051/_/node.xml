@@ -49,7 +49,6 @@
         <dateTime name="createdTime">2015-04-10T03:00:49.418Z</dateTime>
         <string name="creator">user:system:su</string>
         <string name="modifier">user:system:su</string>
-        <dateTime name="modifiedTime">2015-04-10T03:00:49.418Z</dateTime>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
         <property-set name="data">

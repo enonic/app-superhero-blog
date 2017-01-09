@@ -48,15 +48,13 @@
         <string name="type">com.enonic.app.superhero:post</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-08-27T08:45:12.966Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-28T00:24:57.302Z</dateTime>
         <property-set name="data">
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">c968ae2e-9da6-454c-9ec6-b5760842f59c</reference>
-            <string name="post">&lt;p&gt;What HTML tags would you like to see?&lt;/p&gt;
-&lt;p&gt;Let’s start with an unordered list:&lt;/p&gt;
+            <string name="post">&lt;p&gt;What HTML tags would you like to see?&lt;br /&gt;&lt;br /&gt;Let us start with an unordered list:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;One&lt;/li&gt;
 &lt;li&gt;Two&lt;/li&gt;
@@ -84,13 +82,13 @@
 &lt;ol&gt;
 &lt;li&gt;Nine, ten, a big fat hen&lt;/li&gt;
 &lt;li&gt;Eleven, twelve, dig and delve&lt;/li&gt;
-&lt;li&gt;Thirteen, fourteen, maids a’courting&lt;/li&gt;
+&lt;li&gt;Thirteen, fourteen, maids a courting&lt;/li&gt;
 &lt;li&gt;Fifteen, sixteen, maids in the kitchen&lt;/li&gt;
-&lt;li&gt;Seventeen, eighteen, maids a’waiting&lt;/li&gt;
-&lt;li&gt;Nineteen, twenty, my platter’s empty …&lt;/li&gt;
+&lt;li&gt;Seventeen, eighteen, maids a waiting&lt;/li&gt;
+&lt;li&gt;Nineteen, twenty, my platter is empty&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
-                &lt;/ol&gt;</string>
+&lt;/ol&gt;</string>
             <string name="tags">html</string>
             <boolean name="enableComments">true</boolean>
             <boolean name="stickyPost">false</boolean>

@@ -48,7 +48,6 @@
         <string name="type">com.enonic.app.superhero:landing-page</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2016-08-31T18:02:09.313Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-04-08T08:44:20.878Z</dateTime>

@@ -48,7 +48,6 @@
         <string name="type">media:image</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-08-28T01:49:37.847Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-03-20T05:02:41.265Z</dateTime>
