@@ -51,12 +51,15 @@
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-03-07T01:09:43.700Z</dateTime>
+        <dateTime name="modifiedTime">2015-03-07T01:09:43.700Z</dateTime>
         <property-set name="data">
-            <string name="media">superhero_featured_3.jpg</string>
+            <property-set name="media">
+                <string name="attachment">superhero_featured_3.jpg</string>
+            </property-set>
             <string name="caption">Gotham</string>
-            <string isNull="true" name="artist"/>
-            <string isNull="true" name="copyright"/>
-            <string isNull="true" name="tags"/>
+            <string name="artist"/>
+            <string name="copyright"/>
+            <string name="tags"/>
         </property-set>
         <property-set name="x">
             <property-set name="media">
@@ -65,38 +68,7 @@
                     <long name="imageWidth">2000</long>
                     <string name="contentType">image/jpeg</string>
                     <long name="pixelSize">1390000</long>
-                    <string isNull="true" name="description"/>
                     <long name="byteSize">362035</long>
-                    <string isNull="true" name="colorSpace"/>
-                    <string isNull="true" name="fileSource"/>
-                </property-set>
-                <property-set name="cameraInfo">
-                    <localDateTime isNull="true" name="date"/>
-                    <string isNull="true" name="make"/>
-                    <string isNull="true" name="model"/>
-                    <string isNull="true" name="lens"/>
-                    <string isNull="true" name="iso"/>
-                    <string isNull="true" name="focalLength"/>
-                    <string isNull="true" name="focalLength35"/>
-                    <string isNull="true" name="exposureBias"/>
-                    <string isNull="true" name="aperture"/>
-                    <string isNull="true" name="shutterTime"/>
-                    <string isNull="true" name="flash"/>
-                    <string isNull="true" name="autoFlashCompensation"/>
-                    <string isNull="true" name="whiteBalance"/>
-                    <string isNull="true" name="exposureProgram"/>
-                    <string isNull="true" name="shootingMode"/>
-                    <string isNull="true" name="meteringMode"/>
-                    <string isNull="true" name="exposureMode"/>
-                    <string isNull="true" name="focusDistance"/>
-                    <string isNull="true" name="orientation"/>
-                </property-set>
-            </property-set>
-            <property-set name="base">
-                <property-set name="gpsInfo">
-                    <geoPoint isNull="true" name="geoPoint"/>
-                    <string isNull="true" name="altitude"/>
-                    <string isNull="true" name="direction"/>
                 </property-set>
             </property-set>
         </property-set>
