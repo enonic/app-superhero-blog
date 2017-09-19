@@ -20,6 +20,7 @@ This is still being developed and is mostly used for demos and experimenting wit
 
 | Version        | XP version |
 | ------------- | ------------- |
+| 1.7.1 | 6.11.0 |
 | 1.7.0 | 6.7.0 |
 | 1.6.0 | 6.7.0 |
 | 1.5.0 | 6.5.0 |
@@ -31,6 +32,10 @@ This is still being developed and is mostly used for demos and experimenting wit
 | 0.1.0 | 5.3.0 |
 
 ### Change log
+
+Version 1.7.1
+
+* Fixed errors on content import when application starts
 
 Version 1.7.0
 
