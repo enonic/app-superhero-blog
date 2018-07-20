@@ -1,24 +1,8 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        jcenter()
-        maven {
-            url 'http://repo.enonic.com/public'
-        }
-        maven {
-            url 'https://plugins.gradle.org/m2/'
-	}
-    }
-
-    dependencies {
-        classpath 'gradle.plugin.com.enonic.gradle:gradle-defaults:1.0.3'
-        classpath 'gradle.plugin.com.enonic.gradle:xp-gradle-plugin:1.1.0'
-    }
+plugins {
+    id 'maven'
+    id 'com.enonic.defaults' version '1.0.3'
+    id 'com.enonic.xp.app' version '1.1.0'
 }
-
-apply plugin: 'maven'
-apply plugin: 'com.enonic.xp.app'
-apply plugin: 'com.enonic.defaults'
 
 app {
     name = project.appName
