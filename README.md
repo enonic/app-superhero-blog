@@ -20,6 +20,7 @@ This is still being developed and is mostly used for demos and experimenting wit
 
 | Version        | XP version |
 | ------------- | ------------- |
+| 2.0.0 | 7.0.0 |
 | 1.7.1 | 6.11.0 |
 | 1.7.0 | 6.7.0 |
 | 1.6.0 | 6.7.0 |
@@ -32,6 +33,10 @@ This is still being developed and is mostly used for demos and experimenting wit
 | 0.1.0 | 5.3.0 |
 
 ### Change log
+
+Version 2.0.0-A1
+
+* Early preliminary version adapted to Enonic XP 7.0.0 changes.
 
 Version 1.7.1
 
