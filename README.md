@@ -34,9 +34,10 @@ This is still being developed and is mostly used for demos and experimenting wit
 
 ### Change log
 
-Version 2.0.0-A1
+Version 2.0.0
 
-* Early preliminary version adapted to Enonic XP 7.0.0 changes.
+* This app is not backward compatible with XP 6.15.0, so had to create a new version for XP 7.0.0.
+* This version is very early in the release cycle of XP.  Built with XP runtime 7.0.0-A1.
 
 Version 1.7.1
 
