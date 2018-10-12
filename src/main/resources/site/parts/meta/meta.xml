@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<part>
+<part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Meta</display-name>
-  <config>
+  <form>
     <field-set name="config">
       <label>Config</label>
       <items>
@@ -44,5 +44,5 @@
         </item-set>
       </items>
     </field-set>
-  </config>
+  </form>
 </part>

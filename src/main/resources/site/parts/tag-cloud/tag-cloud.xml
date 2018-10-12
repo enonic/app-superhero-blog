@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<part>
+<part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Tag cloud</display-name>
-  <config>
+  <form>
     <input type="TextLine" name="title">
       <label>Title</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
-  </config>
+  </form>
 </part>

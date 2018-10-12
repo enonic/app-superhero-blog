@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<part>
+<part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Featured</display-name>
-  <config>
+  <form>
     <input type="ContentSelector" name="posts">
       <label>Featured posts</label>
       <occurrences minimum="0" maximum="5"/>
@@ -11,5 +11,5 @@
         <allowPath>${site}/*</allowPath>
       </config>
     </input>
-  </config>
+  </form>
 </part>

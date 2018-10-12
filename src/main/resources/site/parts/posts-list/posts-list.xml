@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<part>
+<part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Posts list</display-name>
-  <config>
+  <form>
     <input type="ContentSelector" name="contentFolder">
       <label>Posts folder</label>
       <occurrences minimum="1" maximum="1"/>
@@ -10,5 +10,5 @@
         <allow-content-type>base:folder</allow-content-type>
       </config>
     </input>
-  </config>
+  </form>
 </part>

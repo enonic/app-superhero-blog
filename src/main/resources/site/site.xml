@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<site>
-  <config>
+<site xmlns="urn:enonic:xp:model:1.0">
+  <form>
     <input type="ImageSelector" name="backgroundImage">
       <label>Background image</label>
       <occurrences minimum="0" maximum="1"/>
@@ -51,7 +51,7 @@
       <label>Disallow login</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
-  </config>
+  </form>
 
   <mappings>
     <mapping controller="/site/pages/default/default.js">
