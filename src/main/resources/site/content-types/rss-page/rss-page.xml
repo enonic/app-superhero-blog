@@ -37,5 +37,5 @@
       </items>
     </field-set>
   </form>
-  <x-data mixin="menu-item"/>
+  <mixin name="menu-item"/>
 </content-type>
