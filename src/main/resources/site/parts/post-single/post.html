@@ -88,9 +88,9 @@
                             <div class="comment-author vcard">
                                 <img class="avatar avatar-40 photo avatar-default" width="40" height="40" data-th-src="${comment.data.gravatar}" src="http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=40" alt=""/>
                                 <cite class="fn">
-                                    <a data-th-if="${comment.data.website}" class="url" rel="external nofollow" data-th-href="${comment.data.website}"
+                                    <a data-th-if="${comment.data.website != ''}" class="url" rel="external nofollow" data-th-href="${comment.data.website}"
                                        href="#" data-th-text="${comment.data.name}">Mr WordPress</a>
-                                    <span data-th-if="${!comment.data.website}" data-th-text="${comment.data.name}" data-th-remove="tag"></span>
+                                    <span data-th-if="${comment.data.website == ''}" data-th-text="${comment.data.name}" data-th-remove="tag"></span>
                                 </cite>
                                 <span class="says">says:</span>
                             </div>
@@ -129,7 +129,7 @@
                     </small>
                 </h3>
                 <div class="error" style="color:red; font-weight:bold; display:none; font-size:1.5em; width:100%;"></div>
-                <form action="#" data-th-action="${postUrl}" data-th-attr="data-posturl=${postUrl}" method="post" id="commentform" class="comment-form">
+                <form action="#" data-th-action="${postUrl}" method="post" id="commentform" class="comment-form">
                     <div data-th-if="${user}" data-th-remove="tag">
                         <p class="logged-in-as">
                             Logged in as <a data-th-href="${profilePage}" data-th-text="${user.displayName}"></a>.
@@ -192,9 +192,9 @@
                     <div class="comment-author vcard">
                         <img class="avatar avatar-40 photo avatar-default" width="40" height="40" data-th-src="${child.data.gravatar}" src="http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=40" alt=""/>
                         <cite class="fn">
-                            <a data-th-if="${child.data.website}" class="url" rel="external nofollow" data-th-href="${child.data.website}"
+                            <a data-th-if="${child.data.website != ''}" class="url" rel="external nofollow" data-th-href="${child.data.website}"
                                href="#" data-th-text="${child.data.name}">Mr WordPress</a>
-                            <span data-th-if="${!child.data.website}" data-th-text="${child.data.name}" data-th-remove="tag"></span>
+                            <span data-th-if="${child.data.website == ''}" data-th-text="${child.data.name}" data-th-remove="tag"></span>
                         </cite>
                         <span class="says">says:</span>
                     </div>

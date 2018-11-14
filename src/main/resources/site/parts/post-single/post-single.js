@@ -153,7 +153,8 @@ function getComments(post, siteConfig, postAuthor, depth, commentId) {
             contents[i].data.liClass += (i%2 == 0) ? 'even thread-even ' : 'odd thread-odd ';
         }
 
-        var date = util.getFormattedDate(new Date(contents[i].createdTime));
+        var date = util.getFormattedStringDate(contents[i].createdTime);
+
         date += ' at ' + contents[i].createdTime.substring(11, 16);
         contents[i].data.pubDate = date;
         contents[i].data.gravatar = util.getGravatar(contents[i].data.email, 40) + '&d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&r=G';

@@ -38,6 +38,16 @@ exports.getMonthName = function(date) {
     return monthName;
 };
 
+exports.getFormattedStringDate = function(stringDate) {
+    if (stringDate.substr(-1) == 'Z' && stringDate.lastIndexOf('.') > -1) {
+        var msPart = stringDate.substr(stringDate.lastIndexOf('.') + 1);
+        if (msPart.length == 7) {
+            stringDate = stringDate.replace(msPart, msPart.slice(0, 3) + 'Z');
+        }
+    }
+    return exports.getFormattedDate(new Date(stringDate));
+};
+
 exports.getFormattedDate = function(date) {
     var currentDate = new Date();
     var dateString = exports.getMonthName(date);

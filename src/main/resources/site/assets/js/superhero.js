@@ -6,7 +6,7 @@
 	 }
 
 	// Call pagePadding() after a page load completely.
-	$( window ).load( pagePadding );
+	$( window ).on('load', pagePadding );
 
 } )( jQuery );
 
