@@ -2,7 +2,7 @@
     <id>9d8685e4-0ada-4a6a-a548-20279cc9ca2d</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2016-08-31T18:10:14.436Z</timestamp>
+    <timestamp>2018-12-17T13:08:16.822Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -55,32 +55,37 @@
         <property-set name="data">
             <string name="supports">com.enonic.app.superhero:post</string>
         </property-set>
-        <property-set name="page">
-            <string name="controller">com.enonic.app.superhero:default</string>
-            <reference isNull="true" name="template"/>
-            <property-set name="region">
-                <string name="name">main</string>
-                <property-set name="component">
-                    <string name="type">LayoutComponent</string>
-                    <property-set name="LayoutComponent">
-                        <string name="name">One column</string>
-                        <string name="template">com.enonic.app.superhero:one-column</string>
-                        <property-set name="config"/>
-                        <property-set name="region">
-                            <string name="name">left</string>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Post single</string>
-                                    <string name="template">com.enonic.app.superhero:post-single</string>
-                                    <property-set name="config"/>
-                                </property-set>
-                            </property-set>
-                        </property-set>
-                    </property-set>
+        <property-set name="components">
+            <string name="type">page</string>
+            <string name="path">/</string>
+            <property-set name="page">
+                <string name="descriptor">com.enonic.app.superhero:default</string>
+                <reference isNull="true" name="template"/>
+                <boolean isNull="true" name="customized"/>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-superhero"/>
                 </property-set>
             </property-set>
-            <property-set name="config"/>
+        </property-set>
+        <property-set name="components">
+            <string name="type">layout</string>
+            <string name="path">/main/0</string>
+            <property-set name="layout">
+                <string name="descriptor">com.enonic.app.superhero:one-column</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-superhero"/>
+                </property-set>
+            </property-set>
+        </property-set>
+        <property-set name="components">
+            <string name="type">part</string>
+            <string name="path">/main/0/left/0</string>
+            <property-set name="part">
+                <string name="descriptor">com.enonic.app.superhero:post-single</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-superhero"/>
+                </property-set>
+            </property-set>
         </property-set>
     </data>
     <indexConfigs>
@@ -102,16 +107,6 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>page.regions</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>creator</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -192,6 +187,16 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>data</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>creator</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>
