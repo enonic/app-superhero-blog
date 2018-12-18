@@ -73,8 +73,7 @@
             <string name="type">page</string>
             <string name="path">/</string>
             <property-set name="page">
-                <string isNull="true" name="descriptor"/>
-                <reference name="template">f2624852-d563-4343-80f7-86424f314c32</reference>
+              <string name="descriptor">com.enonic.app.superhero:default</string>
                 <boolean name="customized">false</boolean>
             </property-set>
         </property-set>
