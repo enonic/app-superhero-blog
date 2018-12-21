@@ -2,7 +2,7 @@
     <id>9053d9b6-0a27-420e-86f8-a5d49d420292</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2016-08-31T18:10:14.426Z</timestamp>
+    <timestamp>2018-12-21T12:52:50.027Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -55,122 +55,136 @@
         <property-set name="data">
             <string name="supports">com.enonic.app.superhero:post</string>
         </property-set>
-        <property-set name="page">
-            <string name="controller">com.enonic.app.superhero:default</string>
-            <reference isNull="true" name="template"/>
-            <property-set name="region">
-                <string name="name">main</string>
-                <property-set name="component">
-                    <string name="type">LayoutComponent</string>
-                    <property-set name="LayoutComponent">
-                        <string name="name">Two column</string>
-                        <string name="template">com.enonic.app.superhero:two-column</string>
-                        <property-set name="config"/>
-                        <property-set name="region">
-                            <string name="name">left</string>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Post single</string>
-                                    <string name="template">com.enonic.app.superhero:post-single</string>
-                                    <property-set name="config"/>
-                                </property-set>
-                            </property-set>
+        <property-set name="components">
+            <string name="type">page</string>
+            <string name="path">/</string>
+            <property-set name="page">
+                <string name="descriptor">com.enonic.app.superhero:default</string>
+                <boolean name="customized">true</boolean>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-superhero"/>
+                </property-set>
+            </property-set>
+        </property-set>
+        <property-set name="components">
+            <string name="type">layout</string>
+            <string name="path">/main/0</string>
+            <property-set name="layout">
+                <string name="descriptor">com.enonic.app.superhero:two-column</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-superhero"/>
+                </property-set>
+            </property-set>
+        </property-set>
+        <property-set name="components">
+            <string name="type">part</string>
+            <string name="path">/main/0/left/0</string>
+            <property-set name="part">
+                <string name="descriptor">com.enonic.app.superhero:post-single</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-superhero"/>
+                </property-set>
+            </property-set>
+        </property-set>
+        <property-set name="components">
+            <string name="type">part</string>
+            <string name="path">/main/0/right/0</string>
+            <property-set name="part">
+                <string name="descriptor">com.enonic.app.superhero:search-form</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-superhero">
+                        <string isNull="true" name="title"/>
+                    </property-set>
+                </property-set>
+            </property-set>
+        </property-set>
+        <property-set name="components">
+            <string name="type">part</string>
+            <string name="path">/main/0/right/1</string>
+            <property-set name="part">
+                <string name="descriptor">com.enonic.app.superhero:recent-posts</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-superhero">
+                        <string isNull="true" name="title"/>
+                        <string isNull="true" name="maxPosts"/>
+                    </property-set>
+                </property-set>
+            </property-set>
+        </property-set>
+        <property-set name="components">
+            <string name="type">part</string>
+            <string name="path">/main/0/right/2</string>
+            <property-set name="part">
+                <string name="descriptor">com.enonic.app.superhero:recent-comments</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-superhero">
+                        <string isNull="true" name="title"/>
+                        <string isNull="true" name="maxComments"/>
+                    </property-set>
+                </property-set>
+            </property-set>
+        </property-set>
+        <property-set name="components">
+            <string name="type">part</string>
+            <string name="path">/main/0/right/3</string>
+            <property-set name="part">
+                <string name="descriptor">com.enonic.app.superhero:categories</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-superhero">
+                        <string isNull="true" name="title"/>
+                        <boolean name="showPostCount">false</boolean>
+                        <boolean name="showHierarchy">false</boolean>
+                    </property-set>
+                </property-set>
+            </property-set>
+        </property-set>
+        <property-set name="components">
+            <string name="type">part</string>
+            <string name="path">/main/0/right/4</string>
+            <property-set name="part">
+                <string name="descriptor">com.enonic.app.superhero:meta</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-superhero">
+                        <string isNull="true" name="title"/>
+                        <property-set name="links">
+                            <string name="externalUrl">https://enonic.com</string>
+                            <string name="linkText">Enonic</string>
+                            <string name="linkTitle">Enonic</string>
                         </property-set>
-                        <property-set name="region">
-                            <string name="name">right</string>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Search form</string>
-                                    <string name="template">com.enonic.app.superhero:search-form</string>
-                                    <property-set name="config">
-                                    <string isNull="true" name="title"/>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Recent posts</string>
-                                    <string name="template">com.enonic.app.superhero:recent-posts</string>
-                                    <property-set name="config">
-                                    <string isNull="true" name="title"/>
-                                    <string isNull="true" name="maxPosts"/>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Recent comments</string>
-                                    <string name="template">com.enonic.app.superhero:recent-comments</string>
-                                    <property-set name="config">
-                                    <string isNull="true" name="title"/>
-                                    <string isNull="true" name="maxComments"/>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Categories</string>
-                                    <string name="template">com.enonic.app.superhero:categories</string>
-                                    <property-set name="config">
-                                    <string isNull="true" name="title"/>
-                                    <boolean name="showPostCount">false</boolean>
-                                    <boolean name="showHierarchy">false</boolean>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Meta</string>
-                                    <string name="template">com.enonic.app.superhero:meta</string>
-                                    <property-set name="config">
-                                    <string isNull="true" name="title"/>
-                                    <property-set name="links">
-                                    <string name="externalUrl">https://enonic.com</string>
-                                    <string name="linkText">Enonic</string>
-                                    <string name="linkTitle">Enonic</string>
-                                    </property-set>
-                                    <property-set name="links">
-                                    <reference name="contentLink">16c9c9ee-2f16-425e-ba98-d4b20391c500</reference>
-                                    <string isNull="true" name="externalUrl"/>
-                                    <string name="linkText">Entries RSS</string>
-                                    <string name="linkTitle">Really Simple Syndication</string>
-                                    </property-set>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Monthly archive</string>
-                                    <string name="template">com.enonic.app.superhero:archive</string>
-                                    <property-set name="config">
-                                    <string isNull="true" name="title"/>
-                                    <boolean name="showPostCount">false</boolean>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
-                            <property-set name="component">
-                                <string name="type">PartComponent</string>
-                                <property-set name="PartComponent">
-                                    <string name="name">Tag cloud</string>
-                                    <string name="template">com.enonic.app.superhero:tag-cloud</string>
-                                    <property-set name="config">
-                                    <string isNull="true" name="title"/>
-                                    </property-set>
-                                </property-set>
-                            </property-set>
+                        <property-set name="links">
+                            <reference name="contentLink">16c9c9ee-2f16-425e-ba98-d4b20391c500</reference>
+                            <string isNull="true" name="externalUrl"/>
+                            <string name="linkText">Entries RSS</string>
+                            <string name="linkTitle">Really Simple Syndication</string>
                         </property-set>
                     </property-set>
                 </property-set>
             </property-set>
-            <property-set name="config"/>
-            <boolean name="customized">false</boolean>
+        </property-set>
+        <property-set name="components">
+            <string name="type">part</string>
+            <string name="path">/main/0/right/5</string>
+            <property-set name="part">
+                <string name="descriptor">com.enonic.app.superhero:archive</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-superhero">
+                        <string isNull="true" name="title"/>
+                        <boolean name="showPostCount">false</boolean>
+                    </property-set>
+                </property-set>
+            </property-set>
+        </property-set>
+        <property-set name="components">
+            <string name="type">part</string>
+            <string name="path">/main/0/right/6</string>
+            <property-set name="part">
+                <string name="descriptor">com.enonic.app.superhero:tag-cloud</string>
+                <property-set name="config">
+                    <property-set name="com-enonic-app-superhero">
+                        <string isNull="true" name="title"/>
+                    </property-set>
+                </property-set>
+            </property-set>
         </property-set>
     </data>
     <indexConfigs>
@@ -205,36 +219,6 @@
                     </indexValueProcessors>
                 </indexConfig>
                 <path>data.htmlarea_text</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>creator</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>createdTime</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>modifiedTime</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -315,6 +299,36 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>data</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>creator</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>createdTime</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>modifiedTime</path>
             </pathIndexConfig>
         </pathIndexConfigs>
     </indexConfigs>
