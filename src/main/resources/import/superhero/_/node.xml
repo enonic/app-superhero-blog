@@ -2,7 +2,7 @@
     <id>e1f57280-d672-4cd8-b674-98e26e5b69ae</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2018-12-17T13:08:16.267Z</timestamp>
+    <timestamp>2018-12-21T08:55:34.565Z</timestamp>
     <inheritPermissions>false</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -48,7 +48,7 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2018-12-17T13:08:16.152Z</dateTime>
+        <dateTime name="modifiedTime">2018-12-21T08:55:34.370Z</dateTime>
         <string name="modifier">user:system:anonymous</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
@@ -73,8 +73,7 @@
             <string name="type">page</string>
             <string name="path">/</string>
             <property-set name="page">
-                <string isNull="true" name="descriptor"/>
-                <reference name="template">f2624852-d563-4343-80f7-86424f314c32</reference>
+                <string name="descriptor">com.enonic.app.superhero:default</string>
                 <boolean name="customized">false</boolean>
             </property-set>
         </property-set>
