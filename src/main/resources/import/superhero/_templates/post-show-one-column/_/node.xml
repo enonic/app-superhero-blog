@@ -2,7 +2,7 @@
     <id>9d8685e4-0ada-4a6a-a548-20279cc9ca2d</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2018-12-21T08:55:35.124Z</timestamp>
+    <timestamp>2018-12-21T12:52:50.075Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -60,7 +60,7 @@
             <string name="path">/</string>
             <property-set name="page">
                 <string name="descriptor">com.enonic.app.superhero:default</string>
-                <boolean isNull="true" name="customized"/>
+                <boolean name="customized">true</boolean>
                 <property-set name="config">
                     <property-set name="com-enonic-app-superhero"/>
                 </property-set>
