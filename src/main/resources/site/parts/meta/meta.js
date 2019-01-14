@@ -20,7 +20,7 @@ function handleGet(req) {
         var title = config.title || 'Meta';
         var user = auth.getUser();
         var site = portal.getSite();
-        var userStoreKey = portal.getUserStoreKey();
+        var idProviderKey = portal.getIdProviderKey();
 
         // items need url, text and linkTitle
         var items = [];
@@ -35,7 +35,7 @@ function handleGet(req) {
             items.push(item);
         }
 
-        if (userStoreKey && !user) {
+        if (idProviderKey && !user) {
             item.text = "Login";
             item.url = portal.loginUrl({
                 redirect: portal.pageUrl({})
