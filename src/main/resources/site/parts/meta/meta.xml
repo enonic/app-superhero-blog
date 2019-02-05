@@ -2,7 +2,7 @@
 <part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Meta</display-name>
   <form>
-    <field-set name="config">
+    <field-set>
       <label>Config</label>
       <items>
         <input type="TextLine" name="title">
@@ -11,7 +11,7 @@
         </input>
       </items>
     </field-set>
-    <field-set name="links">
+    <field-set>
       <label>Links</label>
       <items>
         <item-set name="links">

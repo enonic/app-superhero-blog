@@ -4,7 +4,7 @@
   <content-display-name-script>$('name')</content-display-name-script>
   <super-type>base:structured</super-type>
   <form>
-    <field-set name="basic">
+    <field-set>
       <label>Author info</label>
       <items>
         <input type="TextLine" name="name">

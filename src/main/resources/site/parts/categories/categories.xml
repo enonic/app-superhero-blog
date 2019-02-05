@@ -2,7 +2,7 @@
 <part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Categories</display-name>
   <form>
-    <field-set name="config">
+    <field-set>
       <label>Config</label>
       <items>
         <input type="TextLine" name="title">

@@ -4,7 +4,7 @@
   <content-display-name-script>$('title')</content-display-name-script>
   <super-type>base:structured</super-type>
   <form>
-    <field-set name="basic">
+    <field-set>
       <label>RSS info</label>
       <items>
         <input type="TextLine" name="title">
