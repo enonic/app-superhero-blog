@@ -4,7 +4,7 @@
   <super-type>base:structured</super-type>
   <allow-child-content>true</allow-child-content>
   <form>
-    <field-set name="basic">
+    <field-set>
       <label>Post</label>
       <items>
         <input type="ContentSelector" name="author">
@@ -44,7 +44,7 @@
         </input>
       </items>
     </field-set>
-    <field-set name="featured">
+    <field-set>
       <label>Featured</label>
       <items>
         <input type="ImageSelector" name="featuredImage">

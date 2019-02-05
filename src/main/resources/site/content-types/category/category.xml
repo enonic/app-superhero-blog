@@ -5,7 +5,7 @@
   <super-type>base:structured</super-type>
   <allow-child-content>true</allow-child-content>
   <form>
-    <field-set name="basic">
+    <field-set>
       <label>Category</label>
       <items>
         <input type="TextLine" name="name">
