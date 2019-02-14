@@ -1,5 +1,5 @@
-var stk = require('stk/stk');
-var menu = require('menu');
+var stk = require('/lib/stk/stk');
+var menu = require('/lib/menu');
 
 var portal = require('/lib/xp/portal');
 

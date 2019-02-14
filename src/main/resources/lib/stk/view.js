@@ -1,5 +1,5 @@
 exports.view = {};
-var thymeleaf = require('/lib/xp/thymeleaf');
+var thymeleaf = require('/lib/thymeleaf');
 
 // Render Thymeleaf view
 exports.view.render = function(view, params) {

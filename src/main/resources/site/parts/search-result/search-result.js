@@ -3,8 +3,8 @@ var libs = {
     portal: require('/lib/xp/portal')
 };
 
-var stk = require('stk/stk');
-var util = require('utilities');
+var stk = require('/lib/stk/stk');
+var util = require('/lib/utilities');
 
 var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');

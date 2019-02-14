@@ -101,7 +101,7 @@
 
         <input class="search-term" type="hidden" name="s" data-th-value="${searchTerm}"/>
 
-        <aside data-th-replace="/site/lib/superhero/fragments::tag-cloud-widget-fragment(tags=${tags},title='Related Tags')"></aside>
+        <aside data-th-replace="/lib/superhero/fragments::tag-cloud-widget-fragment(tags=${tags},title='Related Tags')"></aside>
 
         <aside class="widget" data-th-if="!${#lists.isEmpty(aggregations.author)}">
             <h1 class="widget-title">By Author</h1>
