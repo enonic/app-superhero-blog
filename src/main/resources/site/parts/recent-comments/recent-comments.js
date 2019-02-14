@@ -1,4 +1,4 @@
-var stk = require('stk/stk');
+var stk = require('/lib/stk/stk');
 var portal = require('/lib/xp/portal');
 
 var contentLib = require('/lib/xp/content');

@@ -1,5 +1,5 @@
-var stk = require('stk/stk');
-var util = require('utilities');
+var stk = require('/lib/stk/stk');
+var util = require('/lib/utilities');
 
 var auth = require('/lib/xp/auth');
 var contentLib = require('/lib/xp/content');

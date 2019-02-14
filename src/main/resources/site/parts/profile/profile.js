@@ -1,8 +1,8 @@
-var stk = require('stk/stk');
+var stk = require('/lib/stk/stk');
 var portal = require('/lib/xp/portal');
 var auth = require('/lib/xp/auth');
 var contentLib = require('/lib/xp/content');
-var thymeleaf = require('/lib/xp/thymeleaf');
+var thymeleaf = require('/lib/thymeleaf');
 
 
 exports.post = handlePost;

@@ -1,5 +1,5 @@
 var portal = require('/lib/xp/portal');
-var stk = require('stk/stk');
+var stk = require('/lib/stk/stk');
 
 var viewGeneric = resolve('error.html');
 
