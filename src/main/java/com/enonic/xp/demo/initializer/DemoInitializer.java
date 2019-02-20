@@ -100,28 +100,29 @@ public class DemoInitializer
             source( source ).
             targetNodePath( NodePath.create( "/content" ).build() ).
             includeNodeIds( true ).
+            includePermissions( true ).
             dryRun( false ).
             build() );
 
         logImport( nodeImportResult );
 
-        // set permissions
-        final Content demoContent = contentService.getByPath( demoSitePath );
-        if ( demoContent != null )
-        {
-            final UpdateContentParams setFeaturesPermissions = new UpdateContentParams().
-                contentId( demoContent.getId() ).
-                editor( ( content ) -> {
-                    content.permissions = PERMISSIONS;
-                    content.inheritPermissions = false;
-                } );
-            contentService.update( setFeaturesPermissions );
-
-            contentService.applyPermissions( ApplyContentPermissionsParams.create().
-                contentId( demoContent.getId() ).
-                overwriteChildPermissions( true ).
-                build() );
-        }
+//        // set permissions
+//        final Content demoContent = contentService.getByPath( demoSitePath );
+//        if ( demoContent != null )
+//        {
+//            final UpdateContentParams setFeaturesPermissions = new UpdateContentParams().
+//                contentId( demoContent.getId() ).
+//                editor( ( content ) -> {
+//                    content.permissions = PERMISSIONS;
+//                    content.inheritPermissions = false;
+//                } );
+//            contentService.update( setFeaturesPermissions );
+//
+//            contentService.applyPermissions( ApplyContentPermissionsParams.create().
+//                contentId( demoContent.getId() ).
+//                overwriteChildPermissions( true ).
+//                build() );
+//        }
     }
 
     private void logImport( final NodeImportResult nodeImportResult )
