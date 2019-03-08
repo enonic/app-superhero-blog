@@ -3,7 +3,7 @@ var util = require('/lib/utilities');
 
 var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
-var xslt = require('/lib/xp/xslt');
+var xslt = require('/lib/xslt');
 
 exports.get = function (req) {
 
