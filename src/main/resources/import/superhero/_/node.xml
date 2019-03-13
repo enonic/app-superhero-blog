@@ -2,7 +2,7 @@
     <id>e1f57280-d672-4cd8-b674-98e26e5b69ae</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2018-12-21T12:52:49.566Z</timestamp>
+    <timestamp>2019-03-13T08:48:27.021Z</timestamp>
     <inheritPermissions>false</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -48,7 +48,7 @@
         <string name="type">portal:site</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2018-12-21T12:52:49.492Z</dateTime>
+        <dateTime name="modifiedTime">2019-03-13T08:48:26.997Z</dateTime>
         <string name="modifier">user:system:anonymous</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
@@ -83,7 +83,9 @@
             <property-set name="part">
                 <string name="descriptor">com.enonic.app.superhero:featured</string>
                 <property-set name="config">
-                    <property-set name="com-enonic-app-superhero"/>
+                    <property-set name="com-enonic-app-superhero">
+                        <property-set name="featured"/>
+                    </property-set>
                 </property-set>
             </property-set>
         </property-set>
@@ -93,7 +95,9 @@
             <property-set name="layout">
                 <string name="descriptor">com.enonic.app.superhero:two-column</string>
                 <property-set name="config">
-                    <property-set name="com-enonic-app-superhero"/>
+                    <property-set name="com-enonic-app-superhero">
+                        <property-set name="two-column"/>
+                    </property-set>
                 </property-set>
             </property-set>
         </property-set>
@@ -103,7 +107,9 @@
             <property-set name="part">
                 <string name="descriptor">com.enonic.app.superhero:posts-list</string>
                 <property-set name="config">
-                    <property-set name="com-enonic-app-superhero"/>
+                    <property-set name="com-enonic-app-superhero">
+                        <property-set name="posts-list"/>
+                    </property-set>
                 </property-set>
             </property-set>
         </property-set>
@@ -114,7 +120,9 @@
                 <string name="descriptor">com.enonic.app.superhero:search-form</string>
                 <property-set name="config">
                     <property-set name="com-enonic-app-superhero">
-                        <string isNull="true" name="title"/>
+                        <property-set name="search-form">
+                            <string isNull="true" name="title"/>
+                        </property-set>
                     </property-set>
                 </property-set>
             </property-set>
@@ -126,8 +134,10 @@
                 <string name="descriptor">com.enonic.app.superhero:recent-comments</string>
                 <property-set name="config">
                     <property-set name="com-enonic-app-superhero">
-                        <string isNull="true" name="title"/>
-                        <string isNull="true" name="maxComments"/>
+                        <property-set name="recent-comments">
+                            <string isNull="true" name="title"/>
+                            <string isNull="true" name="maxComments"/>
+                        </property-set>
                     </property-set>
                 </property-set>
             </property-set>
@@ -139,8 +149,10 @@
                 <string name="descriptor">com.enonic.app.superhero:recent-posts</string>
                 <property-set name="config">
                     <property-set name="com-enonic-app-superhero">
-                        <string isNull="true" name="title"/>
-                        <string isNull="true" name="maxPosts"/>
+                        <property-set name="recent-posts">
+                            <string isNull="true" name="title"/>
+                            <string isNull="true" name="maxPosts"/>
+                        </property-set>
                     </property-set>
                 </property-set>
             </property-set>
@@ -152,9 +164,11 @@
                 <string name="descriptor">com.enonic.app.superhero:categories</string>
                 <property-set name="config">
                     <property-set name="com-enonic-app-superhero">
-                        <string isNull="true" name="title"/>
-                        <boolean name="showPostCount">false</boolean>
-                        <boolean name="showHierarchy">false</boolean>
+                        <property-set name="categories">
+                            <string isNull="true" name="title"/>
+                            <boolean name="showPostCount">false</boolean>
+                            <boolean name="showHierarchy">false</boolean>
+                        </property-set>
                     </property-set>
                 </property-set>
             </property-set>
@@ -166,11 +180,13 @@
                 <string name="descriptor">com.enonic.app.superhero:meta</string>
                 <property-set name="config">
                     <property-set name="com-enonic-app-superhero">
-                        <string isNull="true" name="title"/>
-                        <property-set name="links">
-                            <string name="externalUrl">https://enonic.com</string>
-                            <string name="linkText">Enonic</string>
-                            <string name="linkTitle">Enonic</string>
+                        <property-set name="meta">
+                            <string isNull="true" name="title"/>
+                            <property-set name="links">
+                                <string name="externalUrl">https://enonic.com</string>
+                                <string name="linkText">Enonic</string>
+                                <string name="linkTitle">Enonic</string>
+                            </property-set>
                         </property-set>
                     </property-set>
                 </property-set>
@@ -183,8 +199,10 @@
                 <string name="descriptor">com.enonic.app.superhero:archive</string>
                 <property-set name="config">
                     <property-set name="com-enonic-app-superhero">
-                        <string isNull="true" name="title"/>
-                        <boolean name="showPostCount">false</boolean>
+                        <property-set name="archive">
+                            <string isNull="true" name="title"/>
+                            <boolean name="showPostCount">false</boolean>
+                        </property-set>
                     </property-set>
                 </property-set>
             </property-set>
@@ -196,14 +214,15 @@
                 <string name="descriptor">com.enonic.app.superhero:tag-cloud</string>
                 <property-set name="config">
                     <property-set name="com-enonic-app-superhero">
-                        <string isNull="true" name="title"/>
+                        <property-set name="tag-cloud">
+                            <string isNull="true" name="title"/>
+                        </property-set>
                     </property-set>
                 </property-set>
             </property-set>
         </property-set>
     </data>
     <indexConfigs>
-        <analyzer>document_index_default</analyzer>
         <defaultConfig>
             <decideByType>true</decideByType>
             <enabled>true</enabled>
@@ -220,7 +239,7 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>page.region.**.LayoutComponent.config.*</path>
+                <path>components.part.config.com-enonic-app-superhero.tag-cloud.*</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -230,60 +249,97 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>page.region.**.PartComponent.config.*</path>
+                <path>components.part.config.com-enonic-app-superhero.search-form.*</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>false</decideByType>
+                    <decideByType>true</decideByType>
                     <enabled>true</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>page.region.**.LayoutComponent.*</path>
+                <path>components.part.config.com-enonic-app-superhero.recent-posts.*</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>true</nGram>
-                    <fulltext>true</fulltext>
-                    <includeInAllText>true</includeInAllText>
-                    <indexValueProcessors>
-                        <indexValueProcessor>htmlStripper</indexValueProcessor>
-                    </indexValueProcessors>
-                </indexConfig>
-                <path>page.region.**.TextComponent.text</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
+                    <decideByType>true</decideByType>
                     <enabled>true</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>page.region.**.FragmentComponent.*</path>
+                <path>components.part.config.com-enonic-app-superhero.recent-comments.*</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>false</decideByType>
+                    <decideByType>true</decideByType>
                     <enabled>true</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>page.region.**.PartComponent.*</path>
+                <path>components.part.config.com-enonic-app-superhero.posts-list.*</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>false</decideByType>
+                    <decideByType>true</decideByType>
                     <enabled>true</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>page.region.**.TextComponent.*</path>
+                <path>components.part.config.com-enonic-app-superhero.meta.*</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>components.part.config.com-enonic-app-superhero.featured.*</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>components.part.config.com-enonic-app-superhero.categories.*</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>components.part.config.com-enonic-app-superhero.archive.*</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>components.page.config.com-enonic-app-superhero.default.*</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>components.layout.config.com-enonic-app-superhero.two-column.*</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -310,43 +366,86 @@
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
-                    <decideByType>true</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>page.config.*</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>page.template</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>page.controller</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
                     <decideByType>false</decideByType>
                     <enabled>true</enabled>
                     <nGram>true</nGram>
                     <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
+                    <indexValueProcessors>
+                        <indexValueProcessor>htmlStripper</indexValueProcessor>
+                    </indexValueProcessors>
+                </indexConfig>
+                <path>components.text.value</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>attachment.text</path>
+                <path>components.part.descriptor</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>components.page.template</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>components.page.descriptor</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>components.page.customized</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>components.layout.descriptor</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>components.image.id</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>components.fragment.id</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -361,12 +460,72 @@
             <pathIndexConfig>
                 <indexConfig>
                     <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>attachment.text</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>type</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
                     <enabled>false</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>page.regions</path>
+                <path>site</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>owner</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>modifier</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>modifiedTime</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>data</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -391,32 +550,12 @@
             <pathIndexConfig>
                 <indexConfig>
                     <decideByType>false</decideByType>
-                    <enabled>true</enabled>
+                    <enabled>false</enabled>
                     <nGram>false</nGram>
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>modifiedTime</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>modifier</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>owner</path>
+                <path>components</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -428,46 +567,11 @@
                 </indexConfig>
                 <path>attachment</path>
             </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>false</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>page</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>false</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>site</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>type</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>true</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
-                <path>data</path>
-            </pathIndexConfig>
         </pathIndexConfigs>
+        <allTextIndexConfig>
+            <languages>
+                <language>en</language>
+            </languages>
+        </allTextIndexConfig>
     </indexConfigs>
 </node>
