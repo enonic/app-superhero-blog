@@ -12,6 +12,12 @@
 
 $(document).ready(function(){
 
+	$('.flexslider').flexslider({
+		slideshow: true,
+		prevText: '',
+		nextText: ''
+	});
+
 	// Ajax comments
 	var form = $('#commentform');
 	form.submit(function(e) {
