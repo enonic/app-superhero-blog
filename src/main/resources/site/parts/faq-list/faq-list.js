@@ -25,7 +25,7 @@ function handleGet(req) {
         var faqs = [];
         var faqConfigs = stk.data.forceArray(config.faqs);
         faqConfigs.forEach(function(faqConfig) {
-            if (faqConfig.question && faqConfig.answer) {
+            if (faqConfig && faqConfig.question && faqConfig.answer) {
                 faqs.push({
                     question: faqConfig.question,
                     answer: portal.processHtml({
