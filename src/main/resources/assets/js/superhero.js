@@ -105,6 +105,16 @@ $(document).ready(function(){
 		e.preventDefault();
 	});
 
+	// Widget FAQ-list
+	$('.faq-list a').click(function (event) {
+		event.preventDefault();
+		var href = $(this).attr('href')
+		var target = $(href);
+		target.slideToggle({
+			duration: 100
+		});
+	});
+
 });
 
 
@@ -187,5 +197,3 @@ $(function() {
 
 	});
 });*/
-
-

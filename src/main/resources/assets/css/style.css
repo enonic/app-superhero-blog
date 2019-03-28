@@ -1118,6 +1118,21 @@ object {
 	margin-right: 0;
 }
 
+/* FAQ-list widget */
+
+.faq-list dt {
+	line-height: 1.7;
+	margin: 1em 0;
+	font-weight: normal;
+}
+.faq-list dd {
+	line-height: 1.7;
+	display: none;
+}
+.faq-list a:focus {
+	outline: 0;
+}
+
 
 /* =Plugins
 ----------------------------------------------- */

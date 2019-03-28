@@ -28,9 +28,10 @@ function handleGet(req) {
             if (faqConfig && faqConfig.question && faqConfig.answer) {
                 faqs.push({
                     question: faqConfig.question,
-                    answer: portal.processHtml({
+                    answer: faqConfig.answer
+                    /*answer: portal.processHtml({
                         value: faqConfig.answer
-                    })
+                    })*/
                 });
             }
         });

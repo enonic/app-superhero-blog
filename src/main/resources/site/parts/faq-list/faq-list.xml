@@ -8,6 +8,7 @@
           <input type="TextLine" name="title">
             <label>Title</label>
             <occurrences minimum="0" maximum="1"/>
+            <default>FAQ list</default>
           </input>
           <item-set name="faqs">
             <label>FAQ</label>

@@ -5,30 +5,7 @@
             <dt>
                 <a data-th-href="${'#faq-answer-' + faqStat.index}" data-th-text="${faq.question}"></a>
             </dt>
-            <dd data-th-id="${'faq-answer-' + faqStat.index}" data-th-utext="${faq.answer}"></dd>
+            <dd data-th-id="${'faq-answer-' + faqStat.index}" data-th-text="${faq.answer}"></dd>
         </th:block>
     </dl>
-    <style type="text/css">
-        .faq-list dt {
-            line-height: 1.7;
-            margin: 1em 0;
-        }
-        .faq-list dd {
-            line-height: 1.7;
-            display: none;
-        }
-        .faq-list a:focus {
-            outline: 0;
-        }
-    </style>
-    <script>
-        $(document).ready(function () {
-            $('.faq-list a').click(function (event) {
-                event.preventDefault();
-                var href = $(this).attr('href')
-                var target = $(href);
-                target.slideToggle();
-            });
-        });
-    </script>
 </aside>
