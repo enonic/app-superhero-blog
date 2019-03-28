@@ -1,0 +1,11 @@
+<aside class="widget widget_faq-list">
+    <h1 class="widget-title" data-th-if="${title}" data-th-text="${title}"></h1>
+    <dl class="faq-list">
+        <th:block data-th-if="${faqs}" data-th-each="faq : ${faqs}">
+            <dt>
+                <a data-th-href="${'#faq-answer-' + faqStat.index}" data-th-text="${faq.question}"></a>
+            </dt>
+            <dd data-th-id="${'faq-answer-' + faqStat.index}" data-th-text="${faq.answer}"></dd>
+        </th:block>
+    </dl>
+</aside>
