@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Tag cloud</display-name>
+  <description>Display the latest and most used tags from blog posts</description>
   <form>
     <input type="TextLine" name="title">
       <label>Title</label>

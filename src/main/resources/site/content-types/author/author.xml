@@ -3,6 +3,7 @@
   <display-name>Author</display-name>
   <content-display-name-script>$('name')</content-display-name-script>
   <super-type>base:structured</super-type>
+  <description>Create authors to be selected on blog posts</description>
   <form>
     <field-set>
       <label>Author info</label>

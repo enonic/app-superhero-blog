@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Meta</display-name>
+  <description>Link list with custom links</description>
   <form>
     <field-set>
       <label>Config</label>

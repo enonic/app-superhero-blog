@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Featured</display-name>
+  <description>Feature a post in large format</description>
   <form>
     <input type="ContentSelector" name="posts">
       <label>Featured posts</label>

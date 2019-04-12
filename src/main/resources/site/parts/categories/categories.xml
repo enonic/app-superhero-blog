@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Categories</display-name>
+  <description>Display link list on all categories used in existing blog posts</description>
   <form>
     <field-set>
       <label>Config</label>

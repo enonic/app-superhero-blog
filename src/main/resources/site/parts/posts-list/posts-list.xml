@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Posts list</display-name>
+  <description>Used to display a list of blog posts, with pagination</description>
   <form>
     <input type="ContentSelector" name="contentFolder">
       <label>Posts folder</label>

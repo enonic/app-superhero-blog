@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part xmlns="urn:enonic:xp:model:1.0">
   <display-name>Monthly archive</display-name>
+  <description>Link list for blog posts, grouped by month.</description>
   <form>
     <input type="TextLine" name="title">
       <label>Title</label>

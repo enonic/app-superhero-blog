@@ -4,6 +4,7 @@
   <content-display-name-script>$('name')</content-display-name-script>
   <super-type>base:structured</super-type>
   <allow-child-content>true</allow-child-content>
+  <description>Categories to use with blog posts (also groups them)</description>
   <form>
     <field-set>
       <label>Category</label>

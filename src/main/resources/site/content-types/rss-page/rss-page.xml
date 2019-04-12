@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content-type>
   <display-name>RSS page</display-name>
+  <description>Page to display RSS feeds in correct format</description>
   <content-display-name-script>$('title')</content-display-name-script>
   <super-type>base:structured</super-type>
   <form>

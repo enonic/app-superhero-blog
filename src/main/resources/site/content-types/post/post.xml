@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content-type>
   <display-name>Post</display-name>
+  <description>Main content type used for writing blog posts.</description>
   <super-type>base:structured</super-type>
   <allow-child-content>true</allow-child-content>
   <form>
@@ -13,7 +14,7 @@
           <config>
             <relationship-type>system:reference</relationship-type>
             <allow-content-type>author</allow-content-type>
-	    <allowPath>${site}/authors/</allowPath> 
+	    <allowPath>${site}/authors/</allowPath>
           </config>
         </input>
         <input type="ContentSelector" name="category">

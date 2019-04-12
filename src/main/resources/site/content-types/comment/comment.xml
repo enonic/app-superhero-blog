@@ -4,6 +4,7 @@
   <content-display-name-script>$('name')</content-display-name-script>
   <super-type>base:structured</super-type>
   <allow-child-content>true</allow-child-content>
+  <description>User generated comments on blog posts</description>
   <form>
     <field-set>
       <label>Comment</label>
