@@ -1,0 +1,23 @@
+<styles css="styles/styles.css" xmlns="urn:enonic:xp:model:1.0">
+  <image name="editor-style-image-black">
+    <display-name>Paint it black</display-name>
+    <filter>hsbcolorize(0x000000); grayscale(); border(6, 0x000000)</filter>
+  </image>
+  <image name="editor-style-image-red">
+    <display-name>Paint it red</display-name>
+    <filter>hsbcolorize(0xAA0000)</filter>
+  </image>
+  <image name="editor-style-image-portrait">
+    <display-name>Avatar</display-name>
+    <aspect-ratio>1:1</aspect-ratio>
+    <filter>rounded(1000)</filter>
+  </image>
+  <image name="editor-style-image-sepia">
+    <display-name>Old photo</display-name>
+    <filter>sepia(25)</filter>
+  </image>
+  <image name="editor-style-image-pixels">
+    <display-name>Super Mario classic-mode</display-name>
+    <filter>block(10)</filter>
+  </image>
+</styles>
