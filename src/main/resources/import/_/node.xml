@@ -43,6 +43,7 @@
         <property-set name="form"/>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2016-08-31T18:09:52.703Z</dateTime>
+        <dateTime name="modifiedTime">2016-08-31T18:09:52.703Z</dateTime>
     </data>
     <indexConfigs>
         <defaultConfig>

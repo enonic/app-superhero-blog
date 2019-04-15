@@ -47,6 +47,7 @@
         <string name="displayName">Michael Lazell</string>
         <string name="type">com.enonic.app.superhero:comment</string>
         <dateTime name="createdTime">2015-04-10T03:00:49.418Z</dateTime>
+        <dateTime name="modifiedTime">2015-04-10T03:00:49.418Z</dateTime>
         <string name="creator">user:system:su</string>
         <string name="modifier">user:system:su</string>
         <string name="owner">user:system:su</string>
