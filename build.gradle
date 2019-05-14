@@ -17,15 +17,13 @@ dependencies {
     compile "com.enonic.xp:portal-api:${xpVersion}"
     include "com.enonic.xp:lib-content:${xpVersion}"
     include "com.enonic.xp:lib-portal:${xpVersion}"
-    include "com.enonic.lib:lib-xslt:1.0.1"
     include "com.enonic.xp:lib-auth:${xpVersion}"
-    include 'com.enonic.lib:lib-thymeleaf:2.0.0-B1'
+    include 'com.enonic.lib:lib-thymeleaf:2.0.0-RC1'
+    include "com.enonic.lib:lib-xslt:2.0.0-RC1"
 }
 
 repositories {
     mavenLocal()
     mavenCentral()
-    maven {
-        url 'http://repo.enonic.com/public'
-    }
+    xp.enonicRepo()
 }
