@@ -64,7 +64,7 @@
             <string name="type">page</string>
             <string name="path">/</string>
             <property-set name="page">
-                <reference name="template">9053d9b6-0a27-420e-86f8-a5d49d420292</reference>
+                <reference name="template">87839c1e-aaeb-4f06-9d98-0df053361eac</reference>
                 <boolean name="customized">false</boolean>
             </property-set>
         </property-set>
