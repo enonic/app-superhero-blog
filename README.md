@@ -20,6 +20,10 @@ This is still being developed and is mostly used for demos and experimenting wit
 
 | Version        | XP version |
 | ------------- | ------------- |
+| 2.0.5 | 7.0.0 |
+| 2.0.4 | 7.0.0 |
+| 2.0.3 | 7.0.0 |
+| 2.0.2 | 7.0.0 |
 | 2.0.1 | 7.0.0 |
 | 2.0.0 | 7.0.0 |
 | 1.7.1 | 6.11.0 |
@@ -34,6 +38,13 @@ This is still being developed and is mostly used for demos and experimenting wit
 | 0.1.0 | 5.3.0 |
 
 ### Change log
+
+Version 2.0.5
+Version 2.0.4
+Version 2.0.3
+Version 2.0.2
+
+* Bugfixes
 
 Version 2.0.1
 
