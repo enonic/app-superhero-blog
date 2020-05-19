@@ -1,5 +1,6 @@
 var projectLib = require('/lib/xp/project');
 var contextLib = require('/lib/xp/context');
+var clusterLib = require('/lib/xp/cluster');
 
 var projectData = {
     id: 'sample-blog',
@@ -61,4 +62,6 @@ function createContent() {
     return __.toNativeObject(bean.execute());
 }
 
-initialize();
+if (clusterLib.isMaster()) {
+    initialize();
+}
