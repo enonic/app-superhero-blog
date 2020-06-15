@@ -20,6 +20,7 @@ This is still being developed and is mostly used for demos and experimenting wit
 
 | Version        | XP version |
 | ------------- | ------------- |
+| 2.1.0 | 7.3.0 |
 | 2.0.5 | 7.0.0 |
 | 2.0.4 | 7.0.0 |
 | 2.0.3 | 7.0.0 |
@@ -39,10 +40,11 @@ This is still being developed and is mostly used for demos and experimenting wit
 
 ### Change log
 
-Version 2.0.5
-Version 2.0.4
-Version 2.0.3
-Version 2.0.2
+Version 2.1.0
+
+* Superhero Blog app creates content in its own project/repository
+
+Version 2.0.2-5
 
 * Bugfixes
 
