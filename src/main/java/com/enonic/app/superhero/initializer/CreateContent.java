@@ -82,7 +82,7 @@ public class CreateContent
             source( source ).
             targetNodePath( NodePath.create( "/content" ).build() ).
             includeNodeIds( true ).
-            includePermissions( true ).
+            includePermissions( false ).
             dryRun( false ).
             build() );
 
