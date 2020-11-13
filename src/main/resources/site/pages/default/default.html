@@ -21,7 +21,12 @@
     <script type="text/javascript" data-th-src="${assetUrls.flexsliderJs}" src="../assets/js/jquery.flexslider-min.js"></script>
     <meta name="robots" content="noodp" />
     <meta name="generator" content="Enonic XP" />
-    <meta name="author" content="Enonic USA" />
+    <meta name="author" content="Enonic" />
+
+    <style data-th-if="${backgroundImageUrl}"
+           data-th-utext="|body.custom-background { background-image: url('${backgroundImageUrl}'); background-repeat: repeat; background-position: top left; background-attachment: scroll;|"
+           type="text/css" id="custom-background-css">
+    </style>
 </head>
 
 <body class="home blog" data-th-class="${bodyClass}" data-portal-component-type="page">
@@ -44,14 +49,12 @@
                 </hgroup>
 
                 <!-- Menu -->
-                <nav data-th-replace="/lib/superhero/fragments::main-navigation(siteUrl=${siteUrl},menuTopClass=${menuTopClass},menuItems=${menuItems})"
-                     role="navigation"
-                     class="site-navigation main-navigation">
+                <nav data-th-replace="/lib/superhero/fragments::main-navigation">
                 </nav>
                 <div class="clearfix"></div>
 
             </header>
-        </div>>
+        </div>
 
 
         <!-- Regions -->
@@ -83,6 +86,6 @@
 
 
     <script type='text/javascript' data-th-src="${assetUrls.smallMenuJs}" src='../../assets/js/small-menu.js'></script>
-    <script type='text/javascript' data-th-src="${assetUrls.commentReplyJs" src='../../assets/js/comment-reply.min.js'></script>
+    <script type='text/javascript' data-th-src="${assetUrls.commentReplyJs}" src='../../assets/js/comment-reply.min.js'></script>
 </body>
 </html>
