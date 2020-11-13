@@ -1,29 +1,25 @@
-var stk = require('/lib/stk/stk');
-var util = require('/lib/utilities');
+const stk = require('/lib/stk/stk');
+const util = require('/lib/utilities');
 
-var contentLib = require('/lib/xp/content');
-var portal = require('/lib/xp/portal');
+const contentLib = require('/lib/xp/content');
+const portal = require('/lib/xp/portal');
 
-exports.get = handleGet;
-
-function handleGet(req) {
-    var me = this;
-
+exports.get = function handleGet(req) {
     function renderView() {
-        var view = resolve('tag-cloud.html');
-        var model = createModel();
+        const view = resolve('tag-cloud.html');
+        const model = createModel();
         return stk.view.render(view, model);
     }
 
     function createModel() {
 
-        var component = portal.getComponent();
-        var config = component.config;
-        var title = config.title || 'Tags';
-        var site = portal.getSite();
+        const component = portal.getComponent();
+        const config = component.config;
+        const title = config.title || 'Tags';
+        const site = portal.getSite();
 
         // Get all posts that have one or more tags.
-        var result = contentLib.query({
+        const result = contentLib.query({
             start: 0,
             count: 0,
             query: "_path LIKE '/content" + site._path + "/*'", // Only get tags from this site.
@@ -41,15 +37,15 @@ function handleGet(req) {
             }
         });
 
-        var buckets = null;
+        let buckets = null;
 
         if (result && result.aggregations && result.aggregations.tags && result.aggregations.tags.buckets) {
             buckets = [];
 
-            var results = result.aggregations.tags.buckets;
+            const results = result.aggregations.tags.buckets;
 
             // Prevent ghost tags from appearing in the part
-            for (var i = 0; i < results.length; i++) {
+            for (let i = 0; i < results.length; i++) {
                 if (results[i].docCount > 0) {
                     buckets.push(results[i]);
                 }
@@ -58,39 +54,39 @@ function handleGet(req) {
             if (buckets.length > 0) {
 
                 // Make the font sizes
-                var smallest = 8;
-                var largest = 22;
+                const smallest = 8;
+                const largest = 22;
 
                 //Get the max and min counts
-                var newBucket = buckets.slice();
+                const newBucket = buckets.slice();
                 newBucket.sort(function (a, b) {
                     return a.docCount - b.docCount;
                 });
-                var minCount = newBucket[0].docCount; // smallest number for any tag count
-                var maxCount = newBucket[newBucket.length - 1].docCount; // largest number for any tag count
+                const minCount = newBucket[0].docCount; // smallest number for any tag count
+                const maxCount = newBucket[newBucket.length - 1].docCount; // largest number for any tag count
 
                 // The difference between the most used tag and the least used.
-                var spread = maxCount - minCount;
+                let spread = maxCount - minCount;
                 if (spread < 1) {
                     spread = 1
                 }
 
                 // The difference between the largest font and the smallest font
-                var fontSpread = largest - smallest;
+                const fontSpread = largest - smallest;
                 // How much bigger the font will be for each tag count.
-                var fontStep = fontSpread / spread;
+                const fontStep = fontSpread / spread;
 
                 //Bucket logic
-                for (var i = 0; i < buckets.length; i++) {
+                for (let i = 0; i < buckets.length; i++) {
                     buckets[i].tagUrl = util.getSearchPage();
                     buckets[i].title = buckets[i].docCount + ((buckets[i].docCount > 1) ? ' topics' : ' topic');
-                    var fontSize = smallest + (buckets[i].docCount - minCount) * fontStep;
+                    const fontSize = smallest + (buckets[i].docCount - minCount) * fontStep;
                     buckets[i].font = 'font-size: ' + fontSize + 'pt;';
                 }
             }
         }
 
-        var model = {
+        const model = {
             tags: buckets,
             title: title
         };
