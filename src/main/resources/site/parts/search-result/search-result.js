@@ -1,45 +1,36 @@
-var libs = {
-    content: require('/lib/xp/content'),
-    portal: require('/lib/xp/portal')
-};
+const stk = require('/lib/stk/stk');
+const util = require('/lib/utilities');
 
-var stk = require('/lib/stk/stk');
-var util = require('/lib/utilities');
-
-var contentLib = require('/lib/xp/content');
-var portal = require('/lib/xp/portal');
+const contentLib = require('/lib/xp/content');
+const portal = require('/lib/xp/portal');
 
 exports.get = function(req) {
 
-    var component = portal.getComponent();
-    var config = component.config;
-    var up = req.params; // URL params
-    var content = portal.getContent();
-    var site = portal.getSite();
-    var siteConfig = portal.getSiteConfig();
-    //var postsPerPage = siteConfig.numPosts ? siteConfig.numPosts : 10;
-    var postsPerPage = 100;
-    var newer = null, older = null; // For pagination
-    var posts = [];
-    var folderPath = util.postsFolder(config.contentFolder);
-    var searchPage = util.getSearchPage();
+    const component = portal.getComponent();
+    const config = component.config;
+    const up = req.params; // URL params
+    const content = portal.getContent();
+    const site = portal.getSite();
+    const postsPerPage = 100; // siteConfig.numPosts ? siteConfig.numPosts : 10;
+    let newer = null, older = null; // For pagination
+    const posts = [];
+    const folderPath = util.postsFolder(config.contentFolder);
+    const searchPage = util.getSearchPage();
 
-    var categories = util.getCategories();
+    const categories = util.getCategories();
 
-    var start = stk.data.isInt(up.paged) ? (up.paged - 1) * postsPerPage : 0;
-    var header = {};
-    var query = getQuery(up, folderPath, categories, header, site);
-
-    //stk.log(query);
+    const start = stk.data.isInt(up.paged) ? (up.paged - 1) * postsPerPage : 0;
+    const header = {};
+    const query = getQuery(up, folderPath, categories, header, site);
 
     // Only put sticky on top on the first page when there are no queries
-    var orderBy = '';
+    let orderBy = '';
     if (Object.keys(up).length == 0 || (Object.keys(up).length == 1 && up.paged)) {
         orderBy = 'data.stickyPost DESC, ';
     }
     orderBy += 'createdTime DESC';
 
-    var results = contentLib.query({
+    const results = contentLib.query({
         start: start,
         count: postsPerPage,
         query: query,
@@ -52,16 +43,16 @@ exports.get = function(req) {
 
     //stk.log(results);
 
-    var hasPosts = results.hits.length > 0? true : false;
+    const hasPosts = results.hits.length > 0? true : false;
 
-    var numMatches = results.total | 0;
+    const numMatches = results.total | 0;
 
     // If the results total is more than the postsPerPage then it will need pagination.
     if (results.total > postsPerPage) {
 
         // Must include other URL params in the pagination links.
-        var urlParams = {};
-        for(var param in up) {
+        const urlParams = {};
+        for(const param in up) {
             if (param != 'paged') {
                 urlParams[param] = up[param];
             }
@@ -92,17 +83,16 @@ exports.get = function(req) {
     }
 
     // Loop through the posts and get the comments, categories and author
-    for (var i = 0; i < results.hits.length; i++) {
-        var data = results.hits[i].data;
+    for (let i = 0; i < results.hits.length; i++) {
+        const data = results.hits[i].data;
         data.title = results.hits[i].displayName;
-        var categoriesArray = [];
+        const categoriesArray = [];
         data.class = 'post-' + results.hits[i]._id + ' post type-post status-publish format-standard hentry';
         if (data.stickyPost && Object.keys(up).length == 0) {
             data.class += ' sticky';
         }
 
-        var date = new Date(results.hits[i].createdTime);
-        date = util.getFormattedDate(date);
+        const date = util.getFormattedDate(new Date(results.hits[i].createdTime));
         data.pubDate = date;
 
         data.path = results.hits[i]._path;
@@ -125,9 +115,9 @@ exports.get = function(req) {
         data.category = data.category ? stk.data.forceArray(data.category) : null;
 
         if (data.category) {
-            for (var j = 0; j < data.category.length; j++) {
+            for (let j = 0; j < data.category.length; j++) {
                 if(data.category[j] && stk.content.exists(data.category[j])) {
-                    var category = util.getCategory({id: data.category[j]}, categories);
+                    const category = util.getCategory({id: data.category[j]}, categories);
                     categoriesArray.push(category);
                     data.class += ' category-' + category._name + ' ';
                 }
@@ -137,7 +127,7 @@ exports.get = function(req) {
         data.categories = categoriesArray.length > 0 ? categoriesArray : null
 
         if (data.featuredImage) {
-            var img = stk.content.get(data.featuredImage);
+            const img = stk.content.get(data.featuredImage);
             data.fImageName = img.displayName;
             data.fImageUrl = portal.imageUrl({
                 id: data.featuredImage,
@@ -150,7 +140,7 @@ exports.get = function(req) {
         posts.push(data);
     }
 
-    var params = {
+    const params = {
         posts: posts,
         site: site,
         searchPage: searchPage,
@@ -170,7 +160,7 @@ exports.get = function(req) {
     //log.info('UTIL log %s', JSON.stringify(up, null, 4));
 
     function getAggregations() {
-        var aggregations = {
+        const aggregations = {
             date: getDateAggregation(),
             cty: getCtyAggregations(),
             author: getAuthorAggregations(),
@@ -181,12 +171,12 @@ exports.get = function(req) {
     }
 
     function getDateAggregation() {
-        var relevantMonths = [];
+        const relevantMonths = [];
 
-        var urlParamsFiltered = clone(up);
+        const urlParamsFiltered = clone(up);
         urlParamsFiltered.m = undefined;
 
-        var result = libs.content.query({
+        const result = contentLib.query({
             //query: "ngram('_allText', '" + searchTerm + "', 'AND') ",
             //query: "ngram('displayName', '" + searchTerm + "', 'AND') ",
             query: getQuery(urlParamsFiltered, folderPath, categories, header, site),
@@ -206,7 +196,7 @@ exports.get = function(req) {
 
         result.aggregations.byMonth.buckets.forEach(function(item) {
             if (item.docCount !== 0) {
-                var monthParts = item.key.split('-');
+                const monthParts = item.key.split('-');
                 item.month = monthParts[1] + monthParts[0];
                 relevantMonths.push(item);
 
@@ -225,10 +215,10 @@ exports.get = function(req) {
 
     function getCtyAggregations() {
 
-        var urlParamsFiltered = clone(up);
+        const urlParamsFiltered = clone(up);
         urlParamsFiltered.cty = undefined;
 
-        var result = libs.content.query({
+        const result = contentLib.query({
             //query: "ngram('_allText', '" + searchTerm + "', 'AND') ",
             //query: "ngram('displayName', '" + searchTerm + "', 'AND') ",
             query: getQuery(urlParamsFiltered, folderPath, categories, header, site),
@@ -268,10 +258,10 @@ exports.get = function(req) {
 
     function getAuthorAggregations() {
 
-        var urlParamsFiltered = clone(up);
+        const urlParamsFiltered = clone(up);
         urlParamsFiltered.author = undefined;
 
-        var result = libs.content.query({
+        const result = contentLib.query({
             //query: "ngram('_allText', '" + searchTerm + "', 'AND') ",
             //query: "ngram('displayName', '" + searchTerm + "', 'AND') ",
             query: getQuery(urlParamsFiltered, folderPath, categories, header, site),
@@ -288,7 +278,7 @@ exports.get = function(req) {
         });
 
         result.aggregations.authors.buckets.forEach(function(item) {
-            var author = getAuthor(item.key);
+            const author = getAuthor(item.key);
             item.displayName = author.displayName;
             item.name = author._name;
 
@@ -304,10 +294,10 @@ exports.get = function(req) {
 
     function getCategoryAggregations() {
 
-        var urlParamsFiltered = clone(up);
+        const urlParamsFiltered = clone(up);
         urlParamsFiltered.cat = undefined;
 
-        var result = libs.content.query({
+        const result = contentLib.query({
             //query: "ngram('_allText', '" + searchTerm + "', 'AND') ",
             //query: "ngram('displayName', '" + searchTerm + "', 'AND') ",
             query: getQuery(urlParamsFiltered, folderPath, categories, header, site),
@@ -324,7 +314,7 @@ exports.get = function(req) {
         });
 
         result.aggregations.categories.buckets.forEach(function(item) {
-            var category = getCategory(item.key);
+            const category = getCategory(item.key);
             item.displayName = category.displayName;
             item.name = category._name;
 
@@ -342,14 +332,14 @@ exports.get = function(req) {
 
     function getAuthor(id) {
 
-        var author = stk.content.get(id);
+        const author = stk.content.get(id);
 
         return author;
     }
 
     function getCategory(id) {
 
-        var category = stk.content.get(id);
+        const category = stk.content.get(id);
 
         return category;
     }
@@ -359,7 +349,7 @@ exports.get = function(req) {
 
 
 
-        var result = libs.content.query({
+        const result = contentLib.query({
             query: "ngram('_allText', '" + searchTerm + "', 'AND') ",
             //query: "ngram('displayName', '" + searchTerm + "', 'AND') ",
             count: 0,
@@ -383,7 +373,7 @@ exports.get = function(req) {
 
 
 
-        var aggregations = result.aggregations.contentTypes.buckets;
+        const aggregations = result.aggregations.contentTypes.buckets;
 
 
         /!**
@@ -391,8 +381,8 @@ exports.get = function(req) {
          * temp
          *!/
 
-        var paginationCount = 10;
-        var paginationStart = 0;
+        const paginationCount = 10;
+        const paginationStart = 0;
         /!**
          * temp end
          *!/
@@ -416,7 +406,7 @@ exports.get = function(req) {
             e.hits = getResults(searchTerm, [e.key], 4, 0);
 
             e.pagination = {
-                url: libs.portal.componentUrl({
+                url: portal.componentUrl({
                     params: {
                         q: searchTerm,
                         preq: true,
@@ -435,7 +425,7 @@ exports.get = function(req) {
     }*/
 
     function getResults(searchTerm, contentTypes, count, start) {
-        var result = libs.content.query({
+        const result = contentLib.query({
             query: "ngram('displayName', '" + searchTerm + "', 'AND') ",
             count: count,
             start: start,
@@ -448,10 +438,10 @@ exports.get = function(req) {
     }
 
     function getTags() {
-        //var site = portal.getSite();
+        //const site = portal.getSite();
 
         // Get all posts that have one or more tags.
-        var result = contentLib.query({
+        const result = contentLib.query({
             start: 0,
             count: 0,
             //query: "_path LIKE '/content" + site._path + "/*'", // Only get tags from this site.
@@ -473,15 +463,14 @@ exports.get = function(req) {
 
         //stk.log(result);
 
-        var buckets = null;
-
+        let buckets = null;
         if (result && result.aggregations && result.aggregations.tags && result.aggregations.tags.buckets) {
             buckets = [];
 
-            var results = result.aggregations.tags.buckets;
+            const results = result.aggregations.tags.buckets;
 
             // Prevent ghost tags from appearing in the part
-            for (var i = 0; i < results.length; i++) {
+            for (let i = 0; i < results.length; i++) {
                 if (results[i].docCount > 0) {
                     buckets.push(results[i]);
                 }
@@ -490,33 +479,33 @@ exports.get = function(req) {
             if (buckets.length > 0) {
 
                 // Make the font sizes
-                var smallest = 8;
-                var largest = 22;
+                const smallest = 8;
+                const largest = 22;
 
                 //Get the max and min counts
-                var newBucket = buckets.slice();
+                const newBucket = buckets.slice();
                 newBucket.sort(function (a, b) {
                     return a.docCount - b.docCount;
                 });
-                var minCount = newBucket[0].docCount; // smallest number for any tag count
-                var maxCount = newBucket[newBucket.length - 1].docCount; // largest number for any tag count
+                const minCount = newBucket[0].docCount; // smallest number for any tag count
+                const maxCount = newBucket[newBucket.length - 1].docCount; // largest number for any tag count
 
                 // The difference between the most used tag and the least used.
-                var spread = maxCount - minCount;
+                let spread = maxCount - minCount;
                 if (spread < 1) {
                     spread = 1
                 }
 
                 // The difference between the largest font and the smallest font
-                var fontSpread = largest - smallest;
+                const fontSpread = largest - smallest;
                 // How much bigger the font will be for each tag count.
-                var fontStep = fontSpread / spread;
+                const fontStep = fontSpread / spread;
 
                 //Bucket logic
-                for (var i = 0; i < buckets.length; i++) {
+                for (let i = 0; i < buckets.length; i++) {
                     buckets[i].tagUrl = util.getSearchPage();
                     buckets[i].title = buckets[i].docCount + ((buckets[i].docCount > 1) ? ' topics' : ' topic');
-                    var fontSize = smallest + (buckets[i].docCount - minCount) * fontStep;
+                    const fontSize = smallest + (buckets[i].docCount - minCount) * fontStep;
                     buckets[i].font = 'font-size: ' + fontSize + 'pt;';
                 }
             }
@@ -531,17 +520,16 @@ exports.get = function(req) {
 
 
 
-    var view = resolve('search-result.html');
+    const view = resolve('search-result.html');
     return stk.view.render(view, params);
 };
 
 
 
-var getQuery = function(up, folderPath, categories, header, site) {
+const getQuery = function(up, folderPath, categories, header, site) {
     // Default query
-    //var query = '_parentPath="/content' + folderPath + '" AND data.slideshow != "true"';
-    var query = '';
-
+    //const query = '_parentPath="/content' + folderPath + '" AND data.slideshow != "true"';
+    let query = '';
 
     //Search filter
     if (up.s) {
@@ -573,7 +561,7 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
         up.cat.forEach(function(item, index, array) {
 
-            //var category = util.getCategory({name: item}, categories);
+            //const category = util.getCategory({name: item}, categories);
 
             //query += '"' + category._id + '"';
 
@@ -594,7 +582,7 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
     //Filter for content types.
     if (up.cty) {
-        var contentTypePrefix = app.name + ':';
+        const contentTypePrefix = app.name + ':';
 
         if (query) {
             query += ' AND ';
@@ -632,12 +620,12 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
         up.author = stk.data.forceArray(up.author);
 
-        /*var authorResult = contentLib.query({
+        /*const authorResult = contentLib.query({
             count: 1,
             query: '_name LIKE "' + up.author + '"',
             contentTypes: [app.name + ':author']
         });
-        var authorContent = authorResult.hits[0];*/
+        const authorContent = authorResult.hits[0];*/
 
         //query += authorContent ? 'data.author LIKE "' + authorContent._id + '"' : 'data.author LIKE "0"';
 
@@ -645,7 +633,7 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
         up.author.forEach(function(item, index, array) {
 
-            //var category = util.getCategory({name: item}, categories);
+            //const category = util.getCategory({name: item}, categories);
 
             query += '"' + item + '"';
 
@@ -663,7 +651,7 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
 
         /*if (authorContent) {
-            var authUrl = portal.pageUrl({
+            const authUrl = portal.pageUrl({
                 path: stk.content.getPath(site._path),
                 params: { author: up.author }
             });
@@ -688,15 +676,15 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
             if (stk.data.isInt(item) && item.length == 6) {
 
-                var year = item.substring(0,4); //Get the year from the querystring
-                var month = item.substring(4,6); //Get the month from the querystring
+                const year = item.substring(0,4); //Get the year from the querystring
+                const month = item.substring(4,6); //Get the month from the querystring
 
                 // Get the last day of the month for the content query
-                var date = new Date(year, month, 0);
-                var lastDay = date.getDate();
+                const date = new Date(year, month, 0);
+                const lastDay = date.getDate();
 
-                var first = year + '-' + month + '-01T00:00:00Z';
-                var last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
+                const first = year + '-' + month + '-01T00:00:00Z';
+                const last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
 
                 query += 'createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
 
@@ -714,15 +702,15 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
 
         // Get the last day of the month for the content query
-        //var date = new Date(year, month, 0);
-        //var lastDay = date.getDate();
+        //const date = new Date(year, month, 0);
+        //const lastDay = date.getDate();
 
-        //var first = year + '-' + month + '-01T00:00:00Z';
-        //var last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
+        //const first = year + '-' + month + '-01T00:00:00Z';
+        //const last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
 
         //query = '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
 
-        //var monthName = util.getMonthName(date);
+        //const monthName = util.getMonthName(date);
         //header.headerText = 'Monthly Archives: ' + monthName + ' ' + year;
     }
 
@@ -732,19 +720,19 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
     /*if (up.m && stk.data.isInt(up.m) && up.m.length == 6) {
 
-        var year = up.m.substring(0,4); //Get the year from the querystring
-        var month = up.m.substring(4,6); //Get the month from the querystring
+        const year = up.m.substring(0,4); //Get the year from the querystring
+        const month = up.m.substring(4,6); //Get the month from the querystring
 
         // Get the last day of the month for the content query
-        var date = new Date(year, month, 0);
-        var lastDay = date.getDate();
+        const date = new Date(year, month, 0);
+        const lastDay = date.getDate();
 
-        var first = year + '-' + month + '-01T00:00:00Z';
-        var last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
+        const first = year + '-' + month + '-01T00:00:00Z';
+        const last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
 
         query = '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
 
-        var monthName = util.getMonthName(date);
+        const monthName = util.getMonthName(date);
         header.headerText = 'Monthly Archives: ' + monthName + ' ' + year;
     }*/
     return query;
@@ -753,7 +741,7 @@ var getQuery = function(up, folderPath, categories, header, site) {
 
 // Used for cloning objects and not only pass by reference
 function clone(obj) {
-    var copy;
+    let copy;
 
     // Handle the 3 simple types, and null or undefined
     if (null == obj || "object" != typeof obj) return obj;
@@ -768,7 +756,7 @@ function clone(obj) {
     // Handle Array
     if (obj instanceof Array) {
         copy = [];
-        for (var i = 0, len = obj.length; i < len; i++) {
+        for (let i = 0, len = obj.length; i < len; i++) {
             copy[i] = clone(obj[i]);
         }
         return copy;
@@ -777,7 +765,7 @@ function clone(obj) {
     // Handle Object
     if (obj instanceof Object) {
         copy = {};
-        for (var attr in obj) {
+        for (const attr in obj) {
             if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
         }
         return copy;
