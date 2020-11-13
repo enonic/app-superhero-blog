@@ -1,9 +1,7 @@
 const stk = require('/lib/stk/stk');
 const portal = require('/lib/xp/portal');
 
-exports.get = handleGet;
-
-function handleGet(req) {
+exports.get = function(req) {
 
     const component = portal.getComponent();
 
