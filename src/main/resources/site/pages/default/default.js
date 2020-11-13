@@ -1,34 +1,37 @@
 var thymeleaf = require('/lib/thymeleaf');
 var menu = require('/lib/menu');
+var stk = require('/lib/stk');
 var portal = require('/lib/xp/portal');
 
-log.info("portal (" +
-	(Array.isArray(portal) ?
-		("array[" + portal.length + "]") :
-		(typeof portal + (portal && typeof portal === 'object' ? (" with keys: " + JSON.stringify(Object.keys(portal))) : ""))
-	) + "): " + JSON.stringify(portal, null, 2)
-);
 
 var view = resolve('default.html');
 
-log.info("Building assetUrls....");
-var assetUrls = {
-    html5Js: portal.assetUrl({path: 'js/html5.js'}),
-    styleCss: portal.assetUrl({path: 'css/style.css'}),
-    enonicCss: portal.assetUrl({path: 'css/enonic.css'}),
-    flexsliderCss: portal.assetUrl({path: 'css/flexslider.css'}),
-    fontCarroisCss: portal.assetUrl({path: 'css/google-font-carrois-gothic.css'}),
-    jqueryJs: portal.assetUrl({path: 'js/jquery-3.3.1.min.js'}),
-    superheroJs: portal.assetUrl({path: 'js/superhero.js'}),
-    flexsliderJs: portal.assetUrl({path: 'js/flexslider-min.js'}),
-};
-log.info("Ok.")
-log.info("assetUrls (" +
-	(Array.isArray(assetUrls) ?
-		("array[" + assetUrls.length + "]") :
-		(typeof assetUrls + (assetUrls && typeof assetUrls === 'object' ? (" with keys: " + JSON.stringify(Object.keys(assetUrls))) : ""))
-	) + "): " + JSON.stringify(assetUrls, null, 2)
-);
+var assetUrls = null;
+function getAssetUrls() {
+    if (!assetUrls) {
+        log.info("Building assetUrls....");
+        var assetUrls = {
+            html5Js: portal.assetUrl({path: 'js/html5.js'}),
+            styleCss: portal.assetUrl({path: 'css/style.css'}),
+            enonicCss: portal.assetUrl({path: 'css/enonic.css'}),
+            flexsliderCss: portal.assetUrl({path: 'css/flexslider.css'}),
+            fontCarroisCss: portal.assetUrl({path: 'css/google-font-carrois-gothic.css'}),
+            jqueryJs: portal.assetUrl({path: 'js/jquery-3.3.1.min.js'}),
+            superheroJs: portal.assetUrl({path: 'js/superhero.js'}),
+            flexsliderJs: portal.assetUrl({path: 'js/flexslider-min.js'}),
+            smallMenuJs: portal.assetUrl({path: 'js/small-menu.js'}),
+            commentReplyJs: portal.assetUrl({path: 'js/comment-reply.min.js'}),
+        };
+        log.info("Ok.")
+        log.info("assetUrls (" +
+            (Array.isArray(assetUrls) ?
+                    ("array[" + assetUrls.length + "]") :
+                    (typeof assetUrls + (assetUrls && typeof assetUrls === 'object' ? (" with keys: " + JSON.stringify(Object.keys(assetUrls))) : ""))
+            ) + "): " + JSON.stringify(assetUrls, null, 2)
+        );
+    }
+    return assetUrls;
+}
 
 
 function buildPageContributions(siteConfig) {
@@ -55,7 +58,7 @@ function buildPageContributions(siteConfig) {
 }
 
 
-function buildBodyClass(site, siteConfig, params) {
+function buildBodyClass(site, siteConfig, content, params) {
     var bodyClass = '';
     if (siteConfig.backgroundImage) {
         bodyClass += 'custom-background ';
@@ -77,12 +80,19 @@ function buildBodyClass(site, siteConfig, params) {
 }
 
 
-function insertMenuItemPageUrls(menuitems) {
+function getPageItemClass(targetPath, currentContentPath) {
+    return targetPath == currentContentPath ? 'current_page_item' : 'page_item';
+}
+
+function insertMenuItemPageUrls(menuitems, contentPath) {
     for (menuItem of menuitems) {
         menuItem.pageUrl = portal.pageUrl({path: menuItem.path});
+        menuItem.class = getPageItemClass(menuItem.path, contentPath);
+
         if (menuItem.children) {
             for (menuItem2 of menuItem.children) {
                 menuItem2.pageUrl = portal.pageUrl({path: menuItem2.path});
+                menuItem2.class = getPageItemClass(menuItem2.path, contentPath);
             }
         }
     }
@@ -92,32 +102,34 @@ function insertMenuItemPageUrls(menuitems) {
 exports.get = function handleGet(req) {
     var params = req.params;
     var site = portal.getSite();
-    var menuItems = menu.getSiteMenu(3);
     var siteConfig = portal.getSiteConfig();
     stk.data.deleteEmptyProperties(siteConfig);
     var content = portal.getContent();
+    log.info("content (" +
+    	(Array.isArray(content) ?
+    		("array[" + content.length + "]") :
+    		(typeof content + (content && typeof content === 'object' ? (" with keys: " + JSON.stringify(Object.keys(content))) : ""))
+    	) + "): " + JSON.stringify(content, null, 2)
+    );
 
-    var footerText = siteConfig.footerText ?
-        portal.processHtml({value: siteConfig.footerText}) :
-        'Configure footer text.';
+
+    var menuItems = menu.getSiteMenu(3);
+    insertMenuItemPageUrls(menuItems, content._path);
 
 
-    siteUrl = portal.pageUrl({path: site._path});
-    insertMenuItemPageUrls(menuItems);
+    var footerText = siteConfig.footerText ? portal.processHtml({value: siteConfig.footerText}) : null;
 
-    /*'<a href="https://enonic.com/" title="Fastest way from idea to ' +
-        'digital experience." rel="generator">Proudly powered by Enonic XP</a> <span class="sep"> | </span> Theme: Superhero by ' +
-        '<a href="https://wordpress.com/themes/" rel="designer">WordPress.com</a>.';*/
 
     var isFragment = content.type === 'portal:fragment';
     var model = {
-        assetUrls: assetUrls,
-        siteUrl: siteUrl,
-        site: site,
-        bodyClass: buildBodyClass(site, siteConfig, params),
+        assetUrls: getAssetUrls(),
+        title: site.displayName,
+        description: site.data.description,
+        bodyClass: buildBodyClass(site, siteConfig, content, params),
         mainRegion: isFragment ? null : content.page.regions['main'],
         isFragment: isFragment,
-        content: content,
+        siteUrl: portal.pageUrl({path: site._path}),
+        menuTopClass: getPageItemClass(site._path, content._path),
         menuItems: menuItems,
         footerText: footerText,
         headerStyle: req.mode == 'edit' ? 'position: absolute;' : null
