@@ -1,18 +1,18 @@
-var stk = require('/lib/stk/stk');
-var portal = require('/lib/xp/portal');
+const stk = require('/lib/stk/stk');
+const portal = require('/lib/xp/portal');
 
 exports.get = handleGet;
 
 function handleGet(req) {
 
-    var component = portal.getComponent();
+    const component = portal.getComponent();
 
-    var params = {
+    const params = {
         component: component,
         leftRegion: component.regions["left"]
     };
 
-    var view = resolve('one-column.html');
+    const view = resolve('one-column.html');
     return stk.view.render(view, params);
 
 }
