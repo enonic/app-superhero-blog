@@ -56,7 +56,7 @@ function getPageItemClass(targetPath, currentContentPath) {
 }
 
 
-function insertPageurlsAndClassesIntoMenuItems(menuItems, contentPath) {
+function mutateMenuItems(menuItems, contentPath) {
     for (menuItem of menuItems) {
         menuItem.pageUrl = portal.pageUrl({path: menuItem.path});
         menuItem.class = getPageItemClass(menuItem.path, contentPath);
@@ -79,7 +79,7 @@ exports.get = function handleGet(request) {
 
 
     var menuItems = menu.getSiteMenu(3);
-    insertPageurlsAndClassesIntoMenuItems(menuItems, content._path);
+    mutateMenuItems(menuItems, content._path);
 
 
     var isFragment = content.type === 'portal:fragment';

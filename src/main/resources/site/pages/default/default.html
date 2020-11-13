@@ -10,11 +10,13 @@
     <script data-th-src="${assetUrls.html5Js}" src="../assets/js/html5.js" type="text/javascript"></script>
     <![endif]-->
 
-    <link rel="stylesheet" id="style-css" data-th-href="${assetUrls.styleCss}" href="../assets/css/style.css" type="text/css" media="all"/>
-    <link rel="stylesheet" id="enonic-css" data-th-href="${assetUrls.enonicCss}"  href="../assets/css/enonic.css" type="text/css" media="all"/>
+    <link rel="stylesheet" data-th-href="${assetUrls.styleCss}" href="../assets/css/style.css" type="text/css" media="all"/>
+    <link rel="stylesheet" data-th-href="${assetUrls.enonicCss}"  href="../assets/css/enonic.css" type="text/css" media="all"/>
     <link rel="stylesheet" data-th-href="${assetUrls.flexsliderCss}"  href="../assets/css/flexslider.css" type="text/css" media="all"/>
-    <link rel="stylesheet" id="superhero-carrois-gothic-css" data-th-href="${assetUrls.fontCarroisCss}" href="https://fonts.googleapis.com/css?family=Carrois+Gothic&amp;ver=4.1-alpha-30340" type="text/css" media="all"/>
-    <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+    <link rel="stylesheet" data-th-href="${assetUrls.fontCarroisCss}" href="https://fonts.googleapis.com/css?family=Carrois+Gothic&amp;ver=4.1-alpha-30340" type="text/css" media="all"/>
+    <style type="text/css">
+        .recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}
+    </style>
 
     <script data-th-src="${assetUrls.jqueryJs}" src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" data-th-src="${assetUrls.superheroJs}" src="../assets/js/superhero.js"></script>
@@ -23,9 +25,8 @@
     <meta name="generator" content="Enonic XP" />
     <meta name="author" content="Enonic" />
 
-    <style data-th-if="${backgroundImageUrl}"
-           data-th-utext="|body.custom-background { background-image: url('${backgroundImageUrl}'); background-repeat: repeat; background-position: top left; background-attachment: scroll;|"
-           type="text/css" id="custom-background-css">
+    <style data-th-if="${backgroundImageUrl}" type="text/css">
+        body.custom-background { background-image: url('[[${backgroundImageUrl}]]'); background-repeat: repeat; background-position: top left; background-attachment: scroll; }
     </style>
 </head>
 
@@ -73,13 +74,7 @@
         <!-- Footer -->
         <div id="colophon-wrap">
             <footer id="colophon" class="site-footer" role="contentinfo">
-                <div class="site-info" data-th-utext="${footerText}">
-                    Configure footer text.
-                    <!--<a href="http://enonic.com/" title="Fastest way from idea to digital experience." rel="generator">Proudly
-                        powered by Enonic XP</a>
-                    <span class="sep"> | </span>
-                    Theme: Superhero by <a href="https://wordpress.com/themes/" rel="designer">WordPress.com</a>.-->
-                </div>
+                <div class="site-info" data-th-utext="${footerText}">Configure footer text.</div>
             </footer>
         </div>
     </div>
