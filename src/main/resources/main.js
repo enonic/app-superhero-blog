@@ -1,8 +1,8 @@
-var projectLib = require('/lib/xp/project');
-var contextLib = require('/lib/xp/context');
-var clusterLib = require('/lib/xp/cluster');
+const projectLib = require('/lib/xp/project');
+const contextLib = require('/lib/xp/context');
+const clusterLib = require('/lib/xp/cluster');
 
-var projectData = {
+const projectData = {
     id: 'sample-blog',
     displayName: 'Superhero Blog',
     description: 'Sample blog site on Enonic XP',
@@ -12,8 +12,8 @@ var projectData = {
     }
 }
 
-var runInContext = function(callback) {
-    var result;
+function runInContext(callback) {
+    let result;
     try {
         result = contextLib.run({
             principals: ["role:system.admin"]
@@ -25,19 +25,19 @@ var runInContext = function(callback) {
     return result;
 }
 
-var createProject = function() {
+function createProject() {
     return projectLib.create(projectData);
 }
 
-var getProject = function() {
+function getProject() {
     return projectLib.get({
         id: projectData.id
     });
 }
 
-var initialize = function() {
+function initialize() {
 
-    var project = runInContext(getProject);
+    let project = runInContext(getProject);
 
     if (!project) {
         log.info('Project "' + projectData.id + '" not found. Creating...');
@@ -57,7 +57,7 @@ var initialize = function() {
 };
 
 function createContent() {
-    var bean = __.newBean('com.enonic.app.superhero.initializer.CreateContent');
+    const bean = __.newBean('com.enonic.app.superhero.initializer.CreateContent');
     bean.projectName = projectData.id;
     return __.toNativeObject(bean.execute());
 }

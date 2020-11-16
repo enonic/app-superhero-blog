@@ -1,30 +1,24 @@
-var stk = require('/lib/stk/stk');
-var util = require('/lib/utilities');
+const stk = require('/lib/stk/stk');
+const util = require('/lib/utilities');
 
-var contentLib = require('/lib/xp/content');
-var portal = require('/lib/xp/portal');
+const contentLib = require('/lib/xp/content');
+const portal = require('/lib/xp/portal');
 
-exports.get = handleGet;
-
-function handleGet(req) {
-    var me = this;
-
+exports.get = function handleGet(req) {
     function renderView() {
-        var view = resolve('categories.html');
-        var model = createModel();
+        const view = resolve('categories.html');
+        const model = createModel();
         return stk.view.render(view, model);
     }
 
     function createModel() {
-        var content = portal.getContent();
-        var component = portal.getComponent();
-        var config = component.config;
-        var title = config.title || 'Categories';
-        var site = portal.getSite();
-        var searchPath = util.getSearchPage();
-        var categories = [];
+        const component = portal.getComponent();
+        const config = component.config;
+        const title = config.title || 'Categories';
+        const searchPath = util.getSearchPage();
+        const categories = [];
 
-        var result = contentLib.query({
+        const result = contentLib.query({
             start: 0,
             count: 1000,
             //query: ,
@@ -34,8 +28,8 @@ function handleGet(req) {
             ]
         });
 
-        for (var i = 0; i < result.hits.length; i++) {
-            var posts = contentLib.query({
+        for (let i = 0; i < result.hits.length; i++) {
+            const posts = contentLib.query({
                 start: 0,
                 count: 1000,
                 query: 'data.category IN ("' + result.hits[i]._id + '")',
@@ -56,7 +50,7 @@ function handleGet(req) {
         }
 
 
-        var model = {
+        const model = {
             categories: categories,
             config: config,
             title: title,

@@ -1,37 +1,37 @@
-var stk = require('/lib/stk/stk');
-var util = require('/lib/utilities');
+const stk = require('/lib/stk/stk');
+const util = require('/lib/utilities');
 
-var contentLib = require('/lib/xp/content');
-var portal = require('/lib/xp/portal');
+const contentLib = require('/lib/xp/content');
+const portal = require('/lib/xp/portal');
 
 exports.get = function(req) {
 
-    var component = portal.getComponent();
-    var config = component.config;
-    var up = req.params; // URL params
-    var content = portal.getContent();
-    var site = portal.getSite();
-    var siteConfig = portal.getSiteConfig();
-    var postsPerPage = siteConfig.numPosts ? siteConfig.numPosts : 10;
-    var newer = null, older = null; // For pagination
-    var posts = [];
-    var folderPath = util.postsFolder(config.contentFolder);
-    var searchPage = util.getSearchPage();
+    const component = portal.getComponent();
+    const config = component.config;
+    const up = req.params; // URL params
+    const content = portal.getContent();
+    const site = portal.getSite();
+    const siteConfig = portal.getSiteConfig();
+    const postsPerPage = siteConfig.numPosts ? siteConfig.numPosts : 10;
+    let newer = null, older = null; // For pagination
+    const posts = [];
+    const folderPath = util.postsFolder(config.contentFolder);
+    const searchPage = util.getSearchPage();
 
-    var categories = util.getCategories();
+    const categories = util.getCategories();
 
-    var start = stk.data.isInt(up.paged) ? (up.paged - 1) * postsPerPage : 0;
-    var header = {};
-    var query = getQuery(up, folderPath, categories, header, site);
+    const start = stk.data.isInt(up.paged) ? (up.paged - 1) * postsPerPage : 0;
+    const header = {};
+    const query = getQuery(up, folderPath, categories, header, site);
 
     // Only put sticky on top on the first page when there are no queries
-    var orderBy = '';
+    let orderBy = '';
     if (Object.keys(up).length == 0 || (Object.keys(up).length == 1 && up.paged)) {
         orderBy = 'data.stickyPost DESC, ';
     }
     orderBy += 'createdTime DESC';
 
-    var results = contentLib.query({
+    const results = contentLib.query({
         start: start,
         count: postsPerPage,
         query: query,
@@ -41,14 +41,14 @@ exports.get = function(req) {
         ]
     });
 
-    var hasPosts = results.hits.length > 0? true : false;
+    const hasPosts = results.hits.length > 0? true : false;
 
     // If the results total is more than the postsPerPage then it will need pagination.
     if (results.total > postsPerPage) {
 
         // Must include other URL params in the pagination links.
-        var urlParams = {};
-        for(var param in up) {
+        const urlParams = {};
+        for(const param in up) {
             if (param != 'paged') {
                 urlParams[param] = up[param];
             }
@@ -79,17 +79,16 @@ exports.get = function(req) {
     }
 
     // Loop through the posts and get the comments, categories and author
-    for (var i = 0; i < results.hits.length; i++) {
-        var data = results.hits[i].data;
+    for (let i = 0; i < results.hits.length; i++) {
+        const data = results.hits[i].data;
         data.title = results.hits[i].displayName;
-        var categoriesArray = [];
+        const categoriesArray = [];
         data.class = 'post-' + results.hits[i]._id + ' post type-post status-publish format-standard hentry';
         if (data.stickyPost && Object.keys(up).length == 0) {
             data.class += ' sticky';
         }
 
-        var date = new Date(results.hits[i].createdTime);
-        date = util.getFormattedDate(date);
+        const date = util.getFormattedDate(new Date(results.hits[i].createdTime));
         data.pubDate = date;
 
         data.path = results.hits[i]._path;
@@ -112,9 +111,9 @@ exports.get = function(req) {
         data.category = data.category ? stk.data.forceArray(data.category) : null;
 
         if (data.category) {
-            for (var j = 0; j < data.category.length; j++) {
+            for (let j = 0; j < data.category.length; j++) {
                 if(data.category[j] && stk.content.exists(data.category[j])) {
-                    var category = util.getCategory({id: data.category[j]}, categories);
+                    const category = util.getCategory({id: data.category[j]}, categories);
                     categoriesArray.push(category);
                     data.class += ' category-' + category._name + ' ';
                 }
@@ -124,7 +123,7 @@ exports.get = function(req) {
         data.categories = categoriesArray.length > 0 ? categoriesArray : null
 
         if (data.featuredImage) {
-            var img = stk.content.get(data.featuredImage);
+            const img = stk.content.get(data.featuredImage);
             data.fImageName = img.displayName;
             data.fImageUrl = portal.imageUrl({
                 id: data.featuredImage,
@@ -137,7 +136,7 @@ exports.get = function(req) {
         posts.push(data);
     }
 
-    var params = {
+    const params = {
         posts: posts,
         site: site,
         searchPage: searchPage,
@@ -146,15 +145,15 @@ exports.get = function(req) {
         headerText: header.headerText,
         hasPosts: hasPosts
     }
-    var view = resolve('post-list.html');
+    const view = resolve('post-list.html');
     return stk.view.render(view, params);
 };
 
 
 
-var getQuery = function(up, folderPath, categories, header, site) {
+const getQuery = function(up, folderPath, categories, header, site) {
     // Default query
-    var query = '_parentPath="/content' + folderPath + '" AND data.slideshow != "true"';
+    let query = '_parentPath="/content' + folderPath + '" AND data.slideshow != "true"';
 
     //Search filter
     if (up.s) {
@@ -173,24 +172,24 @@ var getQuery = function(up, folderPath, categories, header, site) {
     if (up.cat) {
         log.info('STK log %s', categories);
 
-        var category = util.getCategory({name: up.cat}, categories);
+        const category = util.getCategory({name: up.cat}, categories);
         query = 'data.category IN ("' + category._id + '")';
         header.headerText = 'Category Archives: ' + category.displayName;
     }
 
     //Filter for authors
     if (up.author) {
-        var authorResult = contentLib.query({
+        const authorResult = contentLib.query({
             count: 1,
             query: '_name LIKE "' + up.author + '"',
             contentTypes: [app.name + ':author']
         });
-        var authorContent = authorResult.hits[0];
+        const authorContent = authorResult.hits[0];
 
         query = authorContent ? 'data.author LIKE "' + authorContent._id + '"' : 'data.author LIKE "0"';
 
         if (authorContent) {
-            var authUrl = portal.pageUrl({
+            const authUrl = portal.pageUrl({
                 path: stk.content.getPath(site._path),
                 params: { author: up.author }
             });
@@ -203,19 +202,19 @@ var getQuery = function(up, folderPath, categories, header, site) {
     //Filter for monthly archives
     if (up.m && stk.data.isInt(up.m) && up.m.length == 6) {
 
-        var year = up.m.substring(0,4); //Get the year from the querystring
-        var month = up.m.substring(4,6); //Get the month from the querystring
+        const year = up.m.substring(0,4); //Get the year from the querystring
+        const month = up.m.substring(4,6); //Get the month from the querystring
 
         // Get the last day of the month for the content query
-        var date = new Date(year, month, 0);
-        var lastDay = date.getDate();
+        const date = new Date(year, month, 0);
+        const lastDay = date.getDate();
 
-        var first = year + '-' + month + '-01T00:00:00Z';
-        var last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
+        const first = year + '-' + month + '-01T00:00:00Z';
+        const last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
 
         query = '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
 
-        var monthName = util.getMonthName(date);
+        const monthName = util.getMonthName(date);
         header.headerText = 'Monthly Archives: ' + monthName + ' ' + year;
     }
     return query;

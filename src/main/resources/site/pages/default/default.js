@@ -1,18 +1,18 @@
-var thymeleaf = require('/lib/thymeleaf');
-var menu = require('/lib/menu');
-var stk = require('/lib/stk/stk');
-var portal = require('/lib/xp/portal');
+const thymeleaf = require('/lib/thymeleaf');
+const menu = require('/lib/menu');
+const stk = require('/lib/stk/stk');
+const portal = require('/lib/xp/portal');
 
-var view = resolve('default.html');
+const view = resolve('default.html');
 
 
 
 // Creates an assetUrls object on the first rendering.
 // It provides the URLs to all assets used in this page controller and its templates/fragments:
-var assetUrls = null;
+let assetUrls = null;
 function getAssetUrls() {
     if (!assetUrls) {
-        var assetUrls = {
+        assetUrls = {
             html5Js: portal.assetUrl({path: 'js/html5.js'}),
             styleCss: portal.assetUrl({path: 'css/style.css'}),
             enonicCss: portal.assetUrl({path: 'css/enonic.css'}),
@@ -30,7 +30,7 @@ function getAssetUrls() {
 
 
 function buildBodyClass(site, siteConfig, content, params) {
-    var bodyClass = '';
+    let bodyClass = '';
     if (siteConfig.backgroundImage) {
         bodyClass += 'custom-background ';
     }
@@ -72,18 +72,18 @@ function mutateMenuItems(menuItems, contentPath) {
 
 
 exports.get = function handleGet(request) {
-    var site = portal.getSite();
-    var siteConfig = portal.getSiteConfig();
+    const site = portal.getSite();
+    const siteConfig = portal.getSiteConfig();
     stk.data.deleteEmptyProperties(siteConfig);
-    var content = portal.getContent();
+    const content = portal.getContent();
 
 
-    var menuItems = menu.getSiteMenu(3);
+    const menuItems = menu.getSiteMenu(3);
     mutateMenuItems(menuItems, content._path);
 
 
-    var isFragment = content.type === 'portal:fragment';
-    var model = {
+    const isFragment = content.type === 'portal:fragment';
+    const model = {
         assetUrls: getAssetUrls(),
         title: site.displayName,
         description: site.data.description,

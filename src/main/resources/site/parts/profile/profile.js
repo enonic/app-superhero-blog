@@ -1,17 +1,12 @@
-var stk = require('/lib/stk/stk');
-var portal = require('/lib/xp/portal');
-var auth = require('/lib/xp/auth');
-var contentLib = require('/lib/xp/content');
-var thymeleaf = require('/lib/thymeleaf');
+const portal = require('/lib/xp/portal');
+const auth = require('/lib/xp/auth');
+const thymeleaf = require('/lib/thymeleaf');
 
 
-exports.post = handlePost;
-exports.get = handleGet;
 
-function handlePost(req) {
-
+exports.post = function handlePost(req) {
     if(req.params.user && req.params.password) {
-        var result = auth.login({
+        const result = auth.login({
             user: req.params.user,
             password: req.params.password
         });
@@ -24,9 +19,9 @@ function handlePost(req) {
     }
 
     if(req.params.changePassword) {
-        var user = auth.getUser();
+        const user = auth.getUser();
         //check login with old password
-        var userCheck = auth.login({user: user.login, password: req.params.oldpassword});
+        const userCheck = auth.login({user: user.login, password: req.params.oldpassword});
 
         if(req.params.password1 == req.params.password2 && userCheck.authenticated) {
             // If all checks out, change the password and redirect with success param
@@ -53,14 +48,11 @@ function handlePost(req) {
     }
 }
 
-function handleGet(req) {
-    var me = this;
-
+exports.get = function handleGet(req) {
     function createModel() {
-        var component = portal.getComponent();
-        var user = auth.getUser();
+        const user = auth.getUser();
 
-        var model = {};
+        const model = {};
 
         model.user = user;
         model.postUrl = portal.componentUrl({params: {debug: 'true'}});
@@ -73,8 +65,8 @@ function handleGet(req) {
         return model;
     }
 
-    var view = resolve('profile.html');
-    var model = createModel();
+    const view = resolve('profile.html');
+    const model = createModel();
     return {
         body: thymeleaf.render(view, model),
         pageContributions: {

@@ -1,10 +1,7 @@
-var auth = require('/lib/xp/auth');
-var portal = require('/lib/xp/portal');
+const auth = require('/lib/xp/auth');
+const portal = require('/lib/xp/portal');
 
-exports.post = handlePost;
-exports.get = handleGet;
-
-function handlePost(req) {
+exports.post = function(req) {
 
     auth.logout();
 
@@ -13,7 +10,7 @@ function handlePost(req) {
     }
 }
 
-function handleGet(req) {
+exports.get = function(req) {
 
     auth.logout();
 
@@ -24,8 +21,8 @@ function handleGet(req) {
 
 function getRedirect(req) {
 
-    var params = req.params;
-    var redirect;
+    const params = req.params;
+    let redirect;
     if (params.redirectPageKey) {
         redirect = portal.pageUrl({id: params.redirectPageKey});
     } else if (params.redirect) {

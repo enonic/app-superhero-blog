@@ -1,15 +1,13 @@
-var stk = require('/lib/stk/stk');
+const stk = require('/lib/stk/stk');
 
-var portal = require('/lib/xp/portal');
-var thymeleaf = require('/lib/thymeleaf');
+const portal = require('/lib/xp/portal');
+const thymeleaf = require('/lib/thymeleaf');
 
-exports.get = handleGet;
-
-function handleGet(req) {
+exports.get = function handleGet(req) {
 
     function renderView() {
-        var view = resolve('faq-list.html');
-        var model = createModel();
+        const view = resolve('faq-list.html');
+        const model = createModel();
 
         return {
             body: thymeleaf.render(view, model),
@@ -18,12 +16,12 @@ function handleGet(req) {
     }
 
     function createModel() {
-        var component = portal.getComponent();
-        var config = component.config;
-        var isEditMode = req.mode === 'edit';
+        const component = portal.getComponent();
+        const config = component.config;
+        const isEditMode = req.mode === 'edit';
 
-        var faqs = [];
-        var faqConfigs = stk.data.forceArray(config.faqs);
+        let faqs = [];
+        const faqConfigs = stk.data.forceArray(config.faqs);
         faqConfigs.forEach(function(faqConfig) {
             if (faqConfig && faqConfig.question && faqConfig.answer) {
                 faqs.push({
@@ -43,7 +41,7 @@ function handleGet(req) {
             }]
         }
 
-        var model = {
+        const model = {
             title: config.title || null,
             faqs: faqs
         };
