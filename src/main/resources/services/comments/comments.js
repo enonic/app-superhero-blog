@@ -1,40 +1,39 @@
-var stk = require('stk/stk');
-var util = require('utilities');
+const stk = require('stk/stk');
 
-var auth = require('/lib/xp/auth');
-var contentLib = require('/lib/xp/content');
-var portal = require('/lib/xp/portal');
+const auth = require('/lib/xp/auth');
+const contentLib = require('/lib/xp/content');
+const portal = require('/lib/xp/portal');
 
-exports.post = handlePost;
-exports.get = handleGet;
 
-function handlePost(req) {
-    var me = this;
+exports.post = function(req) {
+    const p = req.params;
+    let contentCreated = null;
+    const commentPost = stk.content.get(p.comment_post_ID);
+    const user = auth.getUser();
+    let newComment = null;
 
-    var p = req.params;
-    var contentCreated = null;
-    var commentPost = stk.content.get(p.comment_post_ID);
-    var user = auth.getUser();
-    var newComment = null;
     // comment vars
-    var email = p.email; // Super User doesn't have an email.
+    let email = p.email; // Super User doesn't have an email.
     if(user && !email) {
         email = user.email;
     }
-    var name = p.author;
+
+    let name = p.author;
     if(user && !name) {
         name = user.displayName;
     }
-    var website = p.url;
-    var commentText = p.comment;
-    var commentParent;
-    var body = {};
-    var error = '';
+
+    const website = p.url;
+
+    const commentText = p.comment;
+    let commentParent;
+    const body = {};
+    let error = '';
 
     //Make sure somebody doesn't alter the form to create a comment on a post that doesn't allow comments.
     if(commentPost.data && commentPost.data.enableComments == true) {
-        var saveLocation;
-        var commentsFolder;
+        let saveLocation;
+        let commentsFolder;
 
         // If it's a reply to a comment, saveLocation is the commentParent. Else check for and/or create a "comments" folder
         if(p.comment_parent && stk.content.exists(p.comment_parent)) {
@@ -84,7 +83,7 @@ function handlePost(req) {
 
         } else {
             contentCreated = false;
-            var missing = !email ? 'Email is required. ' : '';
+            let missing = !email ? 'Email is required. ' : '';
             missing += (!user && !p.author) ? 'Name is required. ': '';
             missing += !commentText ? 'Comment text is required. ': '';
             error = missing;
@@ -102,7 +101,7 @@ function handlePost(req) {
         }
     }
 
-    var redirectUrl = portal.pageUrl({
+    let redirectUrl = portal.pageUrl({
         path: commentPost._path,
         params: {
             submitted: contentCreated ? 'ok' : null
@@ -115,6 +114,6 @@ function handlePost(req) {
     }
 }
 
-function handleGet(req) {
+exports.get = function(req) {
     stk.log('This is the GET!');
 }

@@ -1,26 +1,24 @@
-var stk = require('/lib/stk/stk');
-var util = require('/lib/utilities');
-var portal = require('/lib/xp/portal');
+const stk = require('/lib/stk/stk');
+const util = require('/lib/utilities');
+const portal = require('/lib/xp/portal');
 
 exports.get = handleGet;
 
 function handleGet(req) {
-
     function renderView() {
-        var view = resolve('search-form.html');
-        var model = createModel();
+        const view = resolve('search-form.html');
+        const model = createModel();
         return stk.view.render(view, model);
     }
 
     function createModel() {
-        var component = portal.getComponent();
-        var title = component.config.title != '' ? component.config.title : null;
-        var site = portal.getSite();
-        var searchPage = portal.pageUrl({
+        const component = portal.getComponent();
+        const title = component.config.title != '' ? component.config.title : null;
+        const searchPage = portal.pageUrl({
             path: util.getSearchPage()
         });
 
-        var model = {
+        const model = {
             title: title,
             searchPage: searchPage
         }

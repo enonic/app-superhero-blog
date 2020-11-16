@@ -1,32 +1,27 @@
-var stk = require('/lib/stk/stk');
-var util = require('/lib/utilities');
+const stk = require('/lib/stk/stk');
+const util = require('/lib/utilities');
 
-var contentLib = require('/lib/xp/content');
-var portal = require('/lib/xp/portal');
+const contentLib = require('/lib/xp/content');
+const portal = require('/lib/xp/portal');
 
-exports.get = handleGet;
-
-function handleGet(req) {
-    var me = this;
-
+exports.get = function handleGet(req) {
     function renderView() {
-        var view = resolve('archive.html');
-        var model = createModel();
+        const view = resolve('archive.html');
+        const model = createModel();
         return stk.view.render(view, model);
     }
 
     function createModel() {
-        var content = portal.getContent();
-        var component = portal.getComponent();
-        var config = component.config;
-        var title = config.title || 'Archives';
-        var site = portal.getSite();
-        var folderPath = util.postsFolder(config.contentFolder);
+        const component = portal.getComponent();
+        const config = component.config;
+        const title = config.title || 'Archives';
+        const site = portal.getSite();
+        const folderPath = util.postsFolder(config.contentFolder);
 
-        var monthsArray = [];
-        var monthsGroup = {};
+        const monthsArray = [];
+        const monthsGroup = {};
 
-        var result = contentLib.query({
+        const result = contentLib.query({
             start: 0,
             count: 1000,
             query: '_parentPath="/content' + folderPath + '"',
@@ -36,16 +31,16 @@ function handleGet(req) {
             ]
         });
 
-        for (var i = 0; i < result.hits.length; i++) {
+        for (let i = 0; i < result.hits.length; i++) {
 
-            var content = result.hits[i];
-            var date = new Date(content.createdTime);
-            var year = date.getFullYear();
-            var monthName = util.getMonthName(date);
+            const content = result.hits[i];
+            const date = new Date(content.createdTime);
+            const year = date.getFullYear();
+            const monthName = util.getMonthName(date);
 
-            var linkParam = year + content.createdTime.substring(5,7).toString();
-            var linkText = monthName + ' ' + year;
-            var linkUrl = portal.pageUrl({
+            const linkParam = year + content.createdTime.substring(5,7).toString();
+            const linkText = monthName + ' ' + year;
+            const linkUrl = portal.pageUrl({
                 path: util.getSearchPage(),
                 params: {m: linkParam}
             });
@@ -55,23 +50,23 @@ function handleGet(req) {
                 monthsGroup[linkParam].data.count = parseInt(monthsGroup[linkParam].data.count) + 1;
                 monthsGroup[linkParam].data.count = monthsGroup[linkParam].data.count.toString();
             } else {
-                var linkData = {linkParam: linkParam, data: {linkText: linkText, linkUrl: linkUrl, count: '1'}};
+                const linkData = {linkParam: linkParam, data: {linkText: linkText, linkUrl: linkUrl, count: '1'}};
                 monthsGroup[linkParam] = linkData;
             }
 
         }
 
-        for (var linkParamKey in monthsGroup) {
+        for (const linkParamKey in monthsGroup) {
             monthsArray.push(monthsGroup[linkParamKey]);
         }
 
         monthsArray.sort(function (item1, item2) {
-            var param1 = parseInt(item1.linkParam);
-            var param2 = parseInt(item2.linkParam);
+            const param1 = parseInt(item1.linkParam);
+            const param2 = parseInt(item2.linkParam);
             return param2 - param1;
         });
 
-        var model = {
+        const model = {
             months: monthsArray,
             site: site,
             config: config,

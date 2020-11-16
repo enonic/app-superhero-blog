@@ -1,30 +1,26 @@
-var stk = require('/lib/stk/stk');
-var util = require('/lib/utilities');
+const stk = require('/lib/stk/stk');
+const util = require('/lib/utilities');
 
-var contentLib = require('/lib/xp/content');
-var portal = require('/lib/xp/portal');
+const contentLib = require('/lib/xp/content');
+const portal = require('/lib/xp/portal');
 
-exports.get = handleGet;
-
-function handleGet(req) {
-    var me = this;
-
+exports.get = function handleGet(req) {
     function renderView() {
-        var view = resolve('featured.html');
-        var model = createModel();
+        const view = resolve('featured.html');
+        const model = createModel();
         return stk.view.render(view, model);
     }
 
     function createModel() {
 
-        var component = portal.getComponent();
-        var config = component.config;
+        const component = portal.getComponent();
+        const config = component.config;
 
-        var featuredPosts = config.posts? getConfigPosts(config.posts) : getSlideshowPosts();
+        const featuredPosts = config.posts? getConfigPosts(config.posts) : getSlideshowPosts();
 
-        var slides = makeSlides(featuredPosts);
+        const slides = makeSlides(featuredPosts);
 
-        var model = {
+        const model = {
             slides: slides,
             editMode: req.mode == 'edit' ? true : false
         }
@@ -33,12 +29,12 @@ function handleGet(req) {
     }
 
     function makeSlides(hits) {
-        var slides = [];
-        for (var i = 0; i < hits.length; i++) {
-            var content = hits[i];
-            var data = content.data;
-            var slide = {};
-            var imgUrl = portal.imageUrl({
+        const slides = [];
+        for (let i = 0; i < hits.length; i++) {
+            const content = hits[i];
+            const data = content.data;
+            const slide = {};
+            const imgUrl = portal.imageUrl({
                 id: data.featuredImage,
                 scale: 'block(1024,355)'
             });
@@ -54,11 +50,10 @@ function handleGet(req) {
     }
 
     function getSlideshowPosts() {
-        var folderPath = util.postsFolder();
-        var query = '_parentPath="/content' + util.postsFolder() + '" AND data.featuredImage != "" AND data.slideshow = "true"';
-        var orderBy = 'createdTime DESC';
+        const query = '_parentPath="/content' + util.postsFolder() + '" AND data.featuredImage != "" AND data.slideshow = "true"';
+        const orderBy = 'createdTime DESC';
 
-        var results = contentLib.query({
+        const results = contentLib.query({
             start: 0,
             count: 10,
             query: query,
@@ -75,11 +70,11 @@ function handleGet(req) {
         if(!postIDs) {
             return null;
         }
-        var postIDs = stk.data.forceArray(postIDs);
 
-        var query = '_id IN (' + JSON.stringify(postIDs).replace('[','').replace(']','') + ')';
 
-        var results = contentLib.query({
+        const query = '_id IN (' + JSON.stringify(stk.data.forceArray(postIDs)).replace('[','').replace(']','') + ')';
+
+        const results = contentLib.query({
             start: 0,
             count: 10,
             query: query,
@@ -91,11 +86,11 @@ function handleGet(req) {
 
 
     function removeInvalidPosts(posts) {
-        var posts = stk.data.forceArray(posts);
-        var hits = [];
-        for (var i = 0; i < posts.length; i++) {
-            if(posts[i].data.featuredImage) {
-                hits.push(posts[i]);
+        const postsArray = stk.data.forceArray(posts);
+        const hits = [];
+        for (let i = 0; i < postsArray.length; i++) {
+            if(postsArray[i].data.featuredImage) {
+                hits.push(postsArray[i]);
             }
         }
         return hits ? hits : null;
