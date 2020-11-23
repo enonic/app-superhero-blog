@@ -6,5 +6,5 @@
   <allow-child-content>true</allow-child-content>
   <form>
   </form>
-  <mixin name="menu-item"/>
+  <x-data name="menu-item"/>
 </content-type>

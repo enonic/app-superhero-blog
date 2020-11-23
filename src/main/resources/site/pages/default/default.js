@@ -1,5 +1,5 @@
 const thymeleaf = require('/lib/thymeleaf');
-const menu = require('/lib/menu');
+const menuLib = require('/lib/menu');
 const stk = require('/lib/stk/stk');
 const portal = require('/lib/xp/portal');
 
@@ -78,9 +78,23 @@ exports.get = function handleGet(request) {
     const content = portal.getContent();
 
 
-    const menuItems = menu.getSiteMenu(3);
+    const menuItems = menuLib.getMenuTree(3);
+
+    log.info("menuItems PRE (" +
+    	(Array.isArray(menuItems) ?
+    		("array[" + menuItems.length + "]") :
+    		(typeof menuItems + (menuItems && typeof menuItems === 'object' ? (" with keys: " + JSON.stringify(Object.keys(menuItems))) : ""))
+    	) + "): " + JSON.stringify(menuItems, null, 2)
+    );
+
     mutateMenuItems(menuItems, content._path);
 
+    log.info("menuItems POST (" +
+    	(Array.isArray(menuItems) ?
+    		("array[" + menuItems.length + "]") :
+    		(typeof menuItems + (menuItems && typeof menuItems === 'object' ? (" with keys: " + JSON.stringify(Object.keys(menuItems))) : ""))
+    	) + "): " + JSON.stringify(menuItems, null, 2)
+    );
 
     const isFragment = content.type === 'portal:fragment';
     const model = {

@@ -60,5 +60,5 @@
       </items>
     </field-set>
   </form>
-  <mixin name="menu-item"/>
+  <x-data name="menu-item"/>
 </content-type>
