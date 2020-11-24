@@ -60,5 +60,4 @@
       </items>
     </field-set>
   </form>
-  <x-data name="menu-item"/>
 </content-type>

@@ -6,5 +6,4 @@
   <allow-child-content>true</allow-child-content>
   <form>
   </form>
-  <x-data name="menu-item"/>
 </content-type>

@@ -57,12 +57,12 @@ function getPageItemClass(targetPath, currentContentPath) {
 
 
 function mutateMenuItems(menuItems, contentPath) {
-    for (menuItem of menuItems) {
+    for (let menuItem of menuItems) {
         menuItem.pageUrl = portal.pageUrl({path: menuItem.path});
         menuItem.class = getPageItemClass(menuItem.path, contentPath);
 
         if (menuItem.children) {
-            for (menuItem2 of menuItem.children) {
+            for (let menuItem2 of menuItem.children) {
                 menuItem2.pageUrl = portal.pageUrl({path: menuItem2.path});
                 menuItem2.class = getPageItemClass(menuItem2.path, contentPath);
             }
@@ -77,24 +77,9 @@ exports.get = function handleGet(request) {
     stk.data.deleteEmptyProperties(siteConfig);
     const content = portal.getContent();
 
-
     const menuItems = menuLib.getMenuTree(3);
 
-    log.info("menuItems PRE (" +
-    	(Array.isArray(menuItems) ?
-    		("array[" + menuItems.length + "]") :
-    		(typeof menuItems + (menuItems && typeof menuItems === 'object' ? (" with keys: " + JSON.stringify(Object.keys(menuItems))) : ""))
-    	) + "): " + JSON.stringify(menuItems, null, 2)
-    );
-
     mutateMenuItems(menuItems, content._path);
-
-    log.info("menuItems POST (" +
-    	(Array.isArray(menuItems) ?
-    		("array[" + menuItems.length + "]") :
-    		(typeof menuItems + (menuItems && typeof menuItems === 'object' ? (" with keys: " + JSON.stringify(Object.keys(menuItems))) : ""))
-    	) + "): " + JSON.stringify(menuItems, null, 2)
-    );
 
     const isFragment = content.type === 'portal:fragment';
     const model = {
