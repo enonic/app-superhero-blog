@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<site>
+<site xmlns="urn:enonic:xp:model:1.0">
+  <x-data name="menu-item"/>
   <form>
       <input type="ImageSelector" name="backgroundImage">
       <label>Background image</label>
@@ -52,7 +53,6 @@
       <occurrences minimum="0" maximum="1"/>
     </input>
   </form>
-  <x-data name="menu-item"/>
 
   <mappings>
     <mapping controller="/site/pages/default/default.js">
