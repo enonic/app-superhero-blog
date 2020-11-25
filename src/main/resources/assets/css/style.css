@@ -483,12 +483,16 @@ a:active {
 	display: inline-block;
 	position: relative;
 }
-.main-navigation a {
+.main-navigation a,
+.main-navigation p {
 	color: #818181;
 	display: block;
 	font-size: .8em;
 	padding: 3px 20px;
 	text-decoration: none;
+}
+.main-navigation p {
+    cursor: default;
 }
 .main-navigation ul ul {
 	background-color: #141414;
@@ -511,7 +515,8 @@ a:active {
 }
 .main-navigation ul ul li {
 }
-.main-navigation li:hover > a {
+.main-navigation li:hover > a,
+.main-navigation li:hover > p {
 	background-color: #ea5449;
 	color: #fff;
 }

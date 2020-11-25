@@ -1,5 +1,5 @@
 const thymeleaf = require('/lib/thymeleaf');
-const menu = require('/lib/menu');
+const menuLib = require('/lib/menu');
 const stk = require('/lib/stk/stk');
 const portal = require('/lib/xp/portal');
 
@@ -56,31 +56,43 @@ function getPageItemClass(targetPath, currentContentPath) {
 }
 
 
-function mutateMenuItems(menuItems, contentPath) {
-    for (menuItem of menuItems) {
-        menuItem.pageUrl = portal.pageUrl({path: menuItem.path});
-        menuItem.class = getPageItemClass(menuItem.path, contentPath);
+/* Returns an adjusted version of the menu item tree:
+    - Remove the top-level (site) node since we have a header with the site title linking back to the front page
+    - Add a pageUrl field to each item with resolved link target (except folder-type items)
+    - Adds a class field "page_item" to each item, unless the item is the current page, in which case: "current_page_item"
+    - Children of each item are handled recursively
+ */
+function adjustMenuItems(menuItems, contentPath, sitePath) {
+    const adjustedItems = [];
+    for (let menuItem of menuItems) {
+        if (menuItem.path !== sitePath) {
 
-        if (menuItem.children) {
-            for (menuItem2 of menuItem.children) {
-                menuItem2.pageUrl = portal.pageUrl({path: menuItem2.path});
-                menuItem2.class = getPageItemClass(menuItem2.path, contentPath);
+            menuItem.class = getPageItemClass(menuItem.path, contentPath);
+
+            if (menuItem.type !== "base:folder") {
+                menuItem.pageUrl = menuItem.url;
             }
+
+            if (menuItem.children) {
+                menuItem.children = adjustMenuItems(menuItem.children, contentPath, sitePath);
+            }
+
+            adjustedItems.push(menuItem);
         }
     }
+    return adjustedItems;
 }
 
 
 exports.get = function handleGet(request) {
     const site = portal.getSite();
+
     const siteConfig = portal.getSiteConfig();
     stk.data.deleteEmptyProperties(siteConfig);
     const content = portal.getContent();
 
-
-    const menuItems = menu.getSiteMenu(3);
-    mutateMenuItems(menuItems, content._path);
-
+    const menuItems = menuLib.getMenuTree(3);
+    const adjustedMenuItems = adjustMenuItems(menuItems, content._path, site._path);
 
     const isFragment = content.type === 'portal:fragment';
     const model = {
@@ -92,7 +104,7 @@ exports.get = function handleGet(request) {
         isFragment: isFragment,
         siteUrl: portal.pageUrl({path: site._path}),
         menuTopClass: getPageItemClass(site._path, content._path),
-        menuItems: menuItems,
+        menuItems: adjustedMenuItems,
         footerText: siteConfig.footerText ?
             portal.processHtml({value: siteConfig.footerText}) :
             null,

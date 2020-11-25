@@ -20,17 +20,17 @@
 
     <div class="menu">
         <ul>
-            <li class="page_item" data-th-class="${menuTopClass}" >
-                <a data-th-href="${siteUrl}" href="#">Home</a>
-            </li>
             <li data-th-each="menuItem : ${menuItems}"
                 data-th-class="${(menuItem.class) + (menuItem.children ? ' page_item_has_children' : '')}">
-                <a href="#" data-th-href="${menuItem.pageUrl}"
+                <a data-th-if="${menuItem.pageUrl}"
+                   href="#" data-th-href="${menuItem.pageUrl}"
                    data-th-text="${menuItem.menuName} ?: ${menuItem.displayName}">Page</a>
+                <p data-th-unless="${menuItem.pageUrl}"
+                   data-th-text="${menuItem.menuName} ?: ${menuItem.displayName}">Page</p>
                 <ul data-th-if="${menuItem.children}" class="children">
                     <li data-th-each="menuItem2 : ${menuItem.children}"
                         data-th-class="${menuItem2.class}">
-                        <a href="#" data-th-href="${menuItem2.pageUrl})}"
+                        <a href="#" data-th-href="${menuItem2.pageUrl}"
                            data-th-text="${menuItem2.menuName} ?: ${menuItem2.displayName}">Page</a>
                     </li>
                 </ul>

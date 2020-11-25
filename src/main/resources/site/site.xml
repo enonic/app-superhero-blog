@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <site xmlns="urn:enonic:xp:model:1.0">
+  <x-data name="menu-item"/>
   <form>
-    <input type="ImageSelector" name="backgroundImage">
+      <input type="ImageSelector" name="backgroundImage">
       <label>Background image</label>
       <occurrences minimum="0" maximum="1"/>
       <config/>
@@ -61,5 +62,4 @@
       <pattern>.*\/rss</pattern>
     </mapping>
   </mappings>
-
 </site>
