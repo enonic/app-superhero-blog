@@ -73,6 +73,9 @@
                     <string name="footerText">&lt;p&gt;&lt;a title="Fastest way from idea to digital experience." href="https://enonic.com/" target="_blank"&gt;Proudly powered by Enonic XP&lt;/a&gt;&lt;span class="sep"&gt; | &lt;/span&gt;Theme: Superhero by &lt;a href="https://wordpress.com/themes/" target="_blank"&gt;WordPress.com&lt;/a&gt;.&lt;/p&gt;</string>
                     <string name="commentSort">DESC</string>
                 </property-set>
+                <property-set name="menu-item">
+                    <boolean name="menuItem">true</boolean>
+                </property-set>
             </property-set>
         </property-set>
         <property-set name="components">
