@@ -1,32 +1,32 @@
 package com.enonic.app.superhero.initializer;
 
-import java.util.concurrent.Callable;
-import java.util.function.Supplier;
-
-import org.osgi.framework.Bundle;
-import org.osgi.framework.FrameworkUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import com.enonic.xp.app.ApplicationKey;
 import com.enonic.xp.content.ContentConstants;
 import com.enonic.xp.content.ContentPath;
 import com.enonic.xp.content.ContentService;
 import com.enonic.xp.context.Context;
 import com.enonic.xp.context.ContextAccessor;
 import com.enonic.xp.context.ContextBuilder;
-import com.enonic.xp.project.ProjectName;
 import com.enonic.xp.export.ExportService;
 import com.enonic.xp.export.ImportNodesParams;
 import com.enonic.xp.export.NodeImportResult;
 import com.enonic.xp.index.IndexService;
 import com.enonic.xp.lib.content.BaseContextHandler;
 import com.enonic.xp.node.NodePath;
+import com.enonic.xp.project.ProjectName;
 import com.enonic.xp.script.bean.BeanContext;
 import com.enonic.xp.security.RoleKeys;
 import com.enonic.xp.security.User;
 import com.enonic.xp.security.auth.AuthenticationInfo;
 import com.enonic.xp.vfs.VirtualFile;
 import com.enonic.xp.vfs.VirtualFiles;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.concurrent.Callable;
+import java.util.function.Supplier;
 
 public class CreateContent
     extends BaseContextHandler
@@ -75,8 +75,10 @@ public class CreateContent
         }
 
         final Bundle bundle = FrameworkUtil.getBundle( this.getClass() );
+        final ApplicationKey appKey = ApplicationKey.from( bundle );
 
         final VirtualFile source = VirtualFiles.from( bundle, "/import" );
+        final VirtualFile xsltTransformer = VirtualFiles.from( bundle, "/import/replace_app.xsl" );
 
         final NodeImportResult nodeImportResult = this.exportService.get().importNodes( ImportNodesParams.create().
             source( source ).
@@ -84,6 +86,8 @@ public class CreateContent
             includeNodeIds( true ).
             includePermissions( false ).
             dryRun( false ).
+            xslt( xsltTransformer ).
+            xsltParam( "applicationId", appKey.toString() ).
             build() );
 
         logImport( nodeImportResult );
