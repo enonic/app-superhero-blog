@@ -62,8 +62,8 @@ function getPageItemClass(targetPath, currentContentPath) {
     - Adds a class field "page_item" to each item, unless the item is the current page, in which case: "current_page_item"
     - Children of each item are handled recursively
  */
-function getAdjustedMenuItems(menuItems, contentPath, sitePath) {
-    const newMenuItems = [];
+function adjustMenuItems(menuItems, contentPath, sitePath) {
+    const adjustedItems = [];
     for (let menuItem of menuItems) {
         if (menuItem.path !== sitePath) {
 
@@ -74,13 +74,13 @@ function getAdjustedMenuItems(menuItems, contentPath, sitePath) {
             }
 
             if (menuItem.children) {
-                menuItem.children = getAdjustedMenuItems(menuItem.children, contentPath, sitePath);
+                menuItem.children = adjustMenuItems(menuItem.children, contentPath, sitePath);
             }
 
-            newMenuItems.push(menuItem);
+            adjustedItems.push(menuItem);
         }
     }
-    return newMenuItems;
+    return adjustedItems;
 }
 
 
@@ -92,7 +92,7 @@ exports.get = function handleGet(request) {
     const content = portal.getContent();
 
     const menuItems = menuLib.getMenuTree(3);
-    const adjustedMenuItems = getAdjustedMenuItems(menuItems, content._path, site._path);
+    const adjustedMenuItems = adjustMenuItems(menuItems, content._path, site._path);
 
     const isFragment = content.type === 'portal:fragment';
     const model = {
