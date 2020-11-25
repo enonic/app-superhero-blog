@@ -29,9 +29,9 @@ function getAssetUrls() {
 }
 
 
-function buildBodyClass(site, siteConfig, content, params) {
+function buildBodyClass(site, siteConfig, content, params, backgroundImage) {
     let bodyClass = '';
-    if (siteConfig.backgroundImage) {
+    if (backgroundImage) {
         bodyClass += 'custom-background ';
     }
     if ((content._path == site._path) && stk.data.isEmpty(params)) {
@@ -86,31 +86,36 @@ function adjustMenuItems(menuItems, contentPath, sitePath) {
 
 exports.get = function handleGet(request) {
     const site = portal.getSite();
-
     const siteConfig = portal.getSiteConfig();
+
     stk.data.deleteEmptyProperties(siteConfig);
     const content = portal.getContent();
 
     const menuItems = menuLib.getMenuTree(3);
     const adjustedMenuItems = adjustMenuItems(menuItems, content._path, site._path);
 
+    const dashedAppName = app.name.replace(/\./g, "-");
+    const siteCommon = site.x[dashedAppName].siteCommon;
+
+    const backgroundImage = siteCommon.backgroundImage;
+
     const isFragment = content.type === 'portal:fragment';
     const model = {
         assetUrls: getAssetUrls(),
         title: site.displayName,
         description: site.data.description,
-        bodyClass: buildBodyClass(site, siteConfig, content, request.params),
+        bodyClass: buildBodyClass(site, siteConfig, content, request.params, backgroundImage),
         mainRegion: isFragment ? null : content.page.regions['main'],
         isFragment: isFragment,
         siteUrl: portal.pageUrl({path: site._path}),
         menuTopClass: getPageItemClass(site._path, content._path),
         menuItems: adjustedMenuItems,
-        footerText: siteConfig.footerText ?
-            portal.processHtml({value: siteConfig.footerText}) :
+        footerText: siteCommon.footerText ?
+            portal.processHtml({value: siteCommon.footerText}) :
             null,
-        backgroundImageUrl: (siteConfig.backgroundImage) ?
+        backgroundImageUrl: (backgroundImage) ?
             portal.imageUrl({
-                id: siteConfig.backgroundImage,
+                id: backgroundImage,
                 scale: '(1,1)',
                 format: 'jpeg'
             }) :
