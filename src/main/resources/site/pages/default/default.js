@@ -56,30 +56,58 @@ function getPageItemClass(targetPath, currentContentPath) {
 }
 
 
-function mutateMenuItems(menuItems, contentPath) {
+/* Returns an adjusted version of the menu item tree:
+    - Remove the top-level (site) node since we have a header with the site title linking back to the front page
+    - Add a pageUrl field to each item with resolved link target (except folder-type items)
+    - Adds a class field "page_item" to each item, unless the item is the current page, in which case: "current_page_item"
+    - Children of each item are handled recursively
+ */
+function getAdjustedMenuItems(menuItems, contentPath, sitePath) {
+    const newMenuItems = [];
     for (let menuItem of menuItems) {
-        menuItem.pageUrl = portal.pageUrl({path: menuItem.path});
-        menuItem.class = getPageItemClass(menuItem.path, contentPath);
+        if (menuItem.path !== sitePath) {
 
-        if (menuItem.children) {
-            for (let menuItem2 of menuItem.children) {
-                menuItem2.pageUrl = portal.pageUrl({path: menuItem2.path});
-                menuItem2.class = getPageItemClass(menuItem2.path, contentPath);
+            menuItem.class = getPageItemClass(menuItem.path, contentPath);
+
+            if (menuItem.type !== "base:folder") {
+                menuItem.pageUrl = menuItem.url;
             }
+
+            if (menuItem.children) {
+                menuItem.children = getAdjustedMenuItems(menuItem.children, contentPath, sitePath);
+            }
+
+            newMenuItems.push(menuItem);
         }
     }
+    return newMenuItems;
 }
 
 
 exports.get = function handleGet(request) {
     const site = portal.getSite();
+
     const siteConfig = portal.getSiteConfig();
     stk.data.deleteEmptyProperties(siteConfig);
     const content = portal.getContent();
 
     const menuItems = menuLib.getMenuTree(3);
 
-    mutateMenuItems(menuItems, content._path);
+    log.info("menuItems (" +
+    	(Array.isArray(menuItems) ?
+    		("array[" + menuItems.length + "]") :
+    		(typeof menuItems + (menuItems && typeof menuItems === 'object' ? (" with keys: " + JSON.stringify(Object.keys(menuItems))) : ""))
+    	) + "): " + JSON.stringify(menuItems, null, 2)
+    );
+
+    const adjustedMenuItems = getAdjustedMenuItems(menuItems, content._path, site._path);
+
+    log.info("adjustedMenuItems (" +
+    	(Array.isArray(adjustedMenuItems) ?
+    		("array[" + adjustedMenuItems.length + "]") :
+    		(typeof adjustedMenuItems + (adjustedMenuItems && typeof adjustedMenuItems === 'object' ? (" with keys: " + JSON.stringify(Object.keys(adjustedMenuItems))) : ""))
+    	) + "): " + JSON.stringify(adjustedMenuItems, null, 2)
+    );
 
     const isFragment = content.type === 'portal:fragment';
     const model = {
@@ -91,7 +119,7 @@ exports.get = function handleGet(request) {
         isFragment: isFragment,
         siteUrl: portal.pageUrl({path: site._path}),
         menuTopClass: getPageItemClass(site._path, content._path),
-        menuItems: menuItems,
+        menuItems: adjustedMenuItems,
         footerText: siteConfig.footerText ?
             portal.processHtml({value: siteConfig.footerText}) :
             null,
