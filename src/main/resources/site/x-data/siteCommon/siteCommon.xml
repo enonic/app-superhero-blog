@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x-data>
+    <display-name>Site settings</display-name>
+    <form>
+        <input type="ImageSelector" name="backgroundImage">
+            <label>Background image</label>
+            <occurrences minimum="0" maximum="1"/>
+            <config/>
+        </input>
+        <input type="HtmlArea" name="footerText">
+            <label>Footer text</label>
+            <occurrences minimum="0" maximum="1"/>
+        </input>
+        <input type="ComboBox" name="commentSort" >
+            <label>Comments sort</label>
+            <occurrences minimum="1" maximum="1"/>
+            <default>DESC</default>
+            <config>
+                <option value="ASC">Oldest on top</option>
+                <option value="DESC">Newest on top</option>
+            </config>
+        </input>
+    </form>
+</x-data>

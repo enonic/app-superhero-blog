@@ -56,9 +56,12 @@ exports.get = function(req) {
         ]
     });
 
+    const dashedAppName = app.name.replace(/\./g, "-");
+    const siteCommon = site.x[dashedAppName].siteCommon;
+
     const commentsTotal = result.total;
     //const comments = getPostComments(content, siteConfig, postAuthor, 1, null);
-    const comments = getComments(content, siteConfig, postAuthor, 1, null);
+    const comments = getComments(content, siteConfig, siteCommon, postAuthor, 1, null);
     //end comments
 
     const data = content.data;
@@ -126,7 +129,7 @@ exports.get = function(req) {
     return stk.view.render(view, params);
 };
 
-function getComments(post, siteConfig, postAuthor, depth, commentId) {
+function getComments(post, siteConfig, siteCommon, postAuthor, depth, commentId) {
     const comments = [];
     const key = depth == 1 ? post._path + '/comments' : commentId;
 
@@ -134,7 +137,7 @@ function getComments(post, siteConfig, postAuthor, depth, commentId) {
         key: key,
         start: 0,
         count: 1000,
-        sort: 'createdTime ' + siteConfig.commentSort ? siteConfig.commentSort : 'ASC'
+        sort: 'createdTime ' + siteCommon.commentSort ? siteCommon.commentSort : 'ASC'
     });
 
     const contents = result.hits;
@@ -158,7 +161,7 @@ function getComments(post, siteConfig, postAuthor, depth, commentId) {
 
         contents[i].data.replyClick = "return addComment.moveForm('comment-" + contents[i]._id + "', '" + contents[i]._id + "', 'respond', '" + post._id + "')";
 
-        contents[i].data.children = getComments(post, siteConfig, postAuthor, depth + 1, contents[i]._id);
+        contents[i].data.children = getComments(post, siteConfig, siteCommon, postAuthor, depth + 1, contents[i]._id);
 
         comments.push(contents[i]);
     }
