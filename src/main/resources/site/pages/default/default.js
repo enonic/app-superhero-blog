@@ -92,22 +92,7 @@ exports.get = function handleGet(request) {
     const content = portal.getContent();
 
     const menuItems = menuLib.getMenuTree(3);
-
-    log.info("menuItems (" +
-    	(Array.isArray(menuItems) ?
-    		("array[" + menuItems.length + "]") :
-    		(typeof menuItems + (menuItems && typeof menuItems === 'object' ? (" with keys: " + JSON.stringify(Object.keys(menuItems))) : ""))
-    	) + "): " + JSON.stringify(menuItems, null, 2)
-    );
-
     const adjustedMenuItems = getAdjustedMenuItems(menuItems, content._path, site._path);
-
-    log.info("adjustedMenuItems (" +
-    	(Array.isArray(adjustedMenuItems) ?
-    		("array[" + adjustedMenuItems.length + "]") :
-    		(typeof adjustedMenuItems + (adjustedMenuItems && typeof adjustedMenuItems === 'object' ? (" with keys: " + JSON.stringify(Object.keys(adjustedMenuItems))) : ""))
-    	) + "): " + JSON.stringify(adjustedMenuItems, null, 2)
-    );
 
     const isFragment = content.type === 'portal:fragment';
     const model = {
