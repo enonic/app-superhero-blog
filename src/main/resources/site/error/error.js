@@ -32,8 +32,6 @@ exports.handleError = function (err) {
         return;
     }
 
-    const me = this;
-
     function renderView() {
         const model = createModel();
         return stk.view.render(viewGeneric, model);
@@ -46,12 +44,11 @@ exports.handleError = function (err) {
         stk.data.deleteEmptyProperties(siteConfig);
 
         const googleUA = siteConfig.googleUA && siteConfig.googleUA.trim().length > 1 ? siteConfig.googleUA.trim() : null;
-        const footerText = siteConfig.footerText ? portal.processHtml({value: siteConfig.footerText}): 'Configure footer text.';
 
         const model = {
             site: site,
             googleUA: googleUA,
-            footerText: footerText,
+            footerText: '',
             error: err
         }
 
