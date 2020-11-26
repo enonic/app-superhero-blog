@@ -3,14 +3,9 @@
   <display-name>Search form</display-name>
   <description>Simple search bar, redirects to search page</description>
   <form>
-    <field-set>
-      <label>Config</label>
-      <items>
-        <input type="TextLine" name="title">
-          <label>Title</label>
-          <occurrences minimum="0" maximum="1"/>
-        </input>
-      </items>
-    </field-set>
+    <input type="TextLine" name="title">
+      <label>Title</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
   </form>
 </part>

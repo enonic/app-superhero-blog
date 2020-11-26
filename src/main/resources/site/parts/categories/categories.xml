@@ -3,22 +3,17 @@
   <display-name>Categories</display-name>
   <description>Display link list on all categories used in existing blog posts</description>
   <form>
-    <field-set>
-      <label>Config</label>
-      <items>
-        <input type="TextLine" name="title">
-          <label>Title</label>
-          <occurrences minimum="0" maximum="1"/>
-        </input>
-        <input type="Checkbox" name="showPostCount">
-          <label>Show count</label>
-          <occurrences minimum="0" maximum="1"/>
-        </input>
-        <input type="Checkbox" name="showHierarchy">
-          <label>Show hierarchy</label>
-          <occurrences minimum="0" maximum="1"/>
-        </input>
-      </items>
-    </field-set>
+    <input type="TextLine" name="title">
+      <label>Title</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
+    <input type="Checkbox" name="showPostCount">
+      <label>Show count</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
+    <input type="Checkbox" name="showHierarchy">
+      <label>Show hierarchy</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
   </form>
 </part>
