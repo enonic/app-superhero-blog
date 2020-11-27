@@ -266,28 +266,13 @@
         fill="none"
     />
     <path
-        id="path3392"
-        filter="url(#filter3422)"
-        d="m18.656 11.188-2.875 6.3438a0.54138 0.54138 0 0 1 -0.5 0.3125h-13.75l0.5 23.906h43.938l0.5-30.562h-27.812z"
-        transform="translate(0,-1.7)"
-    />
-    <path
         id="rect2550"
         stroke-linejoin="round"
         d="m18.31 10.644-3.0377 6.6541h-14.273l0.5 24.977h45l0.5-31.631h-28.69z"
-        stroke="url(#linearGradient3461)"
+        stroke="#ffffff"
         stroke-linecap="square"
+        stroke-width="3.5%"
         fill="url(#linearGradient3459)"
-    />
-    <path
-        id="path3351"
-        opacity="1"
-        stroke-linejoin="round"
-        d="m18.969 11.688-2.75 6.0625a1.0267 1.0267 0 0 1 -0.9375 0.59375h-13.219l0.437 22.906h43l0.4375-29.562h-26.969z"
-        stroke="url(#linearGradient3463)"
-        stroke-linecap="square"
-        fill="none"
-        transform="matrix(1.02 0 0 1.05 -.5 -1.2)"
     />
     <path
         id="path3375"
