@@ -20,14 +20,14 @@
       >
       <stop
           id="stop3580"
-          stop-color="#2e3436"
+          stop-color="#0000ff"
           offset="0"
       />
       <stop
           id="stop3582"
-          stop-color="#2e3436"
+          stop-color="#0000ff"
           stop-opacity="0"
-          offset="1"
+          offset="0"
       />
     </linearGradient
     >
@@ -37,13 +37,13 @@
       <stop
           id="stop3367"
           stop-color="#ffffff"
-          stop-opacity=".8"
+          stop-opacity="1"
           offset="0"
       />
       <stop
           id="stop3369"
           stop-color="#ffffff"
-          stop-opacity="0"
+          stop-opacity="1"
           offset="1"
       />
     </linearGradient
@@ -68,12 +68,12 @@
       >
       <stop
           id="stop3335"
-          stop-color="#ffffff"
+          stop-color="#333333"
           offset="0"
       />
       <stop
           id="stop3337"
-          stop-color="#555753"
+          stop-color="#333333"
           offset="1"
       />
     </radialGradient
@@ -87,14 +87,14 @@
       >
       <stop
           id="stop3538"
-          stop-color="#ffffff"
-          stop-opacity=".3"
+          stop-color="#333333"
+          stop-opacity="1"
           offset="0"
       />
       <stop
           id="stop3540"
-          stop-color="#ffffff"
-          stop-opacity="0"
+          stop-color="#333333"
+          stop-opacity="1"
           offset="1"
       />
     </linearGradient
@@ -108,13 +108,13 @@
       >
       <stop
           id="stop3343"
-          stop-color="#ffffff"
+          stop-color="#333333"
           offset="0"
       />
       <stop
           id="stop3345"
-          stop-color="#aaaaaa"
-          offset="1"
+          stop-color="#333333"
+          offset="0"
       />
     </linearGradient
     >
@@ -127,12 +127,12 @@
       >
       <stop
           id="stop3438"
-          stop-color="#333333"
+          stop-color="#ffffff"
           offset="0"
       />
       <stop
           id="stop3440"
-          stop-color="#333333"
+          stop-color="#ffffff"
           offset="1"
       />
     </linearGradient
@@ -155,12 +155,13 @@
       >
       <stop
           id="stop3382"
-          stop-color="#ffffff"
+          stop-color="#333333"
           offset="0"
+          stop-opacity="0"
       />
       <stop
           id="stop3384"
-          stop-color="#ffffff"
+          stop-color="#333333"
           stop-opacity="0"
           offset="1"
       />
@@ -195,12 +196,12 @@
       >
       <stop
           id="stop3317"
-          stop-color="#eeeeec"
+          stop-color="#000000"
           offset="0"
       />
       <stop
           id="stop3319"
-          stop-color="#eeeeec"
+          stop-color="#000000"
           stop-opacity="0"
           offset="0"
       />
@@ -223,13 +224,13 @@
       >
       <stop
           id="stop3671"
-          stop-color="#eeeeec"
-          stop-opacity=".8"
+          stop-color="#000000"
+          stop-opacity="0"
           offset="0"
       />
       <stop
           id="stop3673"
-          stop-color="#eeeeec"
+          stop-color="#000000"
           stop-opacity="0"
           offset="1"
       />
@@ -251,7 +252,7 @@
         id="rect2543"
         stroke-linejoin="round"
         d="m1.5 1.2452v41.029h45v-34.514h-18.835l-5.4977-6.5158h-20.667z"
-        stroke="#2e3436"
+        stroke="#333333"
         stroke-linecap="square"
         fill="url(#radialGradient3455)"
     />
@@ -280,16 +281,17 @@
     />
     <path
         id="path3351"
-        opacity=".8"
+        opacity="1"
         stroke-linejoin="round"
         d="m18.969 11.688-2.75 6.0625a1.0267 1.0267 0 0 1 -0.9375 0.59375h-13.219l0.437 22.906h43l0.4375-29.562h-26.969z"
         stroke="url(#linearGradient3463)"
         stroke-linecap="square"
         fill="none"
+        transform="matrix(1.02 0 0 1.05 -.5 -1.2)"
     />
     <path
         id="path3375"
-        opacity=".8"
+        opacity="1"
         fill="url(#linearGradient3465)"
         d="m18.656 11.156-2.9062 6.375c-0.08919 0.17607-0.27142 0.28541-0.46875 0.28125h-13.781l0.3125 15.344c12.19-5.1847 30.417-10.314 44.531-12.75l0.15625-9.25h-27.844z"
     />
@@ -326,20 +328,13 @@
         >
         <path
             id="path2891"
-            fill="#111111"
+            fill="#ffffff"
             d="m23.875 4.1875a0.96721 0.96721 0 0 0 -0.75 0.59375l-5.4062 12.562-13.625 1.25a0.96721 0.96721 0 0 0 -0.53125 1.6875l10.25 9.0312-3 13.344a0.96721 0.96721 0 0 0 1.4375 1.0625l11.75-7 11.75 6.9688a0.96721 0.96721 0 0 0 1.4375 -1.0625l-3-13.312 10.25-9.0312a0.96721 0.96721 0 0 0 -0.53125 -1.6875l-13.625-1.25-5.407-12.563a0.96721 0.96721 0 0 0 -1 -0.59375z"
-            transform="matrix(.76178 0 0 .76178 2.9818 -2.11010)"
+            transform="matrix(.68178 0 0 .68178 2.9818 -2.11010)"
         />
 
       </g
       >
-
-      <path
-          id="path3451"
-          opacity=".6"
-          fill="url(#linearGradient2953)"
-          d="m9.7064 2.5938c-2.7391 0-4.9062 2.1671-4.9062 4.9062v17.156c12.085-5.133 25.681-9.569 39.813-12.531v-4.625c0-2.7391-2.1671-4.9062-4.9062-4.9062h-30z"
-      />
     </g
     >
   </g
