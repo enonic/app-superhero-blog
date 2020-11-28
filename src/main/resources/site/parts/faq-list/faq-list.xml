@@ -3,29 +3,24 @@
   <display-name>FAQ list</display-name>
   <description>List a set of Q and As</description>
   <form>
-    <field-set>
-      <label>Config</label>
+    <input type="TextLine" name="title">
+      <label>Title</label>
+      <occurrences minimum="0" maximum="1"/>
+      <default>FAQ list</default>
+    </input>
+    <item-set name="faqs">
+      <label>FAQ</label>
+      <occurrences minimum="1" maximum="0"/>
       <items>
-          <input type="TextLine" name="title">
-            <label>Title</label>
-            <occurrences minimum="0" maximum="1"/>
-            <default>FAQ list</default>
-          </input>
-          <item-set name="faqs">
-            <label>FAQ</label>
-            <occurrences minimum="1" maximum="0"/>
-            <items>
-              <input type="TextLine" name="question">
-                <label>Question</label>
-                <occurrences minimum="1" maximum="1"/>
-              </input>
-              <input type="TextArea" name="answer">
-                <label>Answer</label>
-                <occurrences minimum="1" maximum="1"/>
-              </input>
-            </items>
-          </item-set>
+        <input type="TextLine" name="question">
+          <label>Question</label>
+          <occurrences minimum="1" maximum="1"/>
+        </input>
+        <input type="TextArea" name="answer">
+          <label>Answer</label>
+          <occurrences minimum="1" maximum="1"/>
+        </input>
       </items>
-    </field-set>
+    </item-set>
   </form>
 </part>

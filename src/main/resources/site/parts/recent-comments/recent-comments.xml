@@ -3,18 +3,13 @@
   <display-name>Recent comments</display-name>
   <description>Link list with the latest comments</description>
   <form>
-    <field-set>
-      <label>Config</label>
-      <items>
-        <input type="TextLine" name="title">
-          <label>Title</label>
-          <occurrences minimum="0" maximum="1"/>
-        </input>
-        <input type="TextLine" name="maxComments">
-          <label>Number of comments</label>
-          <occurrences minimum="0" maximum="1"/>
-        </input>
-      </items>
-    </field-set>
+    <input type="TextLine" name="title">
+      <label>Title</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
+    <input type="TextLine" name="maxComments">
+      <label>Number of comments</label>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
   </form>
 </part>

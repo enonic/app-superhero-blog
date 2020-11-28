@@ -6,14 +6,9 @@
   <allow-child-content>true</allow-child-content>
   <description>Categories to use with blog posts (also groups them)</description>
   <form>
-    <field-set>
-      <label>Category</label>
-      <items>
-        <input type="TextLine" name="name">
-          <label>Name</label>
-          <occurrences minimum="1" maximum="1"/>
-        </input>
-      </items>
-    </field-set>
+    <input type="TextLine" name="name">
+      <label>Name</label>
+      <occurrences minimum="1" maximum="1"/>
+    </input>
   </form>
 </content-type>
