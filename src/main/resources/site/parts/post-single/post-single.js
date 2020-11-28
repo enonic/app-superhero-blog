@@ -6,6 +6,7 @@ const contentLib = require('/lib/xp/content');
 const portal = require('/lib/xp/portal');
 
 exports.get = function(req) {
+    const site = portal.getSite();
     const searchPage = util.getSearchPage();
     const content = portal.getContent();
     const siteConfig = portal.getSiteConfig();
