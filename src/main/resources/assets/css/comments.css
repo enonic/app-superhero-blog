@@ -1,0 +1,110 @@
+
+#discussion {
+    background-color: rgb(243, 243, 243);
+    display: block;
+    /* border: 1px solid black; */
+}
+
+#discussion .singleComment p {
+    background-color: rgb(248, 248, 248);
+    padding: 1em 5px;
+    margin: 0;
+    
+}
+
+#discussion .singleComment .name {
+    font-size: 1.2rem;
+    padding-left: 5px;
+}
+
+#discussion .edit {
+    border: none;
+    background-color: transparent;
+}
+
+#discussion .edit:hover {
+    cursor: pointer;
+    outline: 1px solid black;
+}
+
+#discussion .edit:hover svg .around {
+    fill: rgb(182, 182, 182);
+}
+
+#discussion .edit svg .highlight {
+    fill: white;
+}
+
+#discussion .edit svg .around {
+    fill: white;
+}
+
+#discussion ol {
+    /* border: 1px solid red; */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#discussion ol li {
+    /* border: 1px solid blue; */
+    border-left: 5px solid rgb(101, 131, 194);
+    padding: 10px;
+}
+
+#discussion ol li:hover {
+    background-color: rgb(228, 228, 228);
+}
+
+#discussion .top-level {
+    padding-left: 5px;
+}
+
+#discussion ol {
+    padding-left: 15px;
+}
+
+#discussion .startDiscussion {
+    /* border: 1px solid green; */
+    padding: 10px;
+}
+
+#discussion .createComment {
+    display: block;
+}
+
+#discussion .formSub, #discussion .respond {
+    color: white;
+    background-color: rgb(101, 131, 194);
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+    padding: 5px 15px;
+    box-shadow: 0px 2px 0px rgb(68, 70, 167);
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#latestDiscussion {
+    background-color: rgb(243, 243, 243);
+}
+
+#latestDiscussion .comment {
+    padding: 5px 5px 10px 15px;
+    margin-bottom: 10px;
+}
+
+#latestDiscussion .comment h3 {
+    font-size: 18px;
+    display: block;
+}
+
+#latestDiscussion .comment q {
+    display: block;
+    font-size: 14px;
+    padding: 5px 0px 5px 15px;
+}
+
+#latestDiscussion .time {
+    font-size: 0.8em;
+}

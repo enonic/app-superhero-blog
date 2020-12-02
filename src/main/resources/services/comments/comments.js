@@ -1,119 +1,32 @@
-const stk = require('stk/stk');
-
-const auth = require('/lib/xp/auth');
-const contentLib = require('/lib/xp/content');
-const portal = require('/lib/xp/portal');
-
+const commentLib = require("/lib/comments");
+//const tools = require("/lib/tools");
 
 exports.post = function(req) {
-    const p = req.params;
-    let contentCreated = null;
-    const commentPost = stk.content.get(p.comment_post_ID);
-    const user = auth.getUser();
-    let newComment = null;
+    const params = req.params;
 
-    // comment vars
-    let email = p.email; // Super User doesn't have an email.
-    if(user && !email) {
-        email = user.email;
+    let comment = null;
+    if (params.parent) {
+        comment = commentLib.createComment(params.comment, params.content, params.parent);
     }
-
-    let name = p.author;
-    if(user && !name) {
-        name = user.displayName;
+    else if (params.modify) {
+        comment = commentLib.modifyComment(params.id, params.comment);
     }
-
-    const website = p.url;
-
-    const commentText = p.comment;
-    let commentParent;
-    const body = {};
-    let error = '';
-
-    //Make sure somebody doesn't alter the form to create a comment on a post that doesn't allow comments.
-    if(commentPost.data && commentPost.data.enableComments == true) {
-        let saveLocation;
-        let commentsFolder;
-
-        // If it's a reply to a comment, saveLocation is the commentParent. Else check for and/or create a "comments" folder
-        if(p.comment_parent && stk.content.exists(p.comment_parent)) {
-            commentParent = stk.content.get(p.comment_parent);
-            saveLocation = commentParent._path;
-        } else {
-            //Check for an existing <post>/comments folder. Create one if it does not exist.
-            if(stk.content.exists(commentPost._path + '/comments')) {
-                saveLocation = commentPost._path + '/comments';
-            } else {
-                commentsFolder = contentLib.create({
-                    name: 'comments',
-                    parentPath: commentPost._path,
-                    displayName: 'Comments',
-                    requireValid: true,
-                    contentType: 'base:folder',
-                    data: {}
-                });
-                saveLocation = commentsFolder._path;
-            }
-        }
-
-        // Check required fields and create content
-        if (email && commentText && name) {
-            newComment = contentLib.create({
-                parentPath: saveLocation,
-                displayName: name,
-                requireValid: true,
-                contentType: app.name + ':comment',
-                //branch: 'draft',
-                data: {
-                    name: name,
-                    email: email,
-                    website: website,
-                    comment: commentText,
-                    post: commentPost._id,
-                    commentParent: p.comment_parent.length > 2 ? p.comment_parent : null
-                }
-            });
-
-            if (newComment._id) {
-                contentCreated = true;
-                log.info('Comment content created with id ' + newComment._id);
-            } else {
-                stk.log('Something went wrong creating comment for ' + commentPost.displayName);
-            }
-
-        } else {
-            contentCreated = false;
-            let missing = !email ? 'Email is required. ' : '';
-            missing += (!user && !p.author) ? 'Name is required. ': '';
-            missing += !commentText ? 'Comment text is required. ': '';
-            error = missing;
-            log.info('Required field missing. ' + missing);
-        }
+    else if (params.comment && params.comment.length > 0) {
+        comment = commentLib.createComment(params.comment, params.content);
     }
-
-    if (!contentCreated) {
-        body.success = false;
-        body.error = error;
-
+    if (!comment) {
+        log.warning("Could not create new comment. Request: " + JSON.stringify(req));
         return {
-            contentType: 'application/json',
-            body: body
-        }
+            status: 500,
+            body: "Comment not created. Error is logged on server."
+        };
     }
 
-    let redirectUrl = portal.pageUrl({
-        path: commentPost._path,
-        params: {
-            submitted: contentCreated ? 'ok' : null
-        }
-    });
-    redirectUrl += "#comments";
-
+    const nodeData = commentLib.getNodeData(comment);
     return {
-        redirect: redirectUrl
-    }
-}
-
-exports.get = function(req) {
-    stk.log('This is the GET!');
+        body: {
+            data: nodeData,
+        },
+        contentType: 'application/json'
+    };
 }

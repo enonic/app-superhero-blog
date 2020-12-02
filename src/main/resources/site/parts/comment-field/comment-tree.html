@@ -1,0 +1,29 @@
+<div>
+    <div th:fragment="nestedComment (comments)" th:remove="tag">
+        <!--/*iterate over all comments here*/-->
+        <ol class="top-level">
+            <div th:each="comment : ${ comments }" th:remove="tag">
+                <!--Level 1-->
+                <div th:replace="/site/parts/comment-field/comment-single::single (${ comment} , true)" th:remove="tag"></div>
+                <ol th:if="${ comment.children }">
+                    <div th:each="comment2 : ${ comment.children }" th:remove="tag">
+                        <!--Level 2-->
+                        <div th:replace="/site/parts/comment-field/comment-single::single (${ comment2 }, true)"
+                            th:remove="tag"></div>
+                        <ol th:if="${ comment2.children }" th:attr="data-parentId=${ comment2._id }">
+                            <div th:each="comment3 : ${ comment2.children }" th:remove="tag">
+                                <!--Level 3-->
+                                <div th:replace="/site/parts/comment-field/comment-single::single (${ comment3 }, null)"
+                                    th:remove="tag"></div>
+                            </div>
+                        </ol>
+                    </div>
+                </ol>
+            </div>
+        </ol>
+    </div>
+</div>
+
+<!--!*
+    <div th:if="nextComment.children" th:insert="commentFragment.html::comment (${ nextComment.children })"></div>
+*/-->

@@ -1,0 +1,12 @@
+<section id="discussion" th:if="${ render }">
+    <div th:replace="/site/parts/comment-field/comment-tree::nestedComment (${ discussion })"
+        th:remove="tag"></div>
+    <form class="startDiscussion" autocomplete="off" th:action="${ serviceUrl }">
+
+        <input type="hidden" name="content" th:value="${ currentContent }" />
+
+        <h3 class="headline" th:text="${ locale.newComment }">Post title</h3>
+        <textarea class="createComment" autocomplete="off" name="comment"></textarea>
+        <input class="formSub" type="submit" th:value="${ locale.post }" />
+    </form>
+</section>
