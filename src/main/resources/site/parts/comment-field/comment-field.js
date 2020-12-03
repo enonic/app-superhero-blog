@@ -38,7 +38,7 @@ exports.get = function (ref) {
         serviceUrl: portal.serviceUrl({
             service: "comments",
         }),
-        userId: auth.getUser().key,
+        userId: (auth.getUser() || {}).key,
         locale: {
             reply: localize("comments.replyMessage"),
             newComment: localize("comments.newComment", langCode),
