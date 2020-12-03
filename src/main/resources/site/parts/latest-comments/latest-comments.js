@@ -76,17 +76,7 @@ exports.get = function (req) {
 
     const view = resolve("latest-comments.html");
 
-    const addition = [];
-    const siteConfig = portal.getSiteConfig();
-
-    if (siteConfig.commentsStyle) {
-        addition.push("<link rel='stylesheet' href='" + portal.assetUrl({ path: "css/comments.css" }) + "'/>");
-    }
-
     return {
-        body: thymeleaf.render(view, model),
-        pageContributions: {
-            headEnd: addition,
-        }
+        body: thymeleaf.render(view, model)
     };
 };

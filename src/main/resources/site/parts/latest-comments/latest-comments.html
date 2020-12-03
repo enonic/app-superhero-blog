@@ -1,11 +1,11 @@
-<aside id="latestDiscussion">
-    <h3 th:if="${ headline }" th:text="${ headline }"></h3>
-    <div class="comment" th:each="comment : ${ comments }">
-        <div th:if="${comment}" th:remove="tag">
-            <b class="name" th:text="${ comment.userName }"></b>
-            <time class="time" th:text="${ comment.time }"></time>
-            <q class="text">[[${ comment.text }]]</q>
+<aside id="latestDiscussion" class="widget widget_recent_comments">
+    <h3 class="widget-title" data-th-if="${ headline }" data-th-text="${ headline }"></h3>
+    <div class="comment" data-th-each="comment : ${ comments }">
+        <div data-th-if="${comment}" data-th-remove="tag">
+            <b class="comment-item name" data-th-text="${ comment.userName }"></b>
+            <time class="comment-item time" data-th-text="${ comment.time }"></time>
+            <q class="comment-item text">[[${ comment.text }]]</q>
         </div>
-        <span>[[${ local.on }]] <a th:href="${ comment.contentUrl }" th:text="${ comment.contentName }"></a></span>
+        <span class="comment-item post">[[${ local.on }]] <a data-th-href="${ comment.contentUrl }" data-th-text="${ comment.contentName }"></a></span>
     </div>
 </aside>

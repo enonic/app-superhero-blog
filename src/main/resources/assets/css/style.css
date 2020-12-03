@@ -1109,6 +1109,40 @@ object {
 	vertical-align: top;
 }
 
+.widget_recent_comments .comment .text {
+    width: 100%;
+    font-style: italic;
+}
+
+.widget_recent_comments .comment .comment-item {
+    display: block;
+    line-height: 1.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.widget_recent_comments .comment .name::after {
+    content: ",";
+    margin-right: .5em;
+}
+
+
+.widget_recent_comments .comment .time::after {
+    content: ":";
+}
+
+.widget_recent_comments .comment .name,
+.widget_recent_comments .comment .time {
+    float: left;
+    max-width: 100%;
+}
+
+.widget_recent_comments .comment {
+    display: block;
+    margin-bottom: 1.5em;
+}
+
 #not-found-secondary {
 	overflow: hidden;
 	width: 100%;
