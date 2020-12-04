@@ -67,15 +67,13 @@ $(function () {
         var show = respond.data("showForm");
         var form = respond.siblings($('.startDiscussion'));
 
-        console.log(JSON.stringify(form, null, 2));
-
         //Toggle show on button press
         if (show === "show") {
             form.css("display", "none");
             respond.data("showForm", "hide");
         } else {
             //Check if it has the form under it or not
-            if (form.length == 0) {
+            if (form.length == 1) {
                 var parent = respond.data("parent");
 
                 var newForm = discussion.form.clone();
