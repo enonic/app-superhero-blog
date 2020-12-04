@@ -43,6 +43,7 @@ exports.get = function (ref) {
         locale: {
             reply: localize("comments.replyMessage"),
             newComment: localize("comments.newComment", langCode),
+            edit: localize("comments.edit", langCode),
             post: localize("comments.post", langCode),
             commentsHeading: localize("comments.commentsHeading", langCode),
         },
@@ -54,10 +55,10 @@ exports.get = function (ref) {
         body: thymeleaf.render(view, model),
         pageContributions: {
             headEnd: [
-                "<script src='" + portal.assetUrl({ path: "script/lib/jquery-3.3.1.min.js" }) + "'></script>",
+                `<script src="${portal.assetUrl({ path: "js/lib/jquery-3.3.1.min.js" })}"></script>`,
             ],
             bodyEnd: [
-                "<script src='" + portal.assetUrl({ path: "script/comment-post.js" }) + "'></script>",
+                `<script src="${portal.assetUrl({ path: "js/comment-post.js" })}"></script>`,
             ]
         }
     };

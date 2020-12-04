@@ -66,6 +66,9 @@ $(function () {
         var respond = $(this);
         var show = respond.data("showForm");
         var form = respond.siblings($('.startDiscussion'));
+
+        console.log(JSON.stringify(form, null, 2));
+
         //Toggle show on button press
         if (show === "show") {
             form.css("display", "none");

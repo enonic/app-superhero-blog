@@ -1175,6 +1175,11 @@ object {
     padding: 1.5em 25px 0 25px;
 }
 
+#discussion .singleComment .startDiscussion {
+    margin: 0;
+    padding: 1.5em 25px 0 0;
+}
+
 #discussion .text {
     margin-bottom: .25em;
 }
@@ -1193,6 +1198,7 @@ object {
 }
 #discussion .createComment:focus {
     border-color: #1e4a66;
+    outline-color: #1e4a66;
     box-shadow: none;
 }
 
@@ -1219,14 +1225,16 @@ object {
     margin-bottom: 2em;
 }
 
-#discussion .singleComment .respond {
+#discussion .singleComment .commentButton {
     background-color: transparent;
     border: none;
     color: #ea5449;
     margin: -.5em 0 0 -.75em;
     padding: .5em .75em .75em;
+    font-size: 11.52px;
+    margin-right: 25px;
 }
-#discussion .singleComment .respond:hover {
+#discussion .singleComment .commentButton:hover {
     color: #1e4a66;
 }
 
