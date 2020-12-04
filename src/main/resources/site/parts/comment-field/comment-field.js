@@ -4,7 +4,6 @@ const thymeleaf = require("/lib/thymeleaf");
 const commentLib = require("/lib/comments");
 const auth = require("/lib/xp/auth");
 const i18nLib = require('/lib/xp/i18n');
-//const tools = require("/lib/tools");
 
 const view = resolve("comment-field.html");
 
@@ -24,7 +23,6 @@ function localize(key, locale) {
 //TODO rename comment-field to something better
 exports.get = function (ref) {
     const portalContent = portal.getContent();
-    const siteConfig = portal.getSiteConfig();
 
     const content = contentLib.get({ key: portalContent._id });
     let langCode = content.language;
@@ -32,8 +30,11 @@ exports.get = function (ref) {
     //Lang code is wrongly formated (sometimes)
     langCode = langCode ? langCode.replace(/_/g, '-') : "";
 
+    const discussion = commentLib.getComments(portalContent._id);
+
     const model = {
-        discussion: commentLib.getComments(portalContent._id),
+        discussion: discussion,
+        hasComments: discussion && Object.keys(discussion).length > 0,
         currentContent: content._id,
         serviceUrl: portal.serviceUrl({
             service: "comments",
@@ -43,22 +44,18 @@ exports.get = function (ref) {
             reply: localize("comments.replyMessage"),
             newComment: localize("comments.newComment", langCode),
             post: localize("comments.post", langCode),
+            commentsHeading: localize("comments.commentsHeading", langCode),
         },
     };
 
     model.render = !content.data.commentRemove;
 
-    const headEnd = [
-        "<script src='" + portal.assetUrl({ path: "script/lib/jquery-3.3.1.min.js" }) + "'></script>",
-    ];
-    if (siteConfig.commentsStyle) {
-        headEnd.push("<link rel='stylesheet' href='" + portal.assetUrl({ path: "css/comments.css" }) + "'/>");
-    }
-
     return {
         body: thymeleaf.render(view, model),
         pageContributions: {
-            headEnd: headEnd,
+            headEnd: [
+                "<script src='" + portal.assetUrl({ path: "script/lib/jquery-3.3.1.min.js" }) + "'></script>",
+            ],
             bodyEnd: [
                 "<script src='" + portal.assetUrl({ path: "script/comment-post.js" }) + "'></script>",
             ]

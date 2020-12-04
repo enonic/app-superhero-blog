@@ -1,7 +1,6 @@
 <section id="discussion" data-th-if="${ render }">
-    <div data-th-replace="/site/parts/comment-field/comment-tree::nestedComment (${ discussion })"
+    <div data-th-replace="/site/parts/comment-field/comment-tree::nestedComment (${ discussion }, ${hasComments})"
          data-th-remove="tag"></div>
-
     <form data-th-if="${userId}"
           class="startDiscussion"
           autocomplete="off"
@@ -9,9 +8,8 @@
         <input type="hidden"
                name="content"
                data-th-value="${ currentContent }" />
-
-        <h3 class="headline"
-            data-th-text="${ locale.newComment }">Post title</h3>
+        <h3 class="newCommentHeadline"
+            data-th-text="${ locale.newComment }">New comment</h3>
         <textarea class="createComment"
                   autocomplete="off"
                   name="comment"></textarea>

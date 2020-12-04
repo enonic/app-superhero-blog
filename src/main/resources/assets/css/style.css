@@ -1128,6 +1128,7 @@ object {
 }
 
 
+#discussion .time::after,
 .widget_recent_comments .comment .time::after {
     content: ":";
 }
@@ -1141,6 +1142,92 @@ object {
 .widget_recent_comments .comment {
     display: block;
     margin-bottom: 1.5em;
+}
+
+#discussion .name {
+    font-weight: 700;
+}
+#discussion .name::after {
+    content: ",";
+}
+
+#discussion {
+    background-color: #fff;
+    border-bottom: 5px solid #fff;
+    padding-bottom: 25px;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+#discussion:hover {
+    box-shadow: 0 0 5px rgba(100, 100, 100, 0.5);
+}
+
+#discussion .top-level {
+    margin: 0;
+    padding: .5em 25px 25px;
+}
+
+#discussion .headline,
+#discussion .startDiscussion {
+    margin: 0;
+    padding: 1.5em 25px 0 25px;
+}
+
+#discussion .text {
+    margin-bottom: .25em;
+}
+
+#discussion .top {
+    color: #1e4a66;
+}
+
+#discussion .createComment {
+    margin: 10px 0 20px;
+    box-shadow: inset 0 2px 8px rgba(100, 100, 100, 0.15);
+}
+#discussion .createComment:hover:not(:focus) {
+    border-color: #1e4a66;
+    box-shadow: inset 0 2px 8px rgba(30, 74, 102, 0.15);
+}
+#discussion .createComment:focus {
+    border-color: #1e4a66;
+    box-shadow: none;
+}
+
+#discussion .singleComment {
+    margin-top: .5em;
+    padding-top: .5em;
+    margin-left: -3em;
+    padding-left: 3em;
+    margin-right: -25px;
+}
+
+#discussion .top-level > li > .singleComment {
+    margin-left: -25px;
+    padding-left: 25px;
+}
+
+#discussion .singleComment:hover {
+    background-color: #f8f8f8;
+}
+
+#discussion ol {
+    list-style: none;
+    margin-left: 3em;
+    margin-bottom: 2em;
+}
+
+#discussion .singleComment .respond {
+    background-color: transparent;
+    border: none;
+    color: #ea5449;
+    margin: -.5em 0 0 -.75em;
+    padding: .5em .75em .75em;
+}
+#discussion .singleComment .respond:hover {
+    color: #1e4a66;
 }
 
 #not-found-secondary {

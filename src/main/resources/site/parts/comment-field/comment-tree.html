@@ -1,6 +1,10 @@
 <div>
-    <div data-th-fragment="nestedComment (comments)" data-th-remove="tag">
+    <div data-th-fragment="nestedComment (comments, hasComments)"
+         data-th-if="${hasComments}"
+         data-th-remove="tag">
         <!--/*iterate over all comments here*/-->
+        <h3 class="headline"
+            data-th-text="${ locale.commentsHeading }">Comments</h3>
         <ol class="top-level">
             <div data-th-each="comment : ${ comments }" data-th-remove="tag">
                 <!--Level 1-->
