@@ -1127,6 +1127,12 @@ object {
     margin-right: .5em;
 }
 
+#discussion .comment-anchor::before {
+    content: "";
+    display: block;
+    height: 120px;
+    margin-top: -120px;
+}
 
 #discussion .time::after,
 .widget_recent_comments .comment .time::after {
@@ -1137,11 +1143,13 @@ object {
 .widget_recent_comments .comment .time {
     float: left;
     max-width: 100%;
+    color: #1e4a66;
 }
 
 .widget_recent_comments .comment {
     display: block;
-    margin-bottom: 1.5em;
+    padding: 0 25px;
+    margin: 0 -25px 1.5em -25px;
 }
 
 #discussion .name {
@@ -1182,6 +1190,7 @@ object {
 
 #discussion .text {
     margin-bottom: .25em;
+    padding-right: 25px;
 }
 
 #discussion .top {
@@ -1215,8 +1224,15 @@ object {
     padding-left: 25px;
 }
 
+/*.widget_recent_comments .comment:hover,*/
 #discussion .singleComment:hover {
     background-color: #f8f8f8;
+}
+.widget_recent_comments .comment a {
+    color: inherit;
+}
+.widget_recent_comments .comment a:hover {
+    color: #ea5449;
 }
 
 #discussion ol {

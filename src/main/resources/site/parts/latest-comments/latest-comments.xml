@@ -7,8 +7,9 @@
             <items>
                 <input type="TextLine" name="headline">
                     <label>Title</label>
-                    <default></default>
+                    <default>Latest comments</default>
                     <help-text>The headline text displayed on this part</help-text>
+                    <occurrences minimum="1" maximum="1"></occurrences>
                 </input>
                 <input type="Long" name="size">
                     <label>How many comments to show?</label>
@@ -17,6 +18,7 @@
                         <min>1</min>
                         <max>20</max>
                     </config>
+                    <occurrences minimum="1" maximum="1"></occurrences>
                 </input>
             </items>
         </field-set>
