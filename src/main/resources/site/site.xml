@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <site xmlns="urn:enonic:xp:model:1.0">
   <x-data name="siteCommon" allowContentTypes="portal:site" />
-  <x-data name="menu-item"/>
+  <x-data name="menu-item" allowContentTypes="^(base:shortcut)|(.+:landing-page)$"/>
   <form>
     <input type="TextLine" name="numPosts">
       <label>Max posts per page</label>
