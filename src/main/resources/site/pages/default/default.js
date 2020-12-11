@@ -2,31 +2,9 @@ const thymeleaf = require('/lib/thymeleaf');
 const menuLib = require('/lib/menu');
 const stk = require('/lib/stk/stk');
 const portal = require('/lib/xp/portal');
+const assetUrlCache = require('/lib/assetUrlCache');
 
 const view = resolve('default.html');
-
-
-
-// Creates an assetUrls object on the first rendering.
-// It provides the URLs to all assets used in this page controller and its templates/fragments:
-let assetUrls = null;
-function getAssetUrls() {
-    if (!assetUrls) {
-        assetUrls = {
-            html5Js: portal.assetUrl({path: 'js/html5.js'}),
-            styleCss: portal.assetUrl({path: 'css/style.css'}),
-            enonicCss: portal.assetUrl({path: 'css/enonic.css'}),
-            flexsliderCss: portal.assetUrl({path: 'css/flexslider.css'}),
-            fontCarroisCss: portal.assetUrl({path: 'css/google-font-carrois-gothic.css'}),
-            jqueryJs: portal.assetUrl({path: 'js/lib/jquery-3.3.1.min.js'}),
-            superheroJs: portal.assetUrl({path: 'js/superhero.js'}),
-            flexsliderJs: portal.assetUrl({path: 'js/lib/jquery.flexslider-min.js'}),
-            smallMenuJs: portal.assetUrl({path: 'js/small-menu.js'}),
-            commentReplyJs: portal.assetUrl({path: 'js/comment-reply.min.js'}),
-        };
-    }
-    return assetUrls;
-}
 
 
 function buildBodyClass(site, siteConfig, content, params, backgroundImage) {
@@ -100,7 +78,7 @@ exports.get = function handleGet(request) {
 
     const backgroundImage = siteCommon.backgroundImage;
 
-    const assetUrls = getAssetUrls();
+    const assetUrls = assetUrlCache.getAssetUrls(request.mode, request.branch);
 
     const isFragment = content.type === 'portal:fragment';
     const model = {
@@ -126,18 +104,17 @@ exports.get = function handleGet(request) {
         headerStyle: request.mode == 'edit' ? 'position: absolute;' : null
     };
 
-    // Insert here instead of in the HTML view itself, because some parts add some of these as their own page contribution.
-    // This is the easiest way to prevent duplicates (which cause errors).
-    const headEnd = [
-        `<script src="${assetUrls.jqueryJs}"></script>`,
-        `<script src="${assetUrls.superheroJs}"></script>`,
-        `<script src="${assetUrls.flexsliderJs}"></script>`,
-    ];
 
     return {
         body: thymeleaf.render(view, model),
         pageContributions: {
-            headEnd: headEnd
+            // Insert here instead of in the HTML view itself, because some parts add some of these as their own page contribution.
+            // This is the easiest way to prevent duplicates (which cause errors).
+            headEnd: [
+                `<script src="${assetUrls.jqueryJs}"></script>`,
+                `<script src="${assetUrls.superheroJs}"></script>`,
+                `<script src="${assetUrls.flexsliderJs}"></script>`,
+            ]
         }
     }
 };
