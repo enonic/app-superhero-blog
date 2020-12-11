@@ -4,6 +4,7 @@ const thymeleaf = require("/lib/thymeleaf");
 const commentLib = require("/lib/comments");
 const auth = require("/lib/xp/auth");
 const i18nLib = require('/lib/xp/i18n');
+const assetUrlCache = require('/lib/assetUrlCache');
 
 const view = resolve("comment-field.html");
 
@@ -21,7 +22,7 @@ function localize(key, locale) {
 
 
 //TODO rename comment-field to something better
-exports.get = function (ref) {
+exports.get = function (request) {
     const portalContent = portal.getContent();
 
     const content = contentLib.get({ key: portalContent._id });
@@ -51,14 +52,16 @@ exports.get = function (ref) {
 
     model.render = !content.data.commentRemove;
 
+    const assetUrls = assetUrlCache.getAssetUrls(request.mode, request.branch);
+
     return {
         body: thymeleaf.render(view, model),
         pageContributions: {
             headEnd: [
-                `<script src="${portal.assetUrl({ path: "js/lib/jquery-3.3.1.min.js" })}"></script>`,
+                `<script src="${assetUrls.jqueryJs}"></script>`,
             ],
             bodyEnd: [
-                `<script src="${portal.assetUrl({ path: "js/comment-post.js" })}"></script>`,
+                `<script src="${assetUrls.commentPostJs}"></script>`,
             ]
         }
     };

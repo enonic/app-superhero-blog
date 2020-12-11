@@ -1,7 +1,9 @@
 const portal = require('/lib/xp/portal');
 const auth = require('/lib/xp/auth');
 const thymeleaf = require('/lib/thymeleaf');
+const assetUrlCache = require('/lib/assetUrlCache');
 
+const view = resolve('profile.html');
 
 
 exports.post = function handlePost(req) {
@@ -49,31 +51,29 @@ exports.post = function handlePost(req) {
 }
 
 exports.get = function handleGet(req) {
-    function createModel() {
-        const user = auth.getUser();
 
-        const model = {};
+    const user = auth.getUser();
 
-        model.user = user;
-        model.postUrl = portal.componentUrl({params: {debug: 'true'}});
-        model.redirectTo = req.headers.Referer || portal.pageUrl({id: portal.getSite()._id});
-        model.noMatch = req.params.passwords == 'noMatch' ? true: false;
-        model.passwordChanged = req.params.passwordChanged ? true: false;
-        model.loginFail = req.params.loginFail == 'true' ? true : false;
-        model.oldPWFail = req.params.oldpassword == 'noMatch' ? true: false;
+    const model = {
+        user: user,
+        postUrl: portal.componentUrl({params: {debug: 'true'}}),
+        redirectTo: req.headers.Referer || portal.pageUrl({id: portal.getSite()._id}),
+        noMatch: req.params.passwords == 'noMatch' ? true: false,
+        passwordChanged: req.params.passwordChanged ? true: false,
+        loginFail: req.params.loginFail == 'true' ? true : false,
+        oldPWFail: req.params.oldpassword == 'noMatch' ? true: false,
+    };
 
-        return model;
-    }
+    const assetUrls = assetUrlCache.getAssetUrls(req.mode, req.branch);
 
-    const view = resolve('profile.html');
-    const model = createModel();
     return {
         body: thymeleaf.render(view, model),
         pageContributions: {
-            headEnd: '<link rel="stylesheet" href="' + portal.assetUrl({path: "css/login.min.css"}) + '" type="text/css" media="all"/>' +
-            '<link rel="stylesheet" href="' + portal.assetUrl({path: "css/buttons.min.css"}) + '" type="text/css" media="all"/>' +
-            '<link rel="stylesheet" href="' + portal.assetUrl({path: "css/dashicons.min.css"}) + '" type="text/css" media="all"/>'
+            headEnd: [
+                `<link rel="stylesheet" href="${assetUrls.loginCss}" type="text/css" media="all"/>`,
+                `<link rel="stylesheet" href="${assetUrls.buttonCss}" type="text/css" media="all"/>`,
+                `<link rel="stylesheet" href="${assetUrls.dashiconsCssCss}" type="text/css" media="all"/>`,
+            ]
         }
     }
 }
-
