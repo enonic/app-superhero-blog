@@ -36,12 +36,6 @@
       <label>Disallow login</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
-    <input type="CheckBox" name="commentsStyle">
-      <label>Use default comments style</label>
-      <default>checked</default>
-      <help-text>If you have your own styling turn this off</help-text>
-      <occurrences minimum="0" maximum="1"/>
-    </input>
   </form>
 
   <mappings>
