@@ -1109,6 +1109,135 @@ object {
 	vertical-align: top;
 }
 
+.widget_recent_comments .comment .text {
+    width: 100%;
+    font-style: italic;
+}
+
+.widget_recent_comments .comment .comment-item {
+    display: block;
+    line-height: 1.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.widget_recent_comments .comment .name::after {
+    content: ",";
+    margin-right: .5em;
+}
+
+
+#discussion .time::after,
+.widget_recent_comments .comment .time::after {
+    content: ":";
+}
+
+.widget_recent_comments .comment .name,
+.widget_recent_comments .comment .time {
+    float: left;
+    max-width: 100%;
+}
+
+.widget_recent_comments .comment {
+    display: block;
+    margin-bottom: 1.5em;
+}
+
+#discussion .name {
+    font-weight: 700;
+}
+#discussion .name::after {
+    content: ",";
+}
+
+#discussion {
+    background-color: #fff;
+    border-bottom: 5px solid #fff;
+    padding-bottom: 25px;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+#discussion:hover {
+    box-shadow: 0 0 5px rgba(100, 100, 100, 0.5);
+}
+
+#discussion .top-level {
+    margin: 0;
+    padding: .5em 25px 25px;
+}
+
+#discussion .headline,
+#discussion .startDiscussion {
+    margin: 0;
+    padding: 1.5em 25px 0 25px;
+}
+
+#discussion .singleComment .startDiscussion {
+    margin: 0;
+    padding: 1.5em 25px 0 0;
+}
+
+#discussion .text {
+    margin-bottom: .25em;
+}
+
+#discussion .top {
+    color: #1e4a66;
+}
+
+#discussion .createComment {
+    margin: 10px 0 20px;
+    box-shadow: inset 0 2px 8px rgba(100, 100, 100, 0.15);
+}
+#discussion .createComment:hover:not(:focus) {
+    border-color: #1e4a66;
+    box-shadow: inset 0 2px 8px rgba(30, 74, 102, 0.15);
+}
+#discussion .createComment:focus {
+    border-color: #1e4a66;
+    outline-color: #1e4a66;
+    box-shadow: none;
+}
+
+#discussion .singleComment {
+    margin-top: .5em;
+    padding-top: .5em;
+    margin-left: -3em;
+    padding-left: 3em;
+    margin-right: -25px;
+}
+
+#discussion .top-level > li > .singleComment {
+    margin-left: -25px;
+    padding-left: 25px;
+}
+
+#discussion .singleComment:hover {
+    background-color: #f8f8f8;
+}
+
+#discussion ol {
+    list-style: none;
+    margin-left: 3em;
+    margin-bottom: 2em;
+}
+
+#discussion .singleComment .commentButton {
+    background-color: transparent;
+    border: none;
+    color: #ea5449;
+    margin: -.5em 0 0 -.75em;
+    padding: .5em .75em .75em;
+    font-size: 11.52px;
+    margin-right: 25px;
+}
+#discussion .singleComment .commentButton:hover {
+    color: #1e4a66;
+}
+
 #not-found-secondary {
 	overflow: hidden;
 	width: 100%;
