@@ -57,7 +57,6 @@
             <reference name="category">f4386113-1bee-41c3-9fd9-dd6c04e903bb</reference>
             <string name="post">&lt;p&gt;More of these posts need tags.&lt;/p&gt;</string>
             <string name="tags">Enonic XP</string>
-            <boolean name="enableComments">true</boolean>
             <boolean name="stickyPost">false</boolean>
             <boolean name="slideshow">false</boolean>
         </property-set>

@@ -58,7 +58,6 @@
             <string name="post">&lt;p&gt;These are some buildings I saw the other day, that I think would make for some great hurdles&lt;/p&gt;</string>
             <string name="tags">Buildings</string>
             <string name="tags">Featured</string>
-            <boolean name="enableComments">true</boolean>
             <boolean name="stickyPost">false</boolean>
             <reference name="featuredImage">81b1e3cd-575f-4565-a618-3c85d56224f6</reference>
             <boolean name="slideshow">true</boolean>

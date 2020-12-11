@@ -137,12 +137,12 @@
             <string name="type">part</string>
             <string name="path">/main/1/right/1</string>
             <property-set name="part">
-                <string name="descriptor">com.enonic.app.superhero:recent-comments</string>
+                <string name="descriptor">com.enonic.app.superhero:latest-comments</string>
                 <property-set name="config">
                     <property-set name="com-enonic-app-superhero">
-                        <property-set name="recent-comments">
-                            <string isNull="true" name="title"/>
-                            <string isNull="true" name="maxComments"/>
+                        <property-set name="latest-comments">
+                            <string name="headline">Latest comments</string>
+                            <long name="size">5</long>
                         </property-set>
                     </property-set>
                 </property-set>
@@ -275,7 +275,7 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>components.part.config.com-enonic-app-superhero.recent-comments.*</path>
+                <path>components.part.config.com-enonic-app-superhero.latest-comments.*</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>

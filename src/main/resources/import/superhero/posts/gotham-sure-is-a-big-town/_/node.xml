@@ -57,7 +57,6 @@
             <reference name="category">f4386113-1bee-41c3-9fd9-dd6c04e903bb</reference>
             <string name="post">&lt;p&gt;There is so much area to cover. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non dapibus lectus. Vestibulum eget commodo mi.&lt;br /&gt;Donec in est sed quam ultricies pharetra at vitae quam. Nam dignissim orci accumsan odio bibendum non mattis nisl congue.&lt;br /&gt;Curabitur rutrum pharetra velit, quis feugiat elit consectetur vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in interdum orci.&lt;/p&gt;</string>
             <string name="tags">Featured</string>
-            <boolean name="enableComments">false</boolean>
             <boolean name="stickyPost">false</boolean>
             <reference name="featuredImage">43d54e23-d8ce-4058-befb-777abe1a0d9f</reference>
             <boolean name="slideshow">true</boolean>
