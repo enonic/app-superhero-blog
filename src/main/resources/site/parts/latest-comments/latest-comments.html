@@ -4,7 +4,7 @@
         <div data-th-if="${comment}" data-th-remove="tag">
             <b class="comment-item name" data-th-text="${ comment.userName }"></b>
             <time class="comment-item time" data-th-text="${ comment.time }"></time>
-            <q class="comment-item text">[[${ comment.text }]]</q>
+            <a data-th-href="|${ comment.contentUrl }#comment-${ comment._id }|" class="comment-item text">[[${ comment.text }]]</a>
         </div>
         <span class="comment-item post">[[${ local.on }]] <a data-th-href="${ comment.contentUrl }" data-th-text="${ comment.contentName }"></a></span>
     </div>
