@@ -35,10 +35,6 @@
           <label>Tags</label>
           <occurrences minimum="0" maximum="0"/>
         </input>
-        <input type="Checkbox" name="enableComments">
-          <label>Comments</label>
-          <occurrences minimum="0" maximum="1"/>
-        </input>
         <input type="Checkbox" name="stickyPost">
           <label>Sticky post</label>
           <occurrences minimum="0" maximum="1"/>

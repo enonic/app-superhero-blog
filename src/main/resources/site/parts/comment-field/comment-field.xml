@@ -1,0 +1,5 @@
+<part>
+    <display-name>Comment field</display-name>
+    <description>Input field to write a comment, below the post's latest comments</description>
+    <form></form>
+</part>

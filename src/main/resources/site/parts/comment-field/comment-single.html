@@ -1,0 +1,24 @@
+<div>
+    <div data-th-fragment="single (comment, last)" data-th-remove="tag">
+        <li data-th-id="|comment-${ comment._id }|">
+            <div class="singleComment">
+                <div class="top">
+                    <span class="name" data-th-text="${ comment.userName }"></span>
+                    <time class="time" data-th-text="${ comment.time }"></time>
+                </div>
+                <p class="text" data-th-text="${ comment.text }"></p>
+                <div class="bottom" data-th-if="${userId}">
+                    <!--/* Setting the parent attr to id so its becomes a child element */-->
+                    <button class="commentButton respond"
+                            data-th-if="${last}"
+                            data-th-text="${ locale.reply }"
+                            data-th-attr="data-parent=${ comment._id }">Reply</button>
+                    <button class="commentButton edit"
+                            data-th-attr="data-key=${ comment._id }"
+                            data-th-text="${ locale.edit }"
+                            data-th-if="${ userId == comment.userId }">Edit</button>
+                </div>
+            </div>
+        </li>
+    </div>
+</div>

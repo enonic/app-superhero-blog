@@ -1,0 +1,20 @@
+<section id="discussion" data-th-if="${ render }">
+    <div data-th-replace="/site/parts/comment-field/comment-tree::nestedComment (${ discussion }, ${hasComments})"
+         data-th-remove="tag"></div>
+    <form data-th-if="${userId}"
+          class="startDiscussion"
+          autocomplete="off"
+          data-th-action="${ serviceUrl }">
+        <input type="hidden"
+               name="content"
+               data-th-value="${ currentContent }" />
+        <h3 class="newCommentHeadline"
+            data-th-text="${ locale.newComment }">New comment</h3>
+        <textarea class="createComment"
+                  autocomplete="off"
+                  name="comment"></textarea>
+        <input class="formSub"
+               type="submit"
+               data-th-value="${ locale.post }" />
+    </form>
+</section>

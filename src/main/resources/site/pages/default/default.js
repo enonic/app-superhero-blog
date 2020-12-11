@@ -18,9 +18,9 @@ function getAssetUrls() {
             enonicCss: portal.assetUrl({path: 'css/enonic.css'}),
             flexsliderCss: portal.assetUrl({path: 'css/flexslider.css'}),
             fontCarroisCss: portal.assetUrl({path: 'css/google-font-carrois-gothic.css'}),
-            jqueryJs: portal.assetUrl({path: 'js/jquery-3.3.1.min.js'}),
+            jqueryJs: portal.assetUrl({path: 'js/lib/jquery-3.3.1.min.js'}),
             superheroJs: portal.assetUrl({path: 'js/superhero.js'}),
-            flexsliderJs: portal.assetUrl({path: 'js/jquery.flexslider-min.js'}),
+            flexsliderJs: portal.assetUrl({path: 'js/lib/jquery.flexslider-min.js'}),
             smallMenuJs: portal.assetUrl({path: 'js/small-menu.js'}),
             commentReplyJs: portal.assetUrl({path: 'js/comment-reply.min.js'}),
         };
@@ -100,9 +100,11 @@ exports.get = function handleGet(request) {
 
     const backgroundImage = siteCommon.backgroundImage;
 
+    const assetUrls = getAssetUrls();
+
     const isFragment = content.type === 'portal:fragment';
     const model = {
-        assetUrls: getAssetUrls(),
+        assetUrls: assetUrls,
         title: site.displayName,
         description: site.data.description,
         bodyClass: buildBodyClass(site, siteConfig, content, request.params, backgroundImage),
@@ -124,7 +126,18 @@ exports.get = function handleGet(request) {
         headerStyle: request.mode == 'edit' ? 'position: absolute;' : null
     };
 
+    // Insert here instead of in the HTML view itself, because some parts add some of these as their own page contribution.
+    // This is the easiest way to prevent duplicates (which cause errors).
+    const headEnd = [
+        `<script src="${assetUrls.jqueryJs}"></script>`,
+        `<script src="${assetUrls.superheroJs}"></script>`,
+        `<script src="${assetUrls.flexsliderJs}"></script>`,
+    ];
+
     return {
-        body: thymeleaf.render(view, model)
+        body: thymeleaf.render(view, model),
+        pageContributions: {
+            headEnd: headEnd
+        }
     }
 };
