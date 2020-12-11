@@ -152,7 +152,6 @@
 &lt;p&gt;This stylesheet is going to help so freaking much. &lt;br /&gt;-Blockquote&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;small&gt;&lt;a href="#wrapper"&gt;[top]&lt;/a&gt;&lt;/small&gt;&lt;br /&gt; &lt;!-- End of Sample Content --&gt;&lt;/p&gt;</string>
-            <boolean name="enableComments">false</boolean>
             <boolean name="stickyPost">false</boolean>
             <boolean name="slideshow">false</boolean>
         </property-set>

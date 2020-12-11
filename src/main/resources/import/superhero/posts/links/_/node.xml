@@ -56,7 +56,6 @@
             <reference name="author">22354f06-b64e-48d8-959d-da5f8c27a424</reference>
             <reference name="category">f4386113-1bee-41c3-9fd9-dd6c04e903bb</reference>
             <string name="post">&lt;p&gt;A few well known&amp;nbsp;Enonic links: &lt;a href="https://enonic.com/try-now#t-Download-now" target="_blank"&gt;downloads&lt;/a&gt;, &lt;a href="http://xp.readthedocs.org/en/latest/" target="_blank"&gt;documentation&lt;/a&gt; and the &lt;a href="https://discuss.enonic.com/" target="_blank"&gt;discussion forums&lt;/a&gt;.&lt;/p&gt;</string>
-            <boolean name="enableComments">true</boolean>
             <boolean name="stickyPost">false</boolean>
             <boolean name="slideshow">false</boolean>
             <string name="tags">Enonic XP</string>

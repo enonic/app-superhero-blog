@@ -58,7 +58,6 @@
             <string name="post">&lt;div style="width: 445px;" class="wp-caption alignnone"&gt;&lt;img class="wp-image-59" alt="Boat" src="https://wpdotorg.files.wordpress.com/2008/11/boat.jpg" width="435" height="288" /&gt;&lt;/div&gt;</string>
             <string name="tags">boat</string>
             <string name="tags">lake</string>
-            <boolean name="enableComments">false</boolean>
         </property-set>
     </data>
     <indexConfigs>

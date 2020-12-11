@@ -91,7 +91,6 @@
 &lt;/li&gt;
 &lt;/ol&gt;</string>
             <string name="tags">html</string>
-            <boolean name="enableComments">true</boolean>
             <boolean name="stickyPost">false</boolean>
             <boolean name="slideshow">false</boolean>
         </property-set>

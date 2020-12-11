@@ -57,7 +57,6 @@
             <reference name="category">f4386113-1bee-41c3-9fd9-dd6c04e903bb</reference>
             <string name="post">&lt;p&gt;This is a featured image. See how the picture is large and appears above the title?&lt;/p&gt;</string>
             <string name="tags">Featured</string>
-            <boolean name="enableComments">false</boolean>
             <boolean name="stickyPost">false</boolean>
             <reference name="featuredImage">be1ca151-cf61-4a54-9ea4-c8d01ce83e0e</reference>
             <boolean name="slideshow">false</boolean>

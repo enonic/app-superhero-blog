@@ -59,7 +59,6 @@
             <string name="post">&lt;p&gt;This is an example of a sticky post. It will appear at the top of the first page of the post list and the title will be red.&lt;/p&gt;</string>
             <string name="tags">test</string>
             <string name="tags">sticky</string>
-            <boolean name="enableComments">true</boolean>
             <boolean name="stickyPost">true</boolean>
             <boolean name="slideshow">false</boolean>
         </property-set>
