@@ -91,8 +91,9 @@ exports.get = function handleGet(request) {
     stk.data.deleteEmptyProperties(siteConfig);
     const content = portal.getContent();
 
-    const menuItems = menuLib.getMenuTree(3);
-    const adjustedMenuItems = adjustMenuItems(menuItems, content._path, site._path);
+    const menuItems = menuLib.getMenuTree(1, {});
+
+    const adjustedMenuItems = adjustMenuItems(menuItems.menuItems, content._path, site._path);
 
     const dashedAppName = app.name.replace(/\./g, "-");
     const siteCommon = site.x[dashedAppName].siteCommon;
