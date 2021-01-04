@@ -1,6 +1,7 @@
 const projectLib = require('/lib/xp/project');
 const contextLib = require('/lib/xp/context');
 const clusterLib = require('/lib/xp/cluster');
+const commentsLib = require('/lib/comments');
 
 const projectData = {
     id: 'sample-blog',
@@ -50,6 +51,7 @@ function initialize() {
 
     if (project) {
         createContent();
+        commentsLib.getConnection();
     } else {
         log.error('Project "' + projectData.id + '" failed to be created');
     }
