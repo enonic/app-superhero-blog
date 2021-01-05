@@ -44,14 +44,18 @@ function initialize() {
         log.info('Project "' + projectData.id + '" not found. Creating...');
         project = runInContext(createProject);
 
+
         if (project) {
             log.info('Project "' + projectData.id + '" successfully created');
+        }
+        const didCreate = runInContext(commentsLib.createRepo);
+        if (didCreate) {
+            log.info('Repo "' + commentsLib.REPO_ID + '" successfully created');
         }
     }
 
     if (project) {
         createContent();
-        commentsLib.getConnection();
     } else {
         log.error('Project "' + projectData.id + '" failed to be created');
     }
