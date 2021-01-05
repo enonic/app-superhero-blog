@@ -1,6 +1,7 @@
 const projectLib = require('/lib/xp/project');
 const contextLib = require('/lib/xp/context');
 const clusterLib = require('/lib/xp/cluster');
+const commentsLib = require('/lib/comments');
 
 const projectData = {
     id: 'sample-blog',
@@ -43,8 +44,13 @@ function initialize() {
         log.info('Project "' + projectData.id + '" not found. Creating...');
         project = runInContext(createProject);
 
+
         if (project) {
             log.info('Project "' + projectData.id + '" successfully created');
+        }
+        const didCreate = runInContext(commentsLib.createRepo);
+        if (didCreate) {
+            log.info('Repo "' + commentsLib.REPO_ID + '" successfully created');
         }
     }
 
