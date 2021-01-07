@@ -50,7 +50,7 @@ exports.get = function (req) {
     });
 
     const comments = [];
-
+    let hasComments = false;
     for (let i = 0; i < result.hits.length; i++) {
         const commentId = result.hits[i].id;
         const node = connection.get(commentId);
@@ -64,9 +64,12 @@ exports.get = function (req) {
         comments[i] = commentLib.getNodeData(node);
         comments[i].contentUrl = portal.pageUrl({ id: node.content });
         comments[i].contentName = contentLib.get({ key: node.content }).displayName;
+
+        hasComments = true;
     }
 
     const model = {
+        hasComments: hasComments,
         comments: comments,
         headline: headline,
         local: {
