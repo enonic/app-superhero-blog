@@ -6,13 +6,18 @@ const portal = require('/lib/xp/portal');
 const i18n = require('/lib/xp/i18n');
 //const tools = require('/lib/tools');
 
+const DEFAULTS = {
+    size: 5,
+    headline: "Latest comments"
+};
+
 exports.get = function (req) {
     const content = portal.getComponent();
 
     const siteContent = portal.getContent();
 
-    const size = content.config.size;
-    const headline = content.config.headline;
+    const size = content.config.size || DEFAULTS.size;
+    const headline = ((content.config.headline || '') + '').trim() || DEFAULTS.headline;
 
     let langCode = siteContent.language;
     if (langCode)
