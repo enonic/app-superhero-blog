@@ -1,9 +1,10 @@
 const stk = require('/lib/stk/stk');
 const util = require('/lib/utilities');
 
-const auth = require('/lib/xp/auth');
 const contentLib = require('/lib/xp/content');
 const portal = require('/lib/xp/portal');
+
+const CONTENTTYPE_POST = app.name + ':post';
 
 exports.get = function(req) {
     const searchPage = util.getSearchPage();
@@ -24,7 +25,7 @@ exports.get = function(req) {
             count: 1,
             query: '_parentPath="/content' + folderPath + '" AND createdTime < instant("' + content.createdTime + '")',
             sort: 'createdTime DESC',
-            contentTypes: [app.name + ':post']
+            contentTypes: [CONTENTTYPE_POST]
         });
 
         next = contentLib.query({
@@ -32,64 +33,77 @@ exports.get = function(req) {
             count: 1,
             query: '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + content.createdTime + '")',
             sort: 'createdTime ASC',
-            contentTypes: [app.name + ':post']
+            contentTypes: [CONTENTTYPE_POST]
         });
     }
     //End pagination
 
-    const data = content.data;
+    const post = content.data;
     const categoriesArray = [];
     const categories = util.getCategories();
 
-    if (content.type == app.name + ':post') {
-        data.title = content.displayName;
-        data.path = content._path;
-        data.id = content._id;
-        data.createdTime = content.createdTime;
-        data.author = data.author ? stk.content.get(data.author) : data.author;
-        data.pubDate = util.getFormattedDate(new Date(content.createdTime));
+    if (content.type === CONTENTTYPE_POST) {
+        post.title = content.displayName;
+        post.path = content._path;
+        post.id = content._id;
 
-        data.class = 'post-' + content._id + ' post type-post status-publish format-standard hentry';
+        post.author = post.author ? stk.content.get(post.author) : post.author;
 
-        data.category = data.category ? stk.data.forceArray(data.category) : null;
+        if (content.createdTime) {
+            const createdDate = new Date(
+                // Recent versions of XP adds decimals at the end of the content creation date string.
+                // These decimals are incompatible with "new Date" here (nashorn - although it works in node!) so remove them.
+                content.createdTime.replace(/\.\d+(Z?)$/, "$1")
+            );
 
-        if(data.category) {
-            for(let i = 0; i < data.category.length; i++) {
-                if(data.category[i] && stk.content.exists(data.category[i])) {
+            if (createdDate) {
+                post.pubDatetime = JSON.stringify(createdDate);
+                post.pubDate = util.getFormattedDate(createdDate);
+            }
+        }
+
+        post.class = 'post-' + content._id + ' post type-post status-publish format-standard hentry';
+
+        post.category = post.category ? stk.data.forceArray(post.category) : null;
+
+        if(post.category) {
+            for(let i = 0; i < post.category.length; i++) {
+                if(post.category[i] && stk.content.exists(post.category[i])) {
                     //const category = stk.content.get(data.category[i]);
-                    const category = util.getCategory({id: data.category[i]}, categories);
+                    const category = util.getCategory({id: post.category[i]}, categories);
                     categoriesArray.push(category);
-                    data.class += ' category-' + category._name + ' ';
+                    post.class += ' category-' + category._name + ' ';
                 }
             }
         }
 
-        data.categories = categoriesArray.length > 0 ? categoriesArray : null;
+        post.categories = categoriesArray.length > 0 ? categoriesArray : null;
 
-        if (data.featuredImage) {
+        if (post.featuredImage) {
             let scale = 'width(695)';
             if (content.page.regions.main.components[0].descriptor == app.name + ':one-column') {
                 scale = 'width(960)';
             }
-            const img = stk.content.get(data.featuredImage);
-            data.fImageName = img.displayName;
-            data.fImageUrl = portal.imageUrl({
-                id: data.featuredImage,
+            const img = stk.content.get(post.featuredImage);
+            post.fImageName = img.displayName;
+            post.fImageUrl = portal.imageUrl({
+                id: post.featuredImage,
                 scale: scale,
                 format: 'jpeg'
             });
         }
 
-        stk.data.deleteEmptyProperties(content.data);
+        stk.data.deleteEmptyProperties(post);
     }
 
-    const params = {
-        post: content.data,
+    const model = {
+        post: post,
         pageTemplate: content.type === 'portal:page-template',
         content: content,
         prev: (prev && prev.hits) ? prev.hits[0] : null,
         next: (next && next.hits) ? next.hits[0] : null,
         searchPage: searchPage,
     };
-    return stk.view.render(view, params);
+
+    return stk.view.render(view, model);
 };
