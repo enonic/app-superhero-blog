@@ -36,21 +36,15 @@ function getProject() {
     });
 }
 
-function initialize() {
-
+function initializeProject() {
     let project = runInContext(getProject);
 
     if (!project) {
         log.info('Project "' + projectData.id + '" not found. Creating...');
         project = runInContext(createProject);
 
-
         if (project) {
             log.info('Project "' + projectData.id + '" successfully created');
-        }
-        const didCreate = runInContext(commentsLib.createRepo);
-        if (didCreate) {
-            log.info('Repo "' + commentsLib.REPO_ID + '" successfully created');
         }
     }
 
@@ -59,8 +53,8 @@ function initialize() {
     } else {
         log.error('Project "' + projectData.id + '" failed to be created');
     }
+}
 
-};
 
 function createContent() {
     const bean = __.newBean('com.enonic.app.superhero.initializer.CreateContent');
@@ -69,5 +63,6 @@ function createContent() {
 }
 
 if (clusterLib.isMaster()) {
-    initialize();
+    initializeProject();
+    runInContext(commentsLib.initializeRepo);
 }
