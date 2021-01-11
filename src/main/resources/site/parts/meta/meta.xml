@@ -3,15 +3,13 @@
   <display-name>Meta</display-name>
   <description>Link list with custom links</description>
   <form>
-    <field-set>
-      <label>Config</label>
-      <items>
-        <input type="TextLine" name="title">
-          <label>Title</label>
-          <occurrences minimum="0" maximum="1"/>
-        </input>
-      </items>
-    </field-set>
+
+    <input type="TextLine" name="title">
+      <label>Title</label>
+      <help-text>Override the default title (default: "Meta")</help-text>
+      <occurrences minimum="0" maximum="1"/>
+    </input>
+
     <field-set>
       <label>Links</label>
       <items>
