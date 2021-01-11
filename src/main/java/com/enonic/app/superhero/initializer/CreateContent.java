@@ -25,6 +25,7 @@ import org.osgi.framework.FrameworkUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.function.Supplier;
 
@@ -107,11 +108,16 @@ public class CreateContent
         nodeImportResult.getExportedBinaries().forEach( LOG::info );
 
         LOG.info( "-------------------" );
-        LOG.info( "Errors:" );
-        for ( final NodeImportResult.ImportError importError : nodeImportResult.getImportErrors() )
-        {
-            LOG.info( importError.getMessage(), importError.getException() );
+
+        final List<NodeImportResult.ImportError> errors = nodeImportResult.getImportErrors();
+        if (errors != null && errors.size() > 0) {
+            LOG.warn( "Errors:" );
+            for ( final NodeImportResult.ImportError importError : errors ) {
+                LOG.warn( importError.getMessage(), importError.getException() );
+            }
+            LOG.info( "-------------------" );
         }
+
     }
 
     private boolean hasContent( final ContentPath path )
