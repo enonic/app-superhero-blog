@@ -10,6 +10,7 @@ exports.getComments = getComments;
 exports.getComment = getComment;
 exports.getConnection = getConnection;
 exports.createRepo = createRepo;
+exports.initializeRepo = initializeRepo;
 //exports.createTestComments = createTestComments;
 
 
@@ -374,6 +375,23 @@ function getComment(commentId, connection) {
     const node3 = createComment(connection, "Lorem ipsum with text1.1.1", node2._id);
     createComment(connection, "Lorem ipsum with text1.1.2", node2._id);
 }*/
+
+
+function initializeRepo() {
+    const commentsRepo = repoLib.get(REPO_ID);
+
+    // If the comments repo is missing, create a new one.
+    if (!commentsRepo || !commentsRepo.id) {
+        const didCreate = createRepo();
+
+        if (didCreate) {
+            log.info('Created repo: "' + REPO_ID + '"');
+        } else {
+            log.error('Tried and failed to create the comments repo "' + REPO_ID + '"');
+        }
+    }
+};
+
 
 function formatDate(isoString) {
     const time = new Date(isoString);
