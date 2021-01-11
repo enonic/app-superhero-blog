@@ -2,25 +2,23 @@
     <display-name>Latest comments</display-name>
     <description>Lists the latest comments on all the blog's posts</description>
     <form>
-        <field-set name="things">
-            <label>Latest comments</label>
-            <items>
-                <input type="TextLine" name="headline">
-                    <label>Title</label>
-                    <default>Latest comments</default>
-                    <help-text>The headline text displayed on this part</help-text>
-                    <occurrences minimum="1" maximum="1"></occurrences>
-                </input>
-                <input type="Long" name="size">
-                    <label>How many comments to show?</label>
-                    <default>5</default>
-                    <config>
-                        <min>1</min>
-                        <max>20</max>
-                    </config>
-                    <occurrences minimum="1" maximum="1"></occurrences>
-                </input>
-            </items>
-        </field-set>
+
+        <input type="TextLine" name="headline">
+            <label>Title</label>
+            <default>Latest comments</default>
+            <help-text>Override the headline text displayed on this part. Default: "Latest comments"</help-text>
+            <occurrences minimum="0" maximum="1"></occurrences>
+        </input>
+        <input type="Long" name="size">
+            <label>How many comments to show?</label>
+            <help-text>Override the max number of latest comments to display. Default: 5</help-text>
+            <default>5</default>
+            <config>
+                <min>1</min>
+                <max>20</max>
+            </config>
+            <occurrences minimum="0" maximum="1"></occurrences>
+        </input>
+
     </form>
 </part>

@@ -1,11 +1,16 @@
 <aside id="latestDiscussion" class="widget widget_recent_comments">
     <h3 class="widget-title" data-th-if="${ headline }" data-th-text="${ headline }"></h3>
-    <div class="comment" data-th-each="comment : ${ comments }">
+
+    <div class="comment" data-th-if="${hasComments}" data-th-each="comment : ${ comments }">
         <a data-th-href="|${ comment.contentUrl }#comment-${ comment._id }|" data-th-if="${comment}">
             <b class="comment-item name" data-th-text="${ comment.userName }"></b>
             <time class="comment-item time" data-th-text="${ comment.time }"></time>
             <q class="comment-item text">[[${ comment.text }]]</q>
         </a>
         <span class="comment-item post">[[${ local.on }]] <a data-th-href="${ comment.contentUrl }" data-th-text="${ comment.contentName }"></a></span>
+    </div>
+
+    <div class="comment entry-meta" data-th-unless="${hasComments}">
+        (No comments yet)
     </div>
 </aside>
