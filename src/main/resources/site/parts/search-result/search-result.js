@@ -84,63 +84,75 @@ exports.get = function(req) {
 
     // Loop through the posts and get the comments, categories and author
     for (let i = 0; i < results.hits.length; i++) {
-        const data = results.hits[i].data;
-        data.title = results.hits[i].displayName;
+        const result = results.hits[i];
+        const post = result.data;
+        post.title = result.displayName;
         const categoriesArray = [];
-        data.class = 'post-' + results.hits[i]._id + ' post type-post status-publish format-standard hentry';
-        if (data.stickyPost && Object.keys(up).length == 0) {
-            data.class += ' sticky';
+        post.class = 'post-' + result._id + ' post type-post status-publish format-standard hentry';
+        if (post.stickyPost && Object.keys(up).length == 0) {
+            post.class += ' sticky';
         }
 
-        const date = util.getFormattedDate(new Date(results.hits[i].createdTime));
-        data.pubDate = date;
+        if (result.createdTime) {
+            const createdDate = new Date(
+                // Recent versions of XP adds decimals at the end of the content creation date string.
+                // These decimals are incompatible with "new Date" here (nashorn - although it works in node!) so remove them.
+                result.createdTime.replace(/\.\d+(Z?)$/, "$1")
+            );
 
-        data.path = results.hits[i]._path;
-        data.createdTime = results.hits[i].createdTime;
-        data.comments = contentLib.query({
+            if (createdDate) {
+                post.pubDatetime = JSON.stringify(createdDate);
+                post.pubDate = util.getFormattedDate(createdDate);
+            }
+        }
+
+        post.path = result._path;
+        post.createdTime = result.createdTime;
+        post.comments = contentLib.query({
             start: 0,
             count: 1000,
-            query: "data.post = '" + results.hits[i]._id + "'",
+            query: "data.post = '" + result._id + "'",
             sort: 'createdTime DESC',
             contentTypes: [
                 app.name + ':comment'
             ]
         });
 
-        data.commentsText = data.comments.total == 0 ? 'Leave a comment' : data.comments.total + ' comment' + (+ data.comments.total > 1 ? 's' : '');
+        post.commentsText = post.comments.total == 0 ? 'Leave a comment' : post.comments.total + ' comment' + (+ post.comments.total > 1 ? 's' : '');
 
-        data.author = stk.content.get(data.author);
+        post.author = post.author ?
+            stk.content.get(post.author) :
+            post.author;
 
+        post.category = post.category ? stk.data.forceArray(post.category) : null;
 
-        data.category = data.category ? stk.data.forceArray(data.category) : null;
-
-        if (data.category) {
-            for (let j = 0; j < data.category.length; j++) {
-                if(data.category[j] && stk.content.exists(data.category[j])) {
-                    const category = util.getCategory({id: data.category[j]}, categories);
+        if (post.category) {
+            for (let j = 0; j < post.category.length; j++) {
+                if(post.category[j] && stk.content.exists(post.category[j])) {
+                    const category = util.getCategory({id: post.category[j]}, categories);
                     categoriesArray.push(category);
-                    data.class += ' category-' + category._name + ' ';
+                    post.class += ' category-' + category._name + ' ';
                 }
             }
         }
 
-        data.categories = categoriesArray.length > 0 ? categoriesArray : null
+        post.categories = categoriesArray.length > 0 ? categoriesArray : null
 
-        if (data.featuredImage) {
-            const img = stk.content.get(data.featuredImage);
-            data.fImageName = img.displayName;
-            data.fImageUrl = portal.imageUrl({
-                id: data.featuredImage,
+        if (post.featuredImage) {
+            const img = stk.content.get(post.featuredImage);
+            post.fImageName = img.displayName;
+            post.fImageUrl = portal.imageUrl({
+                id: post.featuredImage,
                 scale: 'width(695)',
                 format: 'jpeg'
             });
         }
 
-        stk.data.deleteEmptyProperties(data);
-        posts.push(data);
+        stk.data.deleteEmptyProperties(post);
+        posts.push(post);
     }
 
-    const params = {
+    const model = {
         posts: posts,
         site: site,
         searchPage: searchPage,
@@ -521,7 +533,7 @@ exports.get = function(req) {
 
 
     const view = resolve('search-result.html');
-    return stk.view.render(view, params);
+    return stk.view.render(view, model);
 };
 
 

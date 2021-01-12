@@ -9,7 +9,7 @@
             </h1>
 
             <div class="entry-meta">
-                <span data-th-if="${post.pubDatetime and post.author}" data-th-remove="tag"></span>
+                <span data-th-if="${post.pubDatetime and post.author}" data-th-remove="tag">
                     Posted<span data-th-if="${post.pubDatetime}" data-th-remove="tag"
                         > on
                         <a data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" title="4:33 am" rel="bookmark">
