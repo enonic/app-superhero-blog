@@ -33,5 +33,4 @@
       </config>
     </input>
   </form>
-  <mixin name="menu-item"/>
 </content-type>
