@@ -32,7 +32,7 @@
                                     <time class="entry-date" data-th-datetime="${post.pubDatetime}" data-th-text="${post.pubDate}">October 17</time>
                                 </a>
                             </span>
-                            <span data-th-if="${post.author}" class="byline" data-th-remove="tag"> by
+                            <span data-th-if="${post.author}" class="byline"> by
                                 <span class="author vcard">
                                     <a class="url fn n" href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'author=' + post.author._id})}"
                                        data-th-title="'View all posts by ' + ${post.author.displayName}" rel="author" data-th-text="${post.author.displayName}">Theme Admin</a>
