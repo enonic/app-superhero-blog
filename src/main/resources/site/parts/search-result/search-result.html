@@ -22,18 +22,20 @@
                         <a data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" rel="bookmark" data-th-text="${post.title}">Worth A Thousand Words</a>
                     </h1>
 
+
+
                     <div class="entry-meta">
-                        <span data-th-if="${post.pubDatetime and post.author}" data-th-remove="tag"></span>
+                        <span data-th-if="${post.pubDatetime and post.author}" data-th-remove="tag">
                             Posted<span data-th-if="${post.pubDatetime}" data-th-remove="tag"
                             > on
                                 <a data-th-href="${portal.pageUrl({'_path=' + post.path})}" href="#" title="4:33 am" rel="bookmark">
                                     <time class="entry-date" data-th-datetime="${post.pubDatetime}" data-th-text="${post.pubDate}">October 17</time>
                                 </a>
                             </span>
-                            <span data-th-if="${post.author}" class="byline"> by
+                            <span data-th-if="${post.author}" class="byline" data-th-remove="tag"> by
                                 <span class="author vcard">
                                     <a class="url fn n" href="#" data-th-href="${portal.pageUrl({'_path=' + site._path, 'author=' + post.author._id})}"
-                                       data-th-title="'View all posts by ' + ${post.author.displayName}" rel="author" data-th-text="${post.author.data.name}">Theme Admin</a>
+                                       data-th-title="'View all posts by ' + ${post.author.displayName}" rel="author" data-th-text="${post.author.displayName}">Theme Admin</a>
                                 </span>
                             </span>
                         </span>
