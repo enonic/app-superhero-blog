@@ -84,23 +84,34 @@ exports.get = function(req) {
 
     // Loop through the posts and get the comments, categories and author
     for (let i = 0; i < results.hits.length; i++) {
-        const data = results.hits[i].data;
-        data.title = results.hits[i].displayName;
+        const result = results.hits[i];
+        const data = result.data;
+        data.title = result.displayName;
         const categoriesArray = [];
-        data.class = 'post-' + results.hits[i]._id + ' post type-post status-publish format-standard hentry';
+        data.class = 'post-' + result._id + ' post type-post status-publish format-standard hentry';
         if (data.stickyPost && Object.keys(up).length == 0) {
             data.class += ' sticky';
         }
 
-        const date = util.getFormattedDate(new Date(results.hits[i].createdTime));
-        data.pubDate = date;
+        if (result.createdTime) {
+            const createdDate = new Date(
+                // Recent versions of XP adds decimals at the end of the content creation date string.
+                // These decimals are incompatible with "new Date" here (nashorn - although it works in node!) so remove them.
+                result.createdTime.replace(/\.\d+(Z?)$/, "$1")
+            );
 
-        data.path = results.hits[i]._path;
-        data.createdTime = results.hits[i].createdTime;
+            if (createdDate) {
+                data.pubDatetime = JSON.stringify(createdDate);
+                data.pubDate = util.getFormattedDate(createdDate);
+            }
+        }
+
+        data.path = result._path;
+        data.createdTime = result.createdTime;
         data.comments = contentLib.query({
             start: 0,
             count: 1000,
-            query: "data.post = '" + results.hits[i]._id + "'",
+            query: "data.post = '" + result._id + "'",
             sort: 'createdTime DESC',
             contentTypes: [
                 app.name + ':comment'
