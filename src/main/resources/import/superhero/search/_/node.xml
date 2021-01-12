@@ -55,10 +55,6 @@
         <property-set name="data"/>
         <property-set name="x">
             <property-set name="com-enonic-app-superhero">
-                <property-set name="menu-item">
-                    <boolean name="menuItem">true</boolean>
-                    <string isNull="true" name="menuName"/>
-                </property-set>
             </property-set>
         </property-set>
         <property-set name="components">

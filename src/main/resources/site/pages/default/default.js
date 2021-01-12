@@ -1,5 +1,4 @@
 const thymeleaf = require('/lib/thymeleaf');
-const menuLib = require('/lib/menu');
 const stk = require('/lib/stk/stk');
 const portal = require('/lib/xp/portal');
 const assetUrlCache = require('/lib/assetUrlCache');
@@ -34,33 +33,6 @@ function getPageItemClass(targetPath, currentContentPath) {
 }
 
 
-/* Returns an adjusted version of the menu item tree:
-    - Remove the top-level (site) node since we have a header with the site title linking back to the front page
-    - Add a pageUrl field to each item with resolved link target (except folder-type items)
-    - Adds a class field "page_item" to each item, unless the item is the current page, in which case: "current_page_item"
-    - Children of each item are handled recursively
- */
-function adjustMenuItems(menuItems, contentPath, sitePath) {
-    const adjustedItems = [];
-    for (let menuItem of menuItems) {
-        if (menuItem.path !== sitePath) {
-
-            menuItem.class = getPageItemClass(menuItem.path, contentPath);
-
-            if (menuItem.type !== "base:folder") {
-                menuItem.pageUrl = menuItem.url;
-            }
-
-            if (menuItem.children) {
-                menuItem.children = adjustMenuItems(menuItem.children, contentPath, sitePath);
-            }
-
-            adjustedItems.push(menuItem);
-        }
-    }
-    return adjustedItems;
-}
-
 
 exports.get = function handleGet(request) {
     const site = portal.getSite();
@@ -68,10 +40,6 @@ exports.get = function handleGet(request) {
 
     stk.data.deleteEmptyProperties(siteConfig);
     const content = portal.getContent();
-
-    const menuItems = menuLib.getMenuTree(1, {});
-
-    const adjustedMenuItems = adjustMenuItems(menuItems.menuItems, content._path, site._path);
 
     const dashedAppName = app.name.replace(/\./g, "-");
     const siteCommon = site.x[dashedAppName].siteCommon;
@@ -89,8 +57,6 @@ exports.get = function handleGet(request) {
         mainRegion: isFragment ? null : content.page.regions['main'],
         isFragment: isFragment,
         siteUrl: portal.pageUrl({path: site._path}),
-        menuTopClass: getPageItemClass(site._path, content._path),
-        menuItems: adjustedMenuItems,
         footerText: siteCommon.footerText ?
             portal.processHtml({value: siteCommon.footerText}) :
             null,
