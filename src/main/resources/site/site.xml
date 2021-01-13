@@ -31,10 +31,6 @@
         <allow-content-type>landing-page</allow-content-type>
       </config>
     </input>
-    <input type="Checkbox" name="noLogin">
-      <label>Disallow login</label>
-      <occurrences minimum="0" maximum="1"/>
-    </input>
   </form>
 
   <mappings>

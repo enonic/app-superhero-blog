@@ -7,7 +7,6 @@ exports.handle403 = function (err) {
 
     const siteConfig = portal.getSiteConfig();
 
-    //const redirectPageId = siteConfig && siteConfig.loginPage ? siteConfig.loginPage : portal.getSite()._id;
     const redirectPageId = portal.getSite()._id;
     const redirectPageUrl = portal.pageUrl({id: redirectPageId});
 
