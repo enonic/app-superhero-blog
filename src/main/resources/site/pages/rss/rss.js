@@ -89,7 +89,6 @@ exports.get = function (req) {
     };
 
     const view = resolve('rss.xsl');
-    //const copy = resolve('copy-of.xsl');
 
     const body = xslt.render(view, params);
 
