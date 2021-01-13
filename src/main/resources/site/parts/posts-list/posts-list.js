@@ -158,14 +158,6 @@ exports.get = function(req) {
     }
     const view = resolve('post-list.html');
 
-
-    log.info("model (" +
-    	(Array.isArray(model) ?
-    		("array[" + model.length + "]") :
-    		(typeof model + (model && typeof model === 'object' ? (" with keys: " + JSON.stringify(Object.keys(model))) : ""))
-    	) + "): " + JSON.stringify(model, null, 2)
-    );
-
     return stk.view.render(view, model);
 };
 

@@ -15,9 +15,7 @@ exports.getAssetUrls = function(viewmode, branch) {
             enonicCss: portal.assetUrl({path: 'css/enonic.css'}),
             flexsliderCss: portal.assetUrl({path: 'css/flexslider.css'}),
             fontCarroisCss: portal.assetUrl({path: 'css/google-font-carrois-gothic.css'}),
-            loginCss: portal.assetUrl({path: 'css/login.min.css'}),
             buttonsCss: portal.assetUrl({path: 'css/buttons.min.css'}),
-            dashiconsCss: portal.assetUrl({path: 'css/dashicons.min.css'}),
 
             jqueryJs: portal.assetUrl({path: "js/lib/jquery-3.3.1.min.js"}),
             superheroJs: portal.assetUrl({path: 'js/superhero.js'}),
