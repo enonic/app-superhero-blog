@@ -228,50 +228,6 @@ function modifyComment(id, commentEdit, connection) {
     return result;
 }
 
-/**
- * Generates a hierarchy of comments. (Recursive)
- * @param {Array} collection A group of comments
- * @param {Object} node repo Node to set in the collection
- * @returns {Boolean} success or failure
- */
-function setChildNode(collection, node) {
-    for (let j = 0; j < collection.length; j++) {
-        if (collection[j]._id === node.parentId) {
-            //If no children create child array
-            if (typeof collection[j].children === "undefined" || collection[j].children == null) {
-                collection[j].children = [getNodeData(node)];
-            } else {
-                addSorted(collection[j].children, node);
-            }
-            return true;
-        } else if (typeof collection[j].children !== "undefined") {
-            const set = setChildNode(collection[j].children, node);
-            //If we found in children return true.
-            if (set) return set;
-        }
-    }
-    return false;
-}
-
-/**
- * Adds new elements to given array, sorted by the elements creationDate
- * @param {Array} group
- * @param {Object} element
- */
-function addSorted(group, element) {
-    //reverse order since last comment is at the end.
-    for (let index = group.length - 1; index >= -1; index--) {
-        //No post in group is posted earlier put it in front
-        if (index == -1) {
-            group.splice(index, 0, getNodeData(element));
-            break;
-        }
-        else if (group[index].creationTime < element.creationTime) {
-            group.splice(index + 1, 0, getNodeData(element));
-            break;
-        }
-    }
-}
 
 /**
  * Gets the values we need for rendering from a node.
@@ -286,8 +242,97 @@ function getNodeData(node) {
         creationTime: node.creationTime,
         time: formatDate(node.creationTime),
         userId: node.data.userId,
+        children: node.children
     };
 }
+
+
+/**
+ * Helper for getComments. Checks if a comment parentNode has an array under a .children attribute (and if not, creates it),
+ * and adds the childNode to the end of that array.
+ * @param parentNode
+ * @param childNode
+ */
+function addChildUnderNode(parentNode, childNode) {
+    if (!parentNode.children) {
+        parentNode.children = [];
+    }
+    parentNode.children.push(childNode);
+}
+
+
+
+/** Turns a comments search result (.hits list) into a hierarchy with only relevant-data comment objects, and reply objects
+ *  under .children (which may also have children, etc).
+ *  Keeps, and does not depend on, the order of comments in the results. */
+function buildCommentHierarchy(commentNodes) {
+    // The output to build: an a rray of top-level comment nodes.
+    // These mutable objects will be the same as in "nodes" aboce.
+    // Each will end up having an array of children (full nodes) under "children".
+    const comments = [];
+
+    // Temporary "registry" using an object instead of an array, to save iterations:
+    // all nodes from the results as the data nodes are read from connection.get, by id -> node (saves iteration)
+    const allFormattedNodes = {};
+
+    // Temporary: node objects that haven't yet been placed under any "children" array in any other node.
+    // Each node may or may not have children of its own during the processing.
+    const pending = [];
+
+
+    for (let i = 0; i < commentNodes.length; i++) {
+        const node = commentNodes[i];
+        const formattedNode = getNodeData(node);
+        allFormattedNodes[node._id] = formattedNode;
+
+        // If there's a parentId, insert the node under either it's parent's .children or under the pending list:
+        if (typeof node.parentId !== "undefined" && node.parentId !== null) {
+            const parentNode = allFormattedNodes[node.parentId];
+
+            // Since we're iterating over result nodes whose order may vary depending on ASC or DESC (commentSort, from siteCommon.xml),
+            // the parent may not have been read yet and not found in allFormattedNodes. In this case it's expected to be read later, so put it in the pending list.
+            if (parentNode) {
+                addChildUnderNode(parentNode, formattedNode);
+            } else {
+                pending.push(node);
+            }
+
+            // If no parentId, insert it at (the end of) the top level of the hierarchy:
+        } else {
+            comments.push(formattedNode);
+        }
+    }
+    // INVARIANT ASSUMPTION: by the end of all items in the above for-loop, every node from results.hits are...
+    // - all in allFormattedNodes (in ready-to-use data format of course), AND
+    // - (
+    //      EITHER in the comments array, in ready-to-use format,
+    //      OR in the pending array, in raw node format.
+    // ),
+    // ...and every node in pending has a .parentId that matches the ._id of exactly one node in allFormattedNodes.
+
+
+    // ...so by now, all that remains is to distribute each pending nodes into the .children of their parents:
+
+    let parentNode, pendingNode, j;
+    for (j=0; j<pending.length; j++) {
+        pendingNode = pending[j];
+        parentNode = allFormattedNodes[pendingNode.parentId];
+        if (parentNode) {
+            addChildUnderNode(parentNode, allFormattedNodes[pendingNode._id]);
+        } else {
+            log.warning("Couldn't find a parent for this comment. Skipping pending node: "
+                + JSON.stringify(pendingNode));
+            log.debug("Dumping context for missing parent comment - full comments search result (sorted by: creationTime " +
+                (commentsSort || "ASC") +
+                ") for post with content ID '" + contentId + "' are: "
+                + JSON.stringify(result));
+        }
+    }
+
+    return comments;
+}
+
+
 
 /**
  * //Gets the all comments from the given content.
@@ -295,17 +340,15 @@ function getNodeData(node) {
  * @param {RepoConnection} [repoConnection] sets the repo connection to use
  * @returns {Array} Array of objects in a hierarcy structure
  */
-function getComments(contentId, connection) {
-    if (connection == null) {
-        connection = getConnection();
-    }
+function getComments(contentId, commentsSort) {
+    const connection = getConnection();
 
     //Could sort by creation time for faster lookup?
     //500+ should be handle by pagination.
     const result = connection.query({
         start: 0,
         count: 500,
-        sort: "creationTime ASC",
+        sort: "creationTime " + (commentsSort || "ASC"),
         query: "type='comment' AND content='" + contentId + "'",
         filters: {
             boolean: {
@@ -327,23 +370,17 @@ function getComments(contentId, connection) {
         },
     });
 
-    //Array of objects with nested object.
-    const comments = [];
-
+    const hitIds = [];
     for (let i = 0; i < result.hits.length; i++) {
-        const node = connection.get(result.hits[i].id);
-        if (typeof node.parentId !== "undefined" && node.parentId !== null) {
-            const check = setChildNode(comments, node);
-            if (check == false) {
-                log.info("could not set node:" + node._id);
-            }
-        } else {
-            addSorted(comments, node);
-        }
+        hitIds.push(result.hits[i].id);
     }
+    const commentNodes = connection.get(hitIds);
 
-    return comments;
+    return buildCommentHierarchy(commentNodes);
 }
+
+
+
 
 /**
  * Get a comment from the given repoConnection
@@ -361,20 +398,6 @@ function getComment(commentId, connection) {
     return connection.get({ keys: commentId });
 }
 
-//Debugging development method only
-/*function createTestComments(connection) {
-    const node = createComment(connection, "Lorem ipsum");
-    createComment(connection, "This is a lot of text right2");
-    //createComment(connection, "This is a lot of text right3");
-    //createComment(connection, "This is a lot of text right4");
-    const node2 = createComment(connection, "This is a lot of text right1.1", node._id);
-    createComment(connection, "This is a lot of text right1.2", node._id);
-    createComment(connection, "This is a lot of text right1.3", node._id);
-    createComment(connection, "This is a lot of text right1.4", node._id);
-    createComment(connection, "This is a lot of text right1.5", node._id);
-    const node3 = createComment(connection, "Lorem ipsum with text1.1.1", node2._id);
-    createComment(connection, "Lorem ipsum with text1.1.2", node2._id);
-}*/
 
 
 function initializeRepo() {

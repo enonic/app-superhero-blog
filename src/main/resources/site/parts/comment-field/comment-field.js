@@ -8,6 +8,7 @@ const assetUrlCache = require('/lib/assetUrlCache');
 
 const view = resolve("comment-field.html");
 
+const DASHED_APP_NAME = app.name.replace(/\./g, "-");
 
 function localize(key, locale) {
     const obj = {
@@ -31,7 +32,12 @@ exports.get = function (request) {
     //Lang code is wrongly formated (sometimes)
     langCode = langCode ? langCode.replace(/_/g, '-') : "";
 
-    const discussion = commentLib.getComments(portalContent._id);
+
+    const site = portal.getSite();
+    const siteCommon = site.x[DASHED_APP_NAME].siteCommon;
+    const commentSort = siteCommon.commentSort || 'DESC';
+
+    const discussion = commentLib.getComments(portalContent._id, commentSort);
 
     const model = {
         discussion: discussion,

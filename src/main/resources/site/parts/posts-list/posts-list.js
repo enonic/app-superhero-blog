@@ -5,11 +5,11 @@ const contentLib = require('/lib/xp/content');
 const portal = require('/lib/xp/portal');
 
 exports.get = function(req) {
-
-    const component = portal.getComponent();
-    const up = req.params; // URL params
-    const content = portal.getContent();
     const site = portal.getSite();
+
+    const params = req.params; // URL params
+    const content = portal.getContent();
+
     const siteConfig = portal.getSiteConfig();
     const postsPerPage = siteConfig.numPosts ? siteConfig.numPosts : 10;
     let newer = null, older = null; // For pagination
@@ -19,13 +19,13 @@ exports.get = function(req) {
 
     const categories = util.getCategories();
 
-    const start = stk.data.isInt(up.paged) ? (up.paged - 1) * postsPerPage : 0;
+    const start = stk.data.isInt(params.paged) ? (params.paged - 1) * postsPerPage : 0;
     const header = {};
-    const query = getQuery(up, folderPath, categories, header, site);
+    const query = getQuery(params, folderPath, categories, header, site);
 
     // Only put sticky on top on the first page when there are no queries
     let orderBy = '';
-    if (Object.keys(up).length == 0 || (Object.keys(up).length == 1 && up.paged)) {
+    if (Object.keys(params).length == 0 || (Object.keys(params).length == 1 && params.paged)) {
         orderBy = 'data.stickyPost DESC, ';
     }
     orderBy += 'createdTime DESC';
@@ -47,15 +47,15 @@ exports.get = function(req) {
 
         // Must include other URL params in the pagination links.
         const urlParams = {};
-        for(const param in up) {
+        for(const param in params) {
             if (param != 'paged') {
-                urlParams[param] = up[param];
+                urlParams[param] = params[param];
             }
         }
 
         // Needs an "older" link if...
         if (start < (results.total - postsPerPage)) {
-            urlParams.paged = stk.data.isInt(up.paged) ? (parseInt(up.paged) + 1).toString() : 2;
+            urlParams.paged = stk.data.isInt(params.paged) ? (parseInt(params.paged) + 1).toString() : 2;
             older = portal.pageUrl({
                 path: content._path == searchPage ? searchPage : site._path,
                 params: urlParams
@@ -64,8 +64,8 @@ exports.get = function(req) {
         // Needs a "newer" link if...
         if (start != 0) {
 
-            if(stk.data.isInt(up.paged) && up.paged > 2) {
-                urlParams.paged = (parseInt(up.paged) - 1).toString();
+            if(stk.data.isInt(params.paged) && params.paged > 2) {
+                urlParams.paged = (parseInt(params.paged) - 1).toString();
             } else {
                 urlParams.paged = null;
             }
@@ -84,7 +84,7 @@ exports.get = function(req) {
         post.title = result.displayName;
         const categoriesArray = [];
         post.class = 'post-' + result._id + ' post type-post status-publish format-standard hentry';
-        if (post.stickyPost && Object.keys(up).length == 0) {
+        if (post.stickyPost && Object.keys(params).length == 0) {
             post.class += ' sticky';
         }
 
