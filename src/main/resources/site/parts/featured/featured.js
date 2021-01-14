@@ -50,7 +50,7 @@ exports.get = function handleGet(req) {
     }
 
     function getSlideshowPosts() {
-        const query = '_parentPath="/content' + util.postsFolder() + '" AND data.featuredImage != "" AND data.slideshow = "true"';
+        const query = '_parentPath="/content' + util.getPostsFolder() + '" AND data.featuredImage != "" AND data.slideshow = "true"';
         const orderBy = 'createdTime DESC';
 
         const results = contentLib.query({

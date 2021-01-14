@@ -10,7 +10,7 @@ exports.get = function handleGet(req) {
     const config = component.config;
     const title = config.title || 'Archives';
     const site = portal.getSite();
-    const folderPath = util.postsFolder(config.contentFolder);
+    const folderPath = util.getPostsFolder();
 
     const monthsArray = [];
     const monthsGroup = {};

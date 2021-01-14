@@ -15,7 +15,7 @@ exports.get = function(req) {
     const view = resolve('post.html');
 
     //For pagination
-    const folderPath = util.postsFolder();
+    const folderPath = util.getPostsFolder();
     let prev, next;
 
     // Pagination if it's a single post in the posts folder

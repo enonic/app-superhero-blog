@@ -11,13 +11,5 @@
       <label>Show count</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
-    <input type="ContentSelector" name="contentFolder">
-      <label>Folder</label>
-      <occurrences minimum="0" maximum="1"/>
-      <config>
-        <relationship-type>system:reference</relationship-type>
-        <allow-content-type>base:folder</allow-content-type>
-      </config>
-    </input>
   </form>
 </part>

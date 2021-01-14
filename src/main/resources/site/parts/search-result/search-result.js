@@ -6,15 +6,13 @@ const portal = require('/lib/xp/portal');
 
 exports.get = function(req) {
 
-    const component = portal.getComponent();
-    const config = component.config;
     const up = req.params; // URL params
     const content = portal.getContent();
     const site = portal.getSite();
     const postsPerPage = 100; // siteConfig.numPosts ? siteConfig.numPosts : 10;
     let newer = null, older = null; // For pagination
     const posts = [];
-    const folderPath = util.postsFolder(config.contentFolder);
+    const folderPath = util.getPostsFolder();
     const searchPage = util.getSearchPage();
 
     const categories = util.getCategories();

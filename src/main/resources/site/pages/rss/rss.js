@@ -9,7 +9,7 @@ exports.get = function (req) {
 
     const content = portal.getContent();
     const site = portal.getSite();
-    const folderPath = util.postsFolder();
+    const folderPath = util.getPostsFolder();
 
     const pageUrl = portal.pageUrl({
         path: content._path

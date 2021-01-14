@@ -89,7 +89,7 @@ exports.getPost = function() {
 };
 
 // Return the local config posts path (if exits) else the site config path (if exits) else the default /posts folder.
-exports.postsFolder = function(local) {
+exports.getPostsFolder = function(local) {
     if(local) {
         var folder = contentLib.get({key: local});
         if(folder) {

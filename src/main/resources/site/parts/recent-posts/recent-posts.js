@@ -22,7 +22,7 @@ exports.get = function handleGet(req) {
         const maxPosts = config.maxPosts || 5;
 
         // Where to look for recent posts. Part config will override module config
-        const folderPath = util.postsFolder(config.contentFolder);
+        const folderPath = util.getPostsFolder();
 
         const result = contentLib.query({
             start: 0,

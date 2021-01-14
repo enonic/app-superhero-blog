@@ -3,13 +3,5 @@
   <display-name>Posts list</display-name>
   <description>Used to display a list of blog posts, with pagination</description>
   <form>
-    <input type="ContentSelector" name="contentFolder">
-      <label>Posts folder</label>
-      <occurrences minimum="1" maximum="1"/>
-      <config>
-        <relationship-type>system:reference</relationship-type>
-        <allow-content-type>base:folder</allow-content-type>
-      </config>
-    </input>
   </form>
 </part>
