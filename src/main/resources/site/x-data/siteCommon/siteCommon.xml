@@ -10,6 +10,10 @@
         <input type="HtmlArea" name="footerText">
             <label>Footer text</label>
             <occurrences minimum="0" maximum="1"/>
+            <config>
+                <exclude>*</exclude>
+                <include>Bold Italic Underline | JustifyLeft JustifyCenter JustifyRight JustifyBlock | SpecialChar Anchor Link Unlink</include>
+            </config>
         </input>
         <input type="RadioButton" name="commentSort" >
             <label>Sort comments</label>
