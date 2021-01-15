@@ -22,15 +22,6 @@
         <allow-content-type>landing-page</allow-content-type>
       </config>
     </input>
-    <input type="ContentSelector" name="postsList">
-      <label>Posts list page</label>
-      <occurrences minimum="0" maximum="1"/>
-      <config>
-        <relationship-type>system:reference</relationship-type>
-        <allow-content-type>portal:site</allow-content-type>
-        <allow-content-type>landing-page</allow-content-type>
-      </config>
-    </input>
   </form>
 
   <mappings>

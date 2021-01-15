@@ -60,7 +60,6 @@
                     <string name="numPosts">5</string>
                     <string isNull="true" name="googleUA"/>
                     <reference name="postsFolder">64f66a5c-b933-410c-a24c-a1192b4a0c49</reference>
-                    <reference name="postsList">251e6b26-5d9d-4337-981c-bc440e4076aa</reference>
                     <reference name="searchPage">45939e50-afb5-4f02-9fee-66489c74475e</reference>
                 </property-set>
             </property-set>
