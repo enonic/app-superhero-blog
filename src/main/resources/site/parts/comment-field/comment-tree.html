@@ -3,7 +3,7 @@
          data-th-if="${hasComments}"
          data-th-remove="tag">
         <!--/*iterate over all comments here*/-->
-        <ol class="top-level">
+        <ol class="top-level discussionTree">
             <div data-th-each="comment : ${ comments }" data-th-remove="tag">
                 <!--Level 1-->
                 <div data-th-replace="/site/parts/comment-field/comment-single::single (${ comment} , true)" data-th-remove="tag"></div>
