@@ -14,56 +14,78 @@ $(function () {
 function setListeners() {
     // console.log("Setting listeners");
 
+    var mainInputField = $(".startDiscussion");
+    mainInputField.show();
+
     //Adding events on document ready
-    $(".startDiscussion").submit(function (event) {
+    mainInputField.submit(function (event) {
+        mainInputField.hide();
         sendForm($(this));
         event.preventDefault();
     });
 
     $('.singleComment .edit').click(function (event) {
-        console.log("Edit");
 
         var edit = $(this);
+        console.log("Edit:", edit.text());
         var id = edit.data("key");
         var oldComment = edit.parent().siblings(".text").text();
 
-        var form;
-        var formCheck = edit.parent().next();
-        if (formCheck.is("form")) {
-            form = formCheck;
-        } else {
-            form = discussionData.form.clone();
-        }
+        console.log("oldComment:", oldComment);
 
-        //var show = edit.data("show");
-        //if (show === undefined) {
-        form.data("type", "modify");
-        //I would prefer adding properties to the json ajax object directly.
-        //form.find(".headline").text("Edit comment");
-        form.find(".headline").remove();
-        form.find(".createComment").text(oldComment + "");
-        form.prepend("<input type='hidden' name='modify' value='true'/>");
-        form.prepend("<input type='hidden' name='id' value='" + id + "' />");
-        form.submit(function (event) {
+        var singleComment = edit.parent().parent();
+        var commentContainer = singleComment.parent();
+
+        // TODO: Restore logic from a previous commit, for retrieving / re-showing an existing but hidden form so that accidental clicks outside the field won't delete written text.
+        var newForm  = discussionData.form.clone();
+
+        console.log("Form:", newForm);
+
+        newForm.addClass("editing")
+        newForm.data("type", "modify");
+        newForm.prepend("<input type='hidden' name='modify' value='true'/>");
+        newForm.prepend("<input type='hidden' name='id' value='" + id + "' />");
+
+        mainInputField.hide();
+        commentContainer.append(newForm);
+        singleComment.hide();
+
+        newForm.find(".newCommentHeadline").text(edit.text())
+
+        var newInputField = newForm.find(".createComment");
+        newInputField.focus();
+        newInputField.val("");
+        newInputField.val(oldComment + "");
+
+        newForm.submit(function (event) {
             sendForm($(this));
             event.preventDefault();
         });
+        newInputField.blur(function(){
+            console.log("Blurrin.");
+            setTimeout(
+                function() {
+                    singleComment.show();
+                    mainInputField.show();
+                    newForm.remove();
+                },
+                100
+            )
+        });
 
-        /* } else {
-            form.remove();
-            edit.removeData("exist");
-        }*/
 
         event.preventDefault();
     });
 
     //Handle reply on comments
     $('.singleComment .respond').click(function (event) {
+        mainInputField.hide();
         console.log("Respond");
 
         var respond = $(this);
-        var show = respond.data("showForm");
         var form = respond.siblings($('.startDiscussion'));
+
+        console.log("Form:", form);
 
         //Toggle show on button press
         /*if (show === "show") {

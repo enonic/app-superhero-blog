@@ -1182,6 +1182,10 @@ object {
     margin: 0;
     padding: 1.5em 25px 0 25px;
 }
+#discussion .startDiscussion.editing {
+    padding: 1.5em 25px 1.5em 0;
+}
+
 
 #discussion .singleComment .startDiscussion {
     margin: 0;
