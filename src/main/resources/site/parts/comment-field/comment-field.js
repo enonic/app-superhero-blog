@@ -57,6 +57,7 @@ exports.get = function (request) {
             newComment: localize("comments.newComment", langCode),
             edit: localize("comments.edit", langCode),
             post: localize("comments.post", langCode),
+            close: localize("comments.close", langCode),
             commentsHeading: localize("comments.commentsHeading", langCode),
         },
     };

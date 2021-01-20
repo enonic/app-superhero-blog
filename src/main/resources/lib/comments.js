@@ -204,7 +204,20 @@ function modifyComment(id, commentEdit, connection) {
     }
     //Check if users are the same.
     const currentUserId = user.key;
-    const commentUser = connection.get(id).data.userId;
+    log.info("id (" +
+    	(Array.isArray(id) ?
+    		("array[" + id.length + "]") :
+    		(typeof id + (id && typeof id === 'object' ? (" with keys: " + JSON.stringify(Object.keys(id))) : ""))
+    	) + "): " + JSON.stringify(id, null, 2)
+    );
+    const dataById = connection.get(id);
+    log.info("dataById (" +
+    	(Array.isArray(dataById) ?
+    		("array[" + dataById.length + "]") :
+    		(typeof dataById + (dataById && typeof dataById === 'object' ? (" with keys: " + JSON.stringify(Object.keys(dataById))) : ""))
+    	) + "): " + JSON.stringify(dataById, null, 2)
+    );
+    const commentUser = dataById.data.userId;
 
     if (!commentUser) {
         log.info("Could not find userId on comment");
