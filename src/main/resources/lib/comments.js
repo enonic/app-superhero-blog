@@ -178,6 +178,11 @@ function createComment(comment, contentId, parent, connection) {
 
     const node = connection.create(commentModel);
 
+    repoLib.refresh({
+        repo: REPO_ID,
+        branch: 'master'
+    });
+
     return node;
 }
 
@@ -212,18 +217,21 @@ function modifyComment(id, commentEdit, connection) {
 
     const result = connection.modify({
         key: id,
-        editor: edit
+        editor: function(node) {
+            node.data.comment = commentEdit;
+            return node;
+        }
     });
-
-    function edit(node) {
-        node.data.comment = commentEdit;
-        return node;
-    }
 
     if (!result) {
         log.info("Could not change comment with id: " + id);
         return null;
     }
+
+    repoLib.refresh({
+        repo: REPO_ID,
+        branch: 'master'
+    });
 
     return result;
 }
