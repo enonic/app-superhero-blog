@@ -48,9 +48,7 @@ exports.get = function (request) {
         discussion: discussion,
         hasComments: discussion && Object.keys(discussion).length > 0,
         currentContent: content._id,
-        serviceUrl: portal.serviceUrl({
-            service: "comments",
-        }),
+        componentUrl: `${request.path}/_/component${component.path}`,
         userId: (auth.getUser() || {}).key,
         locale: {
             reply: localize("comments.replyMessage"),
@@ -77,7 +75,7 @@ exports.get = function (request) {
                 <script data-th-inline="text">
                     window.discussionData = {
                         elementId: '${elementId}',
-                        componentUrl: '${request.path}/_/component${component.path}'
+                        // componentUrl: '${request.path}/_/component${component.path}'
                     };
                 </script>`,
                 `<script src="${assetUrls.commentPostJs}"></script>`,
@@ -85,3 +83,41 @@ exports.get = function (request) {
         }
     };
 };
+
+
+
+exports.post = function(req) {
+    const params = req.params;
+
+    let comment = null;
+    if (params.parent) {
+        comment = commentLib.createComment(params.comment, params.content, params.parent);
+    }
+    else if (params.modify) {
+        comment = commentLib.modifyComment(params.id, params.comment);
+    }
+    else if (params.comment && params.comment.length > 0) {
+        comment = commentLib.createComment(params.comment, params.content);
+    }
+    if (!comment) {
+        log.warning("Could not create new comment. Request: " + JSON.stringify(req));
+        return {
+            status: 500,
+            body: "Comment not created. Error is logged on server."
+        };
+    }
+
+    const nodeData = commentLib.getNodeData(comment);
+
+    // Re-rendering the part's HTML after the POST has been handled:
+    const response = exports.get(req);
+
+    // wrapping the body HTML in a JSON object, both in order to supplement the nodeData, and since the HTML is injected on the page by clientside JS anyway.
+    response.body = {
+        body: response.body,
+        nodeResult: nodeData
+    };
+    response.contentType = 'application/json'
+
+    return response;
+}

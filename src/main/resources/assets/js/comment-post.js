@@ -1,7 +1,7 @@
 /*Document ready*/
 $(function () {
     var mainForm = $(".startDiscussion").first();
-    discussionData.serviceUrl = mainForm.attr('action');
+    discussionData.componentUrl = mainForm.attr('action');
     discussionData.form = mainForm.clone();
 
     updateAndSetListeners(true);
@@ -103,7 +103,7 @@ function prepareNewForm(commentContainer, button, commentContainerClass) {
         newForm.addClass(commentContainerClass);
 
         // Prepare new form's attributes and looks...
-        newForm.attr("action", discussionData.serviceUrl);
+        newForm.attr("action", discussionData.componentUrl);
         newForm.find(".newCommentHeadline").text(button.text());
 
         // ...depending on what button was clicked --> what functionality th
@@ -178,16 +178,16 @@ function setCancelListener(newForm, commentElement, mainForm, showCommentElement
 function sendForm(form, formToRemove, commentElement) {
     $.ajax({
         method: "POST",
-        url: discussionData.serviceUrl,
+        url: discussionData.componentUrl,
         data: form.serialize(), // serializes the form's elements.
         datatype: "application/json",
 
     }).done(function (data) {
         if (data) {
-            updateDiscussionTree(form, data.data._id, formToRemove, commentElement);
+            handleResponseUpdateDiscussion(data, form, formToRemove, commentElement);
 
         } else {
-            reportError(data, "Response data was empty, server probably returned null value.", "got empty response from the server, comment probably not submitted.", form, commentElement, formToRemove);
+            reportError(data, "Response data was empty, server probably returned null value.", "got an empty response from the server - the comment probably wasnt't submitted.", form, commentElement, formToRemove);
         }
     }).fail(function (data) {
         reportError(data, "Couldn't submit form.", "couldn't submit comment.", form, commentElement, formToRemove);
@@ -196,45 +196,43 @@ function sendForm(form, formToRemove, commentElement) {
 
 
 
+// -------------------------------------------  HANDLING/UPDATING:
 
-// -------------------------------------------  REFRESHING:
+function handleResponseUpdateDiscussion(data, form, formToRemove, commentElement) {
+    const componentData = (typeof data.body === 'string') ? data.body.trim() : undefined;
 
-function updateDiscussionTree(form, scrollToCommentId, formToRemove, commentElement) {
-    $.ajax({
-        method: "GET",
-        url: discussionData.componentUrl,
+    // Cheap check for whether useable HTML was received from the server.
+    if (componentData && componentData.startsWith('<')) {
 
-    }).done(function (componentData) {
-        if (componentData) {
+        // Replace the current discussion tree in the DOM (all comments in the part) with the parsed
+        // HTML from the incoming data (that is, select the ".discussionTree" class in both):
+        var discussionTreeInDom = $("#" + discussionData.elementId + " .discussionTree")[0];
+        var incomingDiscussion = $(componentData)[0];
+        var replacementDiscussionTree = incomingDiscussion.querySelector(".discussionTree");
+        discussionTreeInDom.replaceWith(replacementDiscussionTree);
 
-            // Replace the current discussion tree in the DOM (all comments in the part) with the parsed
-            // HTML from the incoming data (that is, select the ".discussionTree" class in both):
-            var discussionTreeInDom = $("#" + discussionData.elementId + " .discussionTree")[0];
-            var incomingDiscussion = $(componentData)[0];
-            var replacementDiscussionTree = incomingDiscussion.querySelector(".discussionTree");
-            discussionTreeInDom.replaceWith(replacementDiscussionTree);
+        var mainInputField = $("#" + discussionData.elementId + " .startDiscussion .createComment");
+        mainInputField.val("");
+        updateAndSetListeners();
 
-            var mainInputField = $("#" + discussionData.elementId + " .startDiscussion .createComment");
-            mainInputField.val("");
-            updateAndSetListeners();
-
-            if (formToRemove) {
-                formToRemove.remove();
-            }
-
-            if (componentData.indexOf(scrollToCommentId) !== -1) {
-                markNewComment(scrollToCommentId);
-            }
-
-        } else {
-            reportError(undefined, "Empty response from the server. Can't update discussion tree.", "can't update discussion.", form, commentElement, formToRemove);
+        if (formToRemove) {
+            formToRemove.remove();
         }
 
-    }).fail(function (data) {
-        reportError(data, "Can't update discussion tree.", "can't update discussion.", form, commentElement, formToRemove);
-    });
-}
+        const commentResultId = (data.nodeResult || {})._id;
+        if (commentResultId && componentData.indexOf(commentResultId) !== -1) {
+            markNewComment(commentResultId);
+        }
 
+    } else if (data.nodeResult) {
+        reportError(data, "Server responded with valid nodeResult data but empty or non-HTML discussion data (body).", "Problem submitting the comment or refreshing the discussion. Try again or refresh manually.", form, commentElement, formToRemove);
+        console.warn("Full problematic response:", data);
+
+    } else {
+        reportError(data, "Server responded with empty or invalid data.", "Problem submitting the comment or refreshing the discussion. Try again or refresh manually.", form, commentElement, formToRemove);
+        console.warn("Full problematic response:", data);
+    }
+}
 
 
 function markNewComment(commentId){
@@ -242,7 +240,7 @@ function markNewComment(commentId){
     $('html,body').animate(
         { scrollTop: commentElement.offset().top }
     );
-    // commentElement.find(".singleComment").addClass("new");   // Mark a new comment in light grey
+    // commentElement.find(".singleComment").addClass("new");   // Mark a new comment in light grey?
 }
 
 
