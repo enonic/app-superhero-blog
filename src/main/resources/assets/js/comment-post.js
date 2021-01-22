@@ -1,163 +1,260 @@
 /*Document ready*/
 $(function () {
-    window.discussion = {
-        comment: $('<li><div class="singleComment">' +
-            '<div class="top">' +
-            '<span class="name"></span>\n' +
-            '<time class="time"></time>' +
-            '</div>' +
-            '<p class="text"></p>' +
-            '<div class="bottom">' +
-            '</div>' +
-            '</div></li>'),
-        form: $(".startDiscussion").first().clone(),
-    };
+    var mainForm = $(".startDiscussion").first();
+    discussionData.serviceUrl = mainForm.attr('action');
+    discussionData.form = mainForm.clone();
 
-    //Adding events on document ready
-    $(".startDiscussion").submit(function (event) {
-        sendForm( $(this) );
-        event.preventDefault();
-    });
-
-    $('.singleComment .edit').click(function (event) {
-        var edit = $(this);
-        var id = edit.data("key");
-        var oldComment = edit.parent().siblings(".text").text();
-
-        var form;
-        var formCheck = edit.parent().next();
-        if (formCheck.is("form")) {
-            form = formCheck;
-        } else {
-            form = discussion.form.clone();
-        }
-
-        var show = edit.data("show");
-        if (show === undefined) {
-            form.data("type", "modify");
-            //I would prefer adding properties to the json ajax object directly.
-            //form.find(".headline").text("Edit comment");
-            form.find(".headline").remove();
-            form.find(".createComment").text(oldComment + "");
-            form.prepend("<input type='hidden' name='modify' value='true'/>");
-            form.prepend("<input type='hidden' name='id' value='" + id + "' />");
-            form.submit(function(event) {
-                sendForm( $(this) );
-                event.preventDefault();
-            });
-
-            edit.data("exist", true);
-
-            edit.parent().siblings(".text").css("display", "none");
-
-            edit.parent().after(form);
-        }
-        else {
-            form.remove();
-            edit.removeData("exist");
-        }
-
-
-        event.preventDefault();
-    });
-
-    //Handle reply on comments
-    $('.singleComment .respond').click(function (event) {
-        var respond = $(this);
-        var show = respond.data("showForm");
-        var form = respond.siblings($('.startDiscussion'));
-
-        //Toggle show on button press
-        if (show === "show") {
-            form.css("display", "none");
-            respond.data("showForm", "hide");
-        } else {
-            //Check if it has the form under it or not
-            if (form.length == 1) {
-                var parent = respond.data("parent");
-
-                var newForm = discussion.form.clone();
-                newForm.prepend("<input type='hidden' name='parent' value='" + parent + "' />");
-                newForm.submit(function(event) {
-                    sendForm( $(this) );
-                    event.preventDefault(); // avoid to execute the actual submit of the form.
-                });
-                form = newForm;
-                respond.parent().append(newForm);
-            }
-
-            form.css("display", "");
-            form.data("type", "reply");
-            respond.data("showForm", "show");
-        }
-
-        event.preventDefault(); //*shrug* Button could do strange things
-    });
-
+    updateAndSetListeners(true);
 });
-//Submit action on the form elements
-function sendForm(form) {
-    var url = form.attr('action');
 
+var EDITING = "editing";
+var REPLYING = "replying";
+
+//Adding events (on document ready)
+function updateAndSetListeners(setMainFormListener) {
+
+    var mainForm = $(".startDiscussion").first();
+    mainForm.show();
+
+    if (setMainFormListener) {
+        // Submitting a new comment (the main field):
+        mainForm.submit(function (event) {
+            mainForm.hide();
+            sendForm($(this));
+            event.preventDefault();
+        });
+    }
+
+
+    // Submitting an edited comment (clicked "Edit"):
+    $('.singleComment .edit').click(function (event) {
+
+        // Get some important target elements
+        var editButton = $(this);
+        var commentElement = editButton.parent().parent();  // Targets <div class="singleComment" ...
+        var commentContainer = commentElement.parent();     // Targets <li class="comment-anchor" ...
+
+        var obj = prepareNewForm(commentContainer, editButton, EDITING);
+        var newForm = obj.newForm;
+        var reusingForm = obj.reusingForm;
+
+        swapHiddenAndVisible(mainForm, newForm, commentContainer, reusingForm, commentElement);
+
+        if (!reusingForm) {
+            setCancelListener(newForm, commentElement, mainForm, true);
+            setSubmitListener(newForm, commentElement, mainForm, true);
+        }
+
+        setInputTextAndFocus(newForm, reusingForm, commentElement.find(".text").text());
+
+        event.preventDefault();
+    });
+
+
+
+    // Submitting a response comment (clicked "Reply"):
+    $('.singleComment .respond').click(function (event) {
+        // Get some important target elements
+        var replyButton = $(this);
+        var commentElement = replyButton.parent().parent();  // Targets <div class="singleComment" ...
+        var commentContainer = commentElement.parent();     // Targets <li class="comment-anchor" ...
+
+        var obj = prepareNewForm(commentContainer, replyButton, REPLYING);
+        var newForm = obj.newForm;
+        var reusingForm = obj.reusingForm;
+
+        swapHiddenAndVisible(mainForm, newForm, commentContainer, reusingForm);
+
+        if (!reusingForm) {
+            setSubmitListener(newForm, commentElement, mainForm, false);
+            setCancelListener(newForm, commentElement, mainForm, false);
+        }
+
+        setInputTextAndFocus(newForm, reusingForm, "");
+
+        event.preventDefault();
+    });
+}
+
+
+// Set focus on the input field in newForm, set its text, and move the cursor to the end of the text:
+function setInputTextAndFocus(newForm, reusingForm, inputText) {
+    var newInputField = newForm.find(".createComment");
+    var prevVal = newInputField.val();
+    newInputField.focus();
+    newInputField.val("");
+    newInputField.val(reusingForm ? prevVal : inputText);
+}
+
+
+// Prepare a new form to insert below/instead of a comment, for replying/editing.
+// Returns an object where:
+//     .newForm is the created or re-used (jquery format) form, and
+//     .reusingForm is true if an existing form in the DOM is recycled, or false if .newForm was created as a new element.
+function prepareNewForm(commentContainer, button, commentContainerClass) {
+    // If a form with the right classes is already in the commnt container, it means an edit has already been started but not
+    // sent (only hidden: "close" was clicked (or there was an error)). So reuse that form...
+    var reusingForm = true;
+    var newForm = commentContainer.find(".startDiscussion." + commentContainerClass);
+    if (!newForm.is("form")) {
+        // ...but if not, create an in-memory form to append to the DOM:
+        reusingForm = false;
+        newForm = discussionData.form.clone();
+        newForm.addClass(commentContainerClass);
+
+        // Prepare new form's attributes and looks...
+        newForm.attr("action", discussionData.serviceUrl);
+        newForm.find(".newCommentHeadline").text(button.text());
+
+        // ...depending on what button was clicked --> what functionality th
+        if (commentContainerClass === EDITING) {
+            var commentId = button.data("key");
+            newForm.data("type", "modify");
+            newForm.prepend("<input type='hidden' name='modify' value='true'/>");
+            newForm.prepend("<input type='hidden' name='id' value='" + commentId + "' />");
+
+        } else if (commentContainerClass === REPLYING) {
+            var parent = button.data("parent");
+            newForm.prepend("<input type='hidden' name='parent' value='" + parent + "' />");
+
+        } else {
+            throw Error();
+        }
+    }
+
+    return {
+        newForm: newForm,
+        reusingForm: reusingForm
+    }
+}
+
+// Hide bottom input field (and maybe the comment we're editing), show the newForm:
+function swapHiddenAndVisible(mainForm, newForm, commentContainer, reusingForm, commentElement) {
+    mainForm.hide();
+    if (commentElement) {
+        commentElement.hide();
+    }
+    if (reusingForm) {
+        newForm.show();
+    } else {
+        commentContainer.append(newForm);
+    }
+}
+
+
+
+
+// Add submit click listener. After the form has been sent, the input field is no longer needed, so remove it from the DOM.
+function setSubmitListener(newForm, commentElement, mainForm, showCommentElement) {
+    newForm.submit(function (event) {
+        sendForm($(this), newForm, commentElement);
+        if (showCommentElement) {
+            commentElement.show();
+        }
+        mainForm.show();
+        newForm.hide();
+        event.preventDefault();
+    });
+}
+
+// Add listener for the cancel button: hide the input field (but leave it in the DOM) and restore the hidden fields
+function setCancelListener(newForm, commentElement, mainForm, showCommentElement) {
+    var cancelButton = newForm.find(".close");
+    cancelButton.click(function(event){
+        if (showCommentElement) {
+            commentElement.show();
+        }
+        mainForm.show();
+        newForm.hide();
+        event.preventDefault();
+    });
+}
+
+
+
+// -------------------------------------------  SUBMITTING:
+
+//Submit action on the form elements
+function sendForm(form, formToRemove, commentElement) {
     $.ajax({
         method: "POST",
-        url: url,
+        url: discussionData.serviceUrl,
         data: form.serialize(), // serializes the form's elements.
         datatype: "application/json",
+
     }).done(function (data) {
         if (data) {
-            console.log("posted new comment");
-            insertComment(form, data);
+            updateDiscussionTree(form, data.data._id, formToRemove, commentElement);
+
         } else {
-            console.log("Response data was empty, server probably returned null value");
-            form.prepend("<div class='error'>Error, got empty response from the server</div>");
+            reportError(data, "Response data was empty, server probably returned null value.", "got empty response from the server, comment probably not submitted.", form, commentElement, formToRemove);
         }
     }).fail(function (data) {
-        console.log("Error could not submit form ", data);
-        form.prepend("<div class='error'>Error could not submit comment</div>");
+        reportError(data, "Couldn't submit form.", "couldn't submit comment.", form, commentElement, formToRemove);
     });
 }
 
-//Handle the different comment types: Reply, modify and type
-function insertComment(form, data) {
-    var type = form.data("type") || "top";
-    createComment(form, data, type);
-}
 
-//Create a "fake" comment so it looks like they posted it
-function createComment(form, jsonResponse, type) {
-    var postData = jsonResponse.data;
-    form.siblings(".respond").trigger("click"); //Cheat way to show hide reply field
 
-    var singleComment = discussion.comment.clone();
 
-    singleComment.find(".text").text(postData.text);
-    singleComment.find(".name").text(postData.userName);
-    singleComment.find(".time").text(postData.time);
-    //singleComment.find('.bottom').html('<button class="respond">reply</button>');
+// -------------------------------------------  REFRESHING:
 
-    if (type === "reply") {
-        var listItem = form.closest("li");
-        var childList = listItem.next();
+function updateDiscussionTree(form, scrollToCommentId, formToRemove, commentElement) {
+    $.ajax({
+        method: "GET",
+        url: discussionData.componentUrl,
 
-        if (childList.is("ol")) {
-            childList.append(singleComment);
+    }).done(function (componentData) {
+        if (componentData) {
+
+            // Replace the current discussion tree in the DOM (all comments in the part) with the parsed
+            // HTML from the incoming data (that is, select the ".discussionTree" class in both):
+            var discussionTreeInDom = $("#" + discussionData.elementId + " .discussionTree")[0];
+            var incomingDiscussion = $(componentData)[0];
+            var replacementDiscussionTree = incomingDiscussion.querySelector(".discussionTree");
+            discussionTreeInDom.replaceWith(replacementDiscussionTree);
+
+            var mainInputField = $("#" + discussionData.elementId + " .startDiscussion .createComment");
+            mainInputField.val("");
+            updateAndSetListeners();
+
+            if (formToRemove) {
+                formToRemove.remove();
+            }
+
+            if (componentData.indexOf(scrollToCommentId) !== -1) {
+                markNewComment(scrollToCommentId);
+            }
+
         } else {
-            var commentContainer = $("<ol></ol>");
-            commentContainer.append(singleComment);
-            listItem.after(commentContainer);
+            reportError(undefined, "Empty response from the server. Can't update discussion tree.", "can't update discussion.", form, commentElement, formToRemove);
         }
-    }
-    else if (type === "modify") {
-        var comment = form.siblings(".text");
-        comment.text(postData.text);
-        comment.css("display", "");
-        form.remove();
 
-    }
-    else if (type === "top") {
-        $(".top-level").append(singleComment);
-    }
+    }).fail(function (data) {
+        reportError(data, "Can't update discussion tree.", "can't update discussion.", form, commentElement, formToRemove);
+    });
 }
 
-//Handle all edit/modify a comment
+
+
+function markNewComment(commentId){
+    var commentElement = $("#comment-" + commentId);
+    $('html,body').animate(
+        { scrollTop: commentElement.offset().top }
+    );
+    // commentElement.find(".singleComment").addClass("new");   // Mark a new comment in light grey
+}
+
+
+
+function reportError(data, consoleMessage, visibleMessage, form, commentElement, formToRemove) {
+    console.error(consoleMessage, data);
+    form.prepend("<div class='error'>Error: " +visibleMessage + "</div>");
+    setTimeout(
+        function() {
+            commentElement.hide();
+            formToRemove.show();
+        },
+        200
+    );
+}

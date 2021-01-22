@@ -24,10 +24,13 @@ function localize(key, locale) {
 
 //TODO rename comment-field to something better
 exports.get = function (request) {
+
     const portalContent = portal.getContent();
 
     const content = contentLib.get({ key: portalContent._id });
     let langCode = content.language;
+
+    const component = portal.getComponent();
 
     //Lang code is wrongly formated (sometimes)
     langCode = langCode ? langCode.replace(/_/g, '-') : "";
@@ -39,7 +42,9 @@ exports.get = function (request) {
 
     const discussion = commentLib.getComments(portalContent._id, commentSort);
 
+    const elementId = "discussion"
     const model = {
+        elementId: elementId,
         discussion: discussion,
         hasComments: discussion && Object.keys(discussion).length > 0,
         currentContent: content._id,
@@ -52,6 +57,7 @@ exports.get = function (request) {
             newComment: localize("comments.newComment", langCode),
             edit: localize("comments.edit", langCode),
             post: localize("comments.post", langCode),
+            close: localize("comments.close", langCode),
             commentsHeading: localize("comments.commentsHeading", langCode),
         },
     };
@@ -67,6 +73,13 @@ exports.get = function (request) {
                 `<script src="${assetUrls.jqueryJs}"></script>`,
             ],
             bodyEnd: [
+               `
+                <script data-th-inline="text">
+                    window.discussionData = {
+                        elementId: '${elementId}',
+                        componentUrl: '${request.path}/_/component${component.path}'
+                    };
+                </script>`,
                 `<script src="${assetUrls.commentPostJs}"></script>`,
             ]
         }

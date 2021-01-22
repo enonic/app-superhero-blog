@@ -178,6 +178,11 @@ function createComment(comment, contentId, parent, connection) {
 
     const node = connection.create(commentModel);
 
+    repoLib.refresh({
+        repo: REPO_ID,
+        branch: 'master'
+    });
+
     return node;
 }
 
@@ -199,7 +204,8 @@ function modifyComment(id, commentEdit, connection) {
     }
     //Check if users are the same.
     const currentUserId = user.key;
-    const commentUser = connection.get(id).data.userId;
+    const dataById = connection.get(id);
+    const commentUser = dataById.data.userId;
 
     if (!commentUser) {
         log.info("Could not find userId on comment");
@@ -212,18 +218,21 @@ function modifyComment(id, commentEdit, connection) {
 
     const result = connection.modify({
         key: id,
-        editor: edit
+        editor: function(node) {
+            node.data.comment = commentEdit;
+            return node;
+        }
     });
-
-    function edit(node) {
-        node.data.comment = commentEdit;
-        return node;
-    }
 
     if (!result) {
         log.info("Could not change comment with id: " + id);
         return null;
     }
+
+    repoLib.refresh({
+        repo: REPO_ID,
+        branch: 'master'
+    });
 
     return result;
 }
@@ -310,7 +319,6 @@ function buildCommentHierarchy(commentNodes) {
     // ),
     // ...and every node in pending has a .parentId that matches the ._id of exactly one node in allFormattedNodes.
 
-
     // ...so by now, all that remains is to distribute each pending nodes into the .children of their parents:
 
     let parentNode, pendingNode, j;
@@ -374,7 +382,11 @@ function getComments(contentId, commentsSort) {
     for (let i = 0; i < result.hits.length; i++) {
         hitIds.push(result.hits[i].id);
     }
-    const commentNodes = connection.get(hitIds);
+
+    let commentNodes = connection.get(hitIds);
+    if (!Array.isArray(commentNodes)) {
+        commentNodes = [commentNodes];
+    }
 
     return buildCommentHierarchy(commentNodes);
 }

@@ -1182,6 +1182,13 @@ object {
     margin: 0;
     padding: 1.5em 25px 0 25px;
 }
+#discussion .startDiscussion.editing {
+    padding: 1.5em 25px 1.5em 0;
+}
+#discussion .startDiscussion.replying {
+    padding: 1.5em 25px 1.5em 3em;
+}
+
 
 #discussion .singleComment .startDiscussion {
     margin: 0;
@@ -1224,8 +1231,8 @@ object {
     padding-left: 25px;
 }
 
-/*.widget_recent_comments .comment:hover,*/
-#discussion .singleComment:hover {
+#discussion .singleComment:hover,
+#discussion .singleComment.new {
     background-color: #f8f8f8;
 }
 .widget_recent_comments .comment a {
@@ -1241,7 +1248,8 @@ object {
     margin-bottom: 2em;
 }
 
-#discussion .singleComment .commentButton {
+#discussion .singleComment .commentButton,
+.startDiscussion .commentButton {
     background-color: transparent;
     border: none;
     color: #ea5449;
@@ -1250,8 +1258,20 @@ object {
     font-size: 11.52px;
     margin-right: 25px;
 }
-#discussion .singleComment .commentButton:hover {
+.startDiscussion .commentButton {
+    float: right;
+    margin: 0;
+    padding: 10px 0 0;
+}
+#discussion .singleComment .commentButton:hover,
+.startDiscussion .commentButton:hover {
     color: #1e4a66;
+}
+.startDiscussion .close {
+    display: none;
+}
+.discussionTree .startDiscussion .close {
+    display: block;
 }
 
 #not-found-secondary {
