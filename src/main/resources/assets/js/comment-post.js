@@ -4,24 +4,26 @@ $(function () {
     discussionData.serviceUrl = mainForm.attr('action');
     discussionData.form = mainForm.clone();
 
-    updateAndSetListeners();
+    updateAndSetListeners(true);
 });
 
+var EDITING = "editing";
+var REPLYING = "replying";
 
 //Adding events (on document ready)
-function updateAndSetListeners() {
-    var EDITING = "editing";
-    var REPLYING = "replying";
+function updateAndSetListeners(setMainFormListener) {
 
     var mainForm = $(".startDiscussion").first();
     mainForm.show();
 
-    // Submitting a new comment (the main field):
-    mainForm.submit(function (event) {
-        mainForm.hide();
-        sendForm($(this));
-        event.preventDefault();
-    });
+    if (setMainFormListener) {
+        // Submitting a new comment (the main field):
+        mainForm.submit(function (event) {
+            mainForm.hide();
+            sendForm($(this));
+            event.preventDefault();
+        });
+    }
 
 
     // Submitting an edited comment (clicked "Edit"):
@@ -37,8 +39,11 @@ function updateAndSetListeners() {
         var reusingForm = obj.reusingForm;
 
         swapHiddenAndVisible(mainForm, newForm, commentContainer, reusingForm, commentElement);
-        setCancelListener(newForm, commentElement, mainForm, true);
-        setSubmitListener(newForm, commentElement, mainForm, true);
+
+        if (!reusingForm) {
+            setCancelListener(newForm, commentElement, mainForm, true);
+            setSubmitListener(newForm, commentElement, mainForm, true);
+        }
 
         setInputTextAndFocus(newForm, reusingForm, commentElement.find(".text").text());
 
@@ -60,8 +65,10 @@ function updateAndSetListeners() {
 
         swapHiddenAndVisible(mainForm, newForm, commentContainer, reusingForm);
 
-        setSubmitListener(newForm, commentElement, mainForm, false);
-        setCancelListener(newForm, commentElement, mainForm, false);
+        if (!reusingForm) {
+            setSubmitListener(newForm, commentElement, mainForm, false);
+            setCancelListener(newForm, commentElement, mainForm, false);
+        }
 
         setInputTextAndFocus(newForm, reusingForm, "");
 
@@ -73,26 +80,20 @@ function updateAndSetListeners() {
 // Set focus on the input field in newForm, set its text, and move the cursor to the end of the text:
 function setInputTextAndFocus(newForm, reusingForm, inputText) {
     var newInputField = newForm.find(".createComment");
-    setTimeout(
-        function() {
-            newInputField.focus();
-            newInputField.val("");
-            newInputField.val(reusingForm ?
-                newInputField.val() :
-                inputText);
-        },
-        20
-    );
+    var prevVal = newInputField.val();
+    newInputField.focus();
+    newInputField.val("");
+    newInputField.val(reusingForm ? prevVal : inputText);
 }
 
 
-// Prepare a new form to insert under/instead of a comment, for replying/editing.
-// Returns an object where
+// Prepare a new form to insert below/instead of a comment, for replying/editing.
+// Returns an object where:
 //     .newForm is the created or re-used (jquery format) form, and
 //     .reusingForm is true if an existing form in the DOM is recycled, or false if .newForm was created as a new element.
 function prepareNewForm(commentContainer, button, commentContainerClass) {
-    // If a form is already the sibling of the editButton's parent, it means an edit has already been started but not
-    // sent (only hidden: "close" was clicked or there was an error), so reuse that form...
+    // If a form with the right classes is already in the commnt container, it means an edit has already been started but not
+    // sent (only hidden: "close" was clicked (or there was an error)). So reuse that form...
     var reusingForm = true;
     var newForm = commentContainer.find(".startDiscussion." + commentContainerClass);
     if (!newForm.is("form")) {
@@ -106,22 +107,19 @@ function prepareNewForm(commentContainer, button, commentContainerClass) {
         newForm.find(".newCommentHeadline").text(button.text());
 
         // ...depending on what button was clicked --> what functionality th
-        if (commentContainerClass === "editing") {
+        if (commentContainerClass === EDITING) {
             var commentId = button.data("key");
             newForm.data("type", "modify");
             newForm.prepend("<input type='hidden' name='modify' value='true'/>");
             newForm.prepend("<input type='hidden' name='id' value='" + commentId + "' />");
 
-        } else if (commentContainerClass === "replying") {
+        } else if (commentContainerClass === REPLYING) {
             var parent = button.data("parent");
             newForm.prepend("<input type='hidden' name='parent' value='" + parent + "' />");
 
         } else {
             throw Error();
         }
-
-        // Prepare new form's attributes and looks:
-
     }
 
     return {
@@ -171,6 +169,8 @@ function setCancelListener(newForm, commentElement, mainForm, showCommentElement
         event.preventDefault();
     });
 }
+
+
 
 // -------------------------------------------  SUBMITTING:
 
@@ -223,7 +223,7 @@ function updateDiscussionTree(form, scrollToCommentId, formToRemove, commentElem
             }
 
             if (componentData.indexOf(scrollToCommentId) !== -1) {
-                scrollToComment(scrollToCommentId);
+                markNewComment(scrollToCommentId);
             }
 
         } else {
@@ -237,11 +237,12 @@ function updateDiscussionTree(form, scrollToCommentId, formToRemove, commentElem
 
 
 
-function scrollToComment(commentId){
+function markNewComment(commentId){
     var commentElement = $("#comment-" + commentId);
     $('html,body').animate(
         { scrollTop: commentElement.offset().top }
     );
+    // commentElement.find(".singleComment").addClass("new");   // Mark a new comment in light grey
 }
 
 

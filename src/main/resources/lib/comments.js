@@ -204,19 +204,7 @@ function modifyComment(id, commentEdit, connection) {
     }
     //Check if users are the same.
     const currentUserId = user.key;
-    log.info("id (" +
-    	(Array.isArray(id) ?
-    		("array[" + id.length + "]") :
-    		(typeof id + (id && typeof id === 'object' ? (" with keys: " + JSON.stringify(Object.keys(id))) : ""))
-    	) + "): " + JSON.stringify(id, null, 2)
-    );
     const dataById = connection.get(id);
-    log.info("dataById (" +
-    	(Array.isArray(dataById) ?
-    		("array[" + dataById.length + "]") :
-    		(typeof dataById + (dataById && typeof dataById === 'object' ? (" with keys: " + JSON.stringify(Object.keys(dataById))) : ""))
-    	) + "): " + JSON.stringify(dataById, null, 2)
-    );
     const commentUser = dataById.data.userId;
 
     if (!commentUser) {
@@ -331,7 +319,6 @@ function buildCommentHierarchy(commentNodes) {
     // ),
     // ...and every node in pending has a .parentId that matches the ._id of exactly one node in allFormattedNodes.
 
-
     // ...so by now, all that remains is to distribute each pending nodes into the .children of their parents:
 
     let parentNode, pendingNode, j;
@@ -395,7 +382,11 @@ function getComments(contentId, commentsSort) {
     for (let i = 0; i < result.hits.length; i++) {
         hitIds.push(result.hits[i].id);
     }
-    const commentNodes = connection.get(hitIds);
+
+    let commentNodes = connection.get(hitIds);
+    if (!Array.isArray(commentNodes)) {
+        commentNodes = [commentNodes];
+    }
 
     return buildCommentHierarchy(commentNodes);
 }

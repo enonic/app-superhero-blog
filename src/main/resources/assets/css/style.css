@@ -1231,8 +1231,8 @@ object {
     padding-left: 25px;
 }
 
-/*.widget_recent_comments .comment:hover,*/
-#discussion .singleComment:hover {
+#discussion .singleComment:hover,
+#discussion .singleComment.new {
     background-color: #f8f8f8;
 }
 .widget_recent_comments .comment a {
