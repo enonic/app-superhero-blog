@@ -51,7 +51,7 @@
         <dateTime name="modifiedTime">2019-03-13T08:48:26.997Z</dateTime>
         <string name="modifier">user:system:anonymous</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-02-27T23:46:39.186Z</dateTime>
+        <dateTime name="createdTime">2020-02-27T23:46:39.186Z</dateTime>
         <property-set name="data">
             <string name="description">Blog application for Enonic XP</string>
             <property-set name="siteConfig">
