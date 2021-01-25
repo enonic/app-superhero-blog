@@ -48,10 +48,10 @@
         <string name="type">com.enonic.app.superhero:author</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2015-02-27T23:50:44.614Z</dateTime>
+        <dateTime name="modifiedTime">2020-02-27T23:50:44.614Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2015-02-27T23:50:17.414Z</dateTime>
+        <dateTime name="createdTime">2020-02-27T23:50:17.414Z</dateTime>
         <property-set name="data">
             <string name="name">Michael Lazell</string>
             <string name="email">mla@example.com</string>
