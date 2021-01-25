@@ -8,7 +8,6 @@ const assetUrls = {};
 exports.getAssetUrls = function(viewmode, branch) {
     const key = `${branch}_${viewmode}`;
     if (!assetUrls[key]) {
-        // log.info(`Updating asset URLS: ${viewmode} / ${branch}`)
         assetUrls[key] = {
             html5Js: portal.assetUrl({path: 'js/html5.js'}),
             styleCss: portal.assetUrl({path: 'css/style.css'}),
@@ -20,8 +19,7 @@ exports.getAssetUrls = function(viewmode, branch) {
             jqueryJs: portal.assetUrl({path: "js/lib/jquery-3.3.1.min.js"}),
             superheroJs: portal.assetUrl({path: 'js/superhero.js'}),
             flexsliderJs: portal.assetUrl({path: 'js/lib/jquery.flexslider-min.js'}),
-            commentReplyJs: portal.assetUrl({path: 'js/comment-reply.min.js'}),
-            commentPostJs: portal.assetUrl({ path: "js/comment-post.js"})
+            commentsJs: portal.assetUrl({ path: "js/comments.js"})
         };
     }
     return assetUrls[key];
