@@ -1,5 +1,5 @@
 const thymeleaf = require('/lib/thymeleaf');
-const stk = require('/lib/stk/stk');
+const dataUtils = require('/lib/data');
 const portal = require('/lib/xp/portal');
 const assetUrlCache = require('/lib/assetUrlCache');
 
@@ -11,7 +11,7 @@ function buildBodyClass(site, siteConfig, content, params, backgroundImage) {
     if (backgroundImage) {
         bodyClass += 'custom-background ';
     }
-    if ((content._path == site._path) && stk.data.isEmpty(params)) {
+    if ((content._path == site._path) && dataUtils.isEmpty(params)) {
         bodyClass += 'home blog ';
     }
     if (params.cat || params.tag || params.author) {
@@ -38,7 +38,7 @@ exports.get = function handleGet(request) {
     const site = portal.getSite();
     const siteConfig = portal.getSiteConfig();
 
-    stk.data.deleteEmptyProperties(siteConfig);
+    dataUtils.deleteEmptyProperties(siteConfig);
     const content = portal.getContent();
 
     const dashedAppName = app.name.replace(/\./g, "-");

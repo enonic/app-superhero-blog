@@ -1,4 +1,5 @@
-const stk = require('/lib/stk/stk');
+const contentUtils = require('/lib/content');
+const dataUtils = require('/lib/data');
 const util = require('/lib/utilities');
 
 const contentLib = require('/lib/xp/content');
@@ -53,17 +54,17 @@ exports.get = function (req) {
 
 
     for (let i = 0; i < posts.length; i++) {
-        const author = stk.content.get(posts[i].data.author);
+        const author = contentUtils.get(posts[i].data.author);
         posts[i].data.authorName = author.data.name;
-        posts[i].data.tags = stk.data.forceArray(posts[i].data.tags);
+        posts[i].data.tags = dataUtils.forceArray(posts[i].data.tags);
 
-        posts[i].data.category = stk.data.forceArray(posts[i].data.category);
+        posts[i].data.category = dataUtils.forceArray(posts[i].data.category);
         posts[i].data.categoryNames = [];
         posts[i].data.description = removeTags(posts[i].data.post);
 
         if (posts[i].data.category) {
             for (let j = 0; j < posts[i].data.category.length; j++) {
-                posts[i].data.categoryNames.push(stk.content.getProperty(posts[i].data.category[j], 'displayName'));
+                posts[i].data.categoryNames.push(contentUtils.getProperty(posts[i].data.category[j], 'displayName'));
             }
         }
 

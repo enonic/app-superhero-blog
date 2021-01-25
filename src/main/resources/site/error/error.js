@@ -1,5 +1,6 @@
 const portal = require('/lib/xp/portal');
-const stk = require('/lib/stk/stk');
+const thymeleaf = require('/lib/thymeleaf');
+const dataUtils = require('/lib/data');
 
 const viewGeneric = resolve('error.html');
 
@@ -12,10 +13,9 @@ exports.handle403 = function (err) {
 
     if(err.request.params.debug == 'true') {
         log.info('Error handle403');
-        log.info('The siteConfig is: ');
-        stk.log(siteConfig);
-        log.info('The redirectPagId is: %s', redirectPageId);
-        log.info('The redirectPageUrl is: %s', redirectPageUrl);
+        log.info('siteConfig: ' + JSON.stringify(siteConfig));
+        log.info('redirectPagId: %s', redirectPageId);
+        log.info('redirectPageUrlx: %s', redirectPageUrl);
     }
 
     return {
@@ -31,28 +31,20 @@ exports.handleError = function (err) {
         return;
     }
 
-    function renderView() {
-        const model = createModel();
-        return stk.view.render(viewGeneric, model);
+    const site = portal.getSite();
+    const siteConfig = portal.getSiteConfig();
+    dataUtils.deleteEmptyProperties(siteConfig);
+
+    const googleUA = siteConfig.googleUA && siteConfig.googleUA.trim().length > 1 ? siteConfig.googleUA.trim() : null;
+
+    const model = {
+        site: site,
+        googleUA: googleUA,
+        footerText: '',
+        error: err
     }
 
-    function createModel() {
-
-        const site = portal.getSite();
-        const siteConfig = portal.getSiteConfig();
-        stk.data.deleteEmptyProperties(siteConfig);
-
-        const googleUA = siteConfig.googleUA && siteConfig.googleUA.trim().length > 1 ? siteConfig.googleUA.trim() : null;
-
-        const model = {
-            site: site,
-            googleUA: googleUA,
-            footerText: '',
-            error: err
-        }
-
-        return model;
-    }
-
-    return renderView();
+    return {
+        body: thymeleaf.render(viewGeneric, model)
+    };
 };

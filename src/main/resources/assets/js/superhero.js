@@ -33,7 +33,6 @@ $(document).ready(function(){
 		}).done(function(data) {
 			//handle errors and stuff.
 			if (!data.success) {
-				//console.log('Error!');
 				$this.prev().text(data.error).fadeIn().delay(3000).fadeOut();
 			} else {
 				var comments = $('#comments');

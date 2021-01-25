@@ -78,7 +78,7 @@ exports.get = function (request) {
                         // componentUrl: '${request.path}/_/component${component.path}'
                     };
                 </script>`,
-                `<script src="${assetUrls.commentPostJs}"></script>`,
+                `<script src="${assetUrls.commentsJs}"></script>`,
             ]
         }
     };

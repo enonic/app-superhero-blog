@@ -1,30 +1,24 @@
-const stk = require('/lib/stk/stk');
+const thymeleaf = require('/lib/thymeleaf');
 const util = require('/lib/utilities');
 const portal = require('/lib/xp/portal');
 
-exports.get = handleGet;
+const view = resolve('search-form.html');
 
-function handleGet(req) {
-    function renderView() {
-        const view = resolve('search-form.html');
-        const model = createModel();
-        return stk.view.render(view, model);
+exports.get = function (req) {
+    const component = portal.getComponent();
+
+    const searchPage = portal.pageUrl({
+        path: util.getSearchPage()
+    });
+
+    const model = {
+        title: component.config.title !== ''
+            ? component.config.title
+            : null,
+        searchPage: searchPage
     }
 
-    function createModel() {
-        const component = portal.getComponent();
-        const title = component.config.title != '' ? component.config.title : null;
-        const searchPage = portal.pageUrl({
-            path: util.getSearchPage()
-        });
-
-        const model = {
-            title: title,
-            searchPage: searchPage
-        }
-
-        return model;
-    }
-
-    return renderView();
+    return {
+        body: thymeleaf.render(view, model)
+    };
 }
