@@ -1,11 +1,9 @@
-exports.data = {};
-
 /**
 * Force data to an array.
 * @param {Object or Array} The object to be processed.
 * @return {Array} The resulting array.
 */
-exports.data.forceArray = function(data) {
+exports.forceArray = function(data) {
     if (!Array.isArray(data)) {
         data = [data];
     }
@@ -17,7 +15,7 @@ exports.data.forceArray = function(data) {
 * @param {Array} The array to be processed.
 * @return {Array} The trimmed array.
 */
-exports.data.trimArray = function(array) {
+exports.trimArray = function(array) {
     var trimmedArray = [];
     for (var i = 0; i < array.length; i++) {
         var empty = true;
@@ -41,12 +39,12 @@ exports.data.trimArray = function(array) {
 * @param {Boolean} Flag true to delete properties in nested objects.
 * @return {Boolean} Returns true if the value is an integer or can be cast to an integer.
 */
-exports.data.deleteEmptyProperties = function(obj, recursive) {
+exports.deleteEmptyProperties = function(obj, recursive) {
     for (var i in obj) {
         if (obj[i] === '') {
             delete obj[i];
         } else if (recursive && typeof obj[i] === 'object') {
-            exports.data.deleteEmptyProperties(obj[i], recursive);
+            exports.deleteEmptyProperties(obj[i], recursive);
         }
     }
 };
@@ -56,7 +54,7 @@ exports.data.deleteEmptyProperties = function(obj, recursive) {
 * @param {Object} The value to check.
 * @return {Boolean} Returns true if the value is an integer or can be cast to an integer.
 */
-exports.data.isInt = function(value) {
+exports.isInt = function(value) {
     return !isNaN(value) &&
         parseInt(Number(value)) == value &&
         !isNaN(parseInt(value, 10));
@@ -67,6 +65,6 @@ exports.data.isInt = function(value) {
  * @param {Object} The object to check
  * @return {Boolean} Returns true if the object is empty.
  */
-exports.data.isEmpty = function(obj) {
+exports.isEmpty = function(obj) {
     return Object.keys(obj).length === 0;
 };

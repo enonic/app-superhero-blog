@@ -1,4 +1,4 @@
-const stk = require('/lib/stk/stk');
+const dataUtils = require('/lib/data');
 
 const portal = require('/lib/xp/portal');
 const thymeleaf = require('/lib/thymeleaf');
@@ -21,7 +21,7 @@ exports.get = function handleGet(req) {
         const isEditMode = req.mode === 'edit';
 
         let faqs = [];
-        const faqConfigs = stk.data.forceArray(config.faqs);
+        const faqConfigs = dataUtils.forceArray(config.faqs);
         faqConfigs.forEach(function(faqConfig) {
             if (faqConfig && faqConfig.question && faqConfig.answer) {
                 faqs.push({

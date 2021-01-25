@@ -1,4 +1,6 @@
-const stk = require('/lib/stk/stk');
+const thymeleaf = require('/lib/thymeleaf');
+const dataUtils = require('/lib/data');
+const contentUtils = require('/lib/content');
 const util = require('/lib/utilities');
 
 const contentLib = require('/lib/xp/content');
@@ -6,18 +8,19 @@ const portal = require('/lib/xp/portal');
 
 const CONTENTTYPE_POST = app.name + ':post';
 
+const view = resolve('post.html');
+
 exports.get = function(req) {
     const searchPage = util.getSearchPage();
     const content = portal.getContent();
 
-    const view = resolve('post.html');
 
     //For pagination
     const folderPath = util.getPostsFolder();
     let prev, next;
 
     // Pagination if it's a single post in the posts folder
-    if(stk.content.getParentPath(content._path) == folderPath) {
+    if(contentUtils.getParentPath(content._path) == folderPath) {
         prev = contentLib.query({
             start: 0,
             count: 1,
@@ -45,7 +48,7 @@ exports.get = function(req) {
         post.path = content._path;
         post.id = content._id;
 
-        post.author = post.author ? stk.content.get(post.author) : post.author;
+        post.author = post.author ? contentUtils.get(post.author) : post.author;
 
         if (content.createdTime) {
             const createdDate = new Date(
@@ -62,12 +65,12 @@ exports.get = function(req) {
 
         post.class = 'post-' + content._id + ' post type-post status-publish format-standard hentry';
 
-        post.category = post.category ? stk.data.forceArray(post.category) : null;
+        post.category = post.category ? dataUtils.forceArray(post.category) : null;
 
         if(post.category) {
             for(let i = 0; i < post.category.length; i++) {
-                if(post.category[i] && stk.content.exists(post.category[i])) {
-                    //const category = stk.content.get(data.category[i]);
+                if(post.category[i] && contentUtils.exists(post.category[i])) {
+                    //const category = contentUtils.get(data.category[i]);
                     const category = util.getCategory({id: post.category[i]}, categories);
                     categoriesArray.push(category);
                     post.class += ' category-' + category._name + ' ';
@@ -82,7 +85,7 @@ exports.get = function(req) {
             if (content.page.regions.main.components[0].descriptor == app.name + ':one-column') {
                 scale = 'width(960)';
             }
-            const img = stk.content.get(post.featuredImage);
+            const img = contentUtils.get(post.featuredImage);
             post.fImageName = img.displayName;
             post.fImageUrl = portal.imageUrl({
                 id: post.featuredImage,
@@ -91,7 +94,7 @@ exports.get = function(req) {
             });
         }
 
-        stk.data.deleteEmptyProperties(post);
+        dataUtils.deleteEmptyProperties(post);
     }
 
     const model = {
@@ -103,5 +106,7 @@ exports.get = function(req) {
         searchPage: searchPage,
     };
 
-    return stk.view.render(view, model);
+    return {
+        body: thymeleaf.render(view, model)
+    };
 };

@@ -1,8 +1,85 @@
-const stk = require('/lib/stk/stk');
+const thymeleaf = require('/lib/thymeleaf');
+const dataUtils = require('/lib/data');
+const contentUtils = require('/lib/content');
 const util = require('/lib/utilities');
 
 const contentLib = require('/lib/xp/content');
 const portal = require('/lib/xp/portal');
+
+const view = resolve('post-list.html');
+
+
+function getQuery(up, folderPath, categories, header, site) {
+    // Default query
+    let query = '_parentPath="/content' + folderPath + '" AND data.slideshow != "true"';
+
+    //Search filter
+    if (up.s) {
+        //query = 'fulltext("data.post", "' + up.s + '", "AND") OR fulltext("data.title", "' + up.s + '", "AND")';
+        query = 'fulltext("_allText", "' + up.s + '", "AND")';
+        header.headerText = 'Search Results for: ' + up.s;
+    }
+
+    // Filter for tags
+    if (up.tag) {
+        query = 'data.tags LIKE "' + up.tag.toLowerCase() + '"';
+        header.headerText = 'Tag Archives: ' + up.tag;
+    }
+
+    //Filter for categories.
+    if (up.cat) {
+        log.info('Categories: %s', categories);
+
+        const category = util.getCategory({name: up.cat}, categories);
+        query = 'data.category IN ("' + category._id + '")';
+        header.headerText = 'Category Archives: ' + category.displayName;
+    }
+
+    //Filter for authors
+    if (up.author) {
+        const authorResult = contentLib.query({
+            count: 1,
+            query: '_name LIKE "' + up.author + '"',
+            contentTypes: [app.name + ':author']
+        });
+        const authorContent = authorResult.hits[0];
+
+        query = authorContent ? 'data.author LIKE "' + authorContent._id + '"' : 'data.author LIKE "0"';
+
+        if (authorContent) {
+            const authUrl = portal.pageUrl({
+                path: contentUtils.getPath(site._path),
+                params: { author: up.author }
+            });
+            header.headerText = 'Author Archives: <span class="vcard"><a href="' + authUrl + '" class="url fn n">' + authorContent.data.name + '</a></span>'
+        } else {
+            header.headerText = 'Author Archives: ' + up.author + ' not found';
+        }
+    }
+
+    //Filter for monthly archives
+    if (up.m && dataUtils.isInt(up.m) && up.m.length == 6) {
+
+        const year = up.m.substring(0,4); //Get the year from the querystring
+        const month = up.m.substring(4,6); //Get the month from the querystring
+
+        // Get the last day of the month for the content query
+        const date = new Date(year, month, 0);
+        const lastDay = date.getDate();
+
+        const first = year + '-' + month + '-01T00:00:00Z';
+        const last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
+
+        query = '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
+
+        const monthName = util.getMonthName(date);
+        header.headerText = 'Monthly Archives: ' + monthName + ' ' + year;
+    }
+    return query;
+};
+
+
+
 
 exports.get = function(req) {
     const site = portal.getSite();
@@ -19,8 +96,9 @@ exports.get = function(req) {
 
     const categories = util.getCategories();
 
-    const start = stk.data.isInt(params.paged) ? (params.paged - 1) * postsPerPage : 0;
+    const start = dataUtils.isInt(params.paged) ? (params.paged - 1) * postsPerPage : 0;
     const header = {};
+
     const query = getQuery(params, folderPath, categories, header, site);
 
     // Only put sticky on top on the first page when there are no queries
@@ -55,7 +133,7 @@ exports.get = function(req) {
 
         // Needs an "older" link if...
         if (start < (results.total - postsPerPage)) {
-            urlParams.paged = stk.data.isInt(params.paged) ? (parseInt(params.paged) + 1).toString() : 2;
+            urlParams.paged = dataUtils.isInt(params.paged) ? (parseInt(params.paged) + 1).toString() : 2;
             older = portal.pageUrl({
                 path: content._path == searchPage ? searchPage : site._path,
                 params: urlParams
@@ -64,7 +142,7 @@ exports.get = function(req) {
         // Needs a "newer" link if...
         if (start != 0) {
 
-            if(stk.data.isInt(params.paged) && params.paged > 2) {
+            if(dataUtils.isInt(params.paged) && params.paged > 2) {
                 urlParams.paged = (parseInt(params.paged) - 1).toString();
             } else {
                 urlParams.paged = null;
@@ -115,14 +193,14 @@ exports.get = function(req) {
 
         post.commentsText = post.comments.total == 0 ? 'Leave a comment' : post.comments.total + ' comment' + (+ post.comments.total > 1 ? 's' : '');
 
-        post.author = stk.content.get(post.author);
+        post.author = contentUtils.get(post.author);
 
 
-        post.category = post.category ? stk.data.forceArray(post.category) : null;
+        post.category = post.category ? dataUtils.forceArray(post.category) : null;
 
         if (post.category) {
             for (let j = 0; j < post.category.length; j++) {
-                if(post.category[j] && stk.content.exists(post.category[j])) {
+                if(post.category[j] && contentUtils.exists(post.category[j])) {
                     const category = util.getCategory({id: post.category[j]}, categories);
                     categoriesArray.push(category);
                     post.class += ' category-' + category._name + ' ';
@@ -133,7 +211,7 @@ exports.get = function(req) {
         post.categories = categoriesArray.length > 0 ? categoriesArray : null
 
         if (post.featuredImage) {
-            const img = stk.content.get(post.featuredImage);
+            const img = contentUtils.get(post.featuredImage);
             post.fImageName = img.displayName;
             post.fImageUrl = portal.imageUrl({
                 id: post.featuredImage,
@@ -142,7 +220,7 @@ exports.get = function(req) {
             });
         }
 
-        stk.data.deleteEmptyProperties(post);
+        dataUtils.deleteEmptyProperties(post);
         posts.push(post);
     }
 
@@ -155,78 +233,10 @@ exports.get = function(req) {
         headerText: header.headerText,
         hasPosts: hasPosts
     }
-    const view = resolve('post-list.html');
 
-    return stk.view.render(view, model);
+    return {
+        body: thymeleaf.render(view, model)
+    };
 };
 
 
-
-const getQuery = function(up, folderPath, categories, header, site) {
-    // Default query
-    let query = '_parentPath="/content' + folderPath + '" AND data.slideshow != "true"';
-
-    //Search filter
-    if (up.s) {
-        //query = 'fulltext("data.post", "' + up.s + '", "AND") OR fulltext("data.title", "' + up.s + '", "AND")';
-        query = 'fulltext("_allText", "' + up.s + '", "AND")';
-        header.headerText = 'Search Results for: ' + up.s;
-    }
-
-    // Filter for tags
-    if (up.tag) {
-        query = 'data.tags LIKE "' + up.tag.toLowerCase() + '"';
-        header.headerText = 'Tag Archives: ' + up.tag;
-    }
-
-    //Filter for categories.
-    if (up.cat) {
-        log.info('STK log %s', categories);
-
-        const category = util.getCategory({name: up.cat}, categories);
-        query = 'data.category IN ("' + category._id + '")';
-        header.headerText = 'Category Archives: ' + category.displayName;
-    }
-
-    //Filter for authors
-    if (up.author) {
-        const authorResult = contentLib.query({
-            count: 1,
-            query: '_name LIKE "' + up.author + '"',
-            contentTypes: [app.name + ':author']
-        });
-        const authorContent = authorResult.hits[0];
-
-        query = authorContent ? 'data.author LIKE "' + authorContent._id + '"' : 'data.author LIKE "0"';
-
-        if (authorContent) {
-            const authUrl = portal.pageUrl({
-                path: stk.content.getPath(site._path),
-                params: { author: up.author }
-            });
-            header.headerText = 'Author Archives: <span class="vcard"><a href="' + authUrl + '" class="url fn n">' + authorContent.data.name + '</a></span>'
-        } else {
-            header.headerText = 'Author Archives: ' + up.author + ' not found';
-        }
-    }
-
-    //Filter for monthly archives
-    if (up.m && stk.data.isInt(up.m) && up.m.length == 6) {
-
-        const year = up.m.substring(0,4); //Get the year from the querystring
-        const month = up.m.substring(4,6); //Get the month from the querystring
-
-        // Get the last day of the month for the content query
-        const date = new Date(year, month, 0);
-        const lastDay = date.getDate();
-
-        const first = year + '-' + month + '-01T00:00:00Z';
-        const last = year + '-' + month + '-' + lastDay + 'T23:59:59Z';
-
-        query = '_parentPath="/content' + folderPath + '" AND createdTime > instant("' + first + '") AND createdTime < instant("' + last + '")';
-
-        const monthName = util.getMonthName(date);
-        header.headerText = 'Monthly Archives: ' + monthName + ' ' + year;
-    }
-    return query;
-};

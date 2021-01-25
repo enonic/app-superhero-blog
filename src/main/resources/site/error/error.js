@@ -1,5 +1,6 @@
 const portal = require('/lib/xp/portal');
-const stk = require('/lib/stk/stk');
+const thymeleaf = require('/lib/thymeleaf');
+const dataUtils = require('/lib/data');
 
 const viewGeneric = resolve('error.html');
 
@@ -30,28 +31,20 @@ exports.handleError = function (err) {
         return;
     }
 
-    function renderView() {
-        const model = createModel();
-        return stk.view.render(viewGeneric, model);
+    const site = portal.getSite();
+    const siteConfig = portal.getSiteConfig();
+    dataUtils.deleteEmptyProperties(siteConfig);
+
+    const googleUA = siteConfig.googleUA && siteConfig.googleUA.trim().length > 1 ? siteConfig.googleUA.trim() : null;
+
+    const model = {
+        site: site,
+        googleUA: googleUA,
+        footerText: '',
+        error: err
     }
 
-    function createModel() {
-
-        const site = portal.getSite();
-        const siteConfig = portal.getSiteConfig();
-        stk.data.deleteEmptyProperties(siteConfig);
-
-        const googleUA = siteConfig.googleUA && siteConfig.googleUA.trim().length > 1 ? siteConfig.googleUA.trim() : null;
-
-        const model = {
-            site: site,
-            googleUA: googleUA,
-            footerText: '',
-            error: err
-        }
-
-        return model;
-    }
-
-    return renderView();
+    return {
+        body: thymeleaf.render(viewGeneric, model)
+    };
 };
