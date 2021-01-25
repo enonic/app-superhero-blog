@@ -1,7 +1,8 @@
 ( function( $ ) {
 
 	 function pagePadding() {
-		var headerHeight = $( '#masthead-wrap' ).height() - 1;
+		var headerHeight = $( '#masthead-wrap' ).height();
+		headerHeight = parseInt(headerHeight) + "px";
 		$( '#page' ).css( 'padding-top', headerHeight );
 	 }
 
