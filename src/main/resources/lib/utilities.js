@@ -1,4 +1,4 @@
-var contentUtils = require('lib/content');
+var contentUtils = require('./content');
 var contentLib = require('/lib/xp/content');
 var portal = require('/lib/xp/portal');
 
