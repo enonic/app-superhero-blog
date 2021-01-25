@@ -1,7 +1,7 @@
 exports.data = {};
 
 /**
-* Force data to an array. Note that current stk.log function won't reflect the changes due to a bug in JSON.stringify
+* Force data to an array.
 * @param {Object or Array} The object to be processed.
 * @return {Array} The resulting array.
 */
@@ -13,7 +13,7 @@ exports.data.forceArray = function(data) {
 };
 
 /**
-* Trim empty array elements. Note that current stk.log function won't reflect the changes due to a bug in JSON.stringify
+* Trim empty array elements.
 * @param {Array} The array to be processed.
 * @return {Array} The trimmed array.
 */

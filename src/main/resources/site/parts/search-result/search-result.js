@@ -39,8 +39,6 @@ exports.get = function(req) {
         ]
     });
 
-    //stk.log(results);
-
     const hasPosts = results.hits.length > 0? true : false;
 
     const numMatches = results.total | 0;
@@ -471,8 +469,6 @@ exports.get = function(req) {
             }
         });
 
-        //stk.log(result);
-
         let buckets = null;
         if (result && result.aggregations && result.aggregations.tags && result.aggregations.tags.buckets) {
             buckets = [];
@@ -524,9 +520,6 @@ exports.get = function(req) {
         return buckets;
     }
 
-
-
-    //stk.log(params.aggregations);
 
 
 
@@ -654,8 +647,6 @@ const getQuery = function(up, folderPath, categories, header, site) {
         });
 
         query += ')';
-
-        //stk.log(query);
 
 
 

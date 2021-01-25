@@ -12,10 +12,9 @@ exports.handle403 = function (err) {
 
     if(err.request.params.debug == 'true') {
         log.info('Error handle403');
-        log.info('The siteConfig is: ');
-        stk.log(siteConfig);
-        log.info('The redirectPagId is: %s', redirectPageId);
-        log.info('The redirectPageUrl is: %s', redirectPageUrl);
+        log.info('siteConfig: ' + JSON.stringify(siteConfig));
+        log.info('redirectPagId: %s', redirectPageId);
+        log.info('redirectPageUrlx: %s', redirectPageUrl);
     }
 
     return {

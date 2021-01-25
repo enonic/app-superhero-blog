@@ -10,8 +10,6 @@ exports.get = function(req) {
     const searchPage = util.getSearchPage();
     const content = portal.getContent();
 
-    //stk.log(content);
-
     const view = resolve('post.html');
 
     //For pagination
