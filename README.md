@@ -53,7 +53,7 @@ Version 3.0.0
 * Data import on startup
   * Data structures reflecting the above changes 
   * Post dates updated
-  * Main repo uses app name, enabling use as a starter
+  * Can be used as a starter
 * Content-type icons
 * Fixed bugs and minor annoyances
 * Cleanup:
