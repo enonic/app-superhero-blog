@@ -20,6 +20,7 @@ This is still being developed and is mostly used for demos and experimenting wit
 
 | Version        | XP version |
 | ------------- | ------------- |
+| 3.0.0 | 7.5.0 |
 | 2.1.0 | 7.3.0 |
 | 2.0.5 | 7.0.0 |
 | 2.0.4 | 7.0.0 |
@@ -39,6 +40,25 @@ This is still being developed and is mostly used for demos and experimenting wit
 | 0.1.0 | 5.3.0 |
 
 ### Change log
+
+Version 3.0.0
+
+* Breaking changes to underlying data structures
+* New comments system on back- and frontend
+  * Stores data in its own repo
+* Improved config data structure of some parts, content-types and the site 
+* Adjusted part structure
+  * Default CS templates
+  * Removed unused parts
+* Data import on startup
+  * Data structures reflecting the above changes 
+  * Post dates updated
+  * Main repo uses app name, enabling use as a starter
+* Content-type icons
+* Fixed bugs and minor annoyances
+* Cleanup:
+  * Asset structure
+  * Code refactoring all over: refreshing and restructuring, utilizing libs from market
 
 Version 2.1.0
 
