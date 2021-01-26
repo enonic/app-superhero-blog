@@ -100,7 +100,11 @@ exports.get = function (req) {
     if (langCode)
         langCode = langCode.replace(/_/g, '-'); //replace all underscore with dash
 
-    const commentNodes = queryCommentNodes(size);
+    const queryResult = queryCommentNodes(size);
+    const commentNodes = (!Array.isArray(queryResult))
+        ? [queryResult]
+        : queryResult;
+
     const comments = extractComments(commentNodes);
 
     const model = {
