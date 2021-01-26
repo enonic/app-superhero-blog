@@ -182,15 +182,23 @@ function sendForm(form, formToRemove, commentElement) {
         data: form.serialize(), // serializes the form's elements.
         datatype: "application/json",
 
-    }).done(function (data) {
-        if (data) {
+    }).done(function (data, status, xhr) {
+        var contentType = xhr.getResponseHeader("content-type") || "";
+
+        // Valid response: got some data in HTML format
+        if (data && contentType.indexOf('html') !== -1) {
             handleResponseUpdateDiscussion(data, form, formToRemove, commentElement);
 
         } else {
-            reportError(data, "Response data was empty, server probably returned null value.", "got an empty response from the server - the comment probably wasnt't submitted.", form, commentElement, formToRemove);
+            reportError("Problematic response from server when trying to add/edit comment. Status:" + status + ",", data || "(empty response)", "Problem submitting the comment or refreshing the discussion. Refresh page/try again.", form, commentElement, formToRemove);
         }
+
     }).fail(function (data) {
-        reportError(data, "Couldn't submit form.", "couldn't submit comment.", form, commentElement, formToRemove);
+        var contentType = data.getResponseHeader("content-type") || "";
+        const printableData = (data && contentType.indexOf('text/plain') !== -1)
+            ? data.responseText
+            : data
+        reportError("Couldn't submit form.", printableData, "Couldn't submit comment.", form, commentElement, formToRemove);
     });
 }
 
@@ -199,11 +207,10 @@ function sendForm(form, formToRemove, commentElement) {
 // -------------------------------------------  HANDLING/UPDATING:
 
 function handleResponseUpdateDiscussion(data, form, formToRemove, commentElement) {
-    const componentData = (typeof data.body === 'string') ? data.body.trim() : undefined;
-
-    // Cheap check for whether useable HTML was received from the server.
-    if (componentData && componentData.startsWith('<')) {
-
+    const componentData = (typeof data === 'string')
+        ? data.trim()
+        : undefined;
+    if (componentData) {
         // Replace the current discussion tree in the DOM (all comments in the part) with the parsed
         // HTML from the incoming data (that is, select the ".discussionTree" class in both):
         var discussionTreeInDom = $("#" + discussionData.elementId + " .discussionTree")[0];
@@ -219,22 +226,13 @@ function handleResponseUpdateDiscussion(data, form, formToRemove, commentElement
             formToRemove.remove();
         }
 
-        const commentResultId = (data.nodeResult || {})._id;
-        if (commentResultId && componentData.indexOf(commentResultId) !== -1) {
-            markNewComment(commentResultId);
-        }
-
-    } else if (data.nodeResult) {
-        reportError(data, "Server responded with valid nodeResult data but empty or non-HTML discussion data (body).", "Problem submitting the comment or refreshing the discussion. Try again or refresh manually.", form, commentElement, formToRemove);
-        console.warn("Full problematic response:", data);
-
     } else {
-        reportError(data, "Server responded with empty or invalid data.", "Problem submitting the comment or refreshing the discussion. Try again or refresh manually.", form, commentElement, formToRemove);
-        console.warn("Full problematic response:", data);
+        reportError("Server responded with empty or invalid data:", data, "Problem submitting the comment or refreshing the discussion. Refresh page/try again.", form, commentElement, formToRemove);
     }
 }
 
 
+// Global-namespace availble: called by the HTML returned
 function markNewComment(commentId){
     var commentElement = $("#comment-" + commentId);
     $('html,body').animate(
@@ -245,13 +243,20 @@ function markNewComment(commentId){
 
 
 
-function reportError(data, consoleMessage, visibleMessage, form, commentElement, formToRemove) {
+function reportError(consoleMessage, data, visibleMessage, form, commentElement, formToRemove) {
     console.error(consoleMessage, data);
-    form.prepend("<div class='error'>Error: " +visibleMessage + "</div>");
+    form.prepend("<div class='error'>Error: " + visibleMessage + "</div>");
     setTimeout(
         function() {
-            commentElement.hide();
-            formToRemove.show();
+            if (commentElement) {
+                commentElement.hide();
+            }
+            if (formToRemove) {
+                formToRemove.show();
+            }
+            if (!formToRemove) {
+                form.show();
+            }
         },
         200
     );

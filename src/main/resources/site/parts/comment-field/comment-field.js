@@ -90,34 +90,84 @@ exports.post = function(req) {
     const params = req.params;
 
     let comment = null;
-    if (params.parent) {
-        comment = commentLib.createComment(params.comment, params.content, params.parent);
-    }
-    else if (params.modify) {
-        comment = commentLib.modifyComment(params.id, params.comment);
-    }
-    else if (params.comment && params.comment.length > 0) {
-        comment = commentLib.createComment(params.comment, params.content);
+    try {
+        if (params.parent) {
+            comment = commentLib.createComment(params.comment, params.content, params.parent);
+        } else if (params.modify) {
+            comment = commentLib.modifyComment(params.id, params.comment);
+        } else {
+            comment = commentLib.createComment(params.comment, params.content);
+        }
+
+    } catch (e) {
+        if (typeof e === 'object' && e.status && e.message) {
+            return getBadPostResponse(`Could not create/modify comment (${e.status}: ${e.message})`, e.status, e.message, req);
+        }
     }
     if (!comment) {
-        log.warning("Could not create new comment. Request: " + JSON.stringify(req));
-        return {
-            status: 500,
-            body: "Comment not created. Error is logged on server."
-        };
+        return getBadPostResponse("Could not create/modify comment.", 500, "Error is logged on the server", req);
     }
+
 
     const nodeData = commentLib.getNodeData(comment);
 
-    // Re-rendering the part's HTML after the POST has been handled:
-    const response = exports.get(req);
+    let response = {};
+    try {
+        // Re-rendering the part's HTML after the POST has been handled:
+        response = exports.get(req);
 
-    // wrapping the body HTML in a JSON object, both in order to supplement the nodeData, and since the HTML is injected on the page by clientside JS anyway.
-    response.body = {
-        body: response.body,
-        nodeResult: nodeData
+        if (typeof (response || {}).body === 'string') {
+            response.contentType = 'text/html';
+            if (nodeData._id) {
+                response.body += `<script>markNewComment('${nodeData._id}');</script>`
+            }
+            return response;
+
+        } else {
+            return getBadRefreshResponse("Unexpected: it seems a comment node was successfully added/modified, but when refreshing the comment tree, empty response.body data was found.", req, response, nodeData);
+        }
+
+    } catch (e) {
+        return getBadRefreshResponse("Error happened during comment-tree refresh, after adding/modifying a comment node:", req, nodeData, response, e);
+    }
+}
+
+// Log a failed attempt at POSTing a new/modified comment, and return an appropriate response object
+function getBadPostResponse(serverMessage, status, responseBody, request) {
+    log.warning(serverMessage);
+    log.warning("Request: " + JSON.stringify(request));
+    return {
+        status: status,
+        contentType: 'text/plain',
+        body: "Comment not created/modified: " + responseBody
     };
-    response.contentType = 'application/json'
+}
 
-    return response;
+
+// Log a failed attempt at GETing the updated comment tree after a (successful) new/modified comment, and return an appropriate response object:
+function getBadRefreshResponse(serverMessage, req, nodeData, response, e) {
+    if (e) {
+        log.error(e);
+    }
+    log.warning(serverMessage);
+    log.warning("Request: " + JSON.stringify(req));
+    log.warning("Added/modified comment node data: " + JSON.stringify(nodeData));
+    log.warning("Generated response from .get: " + JSON.stringify(response));
+
+    let message = "Error refreshing comment list, after a comment was apparently succesfully added/modified.";
+    if (nodeData) {
+        nodeData.__errormessage__ = message;
+    }
+
+    return {
+        status:  nodeData
+            ? 200
+            : 500,
+        contentType: nodeData
+            ? 'application/json'
+            : 'text/plain',
+        body: nodeData
+            ? nodeData
+            : message
+    }
 }

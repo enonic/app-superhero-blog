@@ -118,13 +118,22 @@ function getConnection() {
     return connection;
 }
 
+// Creates a throwable object that can be parsed as a regular object in a catch clause
+function makeHttpError(status, message) {
+    return {
+        status: status,
+        message: message,
+        error: new Error()
+    }
+}
+
 /**
  * Creates a new comment, assumes the current content is set.
  * @param {string} comment The comment of the new post
  * @param {string} contentId The node id the comment is attached to
  * @param {String} [parent] The parent node used as to set give a new child
  * @param {RepoConnection} [connection] Used to spesify what repo to use
- * @returns {Object} Repo node created or Null if failure
+ * @returns {Object} Repo node created or throws an Error with an object ({http status code: error message}) if failure
  */
 function createComment(comment, contentId, parent, connection) {
     if (connection == null) {
@@ -133,18 +142,19 @@ function createComment(comment, contentId, parent, connection) {
 
     const currentUser = authLib.getUser();
     if (currentUser == null) {
-        log.info("No user found. Need to login to post comments");
-        return null;
+        throw makeHttpError(401, "No user found. Need to login to post comments");
     }
+
+    const commentText = (typeof comment === 'string')
+        ? comment.trim()
+        : undefined;
 
     //Check if content exists
     const currentContent = contentLib.get({ key: contentId });
     if (!currentContent) {
-        log.info("Got an contentId that does not exist");
-        return null;
-    } else if (!comment || comment.length === 0) {
-        log.info("Posted an empty comment");
-        return null;
+        throw makeHttpError(400, "Got a contentId that does not exist");
+    } else if (!commentText) {
+        throw makeHttpError(400, "Posted an empty comment");
     }
 
     //Emails in username fix. Removes from "<" to ">".
@@ -159,7 +169,7 @@ function createComment(comment, contentId, parent, connection) {
         type: "comment",
         creationTime: now,
         data: {
-            comment: comment,
+            comment: commentText,
             userName: sanitizedName,
             userId: currentUser.key,
         },
@@ -168,8 +178,7 @@ function createComment(comment, contentId, parent, connection) {
     if (parent != null) {
         const parentNode = connection.get(parent);
         if (typeof parentNode === 'undefined' || parentNode === null) {
-            log.info("Cant find parent with id:" + parent);
-            return null;
+            throw Error({400: "Cant find parent with id:" + parent});
         }
         //Setting parentPath set nested
         commentModel._parentPath = parentNode._path;
@@ -199,8 +208,7 @@ function modifyComment(id, commentEdit, connection) {
 
     const user = authLib.getUser();
     if (user == null) {
-        log.info("No user found! Probably user session ended");
-        return null;
+        throw makeHttpError(401, "No user found! Probably user session ended");
     }
     //Check if users are the same.
     const currentUserId = user.key;
@@ -208,12 +216,10 @@ function modifyComment(id, commentEdit, connection) {
     const commentUser = dataById.data.userId;
 
     if (!commentUser) {
-        log.info("Could not find userId on comment");
-        return null;
+        throw makeHttpError(400, "Could not find userId on comment");
     }
     else if (currentUserId !== commentUser) {
-        log.info("Current user is different from the author!");
-        return null;
+        throw makeHttpError(401, "Current user is different from the author!");
     }
 
     const result = connection.modify({
@@ -225,8 +231,7 @@ function modifyComment(id, commentEdit, connection) {
     });
 
     if (!result) {
-        log.info("Could not change comment with id: " + id);
-        return null;
+        throw Error({500: "Could not change comment with id: " + id});
     }
 
     repoLib.refresh({
