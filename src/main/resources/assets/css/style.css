@@ -53,6 +53,7 @@ html {
 	overflow-y: scroll; /* Keeps page centred in all browsers regardless of content height */
 	-webkit-text-size-adjust: 100%; /* Prevents iOS text size adjust after orientation change, without disabling user zoom */
 	-ms-text-size-adjust: 100%; /* www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/ */
+    background-color: #262626;  /* Match header and footer */
 }
 body {
 	background: #f2f2f2;
@@ -396,6 +397,8 @@ a:active {
 	margin: 25px auto;
 	width: 960px;
 	min-height: 50px;
+    padding-left: 25px;
+    box-sizing: border-box;
 }
 #masthead hgroup {
 	float: left;
@@ -459,6 +462,8 @@ a:active {
 	font-size: .8em;
 	margin: 0 auto;
 	width: 960px;
+    box-sizing: border-box;
+    padding: 0 25px;
 }
 #colophon a:hover {
 	color: #fff;
@@ -894,14 +899,34 @@ object {
 	margin: 0 0 1.5em;
 	overflow: hidden;
 }
+.site-content .nav-previous,
+.site-content .nav-next {
+    width: 50%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
 .site-content .nav-previous {
 	float: left;
-	width: 50%;
 }
 .site-content .nav-next {
 	float: right;
 	text-align: right;
-	width: 50%;
+}
+
+.post-navigation .nav-previous a,
+.post-navigation .nav-next a {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.post-navigation .nav-next a {
+    justify-content: flex-end;
+}
+.post-navigation .nav-previous span,
+.post-navigation .nav-next span {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 
@@ -1377,12 +1402,18 @@ img#wpstats:hover {
 --------------------------------------------- */
 
 /* --- iPad Portrait --- */
-@media screen and (min-width: 768px) and (max-width: 959px) {
-	#masthead,
-	#colophon,
+@media screen and (min-width: 768px) and (max-width: 1000px) {
 	.featured-content.flexslider .slides .featured-hentry-wrap {
 		width: 100%;
 	}
+    #masthead {
+        width: 96%;
+        margin: 25px auto;
+    }
+    #colophon {
+        width: 96%;
+        margin: 0 auto;
+    }
 	.main {
 		width: 96%;
 	}
@@ -1431,16 +1462,27 @@ img#wpstats:hover {
 		padding: 2%;
 		width: 98%;
 	}
+    .single-post .main {
+        margin: 0;
+    }
+    .entry-header {
+        padding-top: 35px;
+    }
 }
 
 /* --- Smartphones (portrait and landscape) --- */
 @media screen and (max-width : 600px) {
+    #page {
+        padding-top: 125px;
+    }
 	#masthead-wrap {
 		position: absolute;
+        height: 125px;
 	}
+    #colophon,
 	#masthead {
-		padding: 1% 3%;
-		width: 94%;
+		padding: 25px;
+        margin: 0;
 		max-height: none;
 	}
 	#masthead hgroup {
