@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content-type>
+  <display-name>Authors</display-name>
+  <super-type>base:folder</super-type>
+  <description>Folder for authors</description>
+</content-type>

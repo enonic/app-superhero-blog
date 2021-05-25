@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content-type>
+  <display-name>Posts</display-name>
+  <super-type>base:folder</super-type>
+  <description>Folder for posts</description>
+</content-type>
