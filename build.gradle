@@ -21,6 +21,7 @@ dependencies {
     include "com.enonic.xp:lib-auth:${xpVersion}"
     include "com.enonic.xp:lib-project:${xpVersion}"
     include "com.enonic.xp:lib-cluster:${xpVersion}"
+    include "com.enonic.xp:lib-export:${xpVersion}"
     include "com.enonic.xp:lib-i18n:${xpVersion}"
     include "com.enonic.xp:lib-node:${xpVersion}"
     include "com.enonic.xp:lib-repo:${xpVersion}"
@@ -31,5 +32,5 @@ dependencies {
 repositories {
     mavenLocal()
     mavenCentral()
-    xp.enonicRepo()
+    xp.enonicRepo('dev')
 }

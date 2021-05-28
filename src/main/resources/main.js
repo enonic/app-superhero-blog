@@ -2,6 +2,7 @@ const projectLib = require('/lib/xp/project');
 const contextLib = require('/lib/xp/context');
 const clusterLib = require('/lib/xp/cluster');
 const commentsLib = require('/lib/comments');
+const exportLib = require('/lib/xp/export');
 
 const projectData = {
     id: 'sample-blog',
@@ -17,7 +18,8 @@ function runInContext(callback) {
     let result;
     try {
         result = contextLib.run({
-            principals: ["role:system.admin"]
+            principals: ["role:system.admin"],
+            repository: 'com.enonic.cms.' + projectData.id
         }, callback);
     } catch (e) {
         log.info('Error: ' + e.message);
@@ -45,21 +47,40 @@ function initializeProject() {
 
         if (project) {
             log.info('Project "' + projectData.id + '" successfully created');
-        }
-    }
 
-    if (project) {
-        createContent();
-    } else {
-        log.error('Project "' + projectData.id + '" failed to be created');
+            log.info('Importing "' + projectData.id + '" data');
+            runInContext(createContent);
+        } else {
+            log.error('Project "' + projectData.id + '" failed to be created');
+        }
     }
 }
 
-
 function createContent() {
-    const bean = __.newBean('com.enonic.app.superhero.initializer.CreateContent');
-    bean.projectName = projectData.id;
-    return __.toNativeObject(bean.execute());
+    let importNodes = exportLib.importNodes({
+        source: resolve('/import'),
+        targetNodePath: '/content',
+        xslt: resolve('/import/replace_app.xsl'),
+        xsltParams: {
+            applicationId: app.name
+        },
+        includeNodeIds: true
+    });
+    log.info('-------------------');
+    log.info('Imported nodes:');
+    importNodes.addedNodes.forEach(element => log.info(element));
+    log.info('-------------------');
+    log.info('Updated nodes:');
+    importNodes.updatedNodes.forEach(element => log.info(element));
+    log.info('-------------------');
+    log.info('Binaries:');
+    importNodes.exportedBinaries.forEach(element => log.info(element));
+    log.info('-------------------');
+    if (importNodes.importErrors.length !== 0) {
+        log.warning('Errors:');
+        importNodes.importErrors.forEach(element => log.warning(element.message));
+        log.info('-------------------');
+    }
 }
 
 if (clusterLib.isMaster()) {
