@@ -10,6 +10,7 @@
       <occurrences minimum="1" maximum="1"/>
       <config>
         <max-length>11</max-length>
+        <show-counter>true</show-counter>
       </config>
     </input>
     <input type="TextLine" name="email">
