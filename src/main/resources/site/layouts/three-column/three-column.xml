@@ -7,4 +7,7 @@
     <region name="middle"/>
     <region name="right"/>
   </regions>
+  <config>
+    <allow-on-content-type>${app}:post</allow-on-content-type>
+  </config>
 </layout>

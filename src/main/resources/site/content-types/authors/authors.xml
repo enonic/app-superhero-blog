@@ -3,4 +3,6 @@
   <display-name>Authors</display-name>
   <super-type>base:folder</super-type>
   <description>Folder for authors</description>
+  <allow-child-content-type>base:folder</allow-child-content-type>
+  <allow-child-content-type>${app}:author</allow-child-content-type>
 </content-type>

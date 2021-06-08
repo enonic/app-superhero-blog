@@ -3,4 +3,7 @@
   <display-name>Remove me</display-name>
   <super-type>base:folder</super-type>
   <description>No one needs this</description>
+  <config>
+    <allow-new-content>false</allow-new-content>
+  </config>
 </content-type>
