@@ -73,8 +73,8 @@ function createContent() {
     log.info('Updated nodes:');
     importNodes.updatedNodes.forEach(element => log.info(element));
     log.info('-------------------');
-    log.info('Binaries:');
-    importNodes.exportedBinaries.forEach(element => log.info(element));
+    log.info('Imported binaries:');
+    importNodes.importedBinaries.forEach(element => log.info(element));
     log.info('-------------------');
     if (importNodes.importErrors.length !== 0) {
         log.warning('Errors:');
