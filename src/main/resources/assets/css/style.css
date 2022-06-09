@@ -565,7 +565,7 @@ a:active {
 	width: 960px;
 }
 .featured-content.flexslider .slides .hentry .entry-header {
-	background: rgba(255,255,255,.95);
+	background: rgba(255, 255, 255, .75);
 	border-bottom: 5px solid #1e4a66;
 	margin-bottom: 25px;
 	padding: 1% 25px;
