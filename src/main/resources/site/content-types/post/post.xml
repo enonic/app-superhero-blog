@@ -42,11 +42,11 @@
                     <occurrences minimum="0" maximum="1"/>
                     <config/>
                 </input>
-                <input type="Checkbox" name="slideshow">
+                <input type="CheckBox" name="slideshow">
                     <label>Slideshow</label>
                     <occurrences minimum="0" maximum="1"/>
                 </input>
-                <input type="Checkbox" name="stickyPost">
+                <input type="CheckBox" name="stickyPost">
                     <label>Sticky post</label>
                     <occurrences minimum="0" maximum="1"/>
                 </input>

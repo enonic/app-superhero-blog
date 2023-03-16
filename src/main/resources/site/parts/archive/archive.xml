@@ -7,7 +7,7 @@
       <label>Title</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
-    <input type="Checkbox" name="showPostCount">
+    <input type="CheckBox" name="showPostCount">
       <label>Show count</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
