@@ -178,12 +178,6 @@
                                 <string name="linkText">Enonic</string>
                                 <string name="linkTitle">Enonic</string>
                             </property-set>
-                            <property-set name="links">
-                                <reference name="contentLink">16c9c9ee-2f16-425e-ba98-d4b20391c500</reference>
-                                <string isNull="true" name="externalUrl"/>
-                                <string name="linkText">Entries RSS</string>
-                                <string name="linkTitle">Really Simple Syndication</string>
-                            </property-set>
                         </property-set>
                     </property-set>
                 </property-set>

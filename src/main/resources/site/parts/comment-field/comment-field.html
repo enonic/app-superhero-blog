@@ -2,7 +2,7 @@
     <h3 class="headline"
         data-th-text="${ locale.commentsHeading }">Comments</h3>
 
-    <div data-th-replace="/site/parts/comment-field/comment-tree::nestedComment (${ discussion }, ${hasComments})"
+    <div data-th-replace="~{/site/parts/comment-field/comment-tree::nestedComment (${ discussion }, ${hasComments})}"
          data-th-remove="tag"></div>
     <form data-th-if="${userId}"
           class="startDiscussion"
