@@ -20,6 +20,7 @@ This is still being developed and is mostly used for demos and experimenting wit
 
 | Version | XP version |
 |---------|------------|
+| 3.2.0   | 7.13.0     |
 | 3.1.0   | 7.8.0      |
 | 3.0.0   | 7.5.0      |
 | 2.1.0   | 7.3.0      |
@@ -41,6 +42,10 @@ This is still being developed and is mostly used for demos and experimenting wit
 | 0.1.0   | 5.3.0      |
 
 ### Change log
+
+Version 3.2.0
+* Updated XP dependency to 7.13.0
+* Now automatically publishing imported content
 
 Version 3.0.0
 

@@ -1,8 +1,10 @@
-const projectLib = require('/lib/xp/project');
 const contextLib = require('/lib/xp/context');
+const contentLib = require('/lib/xp/content');
 const clusterLib = require('/lib/xp/cluster');
-const commentsLib = require('/lib/comments');
 const exportLib = require('/lib/xp/export');
+const projectLib = require('/lib/xp/project');
+const commentsLib = require('/lib/comments');
+const taskLib = require('/lib/xp/task');
 
 const projectData = {
     id: 'sample-blog',
@@ -14,7 +16,8 @@ const projectData = {
     }
 }
 
-function runInContext(callback) {
+
+const runInContext = function (callback) {
     let result;
     try {
         result = contextLib.run({
@@ -28,33 +31,54 @@ function runInContext(callback) {
     return result;
 }
 
-function createProject() {
-    return projectLib.create(projectData);
+const initComments = function () {
+    return commentsLib.initializeRepo();
 }
 
-function getProject() {
+const getProject = function () {
     return projectLib.get({
         id: projectData.id
     });
 }
 
-function initializeProject() {
-    let project = runInContext(getProject);
-
-    if (!project) {
-        log.info('Project "' + projectData.id + '" not found. Creating...');
-        project = runInContext(createProject);
-
-        if (project) {
-            log.info('Project "' + projectData.id + '" successfully created');
-
-            log.info('Importing "' + projectData.id + '" data');
-            runInContext(createContent);
-        } else {
-            log.error('Project "' + projectData.id + '" failed to be created');
-        }
-    }
+const createProject = function () {
+    return projectLib.create(projectData);
 }
+
+const initialize = function () {
+    runInContext(() => {
+        // Initialize comments
+        taskLib.executeFunction({
+            description: 'Setting up comments repo',
+            func: initComments
+        });
+
+        // Initialize content
+        const project = getProject();
+        if (!project) {
+            taskLib.executeFunction({
+                description: 'Importing content',
+                func: initProject
+            });
+        }
+        else {
+            log.debug(`Project ${project.id} exists, skipping import`);
+        }
+    });
+};
+
+const initProject = function () {
+    // log.info('Project "' + projectData.id + '" not found. Creating...');
+    const project = createProject();
+
+    if (project) {
+        log.info('Project "' + projectData.id + '" successfully created');
+        createContent();
+        publishRoot();
+    } else {
+        log.error('Project "' + projectData.id + '" creation failed');
+    }
+};
 
 function createContent() {
     let importNodes = exportLib.importNodes({
@@ -66,24 +90,24 @@ function createContent() {
         },
         includeNodeIds: true
     });
-    log.info('-------------------');
-    log.info('Imported nodes:');
-    importNodes.addedNodes.forEach(element => log.info(element));
-    log.info('-------------------');
-    log.info('Updated nodes:');
-    importNodes.updatedNodes.forEach(element => log.info(element));
-    log.info('-------------------');
-    log.info('Imported binaries:');
-    importNodes.importedBinaries.forEach(element => log.info(element));
-    log.info('-------------------');
-    if (importNodes.importErrors.length !== 0) {
+    if (importNodes.importErrors.length > 0) {
         log.warning('Errors:');
         importNodes.importErrors.forEach(element => log.warning(element.message));
         log.info('-------------------');
     }
 }
 
+function publishRoot() {
+    const result = contentLib.publish({
+        keys: ['/superhero'],
+        sourceBranch: 'draft',
+        targetBranch: 'master',
+    });
+    if (!result) {
+       log.warning('Could not publish imported content.');
+    }
+}
+
 if (clusterLib.isMaster()) {
-    initializeProject();
-    runInContext(commentsLib.initializeRepo);
+    initialize();
 }
