@@ -1,4 +1,5 @@
 const portal = require('/lib/xp/portal');
+const assetLib = require('/lib/enonic/asset');
 const thymeleaf = require('/lib/thymeleaf');
 const dataUtils = require('/lib/data');
 
@@ -31,6 +32,7 @@ exports.handleError = function (err) {
         return;
     }
 
+    const assetUrlPrefix = assetLib.assetUrl({path: ''});
     const site = portal.getSite();
     const siteConfig = portal.getSiteConfig();
     dataUtils.deleteEmptyProperties(siteConfig);
@@ -39,6 +41,7 @@ exports.handleError = function (err) {
 
     const model = {
         site: site,
+        assetUrlPrefix,
         googleUA: googleUA,
         footerText: '',
         error: err
