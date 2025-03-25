@@ -5,6 +5,7 @@
     <div data-th-replace="~{/site/parts/comment-field/comment-tree::nestedComment (${ discussion }, ${hasComments})}"
          data-th-remove="tag"></div>
     <form data-th-if="${userId}"
+          method="POST"
           class="startDiscussion"
           autocomplete="off"
           data-th-action="${ componentUrl }">
@@ -23,4 +24,5 @@
                type="button"
                data-th-value="${ locale.close }" />
     </form>
+    <p class="comments-disabled">Turn off Content Security Policy to enable commenting.</p>
 </section>

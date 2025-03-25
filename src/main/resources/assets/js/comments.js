@@ -1,8 +1,14 @@
 /*Document ready*/
+const discussionData = window.discussionData;
+const isEditableMode = !!discussionData;
+
 $(function () {
     var mainForm = $(".startDiscussion").first();
-    discussionData.componentUrl = mainForm.attr('action');
-    discussionData.form = mainForm.clone();
+
+    if (isEditableMode) {
+        discussionData.componentUrl = mainForm.attr('action');
+        discussionData.form = mainForm.clone();
+    }
 
     updateAndSetListeners(true);
 });
@@ -14,7 +20,14 @@ var REPLYING = "replying";
 function updateAndSetListeners(setMainFormListener) {
 
     var mainForm = $(".startDiscussion").first();
-    mainForm.show();
+    if (isEditableMode) {
+        mainForm.show();
+        $(".comments-disabled").hide();
+    } else {
+        mainForm.hide();
+        $(".commentButton").hide();
+        $(".comments-disabled").show();
+    }
 
     if (setMainFormListener) {
         // Submitting a new comment (the main field):
