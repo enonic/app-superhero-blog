@@ -1,8 +1,8 @@
 <node>
-    <id>86cc1301-0639-41d1-84ed-70ba443f38ba</id>
+    <id>22354f06-b64e-48d8-959d-da5f8c27a424</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2019-03-13T08:48:27.144Z</timestamp>
+    <timestamp>2019-03-13T08:48:27.153Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
         <principal key="role:cms.cm.app">
@@ -44,19 +44,18 @@
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
-        <string name="displayName">Michael Lazell</string>
+        <string name="displayName">Kari Nordmann</string>
         <string name="type">com.enonic.app.superhero:author</string>
         <string name="owner">user:system:su</string>
         <string name="language">en</string>
-        <dateTime name="modifiedTime">2020-02-27T23:50:44.614Z</dateTime>
+        <dateTime name="modifiedTime">2020-02-27T23:50:11.506Z</dateTime>
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
-        <dateTime name="createdTime">2020-02-27T23:50:17.414Z</dateTime>
+        <dateTime name="createdTime">2020-02-27T23:49:45.640Z</dateTime>
         <property-set name="data">
-            <string name="name">Michael Lazell</string>
-            <string name="email">mla@example.com</string>
-            <string name="website">https://enonic.com</string>
-            <string name="bio">This is my bio. There are many like it but this one is mine.</string>
+            <string name="email">kari@example.com</string>
+            <string name="website">https://example.com</string>
+            <string name="bio">&lt;p&gt;I'm the blog admin!&lt;/p&gt;</string>
         </property-set>
     </data>
     <indexConfigs>

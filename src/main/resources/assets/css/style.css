@@ -755,9 +755,7 @@ h2.entry-title {
 footer.entry-meta {
 	padding: 0 25px;
 }
-.byline {
-	display: none;
-}
+
 .single .byline,
 .group-blog .byline {
 	display: inline;
@@ -1161,6 +1159,11 @@ object {
 #discussion .time::after,
 .widget_recent_comments .comment .time::after {
     content: ":";
+}
+
+#discussion .comments-disabled {
+	padding: 0 25px;
+	font-style: italic;
 }
 
 .widget_recent_comments .comment .name,

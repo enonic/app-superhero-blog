@@ -55,7 +55,7 @@ exports.get = function (req) {
 
     for (let i = 0; i < posts.length; i++) {
         const author = contentUtils.get(posts[i].data.author);
-        posts[i].data.authorName = author.data.name;
+        posts[i].data.authorName = author.displayName;
         posts[i].data.tags = dataUtils.forceArray(posts[i].data.tags);
 
         posts[i].data.category = dataUtils.forceArray(posts[i].data.category);

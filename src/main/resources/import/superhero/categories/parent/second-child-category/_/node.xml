@@ -52,9 +52,7 @@
         <string name="modifier">user:system:su</string>
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2020-02-27T23:51:30.611Z</dateTime>
-        <property-set name="data">
-            <string name="name">Second Child Category</string>
-        </property-set>
+        <property-set name="data"/>
     </data>
     <indexConfigs>
         <defaultConfig>

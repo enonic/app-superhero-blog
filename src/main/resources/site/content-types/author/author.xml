@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content-type>
   <display-name>Author</display-name>
-  <display-name-expression>$('name')</display-name-expression>
+  <display-name-label>Full Name</display-name-label>
   <super-type>base:structured</super-type>
   <description>Create authors to be selected on blog posts</description>
   <form>
-    <input type="TextLine" name="name">
-      <label>Name</label>
-      <occurrences minimum="1" maximum="1"/>
-    </input>
     <input type="TextLine" name="email">
       <label>Email</label>
       <occurrences minimum="1" maximum="1"/>

@@ -51,7 +51,7 @@ function getQuery(up, folderPath, categories, header, site) {
                 path: contentUtils.getPath(site._path),
                 params: { author: up.author }
             });
-            header.headerText = 'Author Archives: <span class="vcard"><a href="' + authUrl + '" class="url fn n">' + authorContent.data.name + '</a></span>'
+            header.headerText = 'Author Archives: <span class="vcard"><a href="' + authUrl + '" class="url fn n">' + authorContent.displayName + '</a></span>'
         } else {
             header.headerText = 'Author Archives: ' + up.author + ' not found';
         }
@@ -225,13 +225,13 @@ exports.get = function(req) {
     }
 
     const model = {
-        posts: posts,
-        site: site,
-        searchPage: searchPage,
-        older: older,
-        newer: newer,
+        posts,
+        site,
+        searchPage,
+        older,
+        newer,
         headerText: header.headerText,
-        hasPosts: hasPosts
+        hasPosts
     }
 
     return {
