@@ -9,7 +9,6 @@ exports.getAssetUrls = function(viewmode, branch) {
     const key = `${branch}_${viewmode}`;
     if (!assetUrls[key]) {
         assetUrls[key] = {
-            html5Js: assetLib.assetUrl({path: 'js/html5.js'}),
             styleCss: assetLib.assetUrl({path: 'css/style.css'}),
             enonicCss: assetLib.assetUrl({path: 'css/enonic.css'}),
             flexsliderCss: assetLib.assetUrl({path: 'css/flexslider.css'}),

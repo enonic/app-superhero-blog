@@ -19,7 +19,7 @@
                     <span data-th-if="${post.author}" class="byline"> by
                         <span class="author vcard">
                             <a class="url fn n" href="#" data-th-href="${portal.pageUrl({'_path=' + searchPage, 'author=' + post.author._name})}"
-                                data-th-title="'View all posts by ' + ${post.author.displayName}" rel="author" data-th-text="${post.author.data.name}">Theme Admin</a>
+                                data-th-title="'View all posts by ' + ${post.author.displayName}" rel="author" data-th-text="${post.author.displayName}">Blog Admin</a>
                         </span>
                     </span>
                 </span>
@@ -38,7 +38,7 @@
         <footer class="entry-meta">
             <span class="cat-links" data-th-if="${post.categories != null}">Posted in
                 <div data-th-remove="tag" data-th-each="category,iterStat : ${post.categories}">
-                    <a href="#" data-th-href="${portal.pageUrl({'_path=' + searchPage, 'cat=' + category._name})}" rel="category" data-th-text="${category.data.name}">category</a><span data-th-remove="tag" data-th-if="${!iterStat.last}">,</span>
+                    <a href="#" data-th-href="${portal.pageUrl({'_path=' + searchPage, 'cat=' + category._name})}" rel="category" data-th-text="${category.displayName}">category</a><span data-th-remove="tag" data-th-if="${!iterStat.last}">,</span>
                 </div>
             </span>
 

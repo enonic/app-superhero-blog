@@ -52,7 +52,7 @@
                 <footer class="entry-meta">
             <span class="cat-links" data-th-if="${post.categories != null}">Posted in
                 <div data-th-remove="tag" data-th-each="category,iterStat : ${post.categories}">
-                    <a href="#" data-th-href="${portal.pageUrl({'_path=' + searchPage, 'cat=' + category._name})}" rel="category" data-th-text="${category.data.name}">Uncategorized</a><span data-th-remove="tag" data-th-if="${!iterStat.last}">,</span>
+                    <a href="#" data-th-href="${portal.pageUrl({'_path=' + searchPage, 'cat=' + category._name})}" rel="category" data-th-text="${category.displayName}">Uncategorized</a><span data-th-remove="tag" data-th-if="${!iterStat.last}">,</span>
                 </div>
             </span>
 
