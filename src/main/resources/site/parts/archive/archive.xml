@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part xmlns="urn:enonic:xp:model:1.0">
-  <display-name>Monthly archive</display-name>
-  <description>Link list for blog posts, grouped by month.</description>
+  <display-name i18n="part.archive.displayName">Monthly archive</display-name>
+  <description i18n="part.archive.description">Link list for blog posts, grouped by month</description>
   <form>
     <input type="TextLine" name="title">
-      <label>Title</label>
+      <label i18n="texts.common.title">Title</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
     <input type="CheckBox" name="showPostCount">
-      <label>Show count</label>
+      <label i18n="texts.common.showCount">Show count</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
   </form>

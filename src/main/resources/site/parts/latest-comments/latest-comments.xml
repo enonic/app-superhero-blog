@@ -1,23 +1,22 @@
 <part>
-    <display-name>Latest comments</display-name>
-    <description>Lists the latest comments on all the blog's posts</description>
+    <display-name i18n="part.latestComments.displayName">Latest comments</display-name>
+    <description i18n="part.latestComments.description">Displays the latest comments from all the blog posts</description>
     <form>
-
         <input type="TextLine" name="headline">
-            <label>Title</label>
-            <default>Latest comments</default>
-            <help-text>Override the headline text displayed on this part. Default: "Latest comments"</help-text>
-            <occurrences minimum="0" maximum="1"></occurrences>
+            <label i18n="texts.common.title">Title</label>
+            <default i18n="part.latestComments.displayName">Latest comments</default>
+            <help-text i18n="part.latestComments.title.helpText">Override the headline text displayed on this part. Default: "Latest comments"</help-text>
+            <occurrences minimum="0" maximum="1"/>
         </input>
         <input type="Long" name="size">
-            <label>How many comments to show?</label>
-            <help-text>Override the max number of latest comments to display. Default: 5</help-text>
+            <label i18n="part.latestComments.size">Number of comments to display</label>
+            <help-text i18n="part.latestComments.size.helpText">Override the max number of latest comments to display. Default: 5</help-text>
             <default>5</default>
             <config>
                 <min>1</min>
                 <max>20</max>
             </config>
-            <occurrences minimum="0" maximum="1"></occurrences>
+            <occurrences minimum="0" maximum="1"/>
         </input>
 
     </form>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part xmlns="urn:enonic:xp:model:1.0">
-  <display-name>Featured</display-name>
-  <description>Feature a post in large format</description>
+  <display-name i18n="part.featured.displayName">Featured</display-name>
+  <description i18n="part.featured.description">Feature a post in large format</description>
   <form>
     <input type="ContentSelector" name="posts">
-      <label>Featured posts</label>
+      <label i18n="part.featured.featuredPosts">Featured posts</label>
       <occurrences minimum="0" maximum="5"/>
       <config>
         <relationship>system:reference</relationship>

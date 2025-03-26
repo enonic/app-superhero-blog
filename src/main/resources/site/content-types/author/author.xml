@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content-type>
-  <display-name>Author</display-name>
-  <display-name-label>Full Name</display-name-label>
+  <display-name i18n="contentType.author.displayName">Author</display-name>
+  <display-name-label i18n="contentType.author.fullName">Full Name</display-name-label>
   <super-type>base:structured</super-type>
-  <description>Create authors to be selected on blog posts</description>
+  <description i18n="contentType.author.description">Create authors to be selected for blog posts</description>
   <form>
     <input type="TextLine" name="email">
-      <label>Email</label>
+      <label i18n="contentType.author.email">Email</label>
       <occurrences minimum="1" maximum="1"/>
     </input>
     <input type="TextLine" name="website">
-      <label>Website</label>
+      <label i18n="contentType.author.website">Website</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
     <input type="HtmlArea" name="bio">
-      <label>Bio</label>
+      <label i18n="contentType.author.bio">Bio</label>
       <occurrences minimum="1" maximum="1"/>
     </input>
   </form>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part xmlns="urn:enonic:xp:model:1.0">
-  <display-name>Categories</display-name>
-  <description>Display link list on all categories used in existing blog posts</description>
+  <display-name i18n="part.categories.displayName">Categories</display-name>
+  <description i18n="part.categories.description">Display link list on all categories used in existing blog posts</description>
   <form>
     <input type="TextLine" name="title">
-      <label>Title</label>
+      <label i18n="texts.common.title">Title</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
     <input type="CheckBox" name="showPostCount">
-      <label>Show count</label>
+      <label i18n="texts.common.showCount">Show count</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
     <input type="CheckBox" name="showHierarchy">

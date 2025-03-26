@@ -3,11 +3,11 @@
   <x-data name="siteCommon" allowContentTypes="portal:site" />
   <form>
     <input type="TextLine" name="numPosts">
-      <label>Max posts per page</label>
+      <label i18n="siteConfig.maxPosts">Max posts per page</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
     <input type="ContentSelector" name="postsFolder">
-      <label>Posts folder</label>
+      <label i18n="siteConfig.postsFolder">Posts folder</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
         <relationship-type>system:reference</relationship-type>
@@ -15,7 +15,7 @@
       </config>
     </input>
     <input type="ContentSelector" name="searchPage">
-      <label>Search page</label>
+      <label i18n="siteConfig.searchPage">Search page</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
         <relationship-type>system:reference</relationship-type>

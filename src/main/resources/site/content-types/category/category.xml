@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content-type>
-  <display-name>Category</display-name>
+  <display-name i18n="contentType.category.displayName">Category</display-name>
   <super-type>base:structured</super-type>
   <allow-child-content>true</allow-child-content>
-  <description>Categories to use with blog posts (also groups them)</description>
+  <description i18n="contentType.category.description">Categories to use with blog posts (also groups them)</description>
   <form/>
 </content-type>

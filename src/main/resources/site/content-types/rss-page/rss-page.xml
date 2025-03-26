@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content-type>
-  <display-name>RSS page</display-name>
-  <description>Page to display RSS feeds in correct format</description>
+  <display-name i18n="contentType.rss.displayName">RSS page</display-name>
+  <description i18n="contentType.rss.description">Page to display RSS feeds in correct format</description>
   <content-display-name-script>$('title')</content-display-name-script>
   <super-type>base:structured</super-type>
   <form>
     <input type="TextLine" name="title">
-      <label>Title</label>
+      <label i18n="texts.common.title">Title</label>
       <occurrences minimum="1" maximum="1"/>
     </input>
     <input type="ComboBox" name="updatePeriod">
-      <label>SY Update period</label>
+      <label i18n="contentType.rss.updatePeriod">Update period</label>
       <occurrences minimum="0" maximum="1"/>
       <config>
         <option value="hourly">Hourly</option>
@@ -21,11 +21,11 @@
       </config>
     </input>
     <input type="TextLine" name="updateFrequency">
-      <label>SY Update frequency</label>
+      <label i18n="contentType.rss.updateFrequency">Update frequency</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
     <input type="ContentSelector" name="postsFolder">
-      <label>Category</label>
+      <label i18n="contentType.rss.folder">Folder</label>
       <occurrences minimum="0" maximum="0"/>
       <config>
         <relationship-type>system:reference</relationship-type>

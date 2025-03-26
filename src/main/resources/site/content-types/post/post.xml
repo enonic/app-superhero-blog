@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content-type>
-    <display-name>Post</display-name>
-    <description>Main content type used for writing blog posts.</description>
+    <display-name i18n="contentType.post.displayName">Post</display-name>
+    <description i18n="contentType.post.description">Main content type used for writing blog posts</description>
     <super-type>base:structured</super-type>
     <allow-child-content>true</allow-child-content>
 
     <form>
         <input type="ContentSelector" name="author">
-            <label>Author</label>
+            <label i18n="contentType.author.displayName">Author</label>
             <occurrences minimum="0" maximum="1"/>
             <config>
                 <relationship-type>system:reference</relationship-type>
@@ -16,7 +16,7 @@
             </config>
         </input>
         <input type="ContentSelector" name="category">
-            <label>Category</label>
+            <label i18n="contentType.category.displayName">Category</label>
             <occurrences minimum="0" maximum="0"/>
             <config>
                 <relationship-type>system:reference</relationship-type>
@@ -25,12 +25,12 @@
             </config>
         </input>
         <input type="HtmlArea" name="post">
-            <label>Post text</label>
+            <label i18n="contentType.post.postText">Post text</label>
             <indexed>true</indexed>
             <occurrences minimum="1" maximum="1"/>
         </input>
         <input type="Tag" name="tags">
-            <label>Tags</label>
+            <label i18n="contentType.post.tags">Tags</label>
             <occurrences minimum="0" maximum="0"/>
         </input>
 
@@ -38,16 +38,16 @@
             <label>Featured</label>
             <items>
                 <input type="ImageSelector" name="featuredImage">
-                    <label>Featured Image</label>
+                    <label i18n="contentType.post.featuredImage">Featured Image</label>
                     <occurrences minimum="0" maximum="1"/>
                     <config/>
                 </input>
                 <input type="CheckBox" name="slideshow">
-                    <label>Slideshow</label>
+                    <label i18n="contentType.post.slideShow">Slideshow</label>
                     <occurrences minimum="0" maximum="1"/>
                 </input>
                 <input type="CheckBox" name="stickyPost">
-                    <label>Sticky post</label>
+                    <label i18n="contentType.post.stickyPost">Sticky post</label>
                     <occurrences minimum="0" maximum="1"/>
                 </input>
             </items>

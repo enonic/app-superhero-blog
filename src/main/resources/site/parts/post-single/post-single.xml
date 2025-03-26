@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part xmlns="urn:enonic:xp:model:1.0">
-  <display-name>Post single</display-name>
-  <description>Used to display selected blog post</description>
+  <display-name i18n="part.postSingle.displayName">Post</display-name>
+  <description i18n="part.postSingle.description">Display current blog post</description>
   <form/>
 </part>
