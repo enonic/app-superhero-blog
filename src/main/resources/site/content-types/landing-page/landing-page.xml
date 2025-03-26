@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <content-type>
-  <display-name>Landing page</display-name>
-  <description>Standard landing page (default)</description>
+  <display-name i18n="contentType.landingPage.displayName">Landing page</display-name>
+  <description i18n="contentType.landingPage.description">Standard landing page (default)</description>
   <super-type>base:structured</super-type>
   <allow-child-content>true</allow-child-content>
   <form>

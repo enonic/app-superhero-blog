@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part xmlns="urn:enonic:xp:model:1.0">
-  <display-name>Search form</display-name>
-  <description>Simple search bar, redirects to search page</description>
+  <display-name i18n="part.search.displayName">Search form</display-name>
+  <description i18n="part.search.description">Simple search input, redirects to search page</description>
   <form>
     <input type="TextLine" name="title">
-      <label>Title</label>
+      <label i18n="texts.common.title">Title</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
   </form>

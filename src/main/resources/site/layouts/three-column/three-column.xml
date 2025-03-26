@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <layout xmlns="urn:enonic:xp:model:1.0">
-  <display-name>Three columns</display-name>
+  <display-name i18n="layout.3-column.displayName">Three columns</display-name>
   <form/>
   <regions>
     <region name="left"/>

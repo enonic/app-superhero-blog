@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part xmlns="urn:enonic:xp:model:1.0">
-  <display-name>Meta</display-name>
-  <description>Link list with custom links</description>
+  <display-name i18n="part.meta.displayName">Meta</display-name>
+  <description i18n="part.meta.description">The list of custom links</description>
   <form>
 
     <input type="TextLine" name="title">
-      <label>Title</label>
-      <help-text>Override the default title (default: "Meta")</help-text>
+      <label i18n="texts.common.title">Title</label>
+      <help-text i18n="part.meta.title.helpText">Override the default title (default: "Meta")</help-text>
       <occurrences minimum="0" maximum="1"/>
     </input>
 
     <field-set>
-      <label>Links</label>
+      <label i18n="part.meta.links">Links</label>
       <items>
         <item-set name="links">
-          <label>Link</label>
+          <label i18n="part.meta.link">Link</label>
           <occurrences minimum="0" maximum="0"/>
           <items>
             <input type="ContentSelector" name="contentLink">
-              <label>Content link</label>
+              <label i18n="part.meta.link.content">Content link</label>
               <occurrences minimum="0" maximum="1"/>
               <config>
                 <relationship-type>system:reference</relationship-type>
@@ -28,15 +28,15 @@
               </config>
             </input>
             <input type="TextLine" name="externalUrl">
-              <label>External URL</label>
+              <label i18n="part.meta.link.url">External URL</label>
               <occurrences minimum="0" maximum="1"/>
             </input>
             <input type="TextLine" name="linkText">
-              <label>Link text</label>
+              <label i18n="part.meta.link.text">Link text</label>
               <occurrences minimum="0" maximum="1"/>
             </input>
             <input type="TextLine" name="linkTitle">
-              <label>Link title</label>
+              <label i18n="part.meta.link.tooltip">Link tooltip</label>
               <occurrences minimum="0" maximum="1"/>
             </input>
           </items>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <part xmlns="urn:enonic:xp:model:1.0">
-  <display-name>Tag cloud</display-name>
-  <description>Display the latest and most used tags from blog posts</description>
+  <display-name i18n="part.tagCloud.displayName">Tag cloud</display-name>
+  <description i18n="part.tagCloud.description">Display the latest and most used tags from blog posts</description>
   <form>
     <input type="TextLine" name="title">
-      <label>Title</label>
+      <label i18n="texts.common.title">Title</label>
       <occurrences minimum="0" maximum="1"/>
     </input>
   </form>
