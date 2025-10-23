@@ -1,0 +1,22 @@
+<part>
+    <display-name>My Issues</display-name>
+    <description>Displays personalized issues</description>
+    <form>
+        <input type="TextLine" name="headline">
+            <label>Title</label>
+            <default>My Issues</default>
+            <help-text>Override the headline text displayed on this part</help-text>
+            <occurrences minimum="0" maximum="1"/>
+        </input>
+        <input type="Long" name="size">
+            <label>Number of Issues to list</label>
+            <help-text>Override max issues to list. Default: 10</help-text>
+            <default>10</default>
+            <config>
+                <min>1</min>
+                <max>20</max>
+            </config>
+            <occurrences minimum="0" maximum="1"/>
+        </input>
+    </form>
+</part>

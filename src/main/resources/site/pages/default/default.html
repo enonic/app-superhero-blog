@@ -41,6 +41,14 @@
                     </h1>
                     <h2 class="site-description" data-th-text="${description}">Superhero WordPress theme for Enonic XP</h2>
                 </hgroup>
+                <userinfo>
+                    <div data-th-if="${user}">
+                        <div data-th-text="${user.displayName}">No display name</div>
+                     </div>
+                    <div data-th-if="!${user}">
+                        <div>Please log in</div>
+                    </div>
+                </userinfo>
 
                 <div class="clearfix"></div>
 

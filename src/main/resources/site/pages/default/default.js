@@ -2,7 +2,7 @@ const thymeleaf = require('/lib/thymeleaf');
 const dataUtils = require('/lib/data');
 const portal = require('/lib/xp/portal');
 const assetUrlCache = require('/lib/assetUrlCache');
-
+const auth = require('/lib/xp/auth');
 const view = resolve('default.html');
 
 
@@ -40,6 +40,7 @@ exports.get = function handleGet(request) {
 
     dataUtils.deleteEmptyProperties(siteConfig);
     const content = portal.getContent();
+    const loggedInUser = auth.getUser();
 
     const dashedAppName = app.name.replace(/\./g, "-");
     const siteCommon = site.x[dashedAppName].siteCommon;
@@ -50,6 +51,7 @@ exports.get = function handleGet(request) {
 
     const isFragment = content.type === 'portal:fragment';
     const model = {
+        user: loggedInUser, 
         assetUrls: assetUrls,
         title: site.displayName,
         description: site.data.description,

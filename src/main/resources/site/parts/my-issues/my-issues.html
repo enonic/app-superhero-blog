@@ -1,0 +1,54 @@
+<section id="myIssues" class="widget widget_recent_comments">
+
+    <h2 class="widget-title" data-th-if="${ headline }" data-th-text="${ headline }"></h2>
+
+    <div th:if="${error}" class="helpdesk-error">
+        <p th:text="${error}">An error occurred.</p>
+    </div>
+
+    <div th:if="${person}" class="comment">
+        <p>Here is an overview of your helpdesk tickets:</p>
+
+        <div th:if="${#lists.isEmpty(tickets)}">
+            <p>You do not have any registered helpdesk tickets.</p>
+        </div>
+
+        <table th:unless="${#lists.isEmpty(tickets)}" class="helpdesk-table">
+            <thead>
+                <tr>
+                    <th>Ticket #</th>
+                    <th>Subject</th>
+                    <th>Status</th>
+                    <th>Date Registered</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="ticket : ${tickets}">
+                    <td th:text="${ticket.helpdesknumber}">3982</td>
+                    <td th:text="${ticket.subject}">Nettleie</td>
+                    <td th:text="${ticket.helpdeskstatus != null ? ticket.helpdeskstatus.text : 'N/A'}">Venter på oss</td>
+                    <td th:text="${ticket.registered != null ? #strings.substring(ticket.registered, 0, 10) : 'N/A'}">2025-01-27</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <form data-th-if="${person}"
+          method="POST"
+          class="startDiscussion"
+          autocomplete="off"
+          data-th-action="${ componentUrl }">
+        <input type="hidden"
+               name="personId"
+               data-th-value="${ person._id }" />
+        <h3 class="newCommentHeadline">Create new Issue</h3>
+        <textarea class="createComment"
+                  autocomplete="off"
+                  name="issue"></textarea>
+        <input class="formSub"
+               type="submit" value="Submit"/>
+        <input class="close commentButton"
+               type="button" value="Close"/>
+    </form>
+
+</section>

@@ -65,6 +65,7 @@ figure,
 footer,
 header,
 hgroup,
+userinfo,
 nav,
 section {
 	display: block;
@@ -402,6 +403,11 @@ a:active {
 #masthead hgroup {
 	float: left;
 	width: 50%;
+}
+#masthead userinfo {
+	float: right;
+	width: 50%;
+	text-align: right;
 }
 .header-image,
 .site-logo {
