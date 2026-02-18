@@ -41,7 +41,7 @@ This is still being developed and is mostly used for demos and experimenting wit
 | 1.0.0   | 6.0.0      |
 | 0.1.0   | 5.3.0      |
 
-### Change log
+### Changelog
 
 Version 3.2.0
 * Updated XP dependency to 7.13.0
