@@ -1,0 +1,7 @@
+displayName:
+  text: "Two columns"
+  i18n: "layout.2-column.displayName"
+form: []
+regions:
+- "left"
+- "right"

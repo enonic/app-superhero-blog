@@ -1,0 +1,11 @@
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+displayName:
+  text: "Category"
+  i18n: "contentType.category.displayName"
+description:
+  text: "Categories to use with blog posts (also groups them)"
+  i18n: "contentType.category.description"
+form: []

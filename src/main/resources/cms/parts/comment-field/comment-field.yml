@@ -1,0 +1,7 @@
+displayName:
+  text: "Comment field"
+  i18n: "part.commentField.displayName"
+description:
+  text: "Input field to add a comment to a blog post"
+  i18n: "part.commentField.description"
+form: []

@@ -1,0 +1,70 @@
+displayName:
+  text: "Meta"
+  i18n: "part.meta.displayName"
+description:
+  text: "The list of custom links"
+  i18n: "part.meta.description"
+form:
+- type: "TextLine"
+  name: "title"
+  label:
+    text: "Title"
+    i18n: "texts.common.title"
+  helpText:
+    text: "Override the default title (default: \"Meta\")"
+    i18n: "part.meta.title.helpText"
+  occurrences:
+    min: 0
+    max: 1
+- type: "FieldSet"
+  label:
+    text: "Links"
+    i18n: "part.meta.links"
+  items:
+  - type: "ItemSet"
+    name: "links"
+    label:
+      text: "Link"
+      i18n: "part.meta.link"
+    occurrences:
+      min: 0
+      max: 0
+    items:
+    - type: "ContentSelector"
+      name: "contentLink"
+      label:
+        text: "Content link"
+        i18n: "part.meta.link.content"
+      occurrences:
+        min: 0
+        max: 1
+      attributes:
+        relationshipType: "system:reference"
+      allowContentType:
+      - "landing-page"
+      - "post"
+      - "rss-page"
+    - type: "TextLine"
+      name: "externalUrl"
+      label:
+        text: "External URL"
+        i18n: "part.meta.link.url"
+      occurrences:
+        min: 0
+        max: 1
+    - type: "TextLine"
+      name: "linkText"
+      label:
+        text: "Link text"
+        i18n: "part.meta.link.text"
+      occurrences:
+        min: 0
+        max: 1
+    - type: "TextLine"
+      name: "linkTitle"
+      label:
+        text: "Link tooltip"
+        i18n: "part.meta.link.tooltip"
+      occurrences:
+        min: 0
+        max: 1

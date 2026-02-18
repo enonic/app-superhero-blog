@@ -1,0 +1,6 @@
+displayName:
+  text: "One column"
+  i18n: "layout.1-column.displayName"
+form: []
+regions:
+- "left"

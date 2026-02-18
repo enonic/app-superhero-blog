@@ -1,0 +1,21 @@
+displayName:
+  text: "Featured"
+  i18n: "part.featured.displayName"
+description:
+  text: "Feature a post in large format"
+  i18n: "part.featured.description"
+form:
+- type: "ContentSelector"
+  name: "posts"
+  label:
+    text: "Featured posts"
+    i18n: "part.featured.featuredPosts"
+  occurrences:
+    min: 0
+    max: 5
+  attributes:
+    relationshipType: "system:reference"
+  allowContentType:
+  - "post"
+  allowPath:
+  - "${site}/*"

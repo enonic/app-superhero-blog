@@ -1,0 +1,41 @@
+displayName:
+  text: "FAQ list"
+  i18n: "part.faqList.displayName"
+description:
+  text: "A list of Q and As"
+  i18n: "part.faqList.description"
+form:
+- type: "TextLine"
+  name: "title"
+  label:
+    text: "Title"
+    i18n: "texts.common.title"
+  occurrences:
+    min: 0
+    max: 1
+  default: "FAQ list"
+- type: "ItemSet"
+  name: "faqs"
+  label:
+    text: "FAQ"
+    i18n: "part.faqList.faq"
+  occurrences:
+    min: 1
+    max: 0
+  items:
+  - type: "TextLine"
+    name: "question"
+    label:
+      text: "Question"
+      i18n: "part.faqList.question"
+    occurrences:
+      min: 1
+      max: 1
+  - type: "TextArea"
+    name: "answer"
+    label:
+      text: "Answer"
+      i18n: "part.faqList.answer"
+    occurrences:
+      min: 1
+      max: 1

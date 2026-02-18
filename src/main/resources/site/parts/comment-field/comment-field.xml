@@ -1,5 +1,0 @@
-<part>
-    <display-name i18n="part.commentField.displayName">Comment field</display-name>
-    <description i18n="part.commentField.description">Input field to add a comment to a blog post</description>
-    <form/>
-</part>

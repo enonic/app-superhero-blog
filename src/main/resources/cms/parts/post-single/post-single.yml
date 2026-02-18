@@ -1,0 +1,7 @@
+displayName:
+  text: "Post"
+  i18n: "part.postSingle.displayName"
+description:
+  text: "Display current blog post"
+  i18n: "part.postSingle.description"
+form: []

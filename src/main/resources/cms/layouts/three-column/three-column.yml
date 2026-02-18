@@ -1,0 +1,8 @@
+displayName:
+  text: "Three columns"
+  i18n: "layout.3-column.displayName"
+form: []
+regions:
+- "left"
+- "middle"
+- "right"
