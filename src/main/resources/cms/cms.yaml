@@ -1,0 +1,38 @@
+kind: "CMS"
+mixin:
+- name: "com.enonic.app.superhero:siteCommon"
+  allowContentTypes: "portal:site"
+  optional: false
+form:
+- type: "TextLine"
+  name: "numPosts"
+  label:
+    text: "Max posts per page"
+    i18n: "siteConfig.maxPosts"
+  occurrences:
+    min: 0
+    max: 1
+- type: "ContentSelector"
+  name: "postsFolder"
+  label:
+    text: "Posts folder"
+    i18n: "siteConfig.postsFolder"
+  occurrences:
+    min: 0
+    max: 1
+  attributes:
+    relationshipType: "system:reference"
+  allowContentType:
+  - "base:folder"
+- type: "ContentSelector"
+  name: "searchPage"
+  label:
+    text: "Search page"
+    i18n: "siteConfig.searchPage"
+  occurrences:
+    min: 0
+    max: 1
+  attributes:
+    relationshipType: "system:reference"
+  allowContentType:
+  - "landing-page"

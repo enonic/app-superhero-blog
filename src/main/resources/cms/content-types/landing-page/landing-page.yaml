@@ -1,0 +1,12 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title:
+  text: "Landing page"
+  i18n: "contentType.landingPage.displayName"
+description:
+  text: "Standard landing page (default)"
+  i18n: "contentType.landingPage.description"
+form: []

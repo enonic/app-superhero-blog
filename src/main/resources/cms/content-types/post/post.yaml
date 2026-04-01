@@ -1,0 +1,83 @@
+kind: "ContentType"
+superType: "base:structured"
+abstract: false
+final: false
+allowChildContent: true
+title:
+  text: "Post"
+  i18n: "contentType.post.displayName"
+description:
+  text: "Main content type used for writing blog posts"
+  i18n: "contentType.post.description"
+form:
+- type: "ContentSelector"
+  name: "author"
+  label:
+    text: "Author"
+    i18n: "contentType.author.displayName"
+  occurrences:
+    min: 0
+    max: 1
+  attributes:
+    relationshipType: "system:reference"
+  allowContentType:
+  - "author"
+  allowPath:
+  - "${site}/authors/"
+- type: "ContentSelector"
+  name: "category"
+  label:
+    text: "Category"
+    i18n: "contentType.category.displayName"
+  occurrences:
+    min: 0
+    max: 0
+  attributes:
+    relationshipType: "system:reference"
+  allowContentType:
+  - "category"
+  allowPath:
+  - "${site}/categories/"
+- type: "HtmlArea"
+  name: "post"
+  label:
+    text: "Post text"
+    i18n: "contentType.post.postText"
+  occurrences:
+    min: 1
+    max: 1
+- type: "Tag"
+  name: "tags"
+  label:
+    text: "Tags"
+    i18n: "contentType.post.tags"
+  occurrences:
+    min: 0
+    max: 0
+- type: "FieldSet"
+  label: "Featured"
+  items:
+  - type: "ImageSelector"
+    name: "featuredImage"
+    label:
+      text: "Featured Image"
+      i18n: "contentType.post.featuredImage"
+    occurrences:
+      min: 0
+      max: 1
+  - type: "CheckBox"
+    name: "slideshow"
+    label:
+      text: "Slideshow"
+      i18n: "contentType.post.slideShow"
+    occurrences:
+      min: 0
+      max: 1
+  - type: "CheckBox"
+    name: "stickyPost"
+    label:
+      text: "Sticky post"
+      i18n: "contentType.post.stickyPost"
+    occurrences:
+      min: 0
+      max: 1
