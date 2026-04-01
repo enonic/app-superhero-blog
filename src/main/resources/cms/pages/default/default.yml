@@ -1,9 +1,0 @@
-displayName:
-  text: "Default Page"
-  i18n: "page.default.displayName"
-description:
-  text: "Main page controller"
-  i18n: "page.default.description"
-form: []
-regions:
-- "main"

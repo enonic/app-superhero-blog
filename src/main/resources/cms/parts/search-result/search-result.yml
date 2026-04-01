@@ -1,7 +1,0 @@
-displayName:
-  text: "Search result"
-  i18n: "part.searchResult.displayName"
-description:
-  text: "Display search results (also used in archives)"
-  i18n: "part.searchResult.description"
-form: []

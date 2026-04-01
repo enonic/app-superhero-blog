@@ -1,0 +1,9 @@
+[versions]
+thymeleaf = "3.0.0-SNAPSHOT"
+xslt = "2.1.1"
+asset = "2.0.0-SNAPSHOT"
+
+[libraries]
+lib-thymeleaf = { module = "com.enonic.lib:lib-thymeleaf", version.ref = "thymeleaf" }
+lib-xslt = { module = "com.enonic.lib:lib-xslt", version.ref = "xslt" }
+lib-asset = { module = "com.enonic.lib:lib-asset", version.ref = "asset" }

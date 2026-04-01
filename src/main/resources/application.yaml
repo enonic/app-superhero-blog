@@ -1,0 +1,5 @@
+kind: "Application"
+title: "Superhero blog demo"
+vendorName: "Enonic USA"
+vendorUrl: "https://enonic.com"
+description: "Create your very own Superhero theme blog to run on Enonic XP"

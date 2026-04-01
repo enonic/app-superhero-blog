@@ -1,7 +1,0 @@
-displayName:
-  text: "Post list"
-  i18n: "part.postsList.displayName"
-description:
-  text: "Paginated list of blog posts"
-  i18n: "part.postsList.description"
-form: []

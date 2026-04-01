@@ -1,36 +1,28 @@
 plugins {
     id 'maven-publish'
     id 'com.enonic.defaults' version '2.1.6'
-    id 'com.enonic.xp.app' version '4.0.0-A1'
-}
-
-app {
-    name = project.appName
-    displayName = 'Superhero Blog'
-    vendorName = 'Enonic USA'
-    vendorUrl = 'https://enonic.com'
-    systemVersion = "${xpVersion}"
-}
-
-dependencies {
-    include "com.enonic.xp:lib-content:${xpVersion}"
-    include "com.enonic.xp:lib-context:${xpVersion}"
-    include "com.enonic.xp:lib-portal:${xpVersion}"
-    include "com.enonic.xp:lib-auth:${xpVersion}"
-    include "com.enonic.xp:lib-project:${xpVersion}"
-    include "com.enonic.xp:lib-cluster:${xpVersion}"
-    include "com.enonic.xp:lib-export:${xpVersion}"
-    include "com.enonic.xp:lib-i18n:${xpVersion}"
-    include "com.enonic.xp:lib-node:${xpVersion}"
-    include "com.enonic.xp:lib-repo:${xpVersion}"
-    include 'com.enonic.lib:lib-thymeleaf:3.0.0-SNAPSHOT'
-    include 'com.enonic.lib:lib-xslt:2.1.1'
-    include 'com.enonic.lib:lib-asset:2.0.0-SNAPSHOT'
-    include "com.enonic.xp:lib-task:${xpVersion}"
+    id 'com.enonic.xp.app'
 }
 
 repositories {
     mavenLocal()
     mavenCentral()
     xp.enonicRepo('dev')
+}
+
+dependencies {
+    include xplibs.content
+    include xplibs.context
+    include xplibs.portal
+    include xplibs.auth
+    include xplibs.project
+    include xplibs.cluster
+    include xplibs.export
+    include xplibs.i18n
+    include xplibs.node
+    include xplibs.repo
+    include xplibs.task
+    include libs.lib.thymeleaf
+    include libs.lib.xslt
+    include libs.lib.asset
 }

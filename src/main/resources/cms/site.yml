@@ -1,8 +1,0 @@
-mappings:
-- controller: "/site/pages/default/default.js"
-  order: 50
-  match: "type:'portal:fragment'"
-- controller: "/lib/rss/rss.js"
-  order: 50
-  invertPattern: false
-  pattern: ".*\\/rss"
