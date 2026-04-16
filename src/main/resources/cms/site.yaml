@@ -7,3 +7,5 @@ mappings:
   order: 50
   invertPattern: false
   pattern: ".*\\/rss"
+apis:
+  - "asset"
