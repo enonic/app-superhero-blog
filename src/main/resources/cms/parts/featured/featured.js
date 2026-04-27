@@ -96,6 +96,11 @@ exports.get = function handleGet(req) {
     }
 
     return {
-        body: thymeleaf.render(view, model)
+        body: thymeleaf.render(view, model),
+        pageContributions: req.mode === 'edit' ? {
+            bodyEnd: [
+                `<script>jQuery(function($){ $('.flexslider').flexslider({slideshow: true, prevText: '', nextText: ''}); });</script>`
+            ]
+        } : undefined
     };
 }
