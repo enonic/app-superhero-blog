@@ -5,12 +5,6 @@
     <timestamp>2019-03-13T08:48:27.200Z</timestamp>
     <inheritPermissions>true</inheritPermissions>
     <permissions>
-        <principal key="role:cms.cm.app">
-            <allow type="array">
-                <value>READ</value>
-            </allow>
-            <deny type="array"/>
-        </principal>
         <principal key="role:system.admin">
             <allow type="array">
                 <value>READ</value>
