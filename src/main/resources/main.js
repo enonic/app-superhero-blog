@@ -11,9 +11,7 @@ const projectData = {
     displayName: 'Superhero Blog',
     description: 'Sample blog site on Enonic XP',
     language: 'en',
-    readAccess: {
-        public: true
-    }
+    publicRead: true
 }
 
 
