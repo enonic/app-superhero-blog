@@ -2,8 +2,7 @@
     <id>251e6b26-5d9d-4337-981c-bc440e4076aa</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2019-03-13T08:48:27.021Z</timestamp>
-    <inheritPermissions>false</inheritPermissions>
+    <timestamp>2026-05-29T07:29:15.733Z</timestamp>
     <permissions>
         <principal key="role:system.admin">
             <allow type="array">
@@ -30,6 +29,51 @@
             <deny type="array"/>
         </principal>
         <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.owner">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.editor">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.author">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.contributor">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.viewer">
             <allow type="array">
                 <value>READ</value>
             </allow>
@@ -218,6 +262,11 @@
                 </property-set>
             </property-set>
         </property-set>
+        <property-set name="publish">
+            <dateTime name="time">2026-05-29T07:29:14.377Z</dateTime>
+            <dateTime name="from">2026-05-29T07:29:14.231Z</dateTime>
+            <dateTime name="first">2026-05-29T07:29:14.231Z</dateTime>
+        </property-set>
     </data>
     <indexConfigs>
         <defaultConfig>
@@ -266,16 +315,6 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>components.part.config.com-enonic-app-superhero.latest-comments.*</path>
-            </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>true</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>false</nGram>
-                    <fulltext>false</fulltext>
-                    <includeInAllText>false</includeInAllText>
-                </indexConfig>
                 <path>components.part.config.com-enonic-app-superhero.posts-list.*</path>
             </pathIndexConfig>
             <pathIndexConfig>
@@ -287,6 +326,16 @@
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
                 <path>components.part.config.com-enonic-app-superhero.meta.*</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>true</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>false</nGram>
+                    <fulltext>false</fulltext>
+                    <includeInAllText>false</includeInAllText>
+                </indexConfig>
+                <path>components.part.config.com-enonic-app-superhero.latest-comments.*</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -349,7 +398,7 @@
                         <indexValueProcessor>htmlStripper</indexValueProcessor>
                     </indexValueProcessors>
                 </indexConfig>
-                <path>data.siteConfig.config.footerText</path>
+                <path>data.siteconfig.config.footertext</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -359,7 +408,7 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>data.siteConfig.applicationkey</path>
+                <path>data.siteconfig.applicationkey</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -512,7 +561,20 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>modifiedTime</path>
+                <path>modifiedtime</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
+                    <languages>
+                        <language>en</language>
+                    </languages>
+                </indexConfig>
+                <path>displayname</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -542,7 +604,7 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>createdTime</path>
+                <path>createdtime</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -564,21 +626,11 @@
                 </indexConfig>
                 <path>attachment</path>
             </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>true</nGram>
-                    <fulltext>true</fulltext>
-                    <includeInAllText>true</includeInAllText>
-                    <languages>
-                        <language>en</language>
-                    </languages>
-                </indexConfig>
-                <path>displayName</path>
-            </pathIndexConfig>
         </pathIndexConfigs>
         <allTextIndexConfig>
+            <enabled>true</enabled>
+            <nGram>true</nGram>
+            <fulltext>true</fulltext>
             <languages>
                 <language>en</language>
             </languages>
