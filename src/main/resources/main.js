@@ -91,9 +91,7 @@ function createContent() {
         xslt: resolve('/import/replace_app.xsl'),
         xsltParams: {
             applicationId: app.name,
-            applicationIdPlaceholder: 'com.enonic.app.superhero',
-            projectName: projectData.id,
-            projectNamePlaceholder: 'sample-blog'
+            projectName: projectData.id
         },
         versionAttributes: {
             'content.import': {

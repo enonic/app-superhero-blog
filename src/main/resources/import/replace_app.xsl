@@ -3,10 +3,12 @@
   <xsl:output method="xml" indent="yes"/>
 
   <xsl:param name="applicationId"/>
-  <xsl:param name="applicationIdPlaceholder"/>
   <xsl:param name="projectName"/>
-  <xsl:param name="projectNamePlaceholder"/>
   <xsl:param name="keepPublishFirst" select="'true'"/>
+
+  <!-- Values the bundled /import data was exported with -->
+  <xsl:variable name="applicationIdPlaceholder" select="'com.enonic.app.superhero'"/>
+  <xsl:variable name="projectNamePlaceholder" select="'sample-blog'"/>
 
   <xsl:variable name="applicationIdDashed" select="translate($applicationId, '.', '-')"/>
   <xsl:variable name="applicationIdPlaceholderDashed" select="translate($applicationIdPlaceholder, '.', '-')"/>
