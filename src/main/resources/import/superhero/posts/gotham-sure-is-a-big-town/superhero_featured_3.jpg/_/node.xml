@@ -2,8 +2,7 @@
     <id>43d54e23-d8ce-4058-befb-777abe1a0d9f</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2019-03-13T08:48:27.286Z</timestamp>
-    <inheritPermissions>true</inheritPermissions>
+    <timestamp>2026-05-29T07:29:15.936Z</timestamp>
     <permissions>
         <principal key="role:system.admin">
             <allow type="array">
@@ -30,6 +29,51 @@
             <deny type="array"/>
         </principal>
         <principal key="role:system.everyone">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.owner">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.editor">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.author">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.contributor">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.viewer">
             <allow type="array">
                 <value>READ</value>
             </allow>
@@ -72,6 +116,13 @@
             <binaryReference name="binary">superhero_featured_3.jpg</binaryReference>
             <string name="mimeType">image/jpeg</string>
             <long name="size">362035</long>
+            <string name="sha512">fc799fb95d66c92c834f1331d4877faaa3925821287140d42742648d67176211e81e04963a31c152b0c2c2fb4d919f1f3da925c2cf7bf93c790a4244fd9410da</string>
+            <string name="text"/>
+        </property-set>
+        <property-set name="publish">
+            <dateTime name="time">2026-05-29T07:29:14.823Z</dateTime>
+            <dateTime name="from">2026-05-29T07:29:14.231Z</dateTime>
+            <dateTime name="first">2026-05-29T07:29:14.231Z</dateTime>
         </property-set>
     </data>
     <indexConfigs>
@@ -154,7 +205,20 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>modifiedTime</path>
+                <path>modifiedtime</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
+                    <languages>
+                        <language>en</language>
+                    </languages>
+                </indexConfig>
+                <path>displayname</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -184,7 +248,7 @@
                     <fulltext>false</fulltext>
                     <includeInAllText>false</includeInAllText>
                 </indexConfig>
-                <path>createdTime</path>
+                <path>createdtime</path>
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
@@ -196,21 +260,11 @@
                 </indexConfig>
                 <path>attachment</path>
             </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>true</nGram>
-                    <fulltext>true</fulltext>
-                    <includeInAllText>true</includeInAllText>
-                    <languages>
-                        <language>en</language>
-                    </languages>
-                </indexConfig>
-                <path>displayName</path>
-            </pathIndexConfig>
         </pathIndexConfigs>
         <allTextIndexConfig>
+            <enabled>true</enabled>
+            <nGram>true</nGram>
+            <fulltext>true</fulltext>
             <languages>
                 <language>en</language>
             </languages>

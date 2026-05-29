@@ -2,8 +2,7 @@
     <id>70ac4676-678d-408e-9561-fe98ddcc13be</id>
     <childOrder>modifiedtime DESC</childOrder>
     <nodeType>content</nodeType>
-    <timestamp>2019-03-13T08:48:27.096Z</timestamp>
-    <inheritPermissions>true</inheritPermissions>
+    <timestamp>2026-05-29T07:29:15.835Z</timestamp>
     <permissions>
         <principal key="role:system.admin">
             <allow type="array">
@@ -35,6 +34,51 @@
             </allow>
             <deny type="array"/>
         </principal>
+        <principal key="role:cms.project.sample-blog.owner">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.editor">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+                <value>PUBLISH</value>
+                <value>READ_PERMISSIONS</value>
+                <value>WRITE_PERMISSIONS</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.author">
+            <allow type="array">
+                <value>READ</value>
+                <value>CREATE</value>
+                <value>MODIFY</value>
+                <value>DELETE</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.contributor">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
+        <principal key="role:cms.project.sample-blog.viewer">
+            <allow type="array">
+                <value>READ</value>
+            </allow>
+            <deny type="array"/>
+        </principal>
     </permissions>
     <data>
         <boolean name="valid">true</boolean>
@@ -47,6 +91,11 @@
         <string name="creator">user:system:su</string>
         <dateTime name="createdTime">2020-02-27T23:50:55.706Z</dateTime>
         <property-set name="data"/>
+        <property-set name="publish">
+            <dateTime name="time">2026-05-29T07:29:14.605Z</dateTime>
+            <dateTime name="from">2026-05-29T07:29:14.231Z</dateTime>
+            <dateTime name="first">2026-05-29T07:29:14.231Z</dateTime>
+        </property-set>
     </data>
     <indexConfigs>
         <defaultConfig>
@@ -109,6 +158,19 @@
             </pathIndexConfig>
             <pathIndexConfig>
                 <indexConfig>
+                    <decideByType>false</decideByType>
+                    <enabled>true</enabled>
+                    <nGram>true</nGram>
+                    <fulltext>true</fulltext>
+                    <includeInAllText>true</includeInAllText>
+                    <languages>
+                        <language>en</language>
+                    </languages>
+                </indexConfig>
+                <path>displayname</path>
+            </pathIndexConfig>
+            <pathIndexConfig>
+                <indexConfig>
                     <decideByType>true</decideByType>
                     <enabled>true</enabled>
                     <nGram>false</nGram>
@@ -137,21 +199,11 @@
                 </indexConfig>
                 <path>attachment</path>
             </pathIndexConfig>
-            <pathIndexConfig>
-                <indexConfig>
-                    <decideByType>false</decideByType>
-                    <enabled>true</enabled>
-                    <nGram>true</nGram>
-                    <fulltext>true</fulltext>
-                    <includeInAllText>true</includeInAllText>
-                    <languages>
-                        <language>en</language>
-                    </languages>
-                </indexConfig>
-                <path>displayName</path>
-            </pathIndexConfig>
         </pathIndexConfigs>
         <allTextIndexConfig>
+            <enabled>true</enabled>
+            <nGram>true</nGram>
+            <fulltext>true</fulltext>
             <languages>
                 <language>en</language>
             </languages>

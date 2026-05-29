@@ -11,7 +11,9 @@ const projectData = {
     displayName: 'Superhero Blog',
     description: 'Sample blog site on Enonic XP',
     language: 'en',
-    publicRead: true
+    readAccess: {
+        public: true
+    }
 }
 
 
@@ -19,9 +21,12 @@ const runInContext = function (callback) {
     let result;
     try {
         result = contextLib.run({
-            branch: 'draft',
-            principals: ["role:system.admin"],
-            repository: 'com.enonic.cms.' + projectData.id
+            user: {
+                login: "su",
+                idProvider: "system"
+            },
+            repository: 'com.enonic.cms.' + projectData.id,
+            branch: 'draft'
         }, callback);
     } catch (e) {
         log.info('Error: ' + e.message);
@@ -85,11 +90,12 @@ function createContent() {
         targetNodePath: '/content',
         xslt: resolve('/import/replace_app.xsl'),
         xsltParams: {
-            applicationId: app.name
+            applicationId: app.name,
+            projectName: projectData.id
         },
         versionAttributes: {
             'content.import': {
-                user: "role:system.admin",
+                user: contextLib.get().authInfo.user.key,
                 optime: new Date().toISOString()
             },
             'vacuum.skip': {}
@@ -108,12 +114,16 @@ function publishRoot() {
         keys: ['/superhero'],
         sourceBranch: 'draft',
         targetBranch: 'master',
+        includeChildren: true,
+        includeDependencies: true,
     });
-    if (!result) {
-       log.warning('Could not publish imported content.');
+    if (!result || (result.failedContents && result.failedContents.length > 0)) {
+        log.warning('Could not publish imported content. failed=' + JSON.stringify(result && result.failedContents));
+    } else {
+        log.info('Published ' + (result.pushedContents ? result.pushedContents.length : 0) + ' content items.');
     }
 }
 
-if (clusterLib.isMaster()) {
+if (clusterLib.isLeader()) {
     initialize();
 }
