@@ -116,6 +116,8 @@
             <binaryReference name="binary">superhero_featured_3.jpg</binaryReference>
             <string name="mimeType">image/jpeg</string>
             <long name="size">362035</long>
+            <string name="sha512">fc799fb95d66c92c834f1331d4877faaa3925821287140d42742648d67176211e81e04963a31c152b0c2c2fb4d919f1f3da925c2cf7bf93c790a4244fd9410da</string>
+            <string name="text"/>
         </property-set>
         <property-set name="publish">
             <dateTime name="time">2026-05-29T07:29:14.823Z</dateTime>

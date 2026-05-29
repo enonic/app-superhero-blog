@@ -116,6 +116,8 @@
             <binaryReference name="binary">superhero_5.jpg</binaryReference>
             <string name="mimeType">image/jpeg</string>
             <long name="size">196646</long>
+            <string name="sha512">8e01a30813fd7e098094e8d5f11ec268c0e3d0ed3d1b46de572cae1fa3f6d237669b883bd4d9514bc4cad059db8d01821de86ce011c86d850bb064d7ad14933a</string>
+            <string name="text"/>
         </property-set>
         <property-set name="publish">
             <dateTime name="time">2026-05-29T07:29:14.788Z</dateTime>
