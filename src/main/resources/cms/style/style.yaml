@@ -1,0 +1,39 @@
+kind: "Style"
+styles:
+  - name: "editor-style-image-black"
+    type: "Image"
+    label:
+      text: "Paint it black"
+      i18n: "imageStyles.black"
+    filter: "hsbcolorize(0x000000); grayscale(); border(6, 0x000000)"
+  - name: "editor-style-image-red"
+    type: "Image"
+    label:
+      text: "Paint it red"
+      i18n: "imageStyles.red"
+    filter: "hsbcolorize(0xAA0000)"
+  - name: "editor-style-image-portrait"
+    type: "Image"
+    label:
+      text: "Avatar"
+      i18n: "imageStyles.avatar"
+    aspectRatio: "1:1"
+    filter: "rounded(1000)"
+    editor:
+      css: |
+        .editor-style-image-portrait {
+            width: 100px;
+            height: 100px;
+        }
+  - name: "editor-style-image-sepia"
+    type: "Image"
+    label:
+      text: "Old photo"
+      i18n: "imageStyles.old"
+    filter: "sepia(25)"
+  - name: "editor-style-image-pixels"
+    type: "Image"
+    label:
+      text: "Super Mario classic-mode"
+      i18n: "imageStyles.pixels"
+    filter: "block(10)"
