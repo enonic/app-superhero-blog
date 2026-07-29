@@ -4,7 +4,6 @@ const clusterLib = require('/lib/xp/cluster');
 const exportLib = require('/lib/xp/export');
 const projectLib = require('/lib/xp/project');
 const commentsLib = require('/lib/comments');
-const taskLib = require('/lib/xp/task');
 
 const projectData = {
     id: 'sample-blog',
@@ -52,21 +51,11 @@ const createProject = function () {
 const initialize = function () {
     runInContext(() => {
         // Initialize comments
-        taskLib.executeFunction({
-            description: 'Setting up comments repo',
-            func: initComments
-        });
+        initComments();
 
         // Initialize content
-        const project = getProject();
-        if (!project) {
-            taskLib.executeFunction({
-                description: 'Importing content',
-                func: initProject
-            });
-        }
-        else {
-            log.debug(`Project ${project.id} exists, skipping import`);
+        if (!getProject()) {
+            initProject();
         }
     });
 };
