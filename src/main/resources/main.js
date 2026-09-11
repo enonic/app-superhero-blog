@@ -11,9 +11,7 @@ const projectData = {
     displayName: 'Superhero Blog',
     description: 'Sample blog site on Enonic XP',
     language: 'en',
-    readAccess: {
-        public: true
-    }
+    publicRead: true
 }
 
 
@@ -100,7 +98,8 @@ function createContent() {
             },
             'vacuum.skip': {}
         },
-        includeNodeIds: true
+        includeNodeIds: true,
+        includePermissions: true
     });
     if (importNodes.importErrors.length > 0) {
         log.warning('Errors:');
