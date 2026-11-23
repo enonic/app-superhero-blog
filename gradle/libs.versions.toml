@@ -1,6 +1,6 @@
 [versions]
 thymeleaf = "3.0.1"
-xslt = "3.0.0"
+xslt = "3.0.1"
 asset = "2.0.1"
 
 [libraries]
